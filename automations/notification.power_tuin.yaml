@@ -1,0 +1,22 @@
+- alias: "Notificatie: stroomuitval Tuin"
+  initial_state: 'false'
+  trigger:
+  - platform: state
+    entity_id:
+      - light.tuin
+      - media_player.tuin
+    to: 'unavailable'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: light.tuin
+        state: 'unavailable'
+      - condition: state
+        entity_id: media_player.tuin
+        state: 'unavailable'
+  action:
+  - service: notify.ios_notifier
+    data:
+      title: "Stroomuitval"
+      message: "Er is waarschijnlijk stroomuitval in de tuin!"

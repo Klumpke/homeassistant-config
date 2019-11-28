@@ -1,0 +1,6 @@
+# https://gist.github.com/tmonck/6a84f9d8999a4e17de1c9b6888d522be
+# https://community.home-assistant.io/t/delete-old-backups-shell-command-error/68947/42
+clean_up_backups_service:
+  host: !secret http_base_url
+  token: !secret clean_up_permanent_token
+  number_of_backups_to_keep: 52

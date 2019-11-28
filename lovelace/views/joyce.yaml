@@ -1,0 +1,31 @@
+title: Joyce
+path:  joyce
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: quick-access-menu
+        variables:
+          - name1: PostNL
+          - icon1: mdi:package-variant-closed
+          - path1: postnl-joyce
+      - type: custom:decluttering-card
+        template: header
+        variables:
+          - content: '## Joyce Vaes'
+      - type: custom:decluttering-card
+        template: person-more-info
+        variables:
+          - name: joyce
+          - name-s: Joyce's
+          - postnl_delivery: sensor.postnl_joyce_delivery
+          - battery_level: sensor.joyce_battery_level
+          - battery_state: sensor.joyce_battery_state
+          - email: sensor.mail_joyce
+          - traveltime_home: sensor.reistijd_joyce
+          - traveltime_work1: sensor.reistijd_joyce_dolfijn_toff
+          - traveltime_work1_name: Dolfijn (Toff)
+          - traveltime_work2: sensor.reistijd_joyce_dolfijn_luchen
+          - traveltime_work2_name: Dolfijn (Luchen)
+          - traveltime_work3: sensor.reistijd_joyce_dolfijn_t_schrijverke
+          - traveltime_work3_name: Dolfijn ('t Schrijverke)

@@ -1,0 +1,50 @@
+input_select:
+  dishwasher_status:
+    name: Vaatwasser Status
+    options:
+      - Idle
+      - Running
+      - Drying
+      - Clean
+      - Power OFF
+    initial: Idle
+  washing_machine_status:
+    name: Wasmachine Status
+    options:
+      - Idle
+      - Running
+      - Finishing
+      - Clean
+      - Power OFF
+    initial: Idle
+  dryer_status:
+    name: Droger Status
+    options:
+      - Idle
+      - Running
+      - Finishing
+      - Dry
+      - Power OFF
+    initial: Idle
+  afzuigkap_status:
+    name: Afzuigkap Status
+    options:
+      - 'on'
+      - 'off'
+    initial: 'off'
+
+sensor:
+  - platform: template
+    sensors:
+      washing_machine_status:
+        value_template: '{{ states.input_select.washing_machine_status.state}}'
+        friendly_name: 'Wasmachine Status'
+      dishwasher_status:
+        value_template: '{{ states.input_select.dishwasher_status.state}}'
+        friendly_name: 'Vaatwasser Status'
+      dryer_status:
+        value_template: '{{ states.input_select.dryer_status.state}}'
+        friendly_name: 'Droger Status'
+      afzuigkap_status:
+        value_template: '{{ states.input_select.afzuigkap_status.state}}'
+        friendly_name: 'Afzuigkap Status'

@@ -1,0 +1,77 @@
+# Default Config
+default:
+  # Entity (Total print pages)
+  - entity_pages: sensor.printer_paginas
+  # Entity (Colors)
+  - entity_black: sensor.printer_toner_zwart
+  - entity_cyan: sensor.printer_toner_cyaan
+  - entity_magenta: sensor.printer_toner_magenta
+  - entity_yellow: sensor.printer_toner_geel
+
+#### #### #### #### #### #### #### #### #### #### #### #
+
+# Printer Popup Config
+card:
+  type: 'vertical-stack'
+  cards:
+    - type: horizontal-stack
+      cards:
+        - !include ../includes/blank-card.yaml
+        - type: entities
+          style: |
+            ha-card {
+              background: var(--card-color-off);
+              --paper-item-icon-color: var(--icon-color-off);
+              color: var(--name-color-off);
+              border-radius: {{ states('input_select.border_radius') }};
+              box-shadow: {{ states('input_select.box_shadow') }};
+              opacity: 0.7;
+            }
+          entities:
+            - entity: '[[entity_pages]]'
+              icon: mdi:printer
+              name: "Totaal aantal pagina's afgedrukt"
+        - !include ../includes/blank-card.yaml
+    - type: horizontal-stack
+      cards:
+        - !include ../includes/blank-card.yaml
+        - type: 'custom:bar-card'
+          style: |
+            ha-card {
+              background: var(--card-color-off);
+              --paper-item-icon-color: var(--icon-color-off);
+              color: var(--name-color-off);
+              border-radius: {{ states('input_select.border_radius') }};
+              box-shadow: {{ states('input_select.box_shadow') }};
+              opacity: 0.7;
+            }
+          title_style:
+            color: var(--name-color-on);
+            font-size: 12px
+            text-transform: capitalize
+          columns: 4
+          direction: up
+          entities:
+            - color: Black
+              entity: '[[entity_black]]'
+              icon: mdi:water
+            - color: MediumTurquoise
+              entity: '[[entity_cyan]]'
+              icon: mdi:water
+            - color: MediumOrchid
+              entity: '[[entity_magenta]]'
+              icon: mdi:water
+            - color: Gold
+              entity: '[[entity_yellow]]'
+              icon: mdi:water
+          height: 200px
+          max: 100
+          min: 0
+          padding: 2px
+          target: 10
+          title_position: bottom
+          icon_position: inside
+          unit_of_measurement: '%'
+          width: 100%
+        - !include ../includes/blank-card.yaml
+    - !include ../includes/bottom-card.yaml

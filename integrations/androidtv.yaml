@@ -1,0 +1,19 @@
+---
+# https://www.home-assistant.io/components/androidtv/
+media_player:
+  # Use an ADB server to setup an Android TV device, provide
+  # an app name, and override the default turn on/off commands
+
+  - platform: philips_android_tv
+    name: TV Woonkamer
+    host: 192.168.178.60
+    mac: 70:af:24:0f:06:4e
+    username: 7NaGIeDYqiYSWZZk
+    password: 290c675f1ab8ce5c53adf128ce58adbc8387df4822574eedbf8160d7065bfe74
+
+  - platform: philips_android_tv
+    name: TV Slaapkamer
+    host: 192.168.178.61
+    mac: f8:28:19:58:ba:3b
+    username: LVUwGIRMocvzStd6
+    password: 8d3f18769cd69eb47502448124f04907af998d4ad32b5184939007632a9d1411

@@ -1,0 +1,69 @@
+#sonos_tts:
+#  alias: Sonos Text To Speech
+#  sequence:
+#    - service: sonos.snapshot
+#      data_template:
+#        entity_id: "{{ 'media_player.' ~ where }}"
+#    - service: tts.google_translate_say
+#      data_template:
+#        entity_id: "{{ 'media_player.' ~ where }}"
+#        message: "{{ what }}"
+#    - delay:
+#        seconds: 1
+#    - delay: >-
+#        {% set duration = states.media_player[where].attributes.media_duration %}
+#        {% if duration > 0 %}
+#          {% set duration = duration - 1 %}
+#        {% endif %}
+#        {% set seconds = duration % 60 %}
+#        {% set minutes = (duration / 60)|int % 60 %}
+#        {% set hours = (duration / 3600)|int %}
+#        {{ "%02i:%02i:%02i"|format(hours, minutes, seconds)}}
+#    - service: sonos.restore
+#      data_template:
+#        entity_id: "{{ 'media_player.' ~ where }}"
+
+sonos_say:
+  alias: "Sonos TTS script"
+  sequence:
+    - service: sonos.snapshot
+      data_template:
+        entity_id: "{{ sonos_entity }}"
+    - service: sonos.unjoin
+      data_template:
+        entity_id: "{{ sonos_entity }}"
+    - service: media_player.volume_set
+      data_template:
+        entity_id: "{{ sonos_entity }}"
+        volume_level: "{{ volume }}"
+    - service: tts.google_say
+      data_template:
+        entity_id: "{{ sonos_entity }}"
+        message: "{{ message }}"
+    - delay: "{{ delay }}"
+    - service: sonos.restore
+      data_template:
+        entity_id: "{{ sonos_entity }}"
+
+sonos_play:
+  alias: "Sonos MP3 script"
+  sequence:
+    - service: sonos.snapshot
+      data_template:
+        entity_id: "{{ sonos_entity }}"
+    - service: sonos.unjoin
+      data_template:
+        entity_id: "{{ sonos_entity }}"
+    - service: media_player.volume_set
+      data_template:
+        entity_id: "{{ sonos_entity }}"
+        volume_level: "{{ volume }}"
+    - service: media_player.play_media
+      data_template:
+        entity_id: "{{ sonos_entity }}"
+        media_content_id: "{{ media_content }}"
+        media_content_type: 'audio/mp3'
+    - delay: "{{ delay }}"
+    - service: sonos.restore
+      data_template:
+        entity_id: "{{ sonos_entity }}"

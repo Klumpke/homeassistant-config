@@ -1,0 +1,54 @@
+# Custom Card Resources
+resources:
+  !include lovelace/resources/resources.yaml
+
+# Compact Custom Header
+# You will need to hide views if you want to
+# have views that behave like popup cards!
+cch:
+  !include lovelace/cch/compact-custom-header.yaml
+
+# Decluttering Templates
+# These are the templates used to avoid too much
+# duplicate code.
+# decluttering_templates:
+#   !include lovelace/decluttering_templates/decluttering_templates.yaml
+
+# Decluttering Templates
+decluttering_templates:
+  !include_dir_named lovelace/templates
+
+# Views
+title: Home
+background: var(--background-image)
+views:
+  - !include lovelace/views/widgets.yaml
+  - !include lovelace/views/main_view.yaml
+  - !include lovelace/views/lights.yaml
+  - !include lovelace/views/devices.yaml
+  - !include lovelace/views/security.yaml
+  - !include lovelace/views/climate.yaml
+  - !include lovelace/views/energy.yaml
+  - !include lovelace/views/test.yaml
+# The views below are used as fake popup cards
+# They are non swipable and will behave just like
+# a popup card or conditional cards. The order of
+# these files will not change anything.
+  - !include lovelace/views/menu.yaml
+  - !include lovelace/views/themes.yaml
+  - !include lovelace/views/weather.yaml
+  - !include lovelace/views/currently_on.yaml
+  - !include lovelace/views/automations.yaml
+  - !include lovelace/views/scenes.yaml
+  - !include lovelace/views/maintenance.yaml
+  - !include lovelace/views/jeroen.yaml
+  - !include lovelace/views/postnl-jeroen.yaml
+  - !include lovelace/views/joyce.yaml
+  - !include lovelace/views/postnl-joyce.yaml
+  - !include lovelace/views/vacuum.yaml
+  - !include lovelace/views/vacuum-zoned-cleaning.yaml
+  - !include lovelace/views/downloads.yaml
+  - !include lovelace/views/laundry.yaml
+  - !include lovelace/views/location.yaml
+  - !include lovelace/views/other.yaml
+  - !include lovelace/views/sysinfo.yaml

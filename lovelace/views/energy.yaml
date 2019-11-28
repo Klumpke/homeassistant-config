@@ -1,0 +1,165 @@
+title: Energie
+path: energy
+icon: mdi:flash
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: quick-access-menu
+        variables:
+          - name1: Laundry
+          - icon1: mdi:washing-machine
+          - path1: laundry
+      - type: custom:decluttering-card
+        template: header
+        variables:
+          - content: '## Energie Verbruik'
+      - type: custom:decluttering-card
+        template: header
+        variables:
+          - content: '##### Energie verbruik'
+      - type: horizontal-stack
+        cards:
+          - !include ../includes/blank-card.yaml
+          - type: custom:decluttering-card
+            template: mini-graph
+            variables:
+              - entities:
+                  - sensor.power_consumption_watt
+              - name: 'STROOM VERBRUIK'
+              - line_color: '#00d8ff'
+              - decimals: 0
+              - graph: bar
+              - extrema: true
+          - !include ../includes/blank-card.yaml
+
+      - type: horizontal-stack
+        cards:
+          - !include ../includes/blank-card.yaml
+          - type: custom:decluttering-card
+            template: mini-graph
+            variables:
+              - entities:
+                  - sensor.gas_hourly
+              - name: GAS VERBRUIK
+              - line_color: '#00d8ff'
+              - graph: bar
+              - extrema: true
+          - !include ../includes/blank-card.yaml
+
+      - type: horizontal-stack
+        cards:
+          - !include ../includes/blank-card.yaml
+          - type: custom:decluttering-card
+            template: mini-graph
+            variables:
+              - entities:
+                  - sensor.s0pcm_hourly
+              - name: WATER VERBRUIK
+              - line_color: '#00d8ff'
+              - graph: bar
+              - extrema: true
+          - !include ../includes/blank-card.yaml
+
+
+
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: header
+        variables:
+          - content: '##### ISP'
+      - type: horizontal-stack
+        cards:
+          - !include ../includes/blank-card.yaml
+          - type: custom:mini-graph-card
+            style: |
+              ha-card {
+                background: var(--card-color-off);
+                border-radius: {{ states('input_select.border_radius') }};
+                --paper-item-icon-color: var(--icon-color-off);
+                box-shadow: {{ states('input_select.box_shadow') }};
+                font-weight: bold;
+                opacity: 0.8;
+              }
+            entities:
+              - entity: sensor.speedtest_download
+                name: Download
+              - entity: sensor.speedtest_upload
+                name: Upload
+              - entity: sensor.speedtest_ping
+                name: Ping
+            hour24: true
+            animate: true
+            points_per_hour: 1
+            hours_to_show: 24
+            name: Speedtest.net
+          - !include ../includes/blank-card.yaml
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: header
+            variables:
+              - content: '##### Stroom, gas en water'
+      - type: horizontal-stack
+        cards:
+          - !include ../includes/blank-card.yaml
+          - type: entities
+            style: |
+              ha-card {
+                font-size: 12px;
+                font-family: Helvetica;
+                background: var(--card-color-off);
+                box-shadow: {{ states('input_select.box_shadow') }};
+                opacity: 0.8;
+                border-radius: {{ states('input_select.border_radius') }};
+              }
+            entities:
+              - entity: sensor.power_consumption
+                icon: mdi:flash
+                name: Stroom verbruik actueel
+              - entity: sensor.power_consumption_today
+                icon: mdi:flash
+                name: Stroom verbruik vandaag
+              - entity: sensor.power_consumption_low
+                icon: mdi:flash
+                name: Stroom verbruik laag
+              - entity: sensor.power_consumption_normal
+                icon: mdi:flash
+                name: Stroom verbruik normaal
+              #- entity: sensor.power_production
+              #  icon: mdi:flash-outline
+              #  name: Stroom teruglevering
+              #- entity: sensor.power_production_low
+              #  icon: mdi:flash-outline
+              #  name: Stroom teruglevering laag
+              #- entity: sensor.power_production_normal
+              #  icon: mdi:flash-outline
+              #  name: Stroom teruglevering normaal
+              - entity: sensor.voltage_l1
+                icon: mdi:flash-circle
+                name: Voltage
+              - entity: sensor.hourly_gas_consumption
+                icon: mdi:fire
+                name: Gas verbruik actueel
+              - entity: sensor.gas_verbruik_vandaag
+                icon: mdi:fire
+                name: Gas verbruik vandaag
+              - entity: sensor.gas_verbruik_totaal
+                icon: mdi:fire
+                name: Gas verbruik totaal
+              #- entity: sensor.watermeter_daily
+              #  icon: mdi:water-percent
+              #  name: Water verbruik vandaag
+              - entity: sensor.s0pcm_vandaag
+                icon: mdi:water-percent
+                name: Water verbruik vandaag
+              - entity: sensor.s0pcm_gisteren
+                icon: mdi:water-percent
+                name: Water verbruik gisteren
+              - entity: sensor.s0pcm_totaal
+                icon: mdi:water
+                name: Water verbruik totaal
+          - !include ../includes/blank-card.yaml
+
+      - !include ../includes/bottom-card.yaml

@@ -1,0 +1,281 @@
+title: Test
+path:  test
+cards:
+  - type: custom:decluttering-card
+    template: quick-access-menu
+  - type: entities
+    entities:
+      - entity: sensor.yr_symbol
+
+  - type: glance
+    title: Afvalbeheer
+    entities:
+      - entity: sensor.blink_restafval
+        #name: Rest
+      - entity: sensor.blink_gft
+        #name: GFT
+      - entity: sensor.blink_pmd
+        #name: PMD
+      - entity: sensor.blink_papier
+        #name: Papier
+
+  - type: 'custom:monster-card'
+    card:
+      entities: []
+      show_header_toggle: false
+      title: Afvalbeheer
+      type: entities
+    filter:
+      exclude:
+        - state: unknown
+      include:
+        - entity_id: sensor.blink_gft
+        - entity_id: sensor.blink_papier
+        - entity_id: sensor.blink_pmd
+        - entity_id: sensor.blink_restafval
+
+  - type: custom:miflora-card
+    title: 'Olijfboom Links (olea europaea)'
+    image: images/olea-europaea.jpg
+    min_moisture: 15
+    max_moisture: 60
+    min_conductivity: 350
+    min_temperature: 0
+    entities:
+    - moisture:sensor.olijfboom_links_moisture
+    - intensity:sensor.olijfboom_links_illuminance
+    - temperature:sensor.olijfboom_links_temperature
+    - conductivity:sensor.olijfboom_links_soil_conductivity
+    - battery:sensor.olijfboom_links_battery_level
+
+  - type: custom:miflora-card
+    title: 'Olijfboom Rechts (olea europaea)'
+    image: images/olea-europaea.jpg
+    min_moisture: 15
+    max_moisture: 60
+    min_conductivity: 350
+    min_temperature: 0
+    entities:
+    - moisture:sensor.olijfboom_rechts_moisture
+    - intensity:sensor.olijfboom_rechts_illuminance
+    - temperature:sensor.olijfboom_rechts_temperature
+    - conductivity:sensor.olijfboom_rechts_soil_conductivity
+    - battery:sensor.olijfboom_rechts_battery_level
+  # - !include ../includes/blank-card.yaml
+  # - type: custom:flower-card
+  #   entity: plant.olijfboom_links
+  #   species: "olea europaea"
+  # - !include ../includes/blank-card.yaml
+  # - type: custom:flower-card
+  #   entity: plant.olijfboom_rechts
+  #   species: "olea europaea"
+
+#service: browser_mod.command
+#service_data:
+#  command: popup
+#  title: Popup example
+#  card:
+#    type: entities
+#    entities:
+#      - light.bed_light
+#      - light.kitchen_lights
+#      - light.ceiling_lights
+  # - type: horizontal-stack
+  #   cards:
+  #     - type: custom:decluttering-card
+  #       template: button
+  #       variables:
+  #         - entity: media_player.woonkamer
+  #         - name: Sonos
+  #         - icon: speaker-multiple
+  #         - tap_action:
+  #             action: call-service
+  #             service: browser_mod.command
+  #             service_data:
+  #               command: popup
+  #               title: Popup example
+  #               card:
+  #                 type: entities
+  #                 entities:
+  #                   - media_player.woonkamer
+  #             deviceID:
+  #               - 95f0a1b5-438c0d1f
+  #         - hold_action:
+  #             action: call-service
+  #             service: browser_mod.command
+  #             service_data:
+  #               command: popup
+  #               title: Popup example
+  #               card:
+  #                 type: entities
+  #                 entities:
+  #                   - media_player.woonkamer
+  #             deviceID:
+  #               - 95f0a1b5-438c0d1f
+      # - type: 'custom:button-card'
+      #   color_type: blank-card
+      #   aspect_ratio: 1/1
+      # - type: 'custom:button-card'
+      #   color_type: blank-card
+      #   aspect_ratio: 1/1
+
+
+      ## button card for a host. Uses esxi_stats_general and esxi_stats_hosts templates above
+  #     - type: custom:button-card
+  #       entity: sensor.esxi_stats_hosts
+  #       name: <CARD NAME HERE>
+  #       template: esxi_stats_hosts
+  #       custom_fields:
+  #         uptime: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:server"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span><span style="color: var(--text-color-sensor);">
+  #               ${ states['sensor.esxi_stats_hosts'].attributes['<HOST_NAME_HERE>'].uptime_hours } hours
+  #               </span></span>`
+  #           ]]]
+  #         version: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:server"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span> Version: <span style="color: var(--text-color-sensor);">
+  #                 ${ states['sensor.esxi_stats_hosts'].attributes['HOST_NAME_HERE'].version }
+  #               </span></span>`
+  #           ]]]
+  #         cpu_total: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:server"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span> CPU Cap: <span style="color: var(--text-color-sensor);">
+  #               ${ states['sensor.esxi_stats_hosts'].attributes['HOST_NAME_HERE'].cpuusage_ghz } / 
+  #               ${ states['sensor.esxi_stats_hosts'].attributes['HOST_NAME_HERE'].cputotal_ghz } GHz</span></span>`
+  #           ]]]
+  #         mem_total: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:server"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span> Memory: <span style="color: var(--text-color-sensor);">
+  #               ${ states['sensor.esxi_stats_hosts'].attributes['HOST_NAME_HERE'].memusage_gb } / 
+  #               ${ states['sensor.esxi_stats_hosts'].attributes['HOST_NAME_HERE'].memtotal_gb } GB</span></span>`
+  #           ]]]
+  #     ## button card for a datastore. Uses esxi_stats_general and esxi_stats_datastore templates above
+  #     - type: custom:button-card
+  #       entity: sensor.esxi_stats_datastores
+  #       name: <CARD NAME HERE>
+  #       template: esxi_stats_datastores
+  #       custom_fields:
+  #         free: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:server"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span><span style="color: var(--text-color-sensor);">
+  #               ${states['sensor.esxi_stats_datastores'].attributes.<DATASTORE_NAME_HERE>.free_space_gb}</span></span>`
+  #           ]]]
+  #         capacity: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:server"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span> Capacity: <span style="color: var(--text-color-sensor);">
+  #               ${states['sensor.esxi_stats_datastores'].attributes.<DATASTORE_NAME_HERE>.total_space_gb}</span></span>`
+  #           ]]]
+  #         hosts: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:server"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span> Hosts: <span style="color: var(--text-color-sensor);">
+  #               ${states['sensor.esxi_stats_datastores'].attributes.<DATASTORE_NAME_HERE>.connected_hosts}</span></span>`
+  #           ]]]
+  #         vms: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:server"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span> VMs: <span style="color: var(--text-color-sensor);">
+  #               ${states['sensor.esxi_stats_datastores'].attributes.<DATASTORE_NAME_HERE>.virtual_machines}</span></span>`
+  #           ]]]
+  #     ## button card for a virtual machine. Uses esxi_stats_general and esxi_stats_vm templates above
+  #     - type: custom:button-card
+  #       entity: sensor.esxi_stats_vms
+  #       name: <CARD NAME HERE>
+  #       template: esxi_stats_vm
+  #       styles:
+  #         icon:
+  #           - color: >
+  #               [[[
+  #                 if ( states['sensor.esxi_stats_vms'].attributes.plex.status == "green")
+  #                   return "green";
+  #                 if ( states['sensor.esxi_stats_vms'].attributes.plex.status == "warning" )
+  #                   return "yellow";
+  #                 return "red";
+  #               ]]]
+  #       custom_fields:
+  #         uptime: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:arrow-up"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span><span style="color: var(--text-color-sensor);">
+  #               ${states['sensor.esxi_stats_vms'].attributes.<VM_NAME_HERE>.uptime_hours}</span></span>`
+  #           ]]]
+  #         cpu: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:server"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span>CPU: <span style="color: var(--text-color-sensor);">
+  #               ${states['sensor.esxi_stats_vms'].attributes.<VM_NAME_HERE>.cpu_count}</span></span>`
+  #           ]]]
+  #         ram: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:memory"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span>Mem: <span style="color: var(--text-color-sensor);">
+  #               ${states['sensor.esxi_stats_vms'].attributes.<VM_NAME_HERE>.memory_allocated_mb} MB</span></span>`
+  #           ]]]
+  #         state: >
+  #           [[[
+  #             return `<ha-icon
+  #               icon="mdi:harddisk"
+  #               style="width: 12px; height: 12px; color: deepskyblue;">
+  #               </ha-icon><span>State: <span style="color: var(--text-color-sensor);">
+  #               ${states['sensor.esxi_stats_vms'].attributes.<VM_NAME_HERE>.state}</span></span>`
+  #           ]]]
+
+
+
+
+
+
+
+
+
+
+  # - type: horizontal-stack
+  #   cards:
+  #     - type: 'custom:home-feed-card'
+  #       title: Home Feed
+  #       show_empty: false
+  #       #id_filter: ^home_feed_.*
+  #       more_info_on_tap: true
+  #       entities:
+  #           #- binary_sensor.motion_woonkamer
+  #           - entity: light.tuin
+  #             content_template: '{{display_name}} turned {{state}}'
+  #             include_history: true
+            #- entity: sensor.bin_collection
+            #  name: Next Bin Collection
+            #  more_info_on_tap: false
+            #- entity: sensor.reddit_help
+            #  multiple_items: true
+            #  list_attribute: posts
+            #  timestamp_property: created_
+            #  max_items: 5
+            #  content_template: '[{{title}}]({{url}})'

@@ -1,0 +1,36 @@
+# ROLLUIK OMHOOG BIJ ZONSOPKOMST OF OM 8:15u
+- alias: "Rolluik: Omhoog bij zonsopkomst of om 8:15u"
+#  initial_state: 'false'
+  trigger:
+    - platform: sun
+      event: sunrise
+    - platform: time
+      at: '08:15:00'
+  condition:
+    - condition: sun
+      after: sunrise
+    - condition: time
+      after: '08:15:00'
+    - condition: state
+      entity_id: cover.slaapkamer
+      state: 'closed'
+  action:
+    - service: cover.open_cover
+      entity_id: cover.slaapkamer
+
+
+# ROLLUIK OMLAAG BIJ ZONSONDERGANG OF OM 21:30u
+- alias: "Rolluik: Omlaag bij zonsondergang of om 21:30u"
+#  initial_state: 'false'
+  trigger:
+    - platform: sun
+      event: sunset
+    - platform: time
+      at: '21:30:00'
+  condition:
+    - condition: state
+      entity_id: cover.slaapkamer
+      state: 'open'
+  action:
+    - service: cover.close_cover
+      entity_id: cover.slaapkamer

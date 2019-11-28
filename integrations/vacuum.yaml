@@ -1,0 +1,111 @@
+# Vacuum (Roborock S55)
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.178.90
+    token: !secret vacuum_token
+
+input_select:
+  xiaomi_vacuum:
+    name: Xiaomi Vacuum
+    options:
+      - Quiet
+      - Balanced
+      - Turbo
+      - Max
+      - Mop
+
+# Vacuum Template Sensors
+sensor:
+  - platform: template
+    sensors:
+      vacuum_battery:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.battery_level }}'
+        friendly_name: 'Roborock Battery Level'
+        device_class: 'battery'
+        unit_of_measurement: '%'
+        icon_template: >-
+          {% set battery_level = states('sensor.vacuum_battery')|int('unknown') %}
+          {% set battery_round = (battery_level|int / 10)|int * 10 %}
+          {% if battery_level == 'unknown' %}
+            mdi:battery-unknown
+          {% else %}
+            {% if battery_round >= 100 %}
+              mdi:battery
+            {% elif battery_round > 0 %}
+              mdi:battery-{{ battery_round }}
+            {% else %}
+              mdi:battery-alert
+            {% endif %}
+          {% endif %}
+      vacuum_total_cleaned_area:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.total_cleaned_area }}'
+        friendly_name: 'Roborock Total Cleaned Area'
+        unit_of_measurement: 'm²'
+      vacuum_cleaning_count:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_count }}'
+        friendly_name: 'Roborock Cleaning Count'
+      vacuum_total_cleaning_time:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.total_cleaning_time }}'
+        friendly_name: 'Roborock Total Cleaning Time'
+        unit_of_measurement: 'minuten'
+      vacuum_main_brush_left:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.main_brush_left }}'
+        friendly_name: 'Roborock Main Brush Left'
+        unit_of_measurement: 'uren'
+      vacuum_side_brush_left:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.side_brush_left }}'
+        friendly_name: 'Roborock Side Brush Left'
+        unit_of_measurement: 'uren'
+      vacuum_filter_left:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.filter_left }}'
+        friendly_name: 'Roborock Filter Left'
+        unit_of_measurement: 'uren'
+      vacuum_sensor_dirty_left:
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.sensor_dirty_left }}'
+        friendly_name: 'Roborock Sensor Dirty Left'
+        unit_of_measurement: 'uren'
+      vacuum_cleaner_error_sensor:
+        friendly_name: Vacuum Cleaner Error Sensor
+        value_template: >-
+          {% if states.vacuum.xiaomi_vacuum_cleaner.attributes.error is defined %}
+            {{states.vacuum.xiaomi_vacuum_cleaner.attributes.error}}
+          {% else %}
+            No Error
+          {% endif %}
+      vacuum_cleaner_status_sensor:
+        friendly_name: Vacuum Cleaner Status Sensor
+        value_template: >-
+          {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.status }}
+  # PostNL Template Sensors
+      postnl_jimmy_packages:
+        value_template: >-
+          {{ states.sensor.postnl_jimmy_delivery.state }}
+      postnl_stephanie_packages:
+        value_template: >-
+          {{ states.sensor.postnl_stephanie_delivery.state }}
+
+  # - platform: rest
+  #   resource: http://192.168.178.90/api/map/latest
+  #   name: xiaomi_map
+  #   json_attributes:
+  #     - image
+  #     - path
+  #     - charger
+  #     - robot
+  #   value_template: 'OK'
+  #   scan_interval: 5
+
+# switch:
+# - platform: template
+#   switches:
+#       vacuum_switch:
+#         entity_id: vacuum.xiaomi_vacuum_cleaner
+#         value_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'on') }}"
+#         turn_on:
+#           service: vacuum.start
+#           data:
+#             entity_id: vacuum.xiaomi_vacuum_cleaner
+#         turn_off:
+#           service: vacuum.stop
+#           data:
+#             entity_id: vacuum.xiaomi_vacuum_cleaner

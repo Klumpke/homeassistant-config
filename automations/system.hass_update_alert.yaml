@@ -1,0 +1,42 @@
+---
+# This alerts me on my iPhone when a new release
+# of Home Assistant for Hass.io is released.
+#
+- alias: "Systeem: Hass update notificatie"
+  trigger:
+    platform: state
+    entity_id: sensor.version_available
+  condition:
+    - condition: template
+      value_template: >-
+        {{
+          states('sensor.version_available')
+          !=
+          states('sensor.version_current')
+        }}
+  action:
+    - service: notify.mobile_app_iklumpke
+      data_template:
+        title: "Home Assistant update"
+        message: >-
+          {% if is_state('sensor.potential_breaking_changes', '0') %}
+          Er is een Home Assistant update beschikbaar.
+          Versie: {{ states('sensor.version_available') }} .
+          {% else %}
+          Er is een Home Assistant update beschikbaar.
+          Versie: {{ states('sensor.version_available') }} .
+          
+          
+          LET OP: ER ZIJN {{ states('sensor.potential_breaking_changes') }} BREAKING CHANGES.
+          {% endif %}
+        data:
+          attachment:
+            content-type: png
+            url: https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color/700/012_refresh-512.png
+    - service: persistent_notification.create
+      data_template:
+        title: "Home Assistant update"
+        message: >-
+          Er is een Home Assistant update voor Hass.io beschikbaar!
+          Versie: {{ states('sensor.version_available') }} .
+        notification_id: hassio_upgrade

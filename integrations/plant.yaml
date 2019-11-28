@@ -1,0 +1,25 @@
+plant:
+  Olijfboom Links:
+    sensors:
+      moisture: sensor.olijfboom_links_moisture
+      #battery: sensor.olijfboom_links_battery_level
+      temperature: sensor.olijfboom_links_temperature
+      conductivity: sensor.olijfboom_links_soil_conductivity
+      brightness: sensor.olijfboom_links_illuminance
+    min_moisture: 15
+    max_moisture: 60
+    min_battery: 15
+    min_conductivity: 350
+    min_temperature: 10
+  Olijfboom Rechts:
+    sensors:
+      moisture: sensor.olijfboom_rechts_moisture
+      #battery: sensor.olijfboom_rechts_battery_level
+      temperature: sensor.olijfboom_rechts_temperature
+      conductivity: sensor.olijfboom_rechts_soil_conductivity
+      brightness: sensor.olijfboom_rechts_illuminance
+    min_moisture: 15
+    max_moisture: 60
+    min_battery: 15
+    min_conductivity: 350
+    min_temperature: 0

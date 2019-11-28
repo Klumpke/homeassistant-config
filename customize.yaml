@@ -1,0 +1,26 @@
+device_tracker.iklumpke:
+  entity_picture: /local/images/jeroen.png
+device_tracker.joyce:
+  entity_picture: /local/images/joyce.png
+
+sensor.blink_gft:
+  entity_picture: /local/images/afval_gft_small.png
+  friendly_name: GFT
+sensor.blink_restafval:
+  entity_picture: /local/images/afval_rest_small.png
+  friendly_name: Rest
+sensor.blink_papier:
+  entity_picture: /local/images/afval_papier_small.png
+  friendly_name: Papier
+sensor.blink_pmd:
+  entity_picture: /local/images/afval_pmd_small.png
+  friendly_name: PMD
+
+sensor.printer_toner_cyaan:
+  friendly_name: Cyaan
+sensor.printer_toner_geel:
+  friendly_name: Geel
+sensor.printer_toner_magenta:
+  friendly_name: Magenta
+sensor.printer_toner_zwart:
+  friendly_name: Zwart

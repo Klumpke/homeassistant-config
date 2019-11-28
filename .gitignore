@@ -1,0 +1,62 @@
+
+# You can whitelist files/folders with !, these will not be ignored.
+# !*.yaml
+# !.gitignore
+# !*.md
+# !automation/
+# !automation/*
+# !custom_components/
+# !custom_components/**
+# !archive/
+# !archive/*
+# !includes/
+# !includes/*
+# !lovelace/
+# !lovelace/*
+# !themes/
+# !themes/*
+
+# Ignore files.
+.google.token
+.homekit.state
+.ios.conf
+*.db
+*.db-shm
+*.db-wal
+*.disable
+*.log
+*.pyc
+._*
+home-assistant.log
+options.xml
+OZW_Log.txt
+pyozw.sqlite
+zwcfg_*
+zwscene.xml
+www/images/cam_*
+
+# Ignore folders.
+.cloud
+.storage
+appdaemon
+deps
+glances
+node-red
+tts
+_OLD
+
+# ESPHome ignores
+esphome/secrets.yaml
+esphome/*/*
+
+# Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+google_calendars.yaml
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml
+
+# Ignore Python cache files
+__pycache__/
+
+# Specific keeps
+!.gitkeep

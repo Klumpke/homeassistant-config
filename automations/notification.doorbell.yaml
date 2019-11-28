@@ -1,0 +1,51 @@
+---
+# VERSTUUR NOTIFICATIE + SNAPSHOT WANNEER ER WORDT AANGEBELD
+- id: deurbel
+  alias: "Notificatie: Deurbel"
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.fib_fgbs001_deurbel
+    from: 'off'
+    to: 'on'
+  action:
+  - service: camera.snapshot
+    data:
+      entity_id: camera.voordeur
+      filename: '/config/www/images/cam_voordeur.jpg'
+  - service: notify.ios_notifier
+    data:
+      title: "Deurbel"
+      message: "Er is aangebeld!"
+      data:
+        attachment:
+          url: "https://hass.klompen.biz/local/images/cam_voordeur.jpg"
+          content-type: jpeg
+          hide-thumbnail: false
+
+#  - service: notify.pushover
+#    data:
+#      title: "Deurbel"
+#      message: "Er is aangebeld!"
+#      data:
+#        attachment: "https://hass.klompen.biz/local/images/cam_voordeur.jpg"
+
+  - service: script.sonos_play
+    data:
+      sonos_entity: media_player.woonkamer
+      volume: 0.4
+      media_content: "https://hass.klompen.biz/local/audio/deurbel.mp3"
+      delay: '00:00:03'
+  - service: script.sonos_play
+    data:
+      sonos_entity: media_player.boven
+      volume: 0.4
+      media_content: "https://hass.klompen.biz/local/audio/deurbel.mp3"
+      delay: '00:00:03'
+  - service: script.sonos_play
+    data:
+      sonos_entity: media_player.tuin
+      volume: 0.4
+      media_content: "https://hass.klompen.biz/local/audio/deurbel.mp3"
+      delay: '00:00:03'
+

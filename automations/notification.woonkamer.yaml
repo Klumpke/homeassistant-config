@@ -1,0 +1,24 @@
+- alias: "Notificatie: Beweging woonkamer wanneer niemand thuis"
+  initial_state: 'false'
+  trigger:
+  - entity_id: binary_sensor.motion_woonkamer
+    platform: state
+    to: 'on'
+  condition:
+  - entity_id: group.device_status
+    state: 'not_home'
+    condition: state
+  action:
+  - service: notify.ios_notifier
+    data:
+      title: "Beweging"
+      message: "Er is beweging gedetecteerd in de woonkamer!"
+
+     #data:
+     #   attachment:
+     #     content-type: jpeg
+     #   push:
+     #     badge: 0
+     #     sound: default
+     #     category: camera 
+     #   entity_id: camera.gallerij_camera

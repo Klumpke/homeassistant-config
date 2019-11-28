@@ -1,0 +1,40 @@
+card:
+  type: 'vertical-stack'
+  cards:
+    - type: horizontal-stack
+      cards:
+        - !include ../includes/blank-card.yaml
+        # https://github.com/kalkih/mini-media-player
+        - type: 'custom:mini-media-player'
+          style: |
+            ha-card {
+              background: var(--card-color-off);
+              --paper-item-icon-color: var(--icon-color-off);
+              color: var(--name-color-off);
+              border-radius: {{ states('input_select.border_radius') }};
+              box-shadow: {{ states('input_select.box_shadow') }};
+              opacity: 0.7;
+            }
+          #artwork: full-cover-fit
+          info: scroll
+          hide:
+            mute: true
+            icon: true
+            power: true
+          speaker_group:
+            platform: sonos
+            show_group_count: true
+            entities:
+              - entity_id: media_player.woonkamer
+                name: Sonos Woonkamer
+              - entity_id: media_player.boven
+                name: Sonos Boven
+              - entity_id: media_player.tuin
+                name: Sonos Tuin
+          entity: '[[entity]]'
+          group: false
+          persist_features: true
+          header: ' '
+          background: /local/images/wallpapers/sonos1.jpg
+        - !include ../includes/blank-card.yaml
+    - !include ../includes/bottom-card.yaml

@@ -1,0 +1,27 @@
+---
+# The systemmonitor sensor platform allows you to monitor disk 
+# usage, memory usage, CPU usage, and running processes. 
+# This platform has superseded the process integration which is now considered deprecated.
+# https://www.home-assistant.io/components/systemmonitor/
+
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: processor_use
+      - type: memory_use_percent
+      - type: disk_use_percent
+        arg: /
+      #- type: disk_use_percent
+      #  arg: /data
+      - type: network_in
+        arg: eno1
+      - type: network_out
+        arg: eno1
+      - type: last_boot
+
+# CPU Temp
+  - platform: command_line
+    name: CPU Temp
+    command: "cat /sys/class/thermal/thermal_zone2/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) | round(2)  }}'

@@ -1,0 +1,37 @@
+- alias: 'AB Bijkeuken Aan'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_bijkeuken
+      event: 1002
+  action:
+    # service: light.turn_on
+    # entity_id: light.bijkeuken_leds
+    - service_template: >
+        {% if is_state('light.bijkeuken_leds', 'on') %}
+          homeassistant.turn_off
+        {% elif is_state('light.bijkeuken_leds', 'off') %}
+          homeassistant.turn_on
+        {% endif %}
+      entity_id: light.bijkeuken_leds
+
+- alias: 'AB Bijkeuken Uit'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_bijkeuken
+      event:  2002
+  action:
+    # service: light.turn_off
+    # entity_id: light.bijkeuken_leds
+    - service_template: >
+        {% if is_state('light.bijkeuken_leds', 'on') %}
+          homeassistant.turn_off
+        {% elif is_state('light.bijkeuken_leds', 'off') %}
+          homeassistant.turn_on
+        {% endif %}
+      entity_id: light.bijkeuken_leds

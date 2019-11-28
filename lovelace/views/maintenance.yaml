@@ -1,0 +1,272 @@
+title: Onderhoud
+path:  maintenance
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:decluttering-card
+        template: quick-access-menu
+        variables:
+          - name1: Stofzuiger
+          - icon1: mdi:robot-vacuum
+          - path1: vacuum
+      - type: custom:decluttering-card
+        template: header
+        variables:
+          - content: '## Onderhoud'
+      - type: custom:swipe-card
+        parameters:
+          effect: 'coverflow'
+          grabCursor: true
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:decluttering-card
+                template: header
+                variables:
+                  - content: '#### Planten >'
+              #- type: custom:decluttering-card
+              #  template: header
+              #  variables:
+              #    - content: "##### Planten"
+              - type: horizontal-stack
+                cards:
+                  - !include ../includes/blank-card.yaml
+                  - type: custom:flower-card
+                    style: |
+                      ha-card {
+                        font-size: 12px;
+                        font-family: Helvetica;
+                        background: var(--card-color-off);
+                        box-shadow: {{ states('input_select.box_shadow') }};
+                        opacity: 0.8;
+                        border-radius: {{ states('input_select.border_radius') }};
+                      }
+                    entity: plant.olijfboom_rechts
+                    species: "olea europaea"
+                  - !include ../includes/blank-card.yaml
+              - type: horizontal-stack
+                cards:
+                  - !include ../includes/blank-card.yaml
+                  - type: entities
+                    style: |
+                      ha-card {
+                        font-size: 12px;
+                        font-family: Helvetica;
+                        background: var(--card-color-off);
+                        box-shadow: {{ states('input_select.box_shadow') }};
+                        opacity: 0.8;
+                        border-radius: {{ states('input_select.border_radius') }};
+                      }
+                    entities:
+                    - sensor.olijfboom_rechts_moisture
+                    - sensor.olijfboom_rechts_illuminance
+                    - sensor.olijfboom_rechts_temperature
+                    - sensor.olijfboom_rechts_soil_conductivity
+                    #- sensor.olijfboom_rechts_battery_level
+                  - !include ../includes/blank-card.yaml
+              - !include ../includes/bottom-card.yaml
+
+              - type: horizontal-stack
+                cards:
+                  - !include ../includes/blank-card.yaml
+                  - type: custom:flower-card
+                    style: |
+                      ha-card {
+                        font-size: 12px;
+                        font-family: Helvetica;
+                        background: var(--card-color-off);
+                        box-shadow: {{ states('input_select.box_shadow') }};
+                        opacity: 0.8;
+                        border-radius: {{ states('input_select.border_radius') }};
+                      }
+                    entity: plant.olijfboom_links
+                    species: "dracaena marginata"
+                  - !include ../includes/blank-card.yaml
+              - type: horizontal-stack
+                cards:
+                  - !include ../includes/blank-card.yaml
+                  - type: entities
+                    style: |
+                      ha-card {
+                        font-size: 12px;
+                        font-family: Helvetica;
+                        background: var(--card-color-off);
+                        box-shadow: {{ states('input_select.box_shadow') }};
+                        opacity: 0.8;
+                        border-radius: {{ states('input_select.border_radius') }};
+                      }
+                    entities:
+                    - sensor.olijfboom_links_moisture
+                    - sensor.olijfboom_links_illuminance
+                    - sensor.olijfboom_links_temperature
+                    - sensor.olijfboom_links_soil_conductivity
+                    #- sensor.olijfboom_links_battery_level
+                  - !include ../includes/blank-card.yaml
+
+              - !include ../includes/bottom-card.yaml
+          - type: vertical-stack
+            cards:
+              - type: custom:decluttering-card
+                template: header
+                variables:
+                  - content: '#### < Opel Insignia >'
+              - type: custom:decluttering-card
+                template: header
+                variables:
+                  - content: '##### Opel Insignia 1.4T Sport-Line (2012)'
+              - type: horizontal-stack
+                cards:
+                  - !include ../includes/blank-card.yaml
+                  - type: markdown
+                    style: |
+                      ha-card {
+                        background-image: url('/local/images/insignia.jpg');
+                        border-radius: {{ states('input_select.border_radius') }};
+                        box-shadow: {{ states('input_select.box_shadow') }};
+                        font-size: 13px;
+                        font-family: Helvetica;
+                        background-size: cover;
+                        background-position: 50% 50%;
+                        color: white;
+                        height: 225px;
+                        vertical-align: baseline;
+                        margin-bottom: 2px;
+                        overflow: hidden;
+                      }
+                    content: >
+                      **APK:** [[ sensor.opel_insignia_expdate.state ]]
+
+                      **Kenteken:** 27-XHK-8
+
+                      **Verzekerd:** [[ sensor.opel_insignia_insured.state ]]
+                  - !include ../includes/blank-card.yaml
+              - type: horizontal-stack
+                cards:
+                  - !include ../includes/blank-card.yaml
+                  - type: 'custom:vertical-stack-in-card'
+                    cards:
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Olie
+                          - entity: sensor.insignia_olie
+                          - value 1: 3 months
+                          - value 2: 6 months
+                          - value 3: 9 months
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Banden
+                          - entity: sensor.insignia_banden
+                          - value 1: 3 months
+                          - value 2: 6 months
+                          - value 3: 9 months
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Wassen
+                          - entity: sensor.insignia_clean
+                          - value 1: 1 month
+                          - value 2: 3 months
+                          - value 3: 6 months
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Stofzuigen
+                          - entity: sensor.insignia_stof
+                          - value 1: 1 month
+                          - value 2: 3 months
+                          - value 3: 6 months
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Ruiten
+                          - entity: sensor.insignia_window
+                          - value 1: 1 month
+                          - value 2: 3 months
+                          - value 3: 6 months
+                  - !include ../includes/blank-card.yaml
+              - !include ../includes/bottom-card.yaml
+          - type: vertical-stack
+            cards:
+              - type: custom:decluttering-card
+                template: header
+                variables:
+                  - content: '#### < VW Polo'
+              - type: custom:decluttering-card
+                template: header
+                variables:
+                  - content: "##### Volkswagen Polo 1.0T R-Line (2019)"
+              - type: horizontal-stack
+                cards:
+                  - !include ../includes/blank-card.yaml
+                  - type: markdown
+                    style: |
+                      ha-card {
+                        background-image: url('/local/images/polo.jpg');
+                        border-radius: {{ states('input_select.border_radius') }};
+                        box-shadow: {{ states('input_select.box_shadow') }};
+                        font-size: 13px;
+                        font-family: Helvetica;
+                        background-size: cover;
+                        background-position: 50% 50%;
+                        color: white;
+                        height: 225px;
+                        vertical-align: baseline;
+                        margin-bottom: 2px;
+                        overflow: hidden;
+                      }
+                    content: >
+                      **APK:** [[ sensor.volkswagen_polo_expdate.state ]]
+
+                      **Kenteken:** XT-249-K
+
+                      **Verzekerd:** [[ sensor.volkswagen_polo_insured.state ]]
+                  - !include ../includes/blank-card.yaml
+              - type: horizontal-stack
+                cards:
+                  - !include ../includes/blank-card.yaml
+                  - type: 'custom:vertical-stack-in-card'
+                    cards:
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Olie
+                          - entity: sensor.polo_olie
+                          - value 1: 3 months
+                          - value 2: 6 months
+                          - value 3: 9 months
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Banden
+                          - entity: sensor.polo_banden
+                          - value 1: 3 months
+                          - value 2: 6 months
+                          - value 3: 9 months
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Wassen
+                          - entity: sensor.polo_clean
+                          - value 1: 1 month
+                          - value 2: 3 months
+                          - value 3: 6 months
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Stofzuigen
+                          - entity: sensor.polo_stof
+                          - value 1: 1 month
+                          - value 2: 3 months
+                          - value 3: 6 months
+                      - type: custom:decluttering-card
+                        template: check_button
+                        variables:
+                          - title: Ruiten
+                          - entity: sensor.polo_window
+                          - value 1: 1 month
+                          - value 2: 3 months
+                          - value 3: 6 months
+                  - !include ../includes/blank-card.yaml
+              - !include ../includes/bottom-card.yaml

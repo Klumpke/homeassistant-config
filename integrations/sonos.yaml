@@ -1,0 +1,9 @@
+---
+# https://www.home-assistant.io/components/sonos/
+
+sonos:
+  media_player:
+    hosts:
+      - 192.168.178.50
+      - 192.168.178.51
+      - 192.168.178.52

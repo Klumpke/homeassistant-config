@@ -1,0 +1,46 @@
+# WOONHUIS BUITENVERLICHTING AAN BIJ ZONSONDERGANG
+- alias: "Buiten verlichting aan bij schemering"
+  initial_state: 'true'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-00:30:00'
+  action:
+    service: switch.turn_on
+    entity_id: switch.fib_fgs223_voordeur, switch.fib_fgs223_carport, switch.fib_fgs223_achterdeur
+
+# WOONHUIS BUITENVERLICHTING UIT NA MIDDERNACHT
+- alias: "Buiten verlichting uit na middernacht"
+  initial_state: 'true'
+  trigger:
+    platform: time
+    at: '23:30:00'
+  action:
+    service: switch.turn_off
+    entity_id: switch.fib_fgs223_voordeur, switch.fib_fgs223_carport, switch.fib_fgs223_achterdeur
+
+# CARPORT VERLICHTING AAN BIJ AANKOMST
+- alias: "Verlichting: Carport aan bij thuiskomst"
+  initial_state: 'true'
+  trigger:
+  - platform: state
+    entity_id: group.device_status
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - entity_id: switch.fib_fgs223_carport
+        condition: state
+        state: 'off'
+      - entity_id: sun.sun
+        condition: state
+        state: 'below_horizon'
+  action:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.fib_fgs223_carport
+  - delay: 0:15
+  - service: switch.turn_off
+    data:
+      entity_id: switch.fib_fgs223_carport

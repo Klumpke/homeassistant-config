@@ -1,0 +1,13 @@
+- alias: "Notificatie: Afvalwijzer"
+  trigger:
+    platform: time
+    at: '20:00:00'
+  condition:
+    - condition: template
+      value_template: "{{ states('sensor.blink_morgen') != 'Geen' }}"
+  action:
+  - service: notify.ios_notifier
+    data:
+      title: "Afvalwijzer"
+      message: ' Afvaltype(n): {{ states.sensor.blink_morgen.state }} wordt morgen opgehaald!'
+      #message: ' Afvaltype(n): {{ states.sensor.blink_morgen.state }} wordt opgehaald op: {{ (as_timestamp(now()) + (24*3600)) | timestamp_custom("%d-%m-%Y", True) }}!'

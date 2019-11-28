@@ -1,0 +1,14 @@
+  - alias: 'Systeem: Backup wekelijks'
+    initial_state: 'on'
+    trigger:
+      platform: time
+      at: '03:00:00'
+    condition:  
+      condition: time
+      weekday:
+        - sun
+    action:
+      - service: hassio.snapshot_full
+        data_template:
+          name: Hassio Weekly {{now().strftime('%Y-%m-%d')}}
+      - service: clean_up_backups_service.clean_up

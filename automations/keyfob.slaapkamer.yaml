@@ -1,0 +1,200 @@
+## NACHTLAMPJES (Kruis toets)
+#
+- alias: "Keyfob slaapkamer: Nachtlampjes AAN / UIT"
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.fibaro_system_fgkf601_keyfob
+      scene_id: 3
+      scene_data: 7680
+  action:
+    - service_template: >
+        {% if is_state('light.nachtlampjes', 'on') %}
+          homeassistant.turn_off
+        {% elif is_state('light.nachtlampjes', 'off') %}
+          homeassistant.turn_on
+        {% endif %}
+      entity_id: light.nachtlampjes
+
+## ROLLUIK (Driehoek toets)
+#
+- alias: "Keyfob slaapkamer: Rolluik DICHT"
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.fibaro_system_fgkf601_keyfob
+      scene_id: 4
+      scene_data: 7680
+  action:
+    service: cover.close_cover
+    entity_id: cover.slaapkamer
+
+- alias: "Keyfob slaapkamer: Rolluik STOP"
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.fibaro_system_fgkf601_keyfob
+      scene_id: 4
+      scene_data: 7860
+  action:
+    service: cover.stop_cover
+    entity_id: cover.slaapkamer
+
+- alias: "Keyfob slaapkamer: Rolluik OPEN"
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.fibaro_system_fgkf601_keyfob
+      scene_id: 4
+      scene_data: 7920
+  action:
+    service: cover.open_cover
+    entity_id: cover.slaapkamer
+
+## NACHTLAMPJES (Kruis toets)
+#
+- alias: "AB Slaapkamer: Nachtlampjes AAN / UIT"
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: zwave.scene_activated
+    event_data:
+      entity_id: zwave.fibaro_system_fgkf601_keyfob
+      scene_id: 3
+      scene_data: 7680
+  action:
+    - service_template: >
+        {% if is_state('light.nachtlampjes', 'on') %}
+          homeassistant.turn_off
+        {% elif is_state('light.nachtlampjes', 'off') %}
+          homeassistant.turn_on
+        {% endif %}
+      entity_id: light.nachtlampjes
+
+
+# deCONZ Slaapkamer A IKEA TRADFRI Remote
+- alias: 'AB Slaapkamer A Midden'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_slaapkamer_a
+      event: 1002
+  action:
+    service: light.toggle
+    entity_id: light.nachtlampjes
+
+- alias: 'AB Slaapkamer A Links Joyce'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_slaapkamer_a
+      event: 4002
+  action:
+    service: light.toggle
+    entity_id: light.nachtkast_r
+- alias: 'AB Slaapkamer A Rechts Jeroen'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_slaapkamer_a
+      event: 5002
+  action:
+    service: light.toggle
+    entity_id: light.nachtkast_l
+
+- alias: 'AB Slaapkamer A Omhoog'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_slaapkamer_a
+      event: 2002
+  action:
+    service: light.toggle
+    entity_id: light.ledstrip_slaapkamer
+# - alias: 'AB Slaapkamer A Omlaag'
+#   initial_state: 'on'
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: ab_slaapkamer_a
+#       event: 3002
+#   action:
+#     service: scene.turn_on
+#     entity_id: scene.wassen
+
+
+# deCONZ Slaapkamer B IKEA TRADFRI Remote
+- alias: 'AB Slaapkamer B Midden'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_slaapkamer_b
+      event: 1002
+  action:
+    service: light.toggle
+    entity_id: light.nachtlampjes
+
+- alias: 'AB Slaapkamer B Links Joyce'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_slaapkamer_b
+      event: 4002
+  action:
+    service: light.toggle
+    entity_id: light.nachtkast_r
+- alias: 'AB Slaapkamer B Rechts Jeroen'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_slaapkamer_b
+      event: 5002
+  action:
+    service: light.toggle
+    entity_id: light.nachtkast_l
+
+- alias: 'AB Slaapkamer B Omhoog'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_slaapkamer_b
+      event: 2002
+  action:
+    service: light.toggle
+    entity_id: light.ledstrip_slaapkamer
+# - alias: 'AB Slaapkamer B Omlaag'
+#   initial_state: 'on'
+#   trigger:
+#     platform: event
+#     event_type: deconz_event
+#     event_data:
+#       id: ab_slaapkamer_b
+#       event: 3002
+#   action:
+#     service: scene.turn_on
+#     entity_id: scene.wassen

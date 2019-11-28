@@ -1,0 +1,45 @@
+---
+# The influxdb component makes it possible to transfer all state changes to an external InfluxDB database.
+# https://www.home-assistant.io/components/influxdb/
+# https://dummylabs.com/post/2019-01-13-influxdb-part1/
+influxdb:
+  database: !secret influxdb_db
+  username: !secret influxdb_user
+  password: !secret influxdb_pass
+  max_retries: 3
+  default_measurement: state
+  include:
+    entities:
+      # Tuin temperatuur
+      - sensor.0x00158d0002374fb2_temperature
+      - sensor.0x00158d0002374fb2_humidity
+      # Zolder temperatuur
+      - sensor.0x00158d00023761a8_temperature
+      - sensor.0x00158d00023761a8_humidity
+      # Slaapkamer temperatuur
+      - sensor.0x00158d00023761b8_temperature
+      - sensor.0x00158d00023761b8_humidity
+      # Badkamer temperatuur
+      - sensor.0x00158d0002376388_temperature
+      - sensor.0x00158d0002376388_humidity
+      # Stroommeter
+      - sensor.power_consumption
+      - sensor.power_consumption_low
+      - sensor.power_consumption_normal
+      - sensor.power_production
+      - sensor.power_production_low
+      - sensor.power_production_normal
+      - sensor.voltage_phase_l1
+      # Gasmeter
+      - sensor.gas_consumption
+      - sensor.hourly_gas_consumption
+      # Watermeter
+      #- sensor.s0pcm_channel_0
+      #- sensor.s0pcm_channel_0_hourly
+      - sensor.s0pcm_vandaag
+      - sensor.s0pcm_gisteren 
+      - sensor.s0pcm_totaal
+      # Speedtest.net
+      - sensor.speedtest_download
+      - sensor.speedtest_ping
+      - sensor.speedtest_upload

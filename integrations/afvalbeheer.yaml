@@ -1,0 +1,43 @@
+# Provides Home Assistant sensors for multiple Dutch waste collectors using REST API.
+# This sensor works with the following waste collectors: Blink, Cure, Cyclus, DAR,
+# HVC Groep, Meerlanden, RMN (Reinigingsbedrijf Midden Nederland),
+# Circulus-Berkel (Afvalvrij), Avalex, Venray, Den Haag, Berkelland, Alphen aan den Rijn,
+# Waalre, ZRD, Spaarnelanden, Montfoort, GAD and Cranendonck.
+# https://github.com/pippyn/Home-Assistant-Sensor-Afvalbeheer
+sensor:
+  - platform: afvalbeheer
+    wastecollector: Blink
+    resources:
+      - restafval
+      - gft
+      - papier
+      - pmd
+
+    # Postcode is required and is your own postcode
+    postcode: 5712NN
+
+    # Street number is required and is your own street number
+    streetnumber: 12
+
+    # If you activate this option you'll get 2 extra sensors (today and tomorrow)
+    # which are handy for automations. The today sensor will display the fractions
+    # collected today. The tomorrow sensor will display the fractions collected tomorrow.
+    # Default is 0.
+    upcomingsensor: 1
+
+    # If you wish to remove the year and the dashes and want to show the name
+    # of the month abbreviated, you would provide '%d %b'.
+    dateformat: '%d %b'
+
+    # If you don't want to add dayname, tomorrow or today in front of date
+    # activate this option. Default is 0.
+    dateonly: 1
+
+    # If you don't want to add the waste collecoctors name to the sensor name. Default is 1.
+    nameprefix: 1
+
+    # If you don't want to use the icons from your waste collector you can use the built in icons. Default is 0.
+    builtinicons: 0
+
+    # If you want to display the names of the days in dutch. Default is 0.
+    dutch: 1

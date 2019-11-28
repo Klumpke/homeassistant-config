@@ -1,0 +1,39 @@
+
+# When power is detected, move the state of the afzuigkap to on
+- alias: Set afzuigkap active when power detected
+  initial_state: 'true'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.afzuigkap_power
+      above: 40
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_select.afzuigkap_status
+        state: 'off'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.afzuigkap_status
+        option: 'on'
+
+
+# When the power drops, move the state of the afzuigkap to off
+- alias: Set afzuigkap off when power drops
+  initial_state: 'true'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.afzuigkap_power
+      below: 39
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_select.afzuigkap_status
+        state: 'on'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.afzuigkap_status
+        option: 'off'

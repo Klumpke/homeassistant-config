@@ -1,0 +1,43 @@
+- alias: "Notificatie: Garagedeur open"
+  initial_state: 'false'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.contact_garagedeur
+    to: 'on'
+  action:
+  - service_template: >
+        {% if (is_state('person.jeroen', 'home')) and (is_state('person.joyce', 'home'))  %}
+          notify.ios_notifier
+        {% elif is_state('person.jeroen', 'home') %}
+          notify.mobile_app_iklumpke
+        {% elif is_state('person.joyce', 'home') %}
+          notify.ios_ios_joyce
+        {% endif %}
+    data:
+      title: "Garagedeur"
+      message: "De Garagedeur is zojuist geopend!"
+      data:
+        push:
+          sound: default
+
+- alias: "Notificatie: Garagedeur dicht"
+  initial_state: 'false'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.contact_garagedeur
+    to: 'off'
+  action:
+  - service_template: >
+        {% if (is_state('person.jeroen', 'home')) and (is_state('person.joyce', 'home'))  %}
+          notify.ios_notifier
+        {% elif is_state('person.jeroen', 'home') %}
+          notify.mobile_app_iklumpke
+        {% elif is_state('person.joyce', 'home') %}
+          notify.ios_ios_joyce
+        {% endif %}
+    data:
+      title: "Garagedeur"
+      message: "De Garagedeur is zojuist gesloten!"
+      data:
+        push:
+          sound: default

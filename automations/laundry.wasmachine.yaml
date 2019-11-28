@@ -1,0 +1,202 @@
+#################################################################################
+#        Wasmachine, Droger en Vaatwasser Automations                           #
+#################################################################################
+
+# When power is detected, and the washing machine is not in 
+# the Running state, change the status of the washing machine
+# to Running. 
+# The status check will ensure we don't try to put the state 
+# to Running each time the power level changes, and we're already
+# in the Running state.
+- alias: Set wasmachine active when power detected
+  initial_state: 'true'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.fib_fgwpf102_wasmachine_power
+      above: 10
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: Idle
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: Clean
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: Finishing
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Running
+
+
+# When the power drops, move the state of the wasmachine to 
+# Finishing.
+- alias: Set wasmachine finished when power drops
+  initial_state: 'true'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.fib_fgwpf102_wasmachine_power
+      below: 6
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: Running
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Finishing
+
+
+# Wait 8 minutes for us to be in the Finishing state before we
+# decide the washing machine has finished. This way, if the 
+# washing machine is in between cycles and the power drops, we 
+# won't mark the washing machine cycle as finished too early.
+- alias: Set wasmachine Clean after timeout
+  initial_state: 'true'
+  trigger:
+    - platform: state
+      entity_id: input_select.washing_machine_status
+      to: Finishing
+      for:
+        minutes: 8
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: Finishing
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Clean
+
+
+# When the power drops and the washing machine is Clean or Finishing, someone has
+# turned the washing machine off and emptied it. We should do this when the state
+# of the washing machine is clean or Finishing, just incase someone opens the
+# washing machine before the 8 minute timeout has been reached.
+ 
+- alias: Set Washing machine to Idle when power off manualy
+  initial_state: 'true'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.fib_fgwpf102_wasmachine_power
+      below: 0.4
+  condition:
+    condition: and
+    conditions:
+      - condition: numeric_state
+        entity_id: sensor.fib_fgwpf102_wasmachine_power
+        below: 0.4
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: input_select.washing_machine_status
+          state: Clean
+        - condition: state
+          entity_id: input_select.washing_machine_status
+          state: Finishing
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Idle
+
+
+- alias: Set wasmachine to POWER OFF when turned OFF
+  initial_state: 'true'
+  trigger:
+    - platform: state
+      entity_id: switch.fib_fgwpf102_wasmachine
+      to: 'off'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Power OFF
+
+
+- alias: Set wasmachine idle when turned on
+  initial_state: 'true'
+  trigger:
+    - platform: state
+      entity_id: switch.fib_fgwpf102_wasmachine
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: Power OFF
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Idle
+
+
+# Wasmachine Gereed Notificatie
+- alias: Send alert when washmachine is finished
+  initial_state: 'true'
+  trigger:
+    - platform: state
+      entity_id: sensor.washing_machine_status
+      to: Clean
+      for:
+        minutes: 1
+#    - platform: state
+#      entity_id: person.jeroen
+#      to: 'home'
+#      for:
+#        minutes: 3
+#    - platform: state
+#      entity_id: person.joyce
+#      to: 'home'
+#      for:
+#        minutes: 3
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        before: '01:30:00'
+        after: '08:00:00'
+#      - condition: state
+#        entity_id: group.device_status
+#        state: 'home'
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: Clean
+#      - condition: template
+#        value_template: >
+#          {% if states.automation.send_alert_when_washing_machine_is_finished.last_triggered is not none %}
+#            {% if as_timestamp(now()) | int   -  as_timestamp(states.automation.send_alert_when_washing_machine_is_finished.attributes.last_triggered) | int > 1800 %} true {% else %} false
+#            {% endif %}
+#          {% else %}
+#          false
+#          {% endif %}
+  action:
+    - service: notify.ios_notifier
+  #  - service_template: >
+  #      {% if (is_state('person.jeroen', 'home')) and (is_state('person.joyce', 'home'))  %}
+  #        notify.ios_notifier
+  #      {% elif is_state('person.jeroen', 'home') %}
+  #        notify.ios_ios_jeroen
+  #      {% elif is_state('person.joyce', 'home') %}
+  #        notify.ios_ios_joyce
+  #      {% endif %}
+      data:
+        message: 'De wasmachine heeft zijn programma voltooid en kan leeggemaakt worden.'
+        title: 'Wasmachine'
+        data:
+          push:
+            badge: 0
+            sound: default
+            category: "wasmachine_alert"

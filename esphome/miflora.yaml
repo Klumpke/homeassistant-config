@@ -1,0 +1,59 @@
+#substitutions:
+  # used internally
+#  device_name: 'socket_flex'
+  # displayed in HA
+#  friendly_name: 'Socket Flex'
+
+esphome:
+  name: miflora
+  platform: ESP32
+  board: esp32doit-devkit-v1
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+# Enable Web
+web_server:
+  port: 80
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret api_pass
+
+ota:
+  password: !secret ota_pass
+
+# BLE tracker
+esp32_ble_tracker:
+
+# Sensors
+sensor:
+  - platform: xiaomi_hhccjcy01
+    mac_address: 'C4:7C:8D:6B:1A:C6'
+    temperature:
+      name: "Olijfboom Rechts Temperature"
+    moisture:
+      name: "Olijfboom Rechts Moisture"
+    illuminance:
+      name: "Olijfboom Rechts Illuminance"
+    conductivity:
+      name: "Olijfboom Rechts Soil Conductivity"
+#    battery_level:
+#      name: "Olijfboom Rechts Battery Level"
+
+  - platform: xiaomi_hhccjcy01
+    mac_address: 'C4:7C:8D:6B:12:74'
+    temperature:
+      name: "Olijfboom Links Temperature"
+    moisture:
+      name: "Olijfboom Links Moisture"
+    illuminance:
+      name: "Olijfboom Links Illuminance"
+    conductivity:
+      name: "Olijfboom Links Soil Conductivity"
+#    battery_level:
+#      name: "Olijfboom Links Battery Level"

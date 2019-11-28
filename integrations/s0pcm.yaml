@@ -1,0 +1,31 @@
+---
+# Support for S0PCM pulse meter.
+# https://home-assistant.io/components/sensor.s0pcm/
+
+# https://github.com/Jorei/home-assistant.io/blob/c3074789fb81ddb235cfaa248591f530c3c1ec13/source/_components/sensor.s0pcm.markdown
+sensor:
+#  - platform: s0pcm
+#    device: "/dev/serial/by-id/usb-Arduino_LLC_Arduino_Leonardo-if00"
+#    channels:
+#      - 0
+
+  - platform: mqtt
+    name: "S0pcm Totaal"
+    state_topic: "s0pcmreader/1/total"
+    unit_of_measurement: "l"
+
+  - platform: mqtt
+    name: "S0pcm vandaag"
+    state_topic: "s0pcmreader/1/today"
+    unit_of_measurement: "l"
+
+  - platform: mqtt
+    name: "S0pcm gisteren"
+    state_topic: "s0pcmreader/1/yesterday"
+    unit_of_measurement: "l"
+
+# https://www.home-assistant.io/components/utility_meter/
+utility_meter:
+  s0pcm_hourly:
+    source: sensor.S0pcm_totaal
+    cycle: hourly

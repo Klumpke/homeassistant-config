@@ -1,0 +1,34 @@
+- alias: "Motion: Slaapkamer vloerled aan"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_slaapkamer
+    to: 'on'
+  # condition:
+  #   condition: time
+  #   after: '07:30'
+  #   before: '23:30'
+  condition:
+    - entity_id: sun.sun
+      condition: state
+      state: 'below_horizon'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.ledstrip_slaapkamer
+    #data:
+    #  transition: 15
+    data:
+      brightness_pct: 30
+      rgb_color: [255, 255, 255]
+
+- alias: "Motion: Slaapkamer vloerled uit"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_slaapkamer
+      to: 'off'
+      for:
+        minutes: 1
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.ledstrip_slaapkamer
+      #data:
+      #  transition: 160

@@ -1,0 +1,75 @@
+---
+# Groups allow the user to combine multiple entities into one.
+# This loads up my custom created groups
+#
+# https://www.home-assistant.io/components/group/
+#
+group:
+
+  device_status:
+    name: Status en Locatie
+    entities:
+      - device_tracker.iklumpke
+      - device_tracker.iphone_jeroen
+      - device_tracker.joyce
+      - device_tracker.iphone_joyce
+
+  sfeerverlichting:
+    name: Sfeerverlichting
+    entities:
+      - light.broodkast
+      - light.dressoir
+      - light.combikast
+      - light.fib_fgd212_keuken_nis
+      - light.tuin
+
+  kerstverlichting:
+    name: Kerstverlichting
+    entities:
+      - switch.kerstboom
+      - switch.kerstverlichting
+
+  eetkamer:
+    name: Eetkamer
+    entities:
+      - light.fib_fgd212_eetkamer
+      - light.dressoir
+      - light.broodkast
+
+  keuken:
+    name: Keuken
+    entities:
+      - light.fib_fgd212_keuken_plafond
+      - light.keukenspots
+      - light.fib_fgd212_keuken_nis
+
+  woonkamer:
+    name: Woonkamer
+    entities:
+      - light.fib_fgd212_woonkamer_spots
+      - light.combikast
+
+  tuin:
+    name: Tuin
+    entities:
+      - light.tuin
+      - light.terras
+
+  deur_notifications:
+    name: Deur notificaties
+    entities:
+      - automation.notificatie_garagedeur_open
+      - automation.notificatie_garagedeur_dicht
+      #- automation.notificatie_voordeur_open
+      #- automation.notificatie_voordeur_dicht
+
+  beweging_notifications:
+    name: Beweging notificaties
+    entities:
+      - automation.notificatie_beweging_woonkamer_wanneer_niemand_thuis
+
+  vakantie_modus:
+    name: Vakantie modus
+    entities:
+      - automation.rolluik_omhoog_bij_zonsopkomst_of_om_8_15u
+      - automation.rolluik_omlaag_bij_zonsondergang_of_om_21_30u

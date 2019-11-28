@@ -1,0 +1,107 @@
+  media_player.woonkamer:
+    title: Sonos Woonkamer
+    style:
+      color: white
+      background: var(--background-image)
+    card:
+      type: custom:decluttering-card
+      template: mediaplayer_popup
+      variables:
+        - entity: media_player.woonkamer
+
+  media_player.boven:
+    title: Sonos Boven
+    style:
+      color: white
+      background: var(--background-image)
+    card:
+      type: custom:decluttering-card
+      template: mediaplayer_popup
+      variables:
+        - entity: media_player.boven
+
+  media_player.tuin:
+    title: Sonos Tuin
+    style:
+      color: white
+      background: var(--background-image)
+    card:
+      type: custom:decluttering-card
+      template: mediaplayer_popup
+      variables:
+        - entity: media_player.tuin
+
+  cover.slaapkamer:
+    title: Slaapkamer rolluik
+    style:
+      color: white
+      background: var(--background-image)
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - !include ../includes/blank-card.yaml
+            - type: custom:decluttering-card
+              template: more-info-popup
+              variables:
+                - entity: cover.slaapkamer
+            - !include ../includes/blank-card.yaml
+        - !include ../includes/bottom-card.yaml
+
+  switch.printer:
+    title: HP M281fdw
+    style:
+      color: white
+      background: var(--background-image)
+    card:
+      type: custom:decluttering-card
+      template: printer_popup
+      variables:
+        - entity_pages: sensor.printer_paginas
+        - entity_black: sensor.printer_toner_zwart
+        - entity_cyan: sensor.printer_toner_cyaan
+        - entity_magenta: sensor.printer_toner_magenta
+        - entity_yellow: sensor.printer_toner_geel
+
+  input_select.dishwasher_status:
+    title: Vaatwasser
+    style:
+      color: white
+      background: var(--background-image)
+    card:
+      type: custom:decluttering-card
+      template: laundry_popup
+      variables:
+        - image: vaatwasser.jpg
+        - entity_status: dishwasher_status
+        - entity_energy: vaatwasser_power
+        - entity_energy_today: vaatwasser_energy
+
+  input_select.washing_machine_status:
+    title: Wasmachine
+    style:
+      color: white
+      background: var(--background-image)
+    card:
+      type: custom:decluttering-card
+      template: laundry_popup
+      variables:
+        - image: wasmachine.jpg
+        - entity_status: washing_machine_status
+        - entity_energy: fib_fgwpf102_wasmachine_power
+        - entity_energy_today: fib_fgwpf102_wasmachine_energy
+
+  input_select.dryer_status:
+    title: Droger
+    style:
+      color: white
+      background: var(--background-image)
+    card:
+      type: custom:decluttering-card
+      template: laundry_popup
+      variables:
+        - image: droger.jpg
+        - entity_status: dryer_status
+        - entity_energy: fib_fgwpf102_droger_power
+        - entity_energy_today: fib_fgwpf102_droger_energy

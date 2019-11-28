@@ -1,0 +1,28 @@
+---
+#
+# This handles the loading of my weather platforms.
+#
+# https://www.home-assistant.io/components/weather/
+#
+weather:
+
+# The darksky platform uses the Dark Sky web service as a source for
+# meteorological data for your location.
+# https://www.home-assistant.io/components/weather.darksky/
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    mode: daily
+
+sensor:
+  # Weather prediction
+  - platform: yr
+
+  # Air Visual
+  - platform: airvisual
+    api_key: !secret airvisual_api
+    monitored_conditions:
+      - us
+    show_on_map: false
+    scan_interval: 300
+    latitude: !secret zone_home_latitude
+    longitude: !secret zone_home_longitude

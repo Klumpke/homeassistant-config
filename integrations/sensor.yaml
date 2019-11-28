@@ -1,0 +1,229 @@
+---
+# Sensors are gathering information about states and conditions.
+#
+# This loads up my sensor configurations
+#
+# https://www.home-assistant.io/components/sensor/
+#
+sensor:
+  # Vaatwasser
+  - platform: mqtt
+    name: "Vaatwasser Energy"
+    state_topic: "tele/vaatwasser/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Today"] }}'
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Vaatwasser Power"
+    state_topic: "tele/vaatwasser/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Power"] }}'
+    unit_of_measurement: "W"
+  - platform: mqtt
+    name: "Vaatwasser Voltage"
+    state_topic: "tele/vaatwasser/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+    unit_of_measurement: "V"
+  - platform: mqtt
+    name: "Vaatwasser Current"
+    state_topic: "tele/vaatwasser/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Current"] }}'
+    unit_of_measurement: "A"
+
+  # Afzuigkap
+  - platform: mqtt
+    name: "Afzuigkap Energy"
+    state_topic: "tele/afzuigkap/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Today"] }}'
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Afzuigkap Power"
+    state_topic: "tele/afzuigkap/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Power"] }}'
+    unit_of_measurement: "W"
+  - platform: mqtt
+    name: "Afzuigkap Voltage"
+    state_topic: "tele/afzuigkap/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+    unit_of_measurement: "V"
+  - platform: mqtt
+    name: "Afzuigkap Current"
+    state_topic: "tele/afzuigkap/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Current"] }}'
+    unit_of_measurement: "A"
+
+
+  # https://www.home-assistant.io/components/sensor.version/
+  # The version sensor platform is displaying the
+  # available version online.
+  - platform: version
+    name: version_available
+    source: hassio
+    image: qemux86-64
+
+  # The version sensor platform is displaying the
+  # current version.
+  - platform: version
+    name: version_current
+
+
+  # https://www.home-assistant.io/components/time_date/
+  # The time and date (time_date) sensor platform simple 
+  # displays the time in various formats, the date, or both.
+  - platform: time_date
+    display_options:
+      - time
+      - date
+      - time_utc
+
+
+  # The cert_expiry sensor fetches information from a configured URL
+  # and displays the certificate expiry in days.
+  - platform: cert_expiry
+    host: hass.klompen.biz
+
+  # https://www.home-assistant.io/components/postnl/
+  # The postnl platform allows one to track deliveries by PostNL (Dutch Postal Services).
+  # To use this sensor, you need a PostNL Account. It is possible to add multiple accounts 
+  # to your Home Assistant configuration. The sensor value shows the number of packages
+  # to be delivered. The packages are available in the shipments attribute.
+  - platform: postnl
+    name: PostNL Jeroen
+    username: !secret postnl_user
+    password: !secret postnl_pass
+  - platform: postnl
+    name: PostNL Joyce
+    username: !secret postnl_user_2
+    password: !secret postnl_pass_2
+
+  - platform: template
+    sensors:
+      postnl_jeroen_packages:
+        value_template: >-
+          {{ states.sensor.postnl_jeroen_delivery.state }}
+      postnl_joyce_packages:
+        value_template: >-
+          {{ states.sensor.postnl_joyce_delivery.state }}
+
+
+  # https://www.home-assistant.io/components/waze_travel_time/
+  # The waze_travel_time sensor provides travel time from the Waze.
+  # JEROEN
+  - platform: waze_travel_time
+    name: Reistijd Jeroen
+    origin: person.jeroen
+    destination: zone.home
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd Jeroen Alfion
+    origin: person.jeroen
+    destination: zone.alfion
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd Ouders Jeroen
+    origin: person.jeroen
+    destination: zone.ouders_jeroen
+    region: EU
+
+  # JOYCE
+  - platform: waze_travel_time
+    name: Reistijd Joyce
+    origin: person.joyce
+    destination: zone.home
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd Joyce Dolfijn (Toff)
+    origin: person.joyce
+    destination: zone.dolfijn_toff
+    region: EU
+  - platform: waze_travel_time
+    name: Reistijd Joyce Dolfijn (Luchen)
+    origin: person.joyce
+    destination: zone.dolfijn_luchen
+    region: EU
+  - platform: waze_travel_time
+    name: Reistijd Joyce Dolfijn ('t Schrijverke)
+    origin: person.joyce
+    destination: zone.dolfijn_t_schrijverke
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd joycejeroen
+    origin: person.joyce
+    destination: person.jeroen
+    region: EU
+
+
+  - platform: template
+    sensors:
+      insignia_olie_visible:
+        value_template: "{{ state_attr('sensor.insignia_olie', 'visible') }}"
+  - platform: template
+    sensors:
+      insignia_banden_visible:
+        value_template: "{{ state_attr('sensor.insignia_banden', 'visible') }}"
+  - platform: template
+    sensors:
+      insignia_clean_visible:
+        value_template: "{{ state_attr('sensor.insignia_clean', 'visible') }}"
+  - platform: template
+    sensors:
+      insignia_stof_visible:
+        value_template: "{{ state_attr('sensor.insignia_stof', 'visible') }}"
+  - platform: template
+    sensors:
+      insignia_window_visible:
+        value_template: "{{ state_attr('sensor.insignia_window', 'visible') }}"
+
+  - platform: template
+    sensors:
+      polo_olie_visible:
+        value_template: "{{ state_attr('sensor.polo_olie', 'visible') }}"
+  - platform: template
+    sensors:
+      polo_banden_visible:
+        value_template: "{{ state_attr('sensor.polo_banden', 'visible') }}"
+  - platform: template
+    sensors:
+      polo_stof_visible:
+        value_template: "{{ state_attr('sensor.polo_stof', 'visible') }}"
+  - platform: template
+    sensors:
+      polo_window_visible:
+        value_template: "{{ state_attr('sensor.polo_window', 'visible') }}"
+  - platform: template
+    sensors:
+      polo_clean_visible:
+        value_template: "{{ state_attr('sensor.polo_clean', 'visible') }}"
+
+
+  - platform: rdw
+    name: "Opel Insignia"
+    plate: 27XHK8
+    sensors:
+      - expdate
+      - insured
+  - platform: rdw
+    name: "Volkswagen Polo"
+    plate: XT249K
+    sensors:
+      - expdate
+      - insured
+
+
+  # https://www.home-assistant.io/components/imap/
+  # The imap sensor platform is observing your IMAP server and reporting the amount of unread emails.
+  - platform: imap
+    name: Mail Jeroen
+    server: !secret mail_host_jeroen
+    username: !secret mail_user_jeroen
+    password: !secret mail_pass_jeroen
+    port: 993
+
+  - platform: imap
+    name: Mail Joyce
+    server: !secret mail_host_joyce
+    username: !secret mail_user_joyce
+    password: !secret mail_pass_joyce
+    port: 993

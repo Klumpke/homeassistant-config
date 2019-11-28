@@ -1,0 +1,80 @@
+# KERSTVERLICHTING AAN BIJ AANWEZIGHEID
+- alias: "Kerstverlichting aan bij aanwezigheid"
+  trigger:
+#  - platform: state
+#    entity_id: sun.sun
+#    to: 'above_horizon'
+#    offset: '-00:30:00'
+  - platform: time
+    at: '09:00:00'
+  - platform: state
+    entity_id: group.device_status
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.device_status
+        state: 'home'
+      - condition: state
+        entity_id: group.kerstverlichting
+        state: 'off'
+      - condition: time
+        before: '23:30'
+      # - condition: sun
+      #   after: sunset
+      #   after_offset: "-00:30:00"
+  action:
+    service: homeassistant.turn_on
+    entity_id: group.kerstverlichting
+
+
+
+# KERSTVERLICHTING DOORDEWEEK UIT OM 23:45u OF AFWEZIGHEID
+- alias: "Kerstverlichting doordeweek uit om 23:45u of afwezigheid"
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '23:45:00'
+  - platform: state
+    entity_id: group.device_status
+    from: 'home'
+    to: 'not_home'
+  condition:
+    #condition: state
+    #entity_id: binary_sensor.workday
+    #state: 'on'
+    condition: time
+    weekday:
+      - sun
+      - mon
+      - tue
+      - wed
+      - thu
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.kerstverlichting
+
+# KERSTVERLICHTING WEEKEND UIT OM 01:00U OF AFWEZIGHEID
+- alias: "Kerstverlichting weekend uit om 01:00u of afwezigheid"
+  initial_state: 'true'
+  trigger:
+  - platform: time
+    at: '01:00:00'
+  - platform: state
+    entity_id: group.device_status
+    from: 'home'
+    to: 'not_home'
+  condition:
+    #condition: state
+    #entity_id: binary_sensor.workday
+    #state: 'off'
+    condition: time
+    weekday:
+      - fri
+      - sat
+      - sun
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.kerstverlichting

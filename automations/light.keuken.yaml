@@ -1,0 +1,36 @@
+# WHEN KEUKENLAMP TURNS OFF, KEUKENSPOTS TURNS OFF
+- id: '1533498185749'
+  alias: Keukenspots uit
+  initial_state: 'true'
+  trigger:
+  - entity_id: light.fib_fgd212_keuken_plafond
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: light.keuken_leds
+    service: light.turn_off
+
+# WHEN KEUKENLAMP TURNS ON, TURN KEUKENSPOTS ON (FROM 19.00H-06.00H)
+- id: '1533504863293'
+  alias: Keukenspots aan
+  initial_state: 'true'
+  trigger:
+  - entity_id: light.fib_fgd212_keuken_plafond
+    platform: state
+    to: 'on'
+  condition: []
+#  condition:
+#    condition: or
+#    conditions:
+#      - after: sunset
+#        condition: sun
+#        after_offset: "-01:00:00"
+#      - before: sunrise
+#        condition: sun
+  action:
+  - data:
+      entity_id: light.keuken_leds
+    service: light.turn_on

@@ -1,0 +1,82 @@
+---
+# The HomeKit component allows you to forward entities from Home Assistant
+# to Apple HomeKit, so they can be controlled from Apple’s Home app and Siri.
+#
+# https://www.home-assistant.io/components/homekit
+#
+homekit:
+  # Stop the HomeKit Server from starting automatically after the Home Assistant
+  # Core Setup is done. I have a Z-Wave network, which we need to wait for
+  # as well.
+  auto_start: false
+
+  # The default: "Home Assistant Bridge", I like it to be just "Home Assistant"
+  name: Home Assistant
+
+  # Configuration for specific entities. Allows customization of names and types
+  # These are imported from another folder, to decouple them from the packages.
+  #entity_config:
+    #light.kitchen_ceiling:
+    #  name: Keuken Plafond
+
+  # Filters for entities to be included / excluded from HomeKit.
+  filter:
+    include_entities:
+      - light.hal
+
+      - light.fib_fgd212_eetkamer
+      - light.dressoir
+      - light.blitzwolf02
+
+      - light.fib_fgd212_keuken_nis
+      - light.fib_fgd212_keuken_plafond
+      - light.keukenspots
+
+
+      - light.fib_fgd212_woonkamer_spots
+      - light.combikast
+
+      - light.tuin
+      - light.terras
+
+      - light.nachtlampjes
+      - light.nachtkast_r
+      - light.nachtkast_l
+      - cover.slaapkamer
+
+      # Temperatuur sensoren
+      - sensor.temp_slaapkamer
+      - sensor.temp_badkamer
+      - sensor.temp_zolder
+      - sensor.temp_woonkamer
+      - sensor.temp_garage
+      - sensor.temp_vriezer
+      - sensor.temp_tuin
+      - sensor.temp_koelkast
+      - sensor.temp_test
+
+      # Slaapkamer raam
+      - binary_sensor.contact_slaapkamerraam
+      # Zolder raam
+      - binary_sensor.contact_zolderraam
+      # Kleine kamer raam
+      - binary_sensor.contact_kleine_kamerraam
+      # Achterdeur
+      - binary_sensor.contact_achterdeur
+      # Logeerkamer raam
+      - binary_sensor.contact_logeerkamerraam
+      # Garage deur
+      - binary_sensor.contact_garagedeur
+
+      # - climate.living_room
+      # - light.living_room_bar
+      # - climate.bedroom_master_thermostat
+      # - light.bedroom_master_bedside
+      # - light.bedroom_master_ceiling
+      # - light.kitchen_ceiling
+      # - light.kitchen_cupboard
+      # - light.livingroom_computer_corner
+      # - light.livingroom_desk
+      # - light.livingroom_spotlight
+      # - light.livingroom_tv
+      # - light.livingroom_window

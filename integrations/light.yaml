@@ -1,0 +1,48 @@
+---
+# The light component allows you to track and control various light bulbs.
+# This loads up my light configurations.
+#
+# https://www.home-assistant.io/components/light/
+#
+light:
+
+  - platform: group
+    name: Combikast
+    entities:
+      - light.combikast_r
+      - light.combikast_l
+
+  - platform: group
+    name: Nachtlampjes
+    entities:
+      - light.nachtkast_r
+      - light.nachtkast_l
+
+  - platform: group
+    name: Dressoir
+    entities:
+      - light.dressoir_r
+      - light.dressoir_l
+
+  - platform: group
+    name: Garage
+    entities:
+      - light.garage_a
+      - light.garage_b
+
+  - platform: group
+    name: Tuin
+    entities:
+      - light.tuin_a
+      - light.tuin_b
+      - light.tuin_c
+
+  - platform: group
+    name: Terras
+    entities:
+      - light.terras_a
+      - light.terras_b
+
+  - platform: switch
+    name: Hal
+    entity_id: switch.fib_fgs223_hal

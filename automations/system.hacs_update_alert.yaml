@@ -1,0 +1,15 @@
+- alias: "Systeem: HACS update notificatie"
+  initial_state: 'true'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.hacs
+      above: 0
+  action:
+    - service: notify.mobile_app_iklumpke
+      data_template:
+          title: "HACS update"
+          message: "Er zijn {{ states('sensor.hacs') }} HACS community updates beschikbaar."
+          data:
+            attachment:
+              content-type: png
+              url: https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color/700/012_refresh-512.png

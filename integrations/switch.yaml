@@ -1,0 +1,34 @@
+---
+# The template platform creates switches that combines components.
+# This loads up my switch configurations.
+#
+# https://www.home-assistant.io/components/switch.template/
+#
+switch:
+
+  # Printer
+  - platform: mqtt
+    name: "Printer"
+    state_topic: "stat/printer/POWER"
+    command_topic: "cmnd/printer/POWER"
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  # Vaatwasser
+  - platform: mqtt
+    name: "Vaatwasser"
+    state_topic: "stat/vaatwasser/POWER"
+    command_topic: "cmnd/vaatwasser/POWER"
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  # Afzuigkap
+  - platform: mqtt
+    name: "Afzuigkap"
+    state_topic: "stat/afzuigkap/POWER"
+    command_topic: "cmnd/afzuigkap/POWER"
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true

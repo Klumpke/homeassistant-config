@@ -1,0 +1,87 @@
+input_select:
+  remote:
+    name: Afstandsbediening
+    options:
+      - Slaapkamer
+      - Woonkamer
+    initial: Woonkamer
+  onderhoud:
+    name: Categorie
+    options:
+      - Opel Insignia
+      - Volkswagen Polo
+    initial: Opel Insignia
+  joyce:
+    name: Categorie
+    options:
+      - Agenda
+      - Algemeen
+      - Locatie
+      - Post
+    initial: Agenda
+  jeroen:
+    name: Categorie
+    options:
+      - Agenda
+      - Algemeen
+      - Locatie
+      - Post
+    initial: Agenda
+  algemeen:
+    name: Categorie
+    options:
+      - Datums
+      - Plex
+      - Klimaat
+      - Links
+      - Overige
+      - Plattegrond
+      - Updates
+      - Washok
+      - Energie
+      - Home
+
+input_boolean:
+  dummy1:
+    initial: off
+  dummy2:
+    initial: off
+  tado_woonkamer:
+    initial: off
+# Notification input_booleans
+  notification_afzuigkap:
+  notification_slaapkamer_deur:
+  notification_voordeur:
+  notification_woonkamer_deur:
+  notification_wasmachine:
+  notification_droger:
+  notification_vaatwasser:
+  notification_alarm:
+  notification_alles_rustig:
+  notification_smoke_detector:
+  notification_tala:
+  notification_motion_gallerij:
+  notification_motion_toilet:
+  notification_motion_bijkeuken:
+  notification_vacuum:
+  notification_anniversary:
+  notification_birthday:
+  notification_apk:
+  notification_motion_gang:
+  notification_current_lights:
+  notification_current_devices:
+  notification_current_radiators:
+  notification_current_sensors:
+
+# Scenes
+  # scene_dagverlichting:
+  # scene_nachtverlichting:
+  # scene_avondverlichting:
+  # scene_schoonmaken:
+  # scene_naar_bed:
+  # scene_wassen:
+  # scene_klaar_met_wassen:
+  # scene_koken:
+  # scene_klaar_met_koken:
+  # scene_welterusten:
+  # scene_lichtuit:

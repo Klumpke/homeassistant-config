@@ -1,0 +1,6 @@
+# The ziggo_mediabox_xl component allows you to control a Ziggo Mediabox XL from Home Assistant.
+# https://www.home-assistant.io/components/ziggo_mediabox_xl/
+media_player:
+  - platform: ziggo_mediabox_xl
+    name: Ziggo Mediabox
+    host: 192.168.178.36

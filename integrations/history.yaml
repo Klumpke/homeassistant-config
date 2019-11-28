@@ -1,0 +1,112 @@
+---
+# The history component will track everything that is going on within
+# Home Assistant and allows the user to browse through it.
+#
+# https://www.home-assistant.io/components/history/
+#
+history:
+  include:
+    domains:
+      - light
+      #- switch
+      - person
+      - media_player
+    entities:
+      # Persoonlijke devices
+      #- device_tracker.iklumpke
+      #- device_tracker.ios_joyce
+      #- device_tracker.iphone_jeroen
+      #- device_tracker.iphone_joyce
+
+      # Verlichting SWITCH
+      - switch.fib_fgs223_achterdeur
+      - switch.fib_fgs223_carport
+      - switch.fib_fgs223_voordeur
+
+      # Rolluiken
+      - cover.slaapkamer
+
+      # Temperatuur sensoren
+      - sensor.temp_slaapkamer
+      - sensor.temp_badkamer
+      - sensor.temp_zolder
+      - sensor.temp_woonkamer
+      - sensor.temp_garage
+      - sensor.temp_vriezer
+      - sensor.temp_tuin
+      - sensor.temp_koelkast
+      - sensor.temp_test
+      - sensor.temp_slaapkamer_humidity
+      - sensor.temp_badkamer_humidity
+      - sensor.temp_zolder_humidity
+      - sensor.temp_woonkamer_humidity
+      - sensor.temp_garage_humidity
+      - sensor.temp_vriezer_humidity
+      - sensor.temp_tuin_humidity
+      - sensor.temp_koelkast_humidity
+      - sensor.temp_test_humidity
+      - sensor.temp_slaapkamer_pressure
+      - sensor.temp_badkamer_pressure
+      - sensor.temp_zolder_pressure
+      - sensor.temp_woonkamer_pressure
+      - sensor.temp_garage_pressure
+      - sensor.temp_vriezer_pressure
+      - sensor.temp_tuin_pressure
+      - sensor.temp_koelkast_pressure
+      - sensor.temp_test_pressure
+
+      # Raam / Deur sensoren
+      - binary_sensor.contact_garagedeur
+      - binary_sensor.contact_achterdeur
+      - binary_sensor.contact_slaapkamerraam
+      - binary_sensor.contact_kleine_kamerraam
+      - binary_sensor.contact_logeerkamerraam
+      - binary_sensor.contact_zolderraam
+
+      # Motion sensoren
+      - binary_sensor.motion_woonkamer
+      - binary_sensor.motion_garage
+      - binary_sensor.motion_slaapkamer
+
+      # DSMR
+      - sensor.power_consumption
+      - sensor.power_consumption_watt
+      - sensor.power_hourly
+      - sensor.hourly_gas_consumption
+      - sensor.gas_verbruik_vandaag
+      - sensor.gas_hourly
+      # S0PCM
+      - sensor.s0pcm_vandaag
+      - sensor.s0pcm_hourly
+      # Speedtest.net
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+      # Weather
+      - sensor.yr_symbol
+      # MiFlora Olijfbomen
+      - plant.olijfboom_links
+      - sensor.olijfboom_links_battery_level
+      - sensor.olijfboom_links_illuminance
+      - sensor.olijfboom_links_moisture
+      - sensor.olijfboom_links_soil_conductivity
+      - sensor.olijfboom_links_temperature
+      - plant.olijfboom_rechts
+      - sensor.olijfboom_rechts_battery_level
+      - sensor.olijfboom_rechts_illuminance
+      - sensor.olijfboom_rechts_moisture
+      - sensor.olijfboom_rechts_soil_conductivity
+      - sensor.olijfboom_rechts_temperature
+
+#  exclude:
+#    domains:
+#      - automation
+#      - script
+#      - updater
+#      - weblink
+#      - group
+#      - device_tracker
+#      - camera
+#    entities:
+#      - input_boolean.zigbee_permit_join
+#      - timer.zigbee_permit_join

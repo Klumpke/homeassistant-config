@@ -1,0 +1,36 @@
+---
+# The google_assistant component allows you to control things
+# via Google Assistant (on your mobile or tablet) or a Google Home device.
+#
+# https://www.home-assistant.io/components/google_assistant
+#
+google_assistant:
+  # Project ID from the Actions on Google console
+  project_id: !secret google_assistant_project_id
+
+  # Your Homegraph API key (for the google_assistant.request_sync service)
+  api_key: !secret google_assistant_api_key
+
+  # Configuration for specific entities. Allows customization of names and types
+  # These are imported from another folder, to decouple them from the packages.
+  entity_config:
+    switch.blitzwolf02:
+      name: Broodkast lamp
+      aliases:
+        - Broodkast lamp
+      room: Keuken
+    cover.slaapkamer:
+      name: Rolluik slaapkamer
+      aliases:
+        - slaapkamer rolluik
+        - rolluik
+      room: Slaapkamer
+
+  # List of entity domains to expose to Google Assistant if expose_by_default is set to true.
+  # This has no effect if expose_by_default is set to false.
+  exposed_domains:
+    - switch
+    - light
+    - cover
+  #  - group
+  #  - scene

@@ -1,0 +1,28 @@
+- alias: "Motion: Garage verlichting aan"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_garage
+    to: 'on'
+  # condition:
+  #   condition: time
+  #   after: '07:30'
+  #   before: '23:30'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.garage
+    #data:
+    #  transition: 15
+
+
+- alias: "Motion: Garage verlichting uit"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_garage
+      to: 'off'
+      for:
+        minutes: 1
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.garage
+      #data:
+      #  transition: 160
