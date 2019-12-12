@@ -6,7 +6,7 @@
 
 ---
 
-### Status of: 2019.11.28
+### Status of: 2019.12.12
 Partial Home Assistant configuration with themes, templates and views.
 
 ### System Architecture
