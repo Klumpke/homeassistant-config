@@ -4,7 +4,10 @@
   - platform: state
     entity_id:
       - light.tuin
-      - media_player.tuin
+      - light.terras
+      - light.garage
+      - light.bijkeuken_leds
+      - light.combikast
     to: 'unavailable'
   condition:
     condition: and
@@ -13,7 +16,16 @@
         entity_id: light.tuin
         state: 'unavailable'
       - condition: state
-        entity_id: media_player.tuin
+        entity_id: light.terras
+        state: 'unavailable'
+      - condition: state
+        entity_id: light.garage
+        state: 'unavailable'
+      - condition: state
+        entity_id: light.bijkeuken_leds
+        state: 'unavailable'
+      - condition: state
+        entity_id: light.combikast
         state: 'unavailable'
   action:
   - service: notify.ios_notifier

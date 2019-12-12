@@ -78,3 +78,25 @@
   action:
     service: homeassistant.turn_off
     entity_id: group.kerstverlichting
+
+
+# WOONHUIS BUITENVERLICHTING AAN BIJ ZONSONDERGANG
+- alias: "Kerstolijf aan bij schemering"
+  initial_state: 'true'
+  trigger:
+    platform: sun
+    event: sunset
+    offset: '-00:30:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.kerstolijf
+
+# WOONHUIS BUITENVERLICHTING UIT NA MIDDERNACHT
+- alias: "Kerstolijf uit na middernacht"
+  initial_state: 'true'
+  trigger:
+    platform: time
+    at: '23:30:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.kerstolijf

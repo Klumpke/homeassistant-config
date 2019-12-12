@@ -65,6 +65,9 @@ sensor:
           {% if is_state('switch.kerstverlichting', 'on') %}
             {% set total = total + 1 %}
           {% endif %}
+          {% if is_state('light.kerstolijf', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
 
           {{total}}
 

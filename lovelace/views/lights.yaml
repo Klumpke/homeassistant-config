@@ -37,13 +37,9 @@ cards:
               - label: !include ../includes/brightness-label.yaml
               - grid:
                     !include ../includes/light-devices-grid.yaml
-          - type: custom:decluttering-card
-            template: button
-            variables:
-              - entity: switch.kerstboom
-              - name: Kerstboom
-              - icon: mdi:pine-tree
-              - label: " "
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
           # - type: custom:button-card
           #   color_type: blank-card
           #   aspect_ratio: 1/1
@@ -213,16 +209,40 @@ cards:
               - label: !include ../includes/brightness-label.yaml
               - grid:
                     !include ../includes/light-devices-grid.yaml
+          - type: custom:button-card
+            color_type: blank-card
+            aspect_ratio: 1/1
+          # - type: custom:button-card
+          #   color_type: blank-card
+          #   aspect_ratio: 1/1
+          - !include ../includes/blank-card.yaml
+      - type: horizontal-stack
+        cards:
+          - !include ../includes/blank-card.yaml
+          - type: custom:decluttering-card
+            template: button
+            variables:
+              - entity: switch.kerstboom
+              - name: Kerstboom
+              - icon: mdi:pine-tree
+              - lock: true
+              - label: " "
+          - type: custom:decluttering-card
+            template: button
+            variables:
+              - entity: light.kerstolijf
+              - name: Kerstolijven
+              - icon: mdi:pine-tree
+              - lock: true
+              - label: " "
           - type: custom:decluttering-card
             template: button
             variables:
               - entity: switch.kerstverlichting
               - name: Kerstverlichting
               - icon: mdi:led-strip-variant
+              - lock: true
               - label: " "
-          # - type: custom:button-card
-          #   color_type: blank-card
-          #   aspect_ratio: 1/1
           - !include ../includes/blank-card.yaml
       - type: custom:decluttering-card
         template: header

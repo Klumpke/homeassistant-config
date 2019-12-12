@@ -46,3 +46,15 @@ light:
   - platform: switch
     name: Hal
     entity_id: switch.fib_fgs223_hal
+
+  - platform: switch
+    name: Kerstolijf A
+    entity_id: switch.kerstolijf_a
+  - platform: switch
+    name: Kerstolijf B
+    entity_id: switch.kerstolijf_b
+  - platform: group
+    name: Kerstolijf
+    entities:
+      - light.kerstolijf_a
+      - light.kerstolijf_b
