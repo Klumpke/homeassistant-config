@@ -40,9 +40,10 @@ cards:
             template: mini-graph
             variables:
               - entities:
-                  - sensor.gas_hourly
+                  - sensor.dsmr_consumption_gas_currently_delivered
               - name: GAS VERBRUIK
               - line_color: '#00d8ff'
+              - decimals: 2
               - graph: bar
               - extrema: true
           - !include ../includes/blank-card.yaml
@@ -115,16 +116,16 @@ cards:
                 border-radius: {{ states('input_select.border_radius') }};
               }
             entities:
-              - entity: sensor.power_consumption
+              - entity: sensor.dsmr_reading_electricity_currently_delivered
                 icon: mdi:flash
                 name: Stroom verbruik actueel
-              - entity: sensor.power_consumption_today
+              - entity: sensor.dsmr_day_consumption_electricity_merged
                 icon: mdi:flash
                 name: Stroom verbruik vandaag
-              - entity: sensor.power_consumption_low
+              - entity: sensor.dsmr_day_consumption_electricity1
                 icon: mdi:flash
                 name: Stroom verbruik laag
-              - entity: sensor.power_consumption_normal
+              - entity: sensor.dsmr_day_consumption_electricity2
                 icon: mdi:flash
                 name: Stroom verbruik normaal
               #- entity: sensor.power_production
@@ -136,16 +137,16 @@ cards:
               #- entity: sensor.power_production_normal
               #  icon: mdi:flash-outline
               #  name: Stroom teruglevering normaal
-              - entity: sensor.voltage_l1
+              - entity: sensor.dsmr_reading_phase_voltage_l1
                 icon: mdi:flash-circle
                 name: Voltage
-              - entity: sensor.hourly_gas_consumption
+              - entity: sensor.dsmr_consumption_gas_currently_delivered
                 icon: mdi:fire
                 name: Gas verbruik actueel
-              - entity: sensor.gas_verbruik_vandaag
+              - entity: sensor.dsmr_day_consumption_gas
                 icon: mdi:fire
                 name: Gas verbruik vandaag
-              - entity: sensor.gas_verbruik_totaal
+              - entity: sensor.dsmr_reading_extra_device_delivered
                 icon: mdi:fire
                 name: Gas verbruik totaal
               #- entity: sensor.watermeter_daily

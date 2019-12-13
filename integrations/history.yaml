@@ -68,13 +68,14 @@ history:
       - binary_sensor.motion_garage
       - binary_sensor.motion_slaapkamer
 
-      # DSMR
-      - sensor.power_consumption
-      - sensor.power_consumption_watt
-      - sensor.power_hourly
-      - sensor.hourly_gas_consumption
-      - sensor.gas_verbruik_vandaag
-      - sensor.gas_hourly
+      # DSMR Reader
+      - sensor.dsmr_reading_electricity_currently_delivered
+      - sensor.dsmr_day_consumption_electricity_merged
+      - sensor.dsmr_day_consumption_electricity1
+      - sensor.dsmr_day_consumption_electricity2
+      - sensor.dsmr_reading_phase_voltage_l1
+      - sensor.dsmr_consumption_gas_currently_delivered
+      - sensor.dsmr_day_consumption_gas
       # S0PCM
       - sensor.s0pcm_vandaag
       - sensor.s0pcm_hourly

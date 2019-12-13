@@ -1,112 +1,23 @@
 ---
-# A sensor platform for Dutch Smart Meters which comply to 
-# DSMR (Dutch Smart Meter Requirements), also known as ‘Slimme meter’ or ‘P1 poort’.
-# https://www.home-assistant.io/components/dsmr/
+# The dsmr_reader sensor platform allows you to easily add all sensors that DSMR Reader exposes to MQTT.
+# It adds a separate sensor for every field in the MQTT topics.
+# https://www.home-assistant.io/integrations/dsmr_reader/
 sensor:
-#  - platform: dsmr
-#    port: "/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AH2F1FVJ-if00-port0"
-#    dsmr_version: 5
-
-  - platform: mqtt
-    name: "Power Consumption Today"
-    state_topic: "dsmr/day-consumption/electricity_merged"
-#    value_template: '{{ value_json["ENERGY"]["Today"] }}'
-    unit_of_measurement: "kWh"
-
-  - platform: mqtt
-    name: "Power Consumption"
-    state_topic: "dsmr/reading/electricity_currently_delivered"
-#    value_template: '{{ value_json["ENERGY"]["Today"] }}'
-    unit_of_measurement: "kW"
+  - platform: dsmr_reader
 
   - platform: template
     sensors:
       power_consumption_watt:
         friendly_name: "Power Consumption Watt"
         unit_of_measurement: "W"
-        value_template: "{{ states('sensor.power_consumption') | float * 1000 }}"
-
-  - platform: mqtt
-    name: "Power Consumption Low"
-    state_topic: "dsmr/reading/electricity_delivered_1"
-#    value_template: '{{ value_json["ENERGY"]["Today"] }}'
-    unit_of_measurement: "kWh"
-
-  - platform: mqtt
-    name: "Power Consumption Normal"
-    state_topic: "dsmr/reading/electricity_delivered_2"
-#    value_template: '{{ value_json["ENERGY"]["Today"] }}'
-    unit_of_measurement: "kWh"
-
-  - platform: mqtt
-    name: "Voltage L1"
-    state_topic: "dsmr/reading/phase_voltage_l1"
-#    value_template: '{{ value_json["ENERGY"]["Today"] }}'
-    unit_of_measurement: "V"
-
-  - platform: mqtt
-    name: "Gas verbruik vandaag"
-    state_topic: "dsmr/day-consumption/gas"
-#    value_template: '{{ value_json["ENERGY"]["Today"] }}'
-    unit_of_measurement: "m3"
-
-  - platform: mqtt
-    name: "Gas verbruik totaal"
-    state_topic: "dsmr/reading/extra_device_delivered"
-#    value_template: '{{ value_json["ENERGY"]["Today"] }}'
-    unit_of_measurement: "m3"
-
-  - platform: mqtt
-    name: "Hourly Gas Consumption"
-    state_topic: "dsmr/consumption/gas/currently_delivered"
-#    value_template: '{{ value_json["ENERGY"]["Today"] }}'
-    unit_of_measurement: "m3"
-
+        value_template: "{{ states('sensor.dsmr_reading_electricity_currently_delivered') | float * 1000 }}"
 
 
 # https://www.home-assistant.io/components/utility_meter/
-utility_meter:
-  power_hourly:
-    source: sensor.power_consumption_today
-    cycle: hourly
-  gas_hourly:
-    source: sensor.gas_verbruik_totaal
-    cycle: hourly
-
-#[mapping]
-#id = dsmr/reading/id
-#timestamp = dsmr/reading/timestamp
-#electricity_delivered_1 = dsmr/reading/electricity_delivered_1
-#electricity_returned_1 = dsmr/reading/electricity_returned_1
-#electricity_delivered_2 = dsmr/reading/electricity_delivered_2
-#electricity_returned_2 = dsmr/reading/electricity_returned_2
-#electricity_currently_delivered = dsmr/reading/electricity_currently_delivered
-#electricity_currently_returned = dsmr/reading/electricity_currently_returned
-#phase_currently_delivered_l1 = dsmr/reading/phase_currently_delivered_l1
-#phase_currently_delivered_l2 = dsmr/reading/phase_currently_delivered_l2
-#phase_currently_delivered_l3 = dsmr/reading/phase_currently_delivered_l3
-#phase_currently_returned_l1 = dsmr/reading/phase_currently_returned_l1
-#phase_currently_returned_l2 = dsmr/reading/phase_currently_returned_l2
-#phase_currently_returned_l3 = dsmr/reading/phase_currently_returned_l3
-#extra_device_timestamp = dsmr/reading/extra_device_timestamp
-#extra_device_delivered = dsmr/reading/extra_device_delivered
-
-
-
-## DATA = JSON FIELD
-# electricity1 = dsmr/day-consumption/electricity1
-# electricity2 = dsmr/day-consumption/electricity2
-# electricity_merged = dsmr/day-consumption/electricity_merged
-# electricity1_cost = dsmr/day-consumption/electricity1_cost
-# electricity2_cost = dsmr/day-consumption/electricity2_cost
-# electricity_cost_merged = dsmr/day-consumption/electricity_cost_merged
-
-## Gas (if any)
-# gas = dsmr/day-consumption/gas
-# gas_cost = dsmr/day-consumption/gas_cost
-# total_cost = dsmr/day-consumption/total_cost
-
-## Your energy supplier prices (if set)
-# energy_supplier_price_electricity_delivered_1 = dsmr/day-consumption/energy_supplier_price_electricity_delivered_1
-# energy_supplier_price_electricity_delivered_2 = dsmr/day-consumption/energy_supplier_price_electricity_delivered_2
-# energy_supplier_price_gas = dsmr/day-consumption/energy_supplier_price_gas
+# utility_meter:
+  # power_hourly:
+  #   source: sensor.power_consumption_today
+  #   cycle: hourly
+  # gas_hourly:
+  #   source: sensor.gas_verbruik_totaal
+  #   cycle: hourly
