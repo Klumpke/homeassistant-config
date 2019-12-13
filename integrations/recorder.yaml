@@ -77,7 +77,7 @@ recorder:
       - binary_sensor.motion_garage
       - binary_sensor.motion_slaapkamer
 
-      # DSMR
+      # DSMR Reader
       - sensor.dsmr_reading_electricity_currently_delivered
       - sensor.dsmr_day_consumption_electricity_merged
       - sensor.dsmr_day_consumption_electricity1
@@ -88,6 +88,10 @@ recorder:
       # S0PCM
       - sensor.s0pcm_vandaag
       - sensor.s0pcm_hourly
+
+      # Thermostat
+      - climate.tado_smart_thermostat_ru1388906752
+
       # Speedtest.net
       - sensor.speedtest_download
       - sensor.speedtest_upload

@@ -43,7 +43,7 @@ cards:
                   - sensor.dsmr_consumption_gas_currently_delivered
               - name: GAS VERBRUIK
               - line_color: '#00d8ff'
-              - decimals: 2
+              - decimals: 3
               - graph: bar
               - extrema: true
           - !include ../includes/blank-card.yaml
@@ -73,28 +73,37 @@ cards:
       - type: horizontal-stack
         cards:
           - !include ../includes/blank-card.yaml
-          - type: custom:mini-graph-card
-            style: |
-              ha-card {
-                background: var(--card-color-off);
-                border-radius: {{ states('input_select.border_radius') }};
-                --paper-item-icon-color: var(--icon-color-off);
-                box-shadow: {{ states('input_select.box_shadow') }};
-                font-weight: bold;
-                opacity: 0.8;
-              }
-            entities:
-              - entity: sensor.speedtest_download
-                name: Download
-              - entity: sensor.speedtest_upload
-                name: Upload
-              - entity: sensor.speedtest_ping
-                name: Ping
-            hour24: true
-            animate: true
-            points_per_hour: 1
-            hours_to_show: 24
-            name: Speedtest.net
+          - type: custom:decluttering-card
+            template: mini-graph
+            variables:
+              - entities:
+                  - entity: sensor.speedtest_download
+                    name: Download
+                  - entity: sensor.speedtest_ping
+                    name: Ping
+              - name: Speedtest Download
+              - line_color: '#00d8ff'
+              - graph: line
+              - extrema: true
+              - hours_to_show: 168
+              - hour24: true
+              - points_per_hour: 1
+          - !include ../includes/blank-card.yaml
+      - type: horizontal-stack
+        cards:
+          - !include ../includes/blank-card.yaml
+          - type: custom:decluttering-card
+            template: mini-graph
+            variables:
+              - entities:
+                  - sensor.speedtest_upload
+              - name: Speedtest Upload
+              - line_color: '#00d8ff'
+              - graph: line
+              - extrema: true
+              - hours_to_show: 168
+              - hour24: true
+              - points_per_hour: 1
           - !include ../includes/blank-card.yaml
       - type: horizontal-stack
         cards:

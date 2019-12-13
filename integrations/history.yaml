@@ -79,6 +79,10 @@ history:
       # S0PCM
       - sensor.s0pcm_vandaag
       - sensor.s0pcm_hourly
+
+      # Thermostat
+      - climate.tado_smart_thermostat_ru1388906752
+
       # Speedtest.net
       - sensor.speedtest_download
       - sensor.speedtest_upload

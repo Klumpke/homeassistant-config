@@ -23,21 +23,20 @@ influxdb:
       - sensor.0x00158d0002376388_temperature
       - sensor.0x00158d0002376388_humidity
       # Stroommeter
-      - sensor.power_consumption
-      - sensor.power_consumption_low
-      - sensor.power_consumption_normal
-      - sensor.power_production
-      - sensor.power_production_low
-      - sensor.power_production_normal
-      - sensor.voltage_phase_l1
+      - sensor.dsmr_reading_electricity_currently_delivered
+      - sensor.dsmr_day_consumption_electricity_merged
+      - sensor.dsmr_day_consumption_electricity1
+      - sensor.dsmr_day_consumption_electricity2
+      - sensor.dsmr_reading_phase_voltage_l1
       # Gasmeter
-      - sensor.gas_consumption
+      - sensor.dsmr_consumption_gas_currently_delivered
+      - sensor.dsmr_day_consumption_gas
       - sensor.hourly_gas_consumption
       # Watermeter
       #- sensor.s0pcm_channel_0
       #- sensor.s0pcm_channel_0_hourly
       - sensor.s0pcm_vandaag
-      - sensor.s0pcm_gisteren 
+      - sensor.s0pcm_gisteren
       - sensor.s0pcm_totaal
       # Speedtest.net
       - sensor.speedtest_download

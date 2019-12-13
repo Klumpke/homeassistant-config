@@ -18,6 +18,6 @@ sensor:
   # power_hourly:
   #   source: sensor.power_consumption_today
   #   cycle: hourly
-  # gas_hourly:
-  #   source: sensor.gas_verbruik_totaal
+  # hourly_gas_consumption:
+  #   source: sensor.dsmr_day_consumption_gas
   #   cycle: hourly
