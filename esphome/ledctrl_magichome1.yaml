@@ -1,0 +1,70 @@
+substitutions:
+  # used internally
+  device_name: 'ledctrl_magichome1'
+  # displayed in HA
+  friendly_name: 'Ledctrl Magichome1'
+
+esphome:
+  name: ${device_name}
+  platform: ESP8266
+  board: esp8285
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: ${friendly_name}
+    password: !secret wifi_pass
+
+captive_portal:
+
+# Enable Web
+web_server:
+  port: 80
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret api_pass
+
+ota:
+  password: !secret ota_pass
+
+light:
+#  - platform: rgbw
+  - platform: rgb
+    name: ${friendly_name}
+    red: pwm_r
+    green: pwm_g
+    blue: pwm_b
+#    white: pwm_w
+#    restore_mode: ALWAYS_ON
+    effects:
+      - random:
+      - strobe:
+      - flicker:
+
+output:
+  - platform: esp8266_pwm
+    pin: GPIO12
+    frequency: 1000 Hz
+    id: pwm_r
+
+  - platform: esp8266_pwm
+    pin: GPIO5
+    frequency: 1000 Hz
+    id: pwm_g
+
+  - platform: esp8266_pwm
+    pin: GPIO13
+    frequency: 1000 Hz
+    id: pwm_b
+    
+#  - platform: esp8266_pwm
+#    pin: GPIO15
+#    frequency: 1000 Hz
+#    id: pwm_w

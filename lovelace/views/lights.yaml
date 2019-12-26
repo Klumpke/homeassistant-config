@@ -240,14 +240,14 @@ cards:
             variables:
               - entity: switch.kerstverlichting
               - name: Kerstverlichting
-              - icon: mdi:led-strip-variant
+              - icon: mdi:string-lights
               - lock: true
               - label: " "
           - !include ../includes/blank-card.yaml
       - type: custom:decluttering-card
         template: header
         variables:
-          - content: '##### Tuin'
+          - content: '##### Buitenverlichting'
       - type: horizontal-stack
         cards:
           - !include ../includes/blank-card.yaml
@@ -281,6 +281,34 @@ cards:
           #- type: custom:button-card
           #  color_type: blank-card
           #  aspect_ratio: 1/1
+          - !include ../includes/blank-card.yaml
+      - type: horizontal-stack
+        cards:
+          - !include ../includes/blank-card.yaml
+          - type: custom:decluttering-card
+            template: button
+            variables:
+              - entity: switch.fib_fgs223_voordeur
+              - name: Voordeur
+              - icon: mdi:outdoor-lamp
+              - lock: true
+              - label: " "
+          - type: custom:decluttering-card
+            template: button
+            variables:
+              - entity: switch.fib_fgs223_carport
+              - name: Carport
+              - icon: mdi:lightbulb-multiple
+              - lock: true
+              - label: " "
+          - type: custom:decluttering-card
+            template: button
+            variables:
+              - entity: switch.fib_fgs223_achterdeur
+              - name: Achterdeur
+              - icon: mdi:outdoor-lamp
+              - lock: true
+              - label: " "
           - !include ../includes/blank-card.yaml
 
       - !include ../includes/bottom-card.yaml

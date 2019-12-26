@@ -30,7 +30,7 @@ cards:
                 - email: sensor.mail_joyce
                 - direction: left
                 - image: /local/images/joyce_small_away.png
-                - postnl: sensor.postnl_joyce_packages
+                #- postnl: sensor.postnl_joyce_packages
                 - reistijd: sensor.reistijd_joyce
                 - battery: sensor.joyce_battery_level
                 - icon: mdi:home
@@ -50,7 +50,7 @@ cards:
                 - email: sensor.mail_joyce
                 - direction: left
                 - image: /local/images/joyce_small.png
-                - postnl: sensor.postnl_joyce_packages
+                #- postnl: sensor.postnl_joyce_packages
                 - reistijd: sensor.reistijd_joyce_dolfijn_t_schrijverke
                 - battery: sensor.joyce_battery_level
                 - icon: mdi:office-building

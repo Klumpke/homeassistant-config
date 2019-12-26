@@ -59,6 +59,15 @@ sensor:
           {% if is_state('light.terras', 'on') %}
             {% set total = total + 1 %}
           {% endif %}
+          {% if is_state('switch.fib_fgs223_voordeur', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('switch.fib_fgs223_carport', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('switch.fib_fgs223_achterdeur', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
           {% if is_state('switch.kerstboom', 'on') %}
             {% set total = total + 1 %}
           {% endif %}

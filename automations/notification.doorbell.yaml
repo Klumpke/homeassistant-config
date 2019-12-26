@@ -19,7 +19,7 @@
       message: "Er is aangebeld!"
       data:
         attachment:
-          url: "https://hass.klompen.biz/local/images/cam_voordeur.jpg"
+          url: "https://hass.klompen.net/local/images/cam_voordeur.jpg"
           content-type: jpeg
           hide-thumbnail: false
 
@@ -28,24 +28,24 @@
 #      title: "Deurbel"
 #      message: "Er is aangebeld!"
 #      data:
-#        attachment: "https://hass.klompen.biz/local/images/cam_voordeur.jpg"
+#        attachment: "https://hass.klompen.net/local/images/cam_voordeur.jpg"
 
   - service: script.sonos_play
     data:
       sonos_entity: media_player.woonkamer
       volume: 0.4
-      media_content: "https://hass.klompen.biz/local/audio/deurbel.mp3"
+      media_content: "https://hass.klompen.net/local/audio/deurbel.mp3"
       delay: '00:00:03'
   - service: script.sonos_play
     data:
       sonos_entity: media_player.boven
       volume: 0.4
-      media_content: "https://hass.klompen.biz/local/audio/deurbel.mp3"
+      media_content: "https://hass.klompen.net/local/audio/deurbel.mp3"
       delay: '00:00:03'
   - service: script.sonos_play
     data:
       sonos_entity: media_player.tuin
       volume: 0.4
-      media_content: "https://hass.klompen.biz/local/audio/deurbel.mp3"
+      media_content: "https://hass.klompen.net/local/audio/deurbel.mp3"
       delay: '00:00:03'
 

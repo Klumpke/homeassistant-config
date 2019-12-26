@@ -42,11 +42,14 @@ card:
     }
   ambient_temperature: '[[ambient_temperature]]'
   chevron_size: 100
-  pending: 1
+  pending: 3
   entity: '[[entity]]'
-  hvac:
-    attribute: hvac_action
-    states:
-      'heating': 'heat'
-      'off': 'off'
-  step: 1
+  # hvac:
+  #   attribute: hvac_action
+  #   states:
+  #     'heating': 'heat'
+  #     'auto': 'auto'
+  #     'off': 'off'
+  step: 0.5
+
+  hvac_modes: heat,auto,off

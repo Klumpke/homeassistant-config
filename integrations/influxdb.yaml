@@ -10,6 +10,10 @@ influxdb:
   default_measurement: state
   include:
     entities:
+      # Nuc performance
+      - sensor.processor_use
+      - sensor.memory_use_percent
+      - sensor.disk_use_percent
       # Tuin temperatuur
       - sensor.0x00158d0002374fb2_temperature
       - sensor.0x00158d0002374fb2_humidity

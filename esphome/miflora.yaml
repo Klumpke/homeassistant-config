@@ -1,17 +1,24 @@
-#substitutions:
+substitutions:
   # used internally
-#  device_name: 'socket_flex'
+  device_name: 'miflora'
   # displayed in HA
-#  friendly_name: 'Socket Flex'
+  friendly_name: 'MiFlora'
 
 esphome:
-  name: miflora
+  name: ${device_name}
   platform: ESP32
   board: esp32doit-devkit-v1
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: ${friendly_name}
+    password: !secret wifi_pass
+
+captive_portal:
 
 # Enable Web
 web_server:

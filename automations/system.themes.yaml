@@ -8,12 +8,6 @@
       entity_id: input_select.theme_selector
     - platform: homeassistant
       event: start
-    # - platform: sun
-    #   event: sunset
-    #   offset: '+00:00:00'
-    # - platform: sun
-    #   event: sunrise
-    #   offset: '+00:00:00'
     - platform: state
       entity_id: sun.sun
       #from: "below_horizon"

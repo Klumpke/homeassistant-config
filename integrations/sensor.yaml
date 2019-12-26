@@ -78,7 +78,7 @@ sensor:
   # The cert_expiry sensor fetches information from a configured URL
   # and displays the certificate expiry in days.
   - platform: cert_expiry
-    host: hass.klompen.biz
+    host: hass.klompen.net
 
   # https://www.home-assistant.io/components/postnl/
   # The postnl platform allows one to track deliveries by PostNL (Dutch Postal Services).

@@ -19,7 +19,6 @@ homeassistant:
 # Discover some devices automatically
 #discovery:
 
-
 # Frontend and HTTP
 frontend:
   themes: !include_dir_named themes
@@ -28,14 +27,6 @@ frontend:
 # Lovelace Mode
 lovelace:
   mode: yaml
-
-# Panel
-panel_iframe:
-  deconz:
-    title: 'deCONZ'
-    #url: 'http://192.168.178.251:40850/pwa'
-    url: 'https://hass.klompen.biz/local/deconz.html'
-    icon: 'mdi:graphql'
 
 script: !include scripts.yaml
 

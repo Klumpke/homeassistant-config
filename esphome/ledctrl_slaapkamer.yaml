@@ -1,6 +1,6 @@
 substitutions:
   # used internally
-  device_name: 'ledstrip_slaapkamer'
+  device_name: 'ledctrl_slaapkamer'
   # displayed in HA
   friendly_name: 'Ledstrip Slaapkamer'
 
@@ -12,6 +12,13 @@ esphome:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: ${friendly_name}
+    password: !secret wifi_pass
+
+captive_portal:
 
 # Enable Web
 web_server:
@@ -27,29 +34,29 @@ api:
 ota:
   password: !secret ota_pass
 
-output:
-  - platform: esp8266_pwm
-    pin: GPIO04
-    id: 'color_red'
-  - platform: esp8266_pwm
-    pin: GPIO12
-    id: 'color_green'
-  - platform: esp8266_pwm
-    pin: GPIO14
-    id: 'color_blue'
-  - platform: esp8266_pwm
-    pin: GPIO13
-    id: 'color_white'
-    
 light:
   - platform: rgbw
     name: "${friendly_name}"
-    white: color_white
-    red: color_red
-    green: color_green
-    blue: color_blue
+    red: pwm_r
+    green: pwm_g
+    blue: pwm_b
+    white: pwm_w
     #default_transition_length: 2s
     effects:
       - random:
       - strobe:
       - flicker:
+
+output:
+  - platform: esp8266_pwm
+    pin: GPIO04
+    id: pwm_r
+  - platform: esp8266_pwm
+    pin: GPIO12
+    id: pwm_g
+  - platform: esp8266_pwm
+    pin: GPIO14
+    id: pwm_b
+  - platform: esp8266_pwm
+    pin: GPIO13
+    id: pwm_w

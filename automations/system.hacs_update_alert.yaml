@@ -1,15 +1,29 @@
-- alias: "Systeem: HACS update notificatie"
-  initial_state: 'true'
+- id: systeem_hacs_update_notificatie
+  alias: "Systeem: HACS update notificatie"
   trigger:
-    - platform: numeric_state
-      entity_id: sensor.hacs
-      above: 0
+    platform: state
+    entity_id: sensor.hacs
+  condition:
+    - condition: template
+      value_template: "{{ states(trigger.entity_id) != 'unknown'}}"
+    - condition: template
+      value_template: "{{ (states(trigger.entity_id) | float) != 0}}"
   action:
     - service: notify.mobile_app_iklumpke
       data_template:
-          title: "HACS update"
-          message: "Er zijn {{ states('sensor.hacs') }} HACS community updates beschikbaar."
-          data:
-            attachment:
-              content-type: png
-              url: https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color/700/012_refresh-512.png
+        title: "HACS update"
+        message: >-
+          {% for repo in state_attr(trigger.entity_id, 'repositories') %}
+            - {{ repo.display_name }} {{ repo["installed version"] }} -> {{ repo["available version"] }}
+          {% endfor %}
+        data:
+          attachment:
+            content-type: png
+            url: https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color/700/012_refresh-512.png
+    - service: persistent_notification.create
+      data_template:
+        title: "HACS update"
+        message: >-
+          {% for repo in state_attr(trigger.entity_id, 'repositories') %}
+            - {{ repo.display_name }} {{ repo["installed version"] }} -> {{ repo["available version"] }}
+          {% endfor %}

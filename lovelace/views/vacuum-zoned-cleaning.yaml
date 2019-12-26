@@ -65,6 +65,7 @@ cards:
               }
             entity: vacuum.xiaomi_vacuum_cleaner
             map_image: '/local/images/xiaomi-map.png'
+            language: nl
             calibration_points:
               - vacuum:
                   x: 24250

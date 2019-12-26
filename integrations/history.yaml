@@ -18,6 +18,11 @@ history:
       #- device_tracker.iphone_jeroen
       #- device_tracker.iphone_joyce
 
+      # Nuc performance
+      - sensor.processor_use
+      - sensor.memory_use_percent
+      - sensor.disk_use_percent
+
       # Verlichting SWITCH
       - switch.fib_fgs223_achterdeur
       - switch.fib_fgs223_carport
@@ -69,6 +74,7 @@ history:
       - binary_sensor.motion_slaapkamer
 
       # DSMR Reader
+      - sensor.power_consumption_watt
       - sensor.dsmr_reading_electricity_currently_delivered
       - sensor.dsmr_day_consumption_electricity_merged
       - sensor.dsmr_day_consumption_electricity1
@@ -81,12 +87,22 @@ history:
       - sensor.s0pcm_hourly
 
       # Thermostat
+      - climate.woonkamer
       - climate.tado_smart_thermostat_ru1388906752
 
       # Speedtest.net
       - sensor.speedtest_download
       - sensor.speedtest_upload
       - sensor.speedtest_ping
+
+      # UniFi Gateway
+      - sensor.unifi_gateway_alerts
+      - sensor.unifi_gateway_firmware_upgradable
+      - sensor.unifi_gateway_lan
+      - sensor.unifi_gateway_vpn
+      - sensor.unifi_gateway_wlan
+      - sensor.unifi_gateway_www
+
       # Weather
       - sensor.yr_symbol
       # MiFlora Olijfbomen

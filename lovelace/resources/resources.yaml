@@ -28,7 +28,9 @@
   type: js
 - url: /community_plugin/simple-weather-card/simple-weather-card.js
   type: module
-- url: /community_plugin/compact-custom-header/compact-custom-header.js
+# - url: /community_plugin/compact-custom-header/compact-custom-header.js
+#   type: module
+- url: /community_plugin/custom-header/custom-header.js
   type: module
 - url: /community_plugin/lovelace-postnl-card/postnl-card.js
   type: module
@@ -63,7 +65,8 @@
 - url: /community_plugin/air-visual-card/air-visual-card.js
   type: js
 
-
+- url: /community_plugin/logbook-card/logbook-card.js
+  type: js
 #- url: /customcards/custom-lovelace/tracker-card/tracker-card.js?v=0.3.2
 #  type: js
 #- url: /customcards/custom-lovelace/day-countdown/day-countdown.js?v=1

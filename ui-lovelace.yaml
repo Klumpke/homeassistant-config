@@ -1,18 +1,10 @@
 # Custom Card Resources
 resources:
   !include lovelace/resources/resources.yaml
-  
-# Compact Custom Header
-# You will need to hide views if you want to
-# have views that behave like popup cards!
-cch:
-  !include lovelace/cch/compact-custom-header.yaml
 
-# Decluttering Templates
-# These are the templates used to avoid too much
-# duplicate code.
-# decluttering_templates:
-#   !include lovelace/decluttering_templates/decluttering_templates.yaml
+# Custom Header
+custom_header:
+  !include lovelace/cch/custom-header.yaml
 
 # Decluttering Templates
 decluttering_templates:

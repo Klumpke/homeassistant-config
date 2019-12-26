@@ -17,3 +17,20 @@ unifi:
       # Filter the SSIDs that tracking will occur on.
       ssid_filter:
       - 'Wooden Shoes'
+
+
+# https://github.com/custom-components/sensor.unifigateway
+#
+sensor:
+  - platform: unifigateway
+    host: !secret device_tracker_unifi_host
+    site_id: !secret device_tracker_unifi_siteid
+    username: !secret device_tracker_unifi_user
+    password: !secret device_tracker_unifi_pass
+    monitored_conditions:
+      - www
+      - lan
+      - wlan
+      - vpn
+      - alerts
+      - firmware

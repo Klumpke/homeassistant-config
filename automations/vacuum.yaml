@@ -1,64 +1,100 @@
-# Vacuum Automations
-- id: vacuum_cleaner_error
-  alias: Vacuum Cleaner Error
-  trigger:
-    - platform: state
-      entity_id: sensor.vacuum_cleaner_status_sensor
-      to: 'Error'
-    - platform: state
-      entity_id: sensor.vacuum_cleaner_status_sensor
-      to: 'In Error'
-    - platform: state
-      entity_id: sensor.vacuum_cleaner_status_sensor
-      to: 'Charging Error'
-  action:
-    - service: notify.mobile_app_iklumpke
-      data:
-        title: 'Roborock S55'
-        message: >-
-          {% if is_state('sensor.vacuum_cleaner_error_sensor', 'No Error')  %}
-            {{states.sensor.vacuum_cleaner_status_sensor.state}}
-          {% else %}
-            {{states.sensor.vacuum_cleaner_error_sensor.state}}
-          {% endif %}
-- id: vacuum_cleaner_error_solved
-  alias: Vacuum Cleaner Error Solved
-  trigger:
-    - platform: state
-      entity_id: sensor.vacuum_cleaner_error_sensor
-      to: 'No Error'
-  action:
-    - service: notify.mobile_app_iklumpke
-      data:
-        title: 'Roborock S55'
-        message: Error Resolved
-- id: vacuum_cleaner_started
-  alias: Vacuum Cleaner Started
+- id: stofzuiger_start_stofzuigen
+  alias: "Stofzuiger: Start stofzuigen"
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
+      from: 'docked'
       to: 'cleaning'
     - platform: state
-      entity_id: vacuum.xiaomi_vacuum_cleaner
-      to: 'returning'
-    - platform: state
-      entity_id: vacuum.xiaomi_vacuum_cleaner
-      to: 'docked'
-    - platform: state
-      entity_id: vacuum.xiaomi_vacuum_cleaner
-      to: 'paused'
-    - platform: state
-      entity_id: vacuum.xiaomi_vacuum_cleaner
-      to: 'idle'
+      entity_id: vacuum.mi_robot_vacuum
+      from: 'idle'
+      to: 'cleaning'
   action:
-    - service: notify.mobile_app_iklumpke
+    - service: notify.ios_notifier
       data:
-        title: 'Roborock S55'
-        message: >-
-          {{states.sensor.vacuum_cleaner_status_sensor.state}}
+        title: 'Stofzuiger Henry'
+        message: 'Gestart met stofzuigen, vroooom...!'
+
+- id: stofzuiger_stop_stofzuigen
+  alias: "Stofzuiger: Stop stofzuigen"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+    from: 'returning'
+    to: 'docked'
+  action:
+    - service: notify.ios_notifier
+      data:
+        title: 'Stofzuiger Henry'
+        message: 'Klaar met stofzuigen. Ik heb er {{states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time}} minuten over gedaan.'
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.cleaned_today
+
+# - id: stofzuiger_foutmelding
+#   alias: "Stofzuiger: Foutmelding"
+#   initial_state: true
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.xiaomi_vacuum_cleaner
+#       to: 'Status: Error'
+#   condition:
+#     - condition: template
+#       value_template: '{{ (as_timestamp(now()) - as_timestamp(state_attr("automation.vacuum_error_-_continue", "last_triggered") | default(0)) | int < 1800)}}'
+#   action:
+#     - service: notify.ios_notifier
+#       data:
+#         title: 'Stofzuiger Henry'
+#         message: 'Het lijkt erop dat er iets mis is met Henry...'
+        # data:
+        #   images:
+        #     - /config/www/navmap.png
+
+- id: stofzuiger_stofzuigen_wanneer_niemand_thuis_is
+  alias: "Stofzuiger: Stofzuigen wanneer niemand thuis is"
+  initial_state: 'on'
+  trigger:
+    - platform: time
+      at: '10:00'
+    - platform: state
+      entity_id: group.device_status
+      from: home
+      to: not_home
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '10:00:00'
+        before: '22:00:00'
+        weekday:
+          - mon
+          - wed
+          - fri
+      - condition: state
+        entity_id: group.device_status
+        state: not_home
+      - condition: state
+        entity_id: input_boolean.cleaned_today
+        state: 'off'
+  action:
+    - service: vacuum.start
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+
+- id: stofzuiger_reset_gestofzuigd_vandaag_teller
+  alias: "Stofzuiger: Reset gestofzuigd vandaag teller"
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '01:00:00'
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.cleaned_today
 
 - id: vacuum_fan_speed_balanced_when_docked
-  alias: Vacuum Fan Speed Balanced When Docked
+  alias: "Stofzuiger: Fan Speed Balanced When Docked"
   trigger:
     - platform: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
@@ -70,7 +106,7 @@
        entity_id: input_select.xiaomi_vacuum
 
 - id: vacuum_fan_speed_quiet
-  alias: Vacuum Fan Speed Quiet
+  alias: "Stofzuiger: Fan Speed Quiet"
   trigger:
     - platform: state
       entity_id: input_select.xiaomi_vacuum
@@ -82,7 +118,7 @@
        fan_speed: 101
 
 - id: vacuum_fan_speed_balanced
-  alias: Vacuum Fan Speed Balanced
+  alias: "Stofzuiger: Fan Speed Balanced"
   trigger:
     - platform: state
       entity_id: input_select.xiaomi_vacuum
@@ -94,7 +130,7 @@
        fan_speed: 102
 
 - id: vacuum_fan_speed_turbo
-  alias: Vacuum Fan Speed Turbo
+  alias: "Stofzuiger: Fan Speed Turbo"
   trigger:
     - platform: state
       entity_id: input_select.xiaomi_vacuum
@@ -106,7 +142,7 @@
        fan_speed: 103
 
 - id: vacuum_fan_speed_max
-  alias: Vacuum Fan Speed Max
+  alias: "Stofzuiger: Fan Speed Max"
   trigger:
     - platform: state
       entity_id: input_select.xiaomi_vacuum
@@ -118,7 +154,7 @@
        fan_speed: 104
 
 - id: vacuum_fan_speed_mop
-  alias: Vacuum Fan Speed Mop
+  alias: "Stofzuiger: Fan Speed Mop"
   trigger:
     - platform: state
       entity_id: input_select.xiaomi_vacuum
