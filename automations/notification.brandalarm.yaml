@@ -1,0 +1,40 @@
+- alias: "Notificatie: Brandmelder Overloop"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: sensor.fibaro_system_fgsd002_smoke_sensor_smoke
+    to: '2'
+  action:
+    #- service: notify.mobile_app_iklumpke
+    - service: notify.ios_notifier
+      data:
+        title: "Brandmelder"
+        message: "Er is BRAND op de overloop!"
+        data:
+          push:
+            sound:
+              #name: default
+              name: "3rd_party_critical.caf"
+              critical: 1
+              volume: 1.0
+
+
+- alias: "Notificatie: Brandmelder Overloop TEST"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id:  sensor.fibaro_system_fgsd002_smoke_sensor_smoke
+    to: '3'
+  action:
+    #- service: notify.mobile_app_iklumpke
+    - service: notify.ios_notifier
+      data:
+        title: "Brandmelder"
+        message: "**TEST** Er is BRAND op de overloop! **TEST**"
+        data:
+          push:
+            sound:
+              #name: default
+              name: "3rd_party_critical.caf"
+              critical: 1
+              volume: 1.0

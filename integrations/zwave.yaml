@@ -65,8 +65,6 @@ zwave:
       ignored: true
     "sensor.fibaro_system_fgsd002_smoke_sensor_general":
       ignored: true
-    "sensor.fibaro_system_fgsd002_smoke_sensor_smoke":
-      ignored: true
     "sensor.fibaro_system_fgsd002_smoke_sensor_smoke_2":
       ignored: true
 

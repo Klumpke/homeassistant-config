@@ -9,7 +9,7 @@ custom_header:
 # Decluttering Templates
 decluttering_templates:
   !include_dir_named lovelace/templates
-
+ 
 # Views
 title: Home
 background: var(--background-image)
@@ -22,6 +22,7 @@ views:
   - !include lovelace/views/climate.yaml
   - !include lovelace/views/energy.yaml
   - !include lovelace/views/test.yaml
+  - !include lovelace/views/test2.yaml
 # The views below are used as fake popup cards
 # They are non swipable and will behave just like
 # a popup card or conditional cards. The order of

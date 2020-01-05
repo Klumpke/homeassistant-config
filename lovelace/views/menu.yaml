@@ -341,11 +341,11 @@ cards:
               - opacity: 0.8
               - tap_action:
                   action: navigate
-                  navigation_path: /lovelace/test
+                  navigation_path: /lovelace/sonos
                   haptic: light
               - hold_action:
                   action: navigate
-                  navigation_path: /lovelace/test
+                  navigation_path: /lovelace/sonos
                   haptic: light
           - !include ../includes/blank-card.yaml
       - type: horizontal-stack

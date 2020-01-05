@@ -73,3 +73,12 @@ group:
     entities:
       - automation.rolluik_omhoog_bij_zonsopkomst_of_om_8_15u
       - automation.rolluik_omlaag_bij_zonsondergang_of_om_21_30u
+
+  kerstmis_modus:
+    name: Kerstmis modus
+    entities:
+      - automation.kerstolijf_aan_bij_schemering
+      - automation.kerstolijf_uit_na_middernacht
+      - automation.kerstverlichting_aan_bij_aanwezigheid
+      - automation.kerstverlichting_doordeweek_uit_om_23_45u_of_afwezigheid
+      - automation.kerstverlichting_weekend_uit_om_01_00u_of_afwezigheid

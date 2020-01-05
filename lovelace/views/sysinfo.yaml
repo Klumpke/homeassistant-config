@@ -123,7 +123,6 @@ cards:
               - entity: zwave.fib_fgsd002_overloop_brandmelder
               - entity: zwave.fibaro_system_fgkf601_keyfob
               - entity: zwave.fibaro_system_fgs223_double_relay
-              - entity: zwave.fibaro_system_fgs223_double_relay_2
               - entity: zwave.fibaro_system_fgwpe_f_wall_plug_gen5
               - entity: zwave.fibaro_system_fgwpe_f_wall_plug_gen5_2
           - !include ../includes/blank-card.yaml

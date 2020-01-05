@@ -31,6 +31,10 @@ history:
       # Rolluiken
       - cover.slaapkamer
 
+      # Brandmelder
+      - binary_sensor.fib_fgsd002_overloop_brandmelder
+      - sensor.fibaro_system_fgsd002_smoke_sensor_smoke
+
       # Temperatuur sensoren
       - sensor.temp_slaapkamer
       - sensor.temp_badkamer

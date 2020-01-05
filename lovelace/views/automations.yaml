@@ -72,9 +72,21 @@ cards:
           - type: custom:button-card
             color_type: blank-card
             aspect_ratio: 1/1
-          - type: custom:button-card
-            color_type: blank-card
-            aspect_ratio: 1/1
+          - type: custom:decluttering-card
+            template: button
+            variables:
+              - entity: group.kerstmis_modus
+              - name: Kerstmis
+              - icon: mdi:pine-tree
+              - label: Modus
+              - show_state: true
+              - grid:
+                  - grid-template-areas: '"i" "n" "l" "s"'
+                  - grid-template-columns: 1fr
+                  - grid-template-rows: 1fr min-content min-content
+              - tap_action:
+                  action: toggle
+                  haptic: light
           - type: custom:decluttering-card
             template: button
             variables:

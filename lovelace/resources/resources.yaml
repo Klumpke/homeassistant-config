@@ -67,6 +67,9 @@
 
 - url: /community_plugin/logbook-card/logbook-card.js
   type: js
+
+- url: /local/custom-sonos-card.js?v=1.0
+  type: module
 #- url: /customcards/custom-lovelace/tracker-card/tracker-card.js?v=0.3.2
 #  type: js
 #- url: /customcards/custom-lovelace/day-countdown/day-countdown.js?v=1

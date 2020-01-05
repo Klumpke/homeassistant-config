@@ -33,7 +33,7 @@
 
 # KERSTVERLICHTING DOORDEWEEK UIT OM 23:45u OF AFWEZIGHEID
 - alias: "Kerstverlichting doordeweek uit om 23:45u of afwezigheid"
-  initial_state: 'true'
+  #initial_state: 'true'
   trigger:
   - platform: time
     at: '23:45:00'
@@ -58,7 +58,7 @@
 
 # KERSTVERLICHTING WEEKEND UIT OM 01:00U OF AFWEZIGHEID
 - alias: "Kerstverlichting weekend uit om 01:00u of afwezigheid"
-  initial_state: 'true'
+  #initial_state: 'true'
   trigger:
   - platform: time
     at: '01:00:00'
@@ -82,7 +82,7 @@
 
 # WOONHUIS BUITENVERLICHTING AAN BIJ ZONSONDERGANG
 - alias: "Kerstolijf aan bij schemering"
-  initial_state: 'true'
+  #initial_state: 'true'
   trigger:
     platform: sun
     event: sunset
@@ -93,7 +93,7 @@
 
 # WOONHUIS BUITENVERLICHTING UIT NA MIDDERNACHT
 - alias: "Kerstolijf uit na middernacht"
-  initial_state: 'true'
+  #initial_state: 'true'
   trigger:
     platform: time
     at: '01:00:00'
