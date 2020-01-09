@@ -37,7 +37,7 @@ sonos_play:
       data_template:
         entity_id: "{{ sonos_entity }}"
         media_content_id: "{{ media_content }}"
-        media_content_type: 'audio/mp3'
+        media_content_type: 'music'
     - delay: "{{ delay }}"
     - service: sonos.restore
       data_template:

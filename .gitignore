@@ -27,6 +27,7 @@
 *.log
 *.pyc
 ._*
+aircast.xml
 home-assistant.log
 options.xml
 OZW_Log.txt

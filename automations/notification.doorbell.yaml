@@ -22,30 +22,29 @@
           url: "https://hass.klompen.net/local/images/cam_voordeur.jpg"
           content-type: jpeg
           hide-thumbnail: false
-
 #  - service: notify.pushover
 #    data:
 #      title: "Deurbel"
 #      message: "Er is aangebeld!"
 #      data:
 #        attachment: "https://hass.klompen.net/local/images/cam_voordeur.jpg"
-
+  - service: camera.play_stream
+    data:
+      entity_id: camera.voordeur_2
+      media_player: media_player.hub_keuken
+  # - service: media_player.play_media
+  #   data:
+  #     entity_id: media_player.hub_keuken
+  #     media_content_id: "https://hass.klompen.net/local/audio/deurbel.mp3"
+  #     media_content_type: music
+  # - delay: '00:00:03'
   - service: script.sonos_play
     data:
-      sonos_entity: media_player.woonkamer
+      sonos_entity: media_player.woonkamer, media_player.boven, media_player.tuin
       volume: 0.4
       media_content: "https://hass.klompen.net/local/audio/deurbel.mp3"
       delay: '00:00:03'
-  - service: script.sonos_play
+  - delay: "00:00:30"
+  - service: media_player.turn_off
     data:
-      sonos_entity: media_player.boven
-      volume: 0.4
-      media_content: "https://hass.klompen.net/local/audio/deurbel.mp3"
-      delay: '00:00:03'
-  - service: script.sonos_play
-    data:
-      sonos_entity: media_player.tuin
-      volume: 0.4
-      media_content: "https://hass.klompen.net/local/audio/deurbel.mp3"
-      delay: '00:00:03'
-
+      entity_id: media_player.hub_keuken

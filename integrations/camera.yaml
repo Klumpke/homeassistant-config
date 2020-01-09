@@ -11,3 +11,20 @@ camera:
     nvr: !secret camera_unifi_video_host
     key: !secret camera_unifi_video_key
     password: !secret camera_unifi_video_pass
+
+  - platform: generic
+    name: "Voordeur_2"
+    still_image_url: "http://192.168.178.251:7080/api/2.0/snapshot/camera/5a5125824f0cd8835e7e2614?force=true&apiKey=5tnxZtWF2mAVTN69MzAC5IdKk399rzs7"
+    stream_source: "rtsp://192.168.178.251:7447/5a5125824f0cd8835e7e2614_1"
+
+  - platform: generic
+    name: "Carport_2"
+    still_image_url: "http://192.168.178.251:7080/api/2.0/snapshot/camera/5a5125824f0cd8835e7e2613?force=true&apiKey=5tnxZtWF2mAVTN69MzAC5IdKk399rzs7"
+    stream_source: "rtsp://192.168.178.251:7447/5a5125824f0cd8835e7e2613_1"
+
+  - platform: generic
+    name: "Tuin_2"
+    still_image_url: "http://192.168.178.251:7080/api/2.0/snapshot/camera/5c1e0841d5de0f4a9fe2c4fa?force=true&apiKey=5tnxZtWF2mAVTN69MzAC5IdKk399rzs7"
+    stream_source: "rtsp://192.168.178.251:7447/5c1e0841d5de0f4a9fe2c4fa_1"
+
+stream:

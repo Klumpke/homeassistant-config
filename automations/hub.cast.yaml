@@ -1,0 +1,15 @@
+- alias: Cast to Hub
+  # trigger: 
+  #   platform: state
+  #   entity_id: media_player.hub_keuken
+  #   to: 'idle'
+  #   for:
+  #     minutes: 1
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    service: cast.show_lovelace_view
+    data:
+      entity_id: media_player.hub_keuken
+      view_path: home

@@ -46,6 +46,15 @@ light:
       - random:
       - strobe:
       - flicker:
+#light:
+#  - platform: rgb
+#    name: "RGB"
+#    red: pwm_r
+#    green: pwm_g
+#    blue: pwm_b
+#  - platform: monochromatic
+#    name: "Wit"
+#    output: pwm_w
 
 output:
   - platform: esp8266_pwm

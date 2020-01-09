@@ -25,6 +25,18 @@ google_assistant:
         - slaapkamer rolluik
         - rolluik
       room: Slaapkamer
+    # camera.voordeur_2:
+    #   name: Voordeur
+    #   room: Buiten
+    # camera.carport_2:
+    #   name: Carport
+    #   room: Buiten
+    # camera.tuin_2:
+    #   name: Tuin
+    #   room: Buiten
+    # vacuum.xiaomi_vacuum_cleaner:
+    #   name: Stofzuiger
+    #   room: Woonkamer
 
   # List of entity domains to expose to Google Assistant if expose_by_default is set to true.
   # This has no effect if expose_by_default is set to false.
@@ -32,5 +44,7 @@ google_assistant:
     - switch
     - light
     - cover
+    - camera
+    - vacuum
   #  - group
   #  - scene
