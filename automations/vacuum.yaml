@@ -1,3 +1,46 @@
+- id: stofzuiger_stofzuigen_wanneer_niemand_thuis_is
+  alias: "Stofzuiger: Stofzuigen wanneer niemand thuis is"
+  initial_state: 'on'
+  trigger:
+    - platform: time
+      at: '10:00'
+    - platform: state
+      entity_id: group.device_status
+      from: home
+      to: not_home
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        after: '10:00:00'
+        before: '22:00:00'
+        weekday:
+          - mon
+          - wed
+          - fri
+          - sat
+          - sun
+      - condition: state
+        entity_id: group.device_status
+        state: not_home
+      - condition: state
+        entity_id: input_boolean.cleaned_today
+        state: 'off'
+  action:
+    - service: vacuum.start
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+
+- id: stofzuiger_reset_gestofzuigd_vandaag_teller
+  alias: "Stofzuiger: Reset gestofzuigd vandaag teller"
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '01:00:00'
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.cleaned_today
+
 - id: stofzuiger_start_stofzuigen
   alias: "Stofzuiger: Start stofzuigen"
   initial_state: 'on'
@@ -51,47 +94,6 @@
         # data:
         #   images:
         #     - /config/www/navmap.png
-
-- id: stofzuiger_stofzuigen_wanneer_niemand_thuis_is
-  alias: "Stofzuiger: Stofzuigen wanneer niemand thuis is"
-  initial_state: 'on'
-  trigger:
-    - platform: time
-      at: '10:00'
-    - platform: state
-      entity_id: group.device_status
-      from: home
-      to: not_home
-  condition:
-    condition: and
-    conditions:
-      - condition: time
-        after: '10:00:00'
-        before: '22:00:00'
-        weekday:
-          - mon
-          - wed
-          - fri
-      - condition: state
-        entity_id: group.device_status
-        state: not_home
-      - condition: state
-        entity_id: input_boolean.cleaned_today
-        state: 'off'
-  action:
-    - service: vacuum.start
-      entity_id: vacuum.xiaomi_vacuum_cleaner
-
-- id: stofzuiger_reset_gestofzuigd_vandaag_teller
-  alias: "Stofzuiger: Reset gestofzuigd vandaag teller"
-  initial_state: 'on'
-  trigger:
-    platform: time
-    at: '01:00:00'
-  action:
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.cleaned_today
 
 - id: vacuum_fan_speed_balanced_when_docked
   alias: "Stofzuiger: Fan Speed Balanced When Docked"
