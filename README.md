@@ -88,14 +88,12 @@ On top of that there's **Docker**.
 ### How does it look like?
 The below screenshots show some mobile examples.<br>
 ## Light theme:
-![mobile-light-01](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-light-01.png "Mobile Light 1") ![mobile-light-02](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-light-02.png "Mobile Light 2")
-![mobile-light-03](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-light-03.png "Mobile Light 3") ![mobile-light-04](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-light-04.png "Mobile Light 4")
-
+![mobile-light-01](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-light-01.png "Mobile Light 1") ![mobile-light-02](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-light-02.png "Mobile Light 2")
+![mobile-light-03](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-light-03.png "Mobile Light 3") ![mobile-light-04](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-light-04.png "Mobile Light 4")
 
 ## Dark theme:
-:-------------------------:|:-------------------------:
-![1](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-dark-01.png)  |  ![2](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-dark-02.png)
-![3](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-dark-03.png)  |  ![4](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-dark-04.png)
+![mobile-dark-01](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-dark-01.png "Mobile Dark 1") ![mobile-dark-02](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-dark-02.png "Mobile Dark 2")
+![mobile-dark-03](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-dark-03.png "Mobile Dark 3") ![mobile-dark-04](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-dark-04.png "Mobile Dark 4")
 
 ### Inspired by
 - https://github.com/jimz011/homeassistant
