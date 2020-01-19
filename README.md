@@ -49,7 +49,7 @@ On top of that there's **Docker**.
 - **UniFi Video** 
 *(pducharme/unifi-video-controller)*
 - **DSMR** 
-*(xirixiz/dsmr-reader-docker)*
+*(ualex73/dsmr-reader-docker)*
 - **S0PCM** 
 *(ualex73/s0pcm-reader)*
 
