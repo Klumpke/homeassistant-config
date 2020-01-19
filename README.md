@@ -87,7 +87,15 @@ On top of that there's **Docker**.
 
 ### How does it look like?
 The below screenshots show some mobile examples.<br>
----- TODO ----
+## Light theme:
+:-------------------------:|:-------------------------:
+![1](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-light-01.png)  |  ![2](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-light-02.png)
+![3](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-light-03.png)  |  ![4](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-light-04.png)
+
+## Dark theme:
+:-------------------------:|:-------------------------:
+![1](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-dark-01.png)  |  ![2](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-dark-02.png)
+![3](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-dark-03.png)  |  ![4](https://github.com/Klumpke/homeassistant-config/blob/master/screenshots/mobile-dark-04.png)
 
 ### Inspired by
 - https://github.com/jimz011/homeassistant
