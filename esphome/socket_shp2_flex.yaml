@@ -37,6 +37,7 @@ binary_sensor:
     name: ${plug_name}_button
     pin:
       number: GPIO3
+      #number: GPIO13
       mode: INPUT_PULLUP
       inverted: True
     on_press:
@@ -51,6 +52,7 @@ switch:
     icon: mdi:power-socket-eu
     restore_mode: ALWAYS_ON
     pin: GPIO14
+    #pin: GPIO15
     on_turn_on:
       - switch.turn_on: blue_led
     on_turn_off:
@@ -63,6 +65,7 @@ switch:
     restore_mode: ALWAYS_ON
     pin:
       number: GPIO1
+      #number: GPIO02
       inverted: True
 
   - platform: gpio
@@ -72,6 +75,7 @@ switch:
     restore_mode: ALWAYS_OFF
     pin:
       number: GPIO13
+      #number: GPIO00
       inverted: True
 
 sensor:
@@ -81,6 +85,7 @@ sensor:
       inverted: True
     cf_pin: GPIO04
     cf1_pin: GPIO05
+    #cf1_pin: GPIO14
     current_resistor: ${current_res}
     voltage_divider: ${voltage_div}
     current:

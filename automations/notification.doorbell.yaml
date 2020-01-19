@@ -8,6 +8,10 @@
     entity_id: binary_sensor.fib_fgbs001_deurbel
     from: 'off'
     to: 'on'
+  # condition:
+  # ### dit voorkomt het klapperen
+  #   condition: template
+  #   value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.automation_notify_doorbell.attributes.last_triggered | default(0)) | int > 10)}}'
   action:
   - service: camera.snapshot
     data:

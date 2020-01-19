@@ -6,7 +6,7 @@
 
 ---
 
-### Status of: 2020.01.05
+### Status of: 2020.01.19
 Partial Home Assistant configuration with themes, templates and views.
 
 ### System Architecture
@@ -83,6 +83,7 @@ On top of that there's **Docker**.
 - Tado [Smart Thermostat v3][tado_smart_thermostat]
 - [Roborock S55][roborock_s55]
 - Ubiquiti [G3 Camera][ubnt_g3]
+- Google [Next Hub][google_hub]
 
 ### How does it look like?
 The below screenshots show some mobile examples.<br>
@@ -132,6 +133,8 @@ The below screenshots show some mobile examples.<br>
 [tado_smart_thermostat]: https://www.tado.com/nl/producten/starterskit-slimme-thermostaat
 [roborock_s55]: https://nl.aliexpress.com/item/32852322829.html?spm=a2g0s.9042311.0.0.563e4c4dl4qQt1
 [ubnt_g3]: https://www.ui.com/unifi-video/unifi-video-camera-g3/
+[google_hub]: https://store.google.com/nl/product/google_nest_hub
+
 
 [xiaomi_curtains_track]: https://nl.aliexpress.com/item/3-5-M-Xiaomi-Super-Stille-Elektrische-Gordijn-Track-voor-Mijia-Aqara-Motor-Automatische-Gordijn-Rails/32922713008.html?spm=a2g0s.9042311.0.0.1cf94c4d06j07R
 [xiaomi_curtains_motor]: https://nl.aliexpress.com/item/Xiaomi-Aqara-Smart-Gordijn-Motor-Intelligente-Zigbee-Wifi-Voor-xiaomi-Smart-Home-Apparaat-Draadloze-Afstandsbediening-Via/32872671734.html?spm=a2g0s.9042311.0.0.1cf94c4d06j07R

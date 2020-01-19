@@ -44,3 +44,17 @@
   - service: switch.turn_off
     data:
       entity_id: switch.fib_fgs223_carport
+
+
+
+# TURN ON OUTSIDE LIGHTS ON SUNSET
+# - alias: "Exterior Lighting on when dark outside"
+#   trigger:
+#     platform: numeric_state
+#     entity_id: sun.sun
+#     value_template: "{{ state.attributes.elevation }}"
+#     # Can be a positive or negative number
+#     below: -1.0
+#   action:
+#     service: homeassistant.turn_on
+#     entity_id: switch.sonoff
