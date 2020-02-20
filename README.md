@@ -56,6 +56,11 @@ On top of that there's **Docker**.
 **And I use the following hardware in my house:**
 - [Conbee II][conbee] stick
 - Aeotec [Z-Stick Gen5][aeotec_zstick]
+- Philips Hue [Bridge][hue_bridge]
+- Philips Hue [E27 White Ambiance][hue_e27_white_ambiance]
+- Philips Hue [E14 White and Color Ambiance][hue_e14_white_color_ambiance]
+- Philips Hue [Dimmer switch][hue_dimmer_switch]
+- Senic [Friends of Hue Switch][senic_foh_switch]
 - Ikea [Trådfri Remote control 5 button][ikea_remote]
 - Ikea [Trådfri Wireless Dimmer][ikea_dimmer]
 - Ikea [Trådfri Wireless motion sensor][ikea_motion]
@@ -113,6 +118,11 @@ The below screenshots show some mobile examples.<br>
 
 [conbee]: https://www.phoscon.de/en/conbee2
 [aeotec_zstick]: https://aeotec.com/z-wave-usb-stick/
+[hue_bridge]: https://www2.meethue.com/nl-nl/p/hue-bridge/8718696511800
+[hue_e27_white_ambiance]: https://www2.meethue.com/nl-nl/p/hue-white-ambiance-2-pack-e27/8718699673369
+[hue_e14_white_color_ambiance]: https://www2.meethue.com/nl-nl/p/hue-white-and-color-ambiance-losse-kaarslamp-e14/8718696695166
+[hue_dimmer_switch]: https://www2.meethue.com/nl-nl/p/hue-dimmer-switch/8718696743157
+[senic_foh_switch]: https://www.senic.com/en/friends-of-hue-smart-switch
 [ikea_remote]: https://www.ikea.com/nl/nl/p/tradfri-afstandsbediening-30443124/
 [ikea_dimmer]: https://www.ikea.com/nl/nl/p/tradfri-draadloze-dimmer-wit-70408595/
 [ikea_motion]: https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/
