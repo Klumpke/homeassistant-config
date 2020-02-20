@@ -1,0 +1,13 @@
+sensor:
+  - platform: rdw
+    name: "Opel Insignia"
+    plate: 27XHK8
+    sensors:
+      - expdate
+      - insured
+  - platform: rdw
+    name: "Volkswagen Polo"
+    plate: XT249K
+    sensors:
+      - expdate
+      - insured

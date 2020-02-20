@@ -44,6 +44,11 @@ recorder:
       - binary_sensor.fib_fgsd002_overloop_brandmelder
       - sensor.fibaro_system_fgsd002_smoke_sensor_smoke
 
+      # DarkSky
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_wind_speed
+
       # Temperatuur sensoren
       - sensor.temp_slaapkamer
       - sensor.temp_badkamer
@@ -115,6 +120,11 @@ recorder:
       - sensor.unifi_gateway_vpn
       - sensor.unifi_gateway_wlan
       - sensor.unifi_gateway_www
+
+      # P2000
+      - sensor.p2000_someren
+      - sensor.p2000_limburg_noord
+      - sensor.p2000_brabant_zuid_oost
 
       # Weather
       - sensor.yr_symbol

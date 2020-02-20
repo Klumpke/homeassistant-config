@@ -1,0 +1,33 @@
+- type: custom:mini-graph-card
+  entities:
+    - sensor.power_consumption_watt
+  name: STROOM VERBRUIK
+  hours_to_show: 24
+  hour24: true
+  points_per_hour: 2
+  decimals: 0
+  show:
+    graph: bar
+    extrema: true
+- type: custom:mini-graph-card
+  entities:
+    - sensor.dsmr_consumption_gas_currently_delivered
+  name: GAS VERBRUIK
+  hours_to_show: 24
+  hour24: true
+  points_per_hour: 2
+  decimals: 3
+  show:
+    graph: bar
+    extrema: true
+- type: custom:mini-graph-card
+  entities:
+    - sensor.s0pcm_hourly
+  name: WATER VERBRUIK
+  hours_to_show: 24
+  hour24: true
+  points_per_hour: 2
+  #decimals: 0
+  show:
+    graph: bar
+    extrema: true

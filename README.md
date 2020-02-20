@@ -6,7 +6,7 @@
 
 ---
 
-### Status of: 2020.01.19
+### Status of: 2020.02.20
 Partial Home Assistant configuration with themes, templates and views.
 
 ### System Architecture
@@ -96,6 +96,7 @@ The below screenshots show some mobile examples.<br>
 ![mobile-dark-03](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-dark-03.png "Mobile Dark 3") ![mobile-dark-04](https://github.com/Klumpke/homeassistant-config/blob/master/.github/screenshots/mobile-dark-04.png "Mobile Dark 4")
 
 ### Inspired by
+- https://github.com/dwainscheeren/lovelace-dwains-theme
 - https://github.com/jimz011/homeassistant
 - https://github.com/AmoebeLabs/Home-Assistant-Config
 

@@ -1,0 +1,13 @@
+- alias: 'P2000 Bericht'
+  trigger:
+    platform: state
+    entity_id: sensor.p2000_someren
+  action:
+    #- service_template: notify.ios_notifier
+    - service_template: notify.mobile_app_iklumpke
+      data_template:
+        title: "Hulpdiensten omgeving Someren"
+        message: >
+          {{ states.sensor.p2000_someren.state + states.sensor.p2000_someren.attributes.capcodes }}
+        data:
+          url: "https://www.google.com/maps/search/?api=1&query={{ states.sensor.p2000_someren.attributes.latitude }},{{ states.sensor.p2000_someren.attributes.longitude }}"

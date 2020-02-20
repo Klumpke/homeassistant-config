@@ -95,6 +95,9 @@ sensor:
           {% if is_state('media_player.tv_woonkamer', 'on') %}
             {% set total = total + 1 %}
           {% endif %}
+          {% if is_state('media_player.eetkamerkamer', 'playing') %}
+            {% set total = total + 1 %}
+          {% endif %}
           {% if is_state('cover.slaapkamer', 'closed') %}
             {% set total = total + 1 %}
           {% endif %}

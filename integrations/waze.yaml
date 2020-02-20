@@ -1,0 +1,50 @@
+sensor:
+  # https://www.home-assistant.io/components/waze_travel_time/
+  # The waze_travel_time sensor provides travel time from the Waze.
+  # JEROEN
+  - platform: waze_travel_time
+    name: Reistijd Jeroen
+    origin: person.jeroen
+    destination: zone.home
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd Jeroen Alfion
+    origin: person.jeroen
+    destination: zone.alfion
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd Ouders Jeroen
+    origin: person.jeroen
+    destination: zone.ouders_jeroen
+    region: EU
+
+  # JOYCE
+  - platform: waze_travel_time
+    name: Reistijd Joyce
+    origin: person.joyce
+    destination: zone.home
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd Joyce Dolfijn (Toff)
+    origin: person.joyce
+    destination: zone.dolfijn_toff
+    region: EU
+  - platform: waze_travel_time
+    name: Reistijd Joyce Dolfijn (Luchen)
+    origin: person.joyce
+    destination: zone.dolfijn_luchen
+    region: EU
+  - platform: waze_travel_time
+    name: Reistijd Joyce Dolfijn ('t Schrijverke)
+    origin: person.joyce
+    destination: zone.dolfijn_t_schrijverke
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd joycejeroen
+    origin: person.joyce
+    destination: person.jeroen
+    region: EU

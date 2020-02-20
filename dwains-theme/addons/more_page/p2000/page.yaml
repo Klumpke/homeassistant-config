@@ -1,0 +1,19 @@
+- entity: sensor.p2000_someren
+  #icon: 'mdi:ambulance'
+  name: Someren
+  type: sensor
+- entity: sensor.p2000_brabant_zuid_oost
+  #icon: 'mdi:ambulance'
+  name: Brabant Zuid & Oost
+  type: sensor
+- entity: sensor.p2000_limburg_noord
+  #icon: 'mdi:ambulance'
+  name: Limburg Noord
+  type: sensor
+- default_zoom: 11
+  entities:
+    - entity: sensor.p2000_someren
+    - entity: zone.home
+    - entity: sensor.p2000_brabant_zuid_oost
+  #title: Someren & Brabant
+  type: map

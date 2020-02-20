@@ -1,0 +1,9 @@
+- type: custom:mod-card
+  style: |
+    ha-card {
+      padding: 8px; 
+    }
+  card:
+    type: map
+    entities:
+      - person.joyce

@@ -8,32 +8,70 @@ homeassistant:
   elevation: !secret zone_home_elevation
   # metric for Metric, imperial for Imperial
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # Timezone
   time_zone: Europe/Amsterdam
   # Customization file
   customize: !include customize.yaml
 
   # Load packages
-  packages: !include_dir_named integrations
+  packages: !include_dir_named integrations/
 
 # Discover some devices automatically
 #discovery:
 
-# Frontend and HTTP
-frontend:
-  themes: !include_dir_named themes
-  javascript_version: auto
+# Customizer Component
+# https://github.com/andrey-git/home-assistant-customizer
+# customizer:
+#   custom_ui: local
+
+script: !include scripts.yaml
+
+# Load Scenes
+# https://www.home-assistant.io/docs/scene/editor/
+scene: !include scenes.yaml
 
 # Lovelace Mode
 lovelace:
   mode: yaml
 
-script: !include scripts.yaml
+# Frontend and HTTP
+frontend:
+  themes: !include_dir_merge_named themes
+#  themes: !include_dir_named themes
+  extra_html_url:
+    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-solid.html
+    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-regular.html
+    - /local/dwains-theme/fonts/fontawesome/hass-fontawesome-light.html
 
-# Browser Mod
+# Load Browser Mod
 # https://github.com/thomasloven/hass-browser_mod
-# browser_mod:
-#   95f0a1b5-438c0d1f:
-#     name: pc-jeroen
-#   768fc0ad-b97ed01b:
-#     name: gsm-jeroen
+browser_mod:
+
+#Dwains theme definitions (this is for doing all the jinja2 inside YAML files)
+dwains_theme:
+  information:
+    version: '1.1.4'
+  translations:
+    !include_dir_merge_named dwains-theme/translations/
+  configuration:
+    !include_dir_merge_named dwains-theme/configs/
+  icons:
+    !include dwains-theme/configs/icons.yaml
+
+#Sensor for latest version
+sensor:
+  - platform: scrape
+    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.1.4
+    name: Dwains Theme Version
+    select: ".current-version h1"
+    value_template: '{{ value.split(":")[1] }}'
+
+#Input select
+input_select:
+  #Theme selector
+  theme_selector:
+    name: Theme Selector
+    options:
+      - Auto Mode
+      - Dark Mode
+      - Light Mode

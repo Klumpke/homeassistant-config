@@ -1,7 +1,7 @@
 device_tracker.iklumpke:
-  entity_picture: /local/images/jeroen.png
+  entity_picture: /local/images/persons/jeroen_person.png
 device_tracker.joyce:
-  entity_picture: /local/images/joyce.png
+  entity_picture: /local/images/persons/joyce_person.png
 
 sensor.blink_gft:
   entity_picture: /local/images/afval_gft_small.png
@@ -16,6 +16,16 @@ sensor.blink_pmd:
   entity_picture: /local/images/afval_pmd_small.png
   friendly_name: PMD
 
+
+sensor.hp_m281fdw_toner_black:
+  friendly_name: Zwart
+sensor.hp_m281fdw_toner_cyan:
+  friendly_name: Cyaan
+sensor.hp_m281fdw_toner_magenta:
+  friendly_name: Magenta
+sensor.hp_m281fdw_toner_yellow:
+  friendly_name: Geel
+
 sensor.printer_toner_cyaan:
   friendly_name: Cyaan
 sensor.printer_toner_geel:
@@ -24,3 +34,113 @@ sensor.printer_toner_magenta:
   friendly_name: Magenta
 sensor.printer_toner_zwart:
   friendly_name: Zwart
+
+
+# Lights
+light.fib_fgd212_woonkamer_spots:
+  templates:
+    icon: mdi:wall-sconce-flat
+    # icon: >
+    #   if (state === 'on') return 'fas:light-ceiling';
+    #   return 'fal:light-ceiling';
+  friendly_name: Spotjes
+
+light.combikast:
+  templates:
+    icon: mdi:floor-lamp
+  friendly_name: Combikast
+
+light.fib_fgd212_eetkamer:
+  templates:
+    icon: mdi:vanity-light
+  friendly_name: Hanglamp
+
+light.dressoir:
+  templates:
+    icon: mdi:floor-lamp
+  friendly_name: Dressoir
+
+light.broodkast:
+  templates:
+    icon: mdi:lightbulb
+  friendly_name: Broodkast
+
+light.nachtkast_l:
+  templates:
+    icon: mdi:lamp
+  friendly_name: Jeroen
+
+light.nachtkast_r:
+  templates:
+    icon: mdi:lamp
+  friendly_name: Joyce
+
+light.ledstrip_slaapkamer:
+  templates:
+    icon: mdi:led-strip
+  friendly_name: Ledstrip
+
+light.fib_fgd212_keuken_plafond:
+  templates:
+    icon: mdi:ceiling-light
+  friendly_name: Plafonniere
+
+light.keuken_leds:
+  templates:
+    icon: mdi:led-strip
+  friendly_name: LEDs
+
+light.fib_fgd212_keuken_nis:
+  templates:
+    icon: mdi:ceiling-light
+  friendy_name: Nis
+
+light.garage:
+  templates:
+    icon: mdi:ceiling-light
+  friendly_name: Garage
+
+light.bijkeuken_leds:
+  templates:
+    icon: mdi:led-strip
+  friendly_name:  Bijkeuken LEDs
+
+light.hal:
+  templates:
+    icon: mdi:ceiling-light
+  friendly_name: Entree
+
+light.gateway_light_7811dcdae475:
+  templates:
+    icon: mdi:ceiling-light
+  friendly_name: Xiaomi
+
+light.tuin:
+  templates:
+    icon: mdi:floor-lamp
+  friendly_name: Tuin
+
+light.terras:
+  templates:
+    icon: mdi:ceiling-light
+  friendly_name: Terras
+
+light.tuinhuis:
+  templates:
+    icon: mdi:ceiling-light
+  friendly_name: Tuinhuis
+
+switch.fib_fgs223_voordeur:
+  templates:
+    icon: mdi:outdoor-lamp
+  friendly_name: Voordeur
+
+switch.fib_fgs223_carport:
+  templates:
+    icon: mdi:lightbulb-multiple
+  friendly_name: Carport
+
+switch.fib_fgs223_achterdeur:
+  templates:
+    icon: mdi:outdoor-lamp
+  friendly_name: Achterdeur

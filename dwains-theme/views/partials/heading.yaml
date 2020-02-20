@@ -1,0 +1,29 @@
+# dwains_theme
+
+# Heading partial
+{% if not type and type != 'button' %}
+type: markdown
+style: |
+  ha-card {
+    box-shadow: none;
+    background: none;
+    color: var(--dwains-theme-grey);
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .markdown {
+    padding: 0px 16px 0px 16px;
+  }
+content: "{{ title }}"
+{% else %}
+type: custom:button-card
+entity: {{ entity }}
+name: {{ title }}
+template: partials_heading
+tap_action:
+  !include 
+    - ../popups/light.yaml
+    - entity: {{ entity }}
+double_tap_action:
+  action: toggle
+{% endif %}

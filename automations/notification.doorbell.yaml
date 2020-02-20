@@ -16,14 +16,14 @@
   - service: camera.snapshot
     data:
       entity_id: camera.voordeur
-      filename: '/config/www/images/cam_voordeur.jpg'
+      filename: '/config/www/images/snapshots/cam_voordeur.jpg'
   - service: notify.ios_notifier
     data:
       title: "Deurbel"
       message: "Er is aangebeld!"
       data:
         attachment:
-          url: "https://hass.klompen.net/local/images/cam_voordeur.jpg"
+          url: "https://hass.klompen.net/local/images/snapshots/cam_voordeur.jpg"
           content-type: jpeg
           hide-thumbnail: false
 #  - service: notify.pushover
@@ -31,7 +31,7 @@
 #      title: "Deurbel"
 #      message: "Er is aangebeld!"
 #      data:
-#        attachment: "https://hass.klompen.net/local/images/cam_voordeur.jpg"
+#        attachment: "https://hass.klompen.net/local/images/snapshots/cam_voordeur.jpg"
   - service: camera.play_stream
     data:
       entity_id: camera.voordeur_2

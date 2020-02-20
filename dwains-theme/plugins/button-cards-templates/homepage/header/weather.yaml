@@ -1,0 +1,110 @@
+# dwains_theme
+
+header_weather:
+  layout: icon_name_state2nd
+  show_state: true
+  show_label: true
+  name: >
+    [[[ 
+      {% if _d_t_config.global["outside_temperature"] %}
+        if(states['{{ _d_t_config.global["outside_temperature"] }}']){
+          {% if _d_t_config.global["outside_temperature"].split('.')[0] == 'sensor' %}
+            return (Math.round(states['{{ _d_t_config.global["outside_temperature"] }}'].state * 10) / 10) + '° {{ _d_t_trans.climate.outside }}';
+          {% else %}
+            return 'Outside temp no sensor type';
+          {% endif %}
+        } else {
+          console.log('Dwains Theme Error: Invalid global.yaml:outside_temperature entity!');
+          return 'Weather Entity Error!';
+        }
+      {% else %}
+        if(entity){
+          return entity.attributes.temperature + "° {{ _d_t_trans.climate.outside }}";
+        } else {
+          console.log('Dwains Theme Error: Invalid global.yaml:weather entity!');
+          return 'Weather Entity Error!';
+        }
+      {% endif %}
+    ]]]
+  entity: {{ _d_t_config.global["weather"] }}
+  tap_action:
+    !include 
+      - ../../../../views/popups/weather.yaml
+      - entity: {{ _d_t_config.global["weather"] }}
+  #lets see if we can add a inside temperature
+  {% if _d_t_config.global["inside_temperature"] %}
+  label: >
+    [[[ 
+      if(states['{{ _d_t_config.global["inside_temperature"] }}']){
+        {% if _d_t_config.global["inside_temperature"].split('.')[0] == 'sensor' %}
+          return (Math.round(states['{{ _d_t_config.global["inside_temperature"] }}'].state * 10) / 10) + '° {{ _d_t_trans.climate.inside }}';
+        {% elif _d_t_config.global["inside_temperature"].split('.')[0] == 'climate' %}
+          return states['{{ _d_t_config.global["inside_temperature"] }}'].attributes.current_temperature + '° {{ _d_t_trans.climate.inside }}'; 
+        {% else %}
+          return 'NaN';
+        {% endif %}
+      } else {
+        console.log('Dwains Theme Error: Invalid global.yaml:inside_temperature entity!');
+      }
+    ]]]
+  {% else %}
+  label: '&nbsp;'
+  {% endif %}
+  state:
+    - value: clear-night
+      icon: mdi:weather-night
+    - value: cloudy
+      icon: mdi:weather-cloudy
+    - value: overcast
+      icon: mdi:weather-cloudy-arrow-right
+    - value: fog
+      icon: mdi:weather-fog
+    - value: hail
+      icon: mdi:weather-hail
+    - value: lightning
+      icon: mdi:weather-lightning
+    - value: lightning-rainy
+      icon: mdi:weather-lightning-rainy
+    - value: partlycloudy
+      icon: mdi:weather-partly-cloudy
+    - value: pouring
+      icon: mdi:weather-pouring
+    - value: rainy
+      icon: mdi:weather-rainy
+    - value: snowy
+      icon: mdi:weather-snowy
+    - value: snowy-rainy
+      icon: mdi:weather-snowy-rainy
+    - value: sunny
+      icon: mdi:weather-sunny
+    - value: windy
+      icon: mdi:weather-windy
+    - value: windy-variant
+      icon: mdi:weather-windy-variant
+  styles:
+    grid:
+      - grid-template-areas: '"i s""i n""i l"'
+      - grid-template-columns: 35% 1fr
+    card:
+      - box-shadow: none
+      - padding: 0%
+      - height: 55px
+    icon:
+      - color: '#feb00b'
+      - width: 100%
+    img_cell:
+      - width: 45px
+      - height: 45px
+      - color: white
+    state:
+      - color: white
+      - justify-self: start
+      - font-size: 14px
+    name:
+      - color: white
+      - justify-self: start
+      - font-size: 12px
+    label:
+      - justify-self: start
+      - font-size: 12px
+      - color: white

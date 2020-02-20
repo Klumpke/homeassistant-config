@@ -34,7 +34,6 @@ OZW_Log.txt
 pyozw.sqlite
 zwcfg_*
 zwscene.xml
-www/images/cam_*
 
 # Ignore folders.
 .cloud
@@ -45,12 +44,15 @@ glances
 node-red
 tts
 _OLD
+www/images/snapshots
+www/dwains-theme/fonts
 
 # ESPHome ignores
 esphome/secrets.yaml
 esphome/*/*
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+google_assistant_service_account.json
 google_calendars.yaml
 ip_bans.yaml
 secrets.yaml

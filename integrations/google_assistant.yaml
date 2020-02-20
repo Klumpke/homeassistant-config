@@ -6,10 +6,11 @@
 #
 google_assistant:
   # Project ID from the Actions on Google console
-  project_id: !secret google_assistant_project_id
-
-  # Your Homegraph API key (for the google_assistant.request_sync service)
-  api_key: !secret google_assistant_api_key
+  project_id: !secret google_assistant_project_id 
+  # Service account information.
+  service_account: !include ../google_assistant_service_account.json
+  # Actively report state changes on entities
+  #report_state: true
 
   # Configuration for specific entities. Allows customization of names and types
   # These are imported from another folder, to decouple them from the packages.

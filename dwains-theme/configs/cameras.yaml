@@ -1,0 +1,4 @@
+cameras:
+  - entity: camera.voordeur
+  - entity: camera.carport
+  - entity: camera.tuin

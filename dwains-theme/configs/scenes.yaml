@@ -1,0 +1,9 @@
+scenes:
+  - entity: scene.tv_kijken_woonkamer
+    icon: fas:tv
+    icon_color: '#ffffff'
+    background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'
+  - entity: scene.tv_kijken_slaapkamer
+    icon: fas:tv
+    icon_color: '#ffffff'
+    background: 'linear-gradient( 135deg, #FEB692 10%, #EA5455 100%)'

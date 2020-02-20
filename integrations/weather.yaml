@@ -14,6 +14,17 @@ weather:
     mode: daily
 
 sensor:
+  # DarkSky
+  # https://www.home-assistant.io/integrations/darksky/
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    monitored_conditions:
+      - summary
+      - temperature
+      - humidity
+      - wind_speed
+    language: nl
+
   # Weather prediction
   - platform: yr
 

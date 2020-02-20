@@ -1,0 +1,6 @@
+- type: entities
+  entities:
+    - entity: switch.tv_woonkamer_ambilight_hue
+      icon: fas:tv
+    - entity: switch.tv_slaapkamer_ambilight_hue
+      icon: fas:tv

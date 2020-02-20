@@ -48,13 +48,17 @@ light:
     entity_id: switch.fib_fgs223_hal
 
   - platform: switch
-    name: Kerstolijf A
-    entity_id: switch.kerstolijf_a
+    name: Voordeur
+    entity_id: switch.fib_fgs223_voordeur
+
   - platform: switch
-    name: Kerstolijf B
-    entity_id: switch.kerstolijf_b
-  - platform: group
+    name: Carport
+    entity_id: switch.fib_fgs223_carport
+
+  - platform: switch
+    name: Achterdeur
+    entity_id: switch.fib_fgs223_achterdeur
+
+  - platform: switch
     name: Kerstolijf
-    entities:
-      - light.kerstolijf_a
-      - light.kerstolijf_b
+    entity_id: switch.kerstolijf

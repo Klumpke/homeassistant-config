@@ -1,0 +1,37 @@
+- id: '1581275296306'
+  name: TV Kijken Woonkamer
+  entities:
+    light.combikast:
+      brightness: 85
+      color_temp: 405
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Combikast
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+      templates:
+        icon: mdi:floor-lamp
+    switch.tv_woonkamer_ambilight_hue:
+      friendly_name: TV Woonkamer Ambilight+Hue
+      state: 'on'
+- id: '1581276100751'
+  name: TV Kijken Slaapkamer
+  entities:
+    light.nachtlampjes:
+      brightness: 85
+      color_temp: 405
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Nachtlampjes
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 63
+    switch.tv_slaapkamer_ambilight_hue:
+      friendly_name: TV Slaapkamer Ambilight+Hue
+      state: 'on'

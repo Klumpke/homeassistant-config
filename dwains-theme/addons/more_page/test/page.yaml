@@ -1,0 +1,12 @@
+- type: custom:mod-card
+  style: |
+    ha-card {
+      padding: 8px;
+    }
+  card:
+    type: vertical-stack
+    cards:
+      - type: markdown
+        content: TEST1
+      - type: markdown
+        content: TEST2

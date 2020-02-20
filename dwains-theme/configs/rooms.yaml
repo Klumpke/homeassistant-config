@@ -1,0 +1,103 @@
+rooms:
+  - name: Woonkamer
+    icon: fal:couch
+    light: group.woonkamer_lights
+    temperature: sensor.temp_woonkamer
+    humidity: sensor.temp_woonkamer_humidity
+    motion: binary_sensor.motion_woonkamer
+    media_player: media_player.woonkamer
+
+  - name: Eetkamer
+    icon: fal:utensils
+    light: group.eetkamer_lights
+    climate: climate.woonkamer
+    vacuum:
+      entity: vacuum.xiaomi_vacuum_cleaner
+      #camera: camera.rockrobo_map
+    plant: plant.olijfboom_links
+    media_player: media_player.eetkamer
+
+  - name: Keuken
+    icon: fal:utensils
+    light: group.keuken_lights
+    media_player: media_player.hub_keuken
+
+  - name: Slaapkamer
+    icon: fal:bed
+    light: group.slaapkamer_lights
+    temperature: sensor.temp_slaapkamer
+    humidity: sensor.temp_slaapkamer_humidity
+    motion: binary_sensor.motion_slaapkamer
+    window: binary_sensor.contact_slaapkamerraam
+    cover: cover.slaapkamer
+
+  - name: Kleine kamer
+    icon: fal:briefcase
+    light: light.kleine_kamer
+    addons:
+      - name: Printer
+        icon: fal:print
+        path: 'dwains-theme/addons/rooms/hp-printer/page.yaml'
+        # data:
+        #   some_data: 'This is some data parsed.'
+        #   some_other_data: 'and some other data.'
+
+  - name: Logeerkamer
+    icon: fal:bed-alt
+    light: light.logeerkamer
+
+  - name: Badkamer
+    icon: fal:bath
+    temperature: sensor.temp_badkamer
+    humidity: sensor.temp_badkamer_humidity
+
+  - name: Garage
+    icon: fal:warehouse
+    light: group.garage_lights
+    temperature: sensor.temp_garage
+    humidity: sensor.temp_garage_humidity
+    motion: binary_sensor.motion_garage
+    door: binary_sensor.contact_garagedeur
+
+  - name: Hal
+    icon: fal:key-skeleton
+    light: group.other_lights
+
+  - name: Buiten
+    icon: fal:tree-alt
+    light: group.buiten_lights
+    temperature: sensor.temp_tuin
+    humidity: sensor.temp_tuin_humidity
+    door: binary_sensor.contact_achterdeur
+    plant: plant.olijfboom_rechts
+    media_player: media_player.tuin
+
+  - name: Zolder
+    icon: fal:box-full
+    temperature: sensor.temp_zolder
+    humidity: sensor.temp_zolder_humidity
+    window: binary_sensor.contact_zolderraam
+    
+
+
+
+
+  # - name: Hallway
+  #   icon: fas:key
+  #   light: light.hallway
+  #   temperature: sensor.hallway_temperature
+  #   climate: climate.hallway_climate
+  #   humidity: sensor.halway_humidity
+  #   motion: binary_sensor.hallway_sensor_motion
+  #   door: binary_sensor.hallway_door_contact
+  #   window: binary_sensor.hallway_window_contact
+  #   cover: group.hallway_covers
+  #   vacuum: 
+  #     entity: vacuum.rockrobo
+  #     camera: camera.rockrobo_map
+  #   plant: plant.hallway_plant
+  #   media_player: media_player.awesome_hallway_tv
+  # - name: Garage
+  #   icon: fas:garage
+  #   light: group.garage_lights
+  #   door: group.garage_doors

@@ -1,0 +1,23 @@
+- type: custom:mini-graph-card
+  entities:
+    - entity: sensor.speedtest_download
+      name: Download
+    - entity: sensor.speedtest_ping
+      name: Ping
+  name: Speedtest Download
+  hours_to_show: 168
+  hour24: true
+  points_per_hour: 1
+  show:
+    graph: line
+    extrema: true
+- type: custom:mini-graph-card
+  entities:
+    - entity: sensor.speedtest_upload
+  name: Speedtest Upload
+  hours_to_show: 168
+  hour24: true
+  points_per_hour: 1
+  show:
+    graph: line
+    extrema: true

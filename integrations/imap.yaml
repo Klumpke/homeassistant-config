@@ -1,0 +1,16 @@
+sensor:
+  # https://www.home-assistant.io/components/imap/
+  # The imap sensor platform is observing your IMAP server and reporting the amount of unread emails.
+  - platform: imap
+    name: Mail Jeroen
+    server: !secret mail_host_jeroen
+    username: !secret mail_user_jeroen
+    password: !secret mail_pass_jeroen
+    port: 993
+
+  - platform: imap
+    name: Mail Joyce
+    server: !secret mail_host_joyce
+    username: !secret mail_user_joyce
+    password: !secret mail_pass_joyce
+    port: 993
