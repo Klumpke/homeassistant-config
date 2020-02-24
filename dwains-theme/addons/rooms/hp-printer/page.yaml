@@ -8,7 +8,7 @@
               padding: 8px; 
             }
           entities:
-            - entity: binary_sensor.hp_m281fdw_status
+            - entity: sensor.hp_m281fdw_status
               name: Status
             - entity: sensor.hp_m281fdw_printer
               icon: mdi:printer

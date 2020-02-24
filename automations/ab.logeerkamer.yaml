@@ -1,0 +1,89 @@
+  # button 2002 On
+  # button 2001 Move up (with on/off)
+  # button 2003 Stop_
+
+  # button 1002 Off
+  # button 1001 Move down (with on/off)
+  # button 1003 Stop_ (with on/off)
+
+  # button 3002 Recall scene 1
+  # button 4002 Recall scene 2
+
+- alias: "Keyfob logeerkamer: AAN"
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_logeerkamer
+      event: 2002
+  action:
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.logeerkamer
+        brightness_pct: 100
+
+- alias: "Keyfob logeerkamer: UIT"
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_logeerkamer
+      event: 1002
+  action:
+    - service: light.turn_off
+      entity_id:
+          - light.logeerkamer
+
+
+- alias: 'Keyfob logeerkamer: Increase brightness'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_logeerkamer
+      event: 2001
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.logeerkamer
+        field: "/state"
+        data: {"bri_inc":254, "transitiontime":50}
+
+- alias: 'Keyfob logeerkamer: Decrease brightness'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_logeerkamer
+      event: 1001
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.logeerkamer
+        field: "/state"
+        data: {"bri_inc":-254, "transitiontime":50}
+
+- alias: 'Keyfob logeerkamer: Stop brightness'
+  initial_state: 'on'
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_logeerkamer
+        event: 1003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_logeerkamer
+        event: 2003
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.logeerkamer
+        field: "/state"
+        data: {"bri_inc":0}

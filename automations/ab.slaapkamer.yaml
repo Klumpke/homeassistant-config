@@ -1,6 +1,6 @@
 ## NACHTLAMPJES (Kruis toets)
 #
-- alias: "Keyfob slaapkamer: Nachtlampjes AAN / UIT"
+- alias: "AB slaapkamer: Nachtlampjes AAN / UIT"
   initial_state: on
   trigger:
     platform: event
@@ -20,7 +20,7 @@
 
 ## ROLLUIK (Driehoek toets)
 #
-- alias: "Keyfob slaapkamer: Rolluik DICHT"
+- alias: "AB slaapkamer: Rolluik DICHT"
   initial_state: on
   trigger:
     platform: event
@@ -33,7 +33,7 @@
     service: cover.close_cover
     entity_id: cover.slaapkamer
 
-- alias: "Keyfob slaapkamer: Rolluik STOP"
+- alias: "AB slaapkamer: Rolluik STOP"
   initial_state: on
   trigger:
     platform: event
@@ -46,7 +46,7 @@
     service: cover.stop_cover
     entity_id: cover.slaapkamer
 
-- alias: "Keyfob slaapkamer: Rolluik OPEN"
+- alias: "AB slaapkamer: Rolluik OPEN"
   initial_state: on
   trigger:
     platform: event
