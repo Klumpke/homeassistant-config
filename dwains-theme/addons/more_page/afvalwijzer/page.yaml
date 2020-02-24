@@ -5,7 +5,7 @@
         - type: picture-entity
           style: |
             ha-card {
-              padding: 8px; 
+              padding: 8px;
             }
           entity: sensor.blink_vandaag
           name: Vandaag
@@ -13,12 +13,12 @@
             'gft': /local/images/afval_gft_large.png
             'papier': /local/images/afval_papier_large.png
             'restafval': /local/images/afval_rest_large.png
-            'plastic verpakkingsafval': /local/images/afval_rest_large.png
+            'pmd': /local/images/afval_pmd_large.png
             'Geen': /local/images/afval_geen_large.png
         - type: picture-entity
           style: |
             ha-card {
-              padding: 8px; 
+              padding: 8px;
             }
           entity: sensor.blink_morgen
           name: Morgen
@@ -26,13 +26,13 @@
             'gft': /local/images/afval_gft_large.png
             'papier': /local/images/afval_papier_large.png
             'restafval': /local/images/afval_rest_large.png
-            'plastic verpakkingsafval': /local/images/afval_rest_large.png
+            'pmd': /local/images/afval_pmd_large.png
             'Geen': /local/images/afval_geen_large.png
 
     - type: glance
       style: |
         ha-card {
-          padding: 8px; 
+          padding: 8px;
         }
       entities:
         - entity: sensor.blink_restafval
