@@ -135,11 +135,19 @@ group:
     entities:
       - light.fib_fgd212_woonkamer_spots
       - light.combikast
+  woonkamer_mediaplayers:
+    entities:
+      - media_player.woonkamer
+      - media_player.tv_woonkamer
   keuken_lights:
     entities:
       - light.fib_fgd212_keuken_plafond
       - light.keuken_leds
       - light.fib_fgd212_keuken_nis
+  keuken_devices:
+    entities:
+      - input_select.afzuigkap_status
+      - input_select.dishwasher_status
   eetkamer_lights:
     entities:
       - light.fib_fgd212_eetkamer
@@ -173,3 +181,7 @@ group:
   buiten_plants:
     entities:
       - plant.olijfboom_rechts
+  zolder_devices:
+    entities:
+      - input_select.washing_machine_status
+      - input_select.dryer_status
