@@ -5,45 +5,49 @@ rooms:
     temperature: sensor.temp_woonkamer
     humidity: sensor.temp_woonkamer_humidity
     motion: binary_sensor.motion_woonkamer
-    media_player: media_player.woonkamer
+    media_player: group.woonkamer_mediaplayers
 
   - name: Eetkamer
     icon: fal:utensils
     light: group.eetkamer_lights
     climate: climate.woonkamer
-    vacuum:
-      entity: vacuum.xiaomi_vacuum_cleaner
-      #camera: camera.rockrobo_map
+    # vacuum:
+    #   entity: vacuum.xiaomi_vacuum_cleaner
+    #   camera: '/local/images/xiaomi-map.png'
     plant: plant.olijfboom_links
     media_player: media_player.eetkamer
+    addons:
+      - name: Stofzuiger
+        icon: fal:vacuum-robot
+        path: 'dwains-theme/addons/rooms/vacuum-addon/page.yaml'
 
   - name: Keuken
-    icon: fal:utensils
+    icon: fal:refrigerator
     light: group.keuken_lights
     media_player: media_player.hub_keuken
+    device: group.keuken_devices
 
   - name: Slaapkamer
-    icon: fal:bed
+    icon: fal:bed-alt
     light: group.slaapkamer_lights
     temperature: sensor.temp_slaapkamer
     humidity: sensor.temp_slaapkamer_humidity
     motion: binary_sensor.motion_slaapkamer
     window: binary_sensor.contact_slaapkamerraam
     cover: cover.slaapkamer
+    media_player: media_player.tv_slaapkamer
 
   - name: Kleine kamer
     icon: fal:briefcase
     light: light.kleine_kamer
+    media_player: media_player.boven
     addons:
       - name: Printer
         icon: fal:print
         path: 'dwains-theme/addons/rooms/hp-printer/page.yaml'
-        # data:
-        #   some_data: 'This is some data parsed.'
-        #   some_other_data: 'and some other data.'
 
   - name: Logeerkamer
-    icon: fal:bed-alt
+    icon: fal:bed
     light: light.logeerkamer
 
   - name: Badkamer
@@ -63,7 +67,7 @@ rooms:
     icon: fal:key-skeleton
     light: group.other_lights
 
-  - name: Buiten
+  - name: Tuin
     icon: fal:tree-alt
     light: group.buiten_lights
     temperature: sensor.temp_tuin
@@ -77,7 +81,7 @@ rooms:
     temperature: sensor.temp_zolder
     humidity: sensor.temp_zolder_humidity
     window: binary_sensor.contact_zolderraam
-    
+    device: group.zolder_devices
 
 
 
