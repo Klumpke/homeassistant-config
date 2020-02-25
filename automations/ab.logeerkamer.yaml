@@ -9,7 +9,7 @@
   # button 3002 Recall scene 1
   # button 4002 Recall scene 2
 
-- alias: "Keyfob logeerkamer: AAN"
+- alias: "AB logeerkamer: AAN"
   initial_state: on
   trigger:
     platform: event
@@ -24,7 +24,7 @@
           - light.logeerkamer
         brightness_pct: 100
 
-- alias: "Keyfob logeerkamer: UIT"
+- alias: "AB logeerkamer: UIT"
   initial_state: 'on'
   trigger:
     platform: event
@@ -38,7 +38,7 @@
           - light.logeerkamer
 
 
-- alias: 'Keyfob logeerkamer: Increase brightness'
+- alias: 'AB logeerkamer: Increase brightness'
   initial_state: 'on'
   trigger:
     platform: event
@@ -53,7 +53,7 @@
         field: "/state"
         data: {"bri_inc":254, "transitiontime":50}
 
-- alias: 'Keyfob logeerkamer: Decrease brightness'
+- alias: 'AB logeerkamer: Decrease brightness'
   initial_state: 'on'
   trigger:
     platform: event
@@ -68,7 +68,7 @@
         field: "/state"
         data: {"bri_inc":-254, "transitiontime":50}
 
-- alias: 'Keyfob logeerkamer: Stop brightness'
+- alias: 'AB logeerkamer: Stop brightness'
   initial_state: 'on'
   trigger:
     - platform: event
