@@ -17,8 +17,9 @@
     #data:
     #  transition: 15
     data:
-      brightness_pct: 20
+      brightness_pct: 1
       rgb_color: [255, 255, 255]
+      white_value: 64
 
 - alias: "Motion: Slaapkamer vloerled uit"
   trigger:
