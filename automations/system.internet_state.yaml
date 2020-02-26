@@ -1,0 +1,20 @@
+# Automation for modem restart
+- alias: 'Systeem: Internet status'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.ping_internet_status
+      from: 'on'
+      to: 'off'
+      for:
+        minutes: 5
+  action:
+    - service: switch.turn_off
+      entity_id: switch.modem
+    - delay: "00:00:10"
+    - service: switch.turn_on
+      entity_id: switch.modem
+    - delay: "00:05:00"
+    - service_template: notify.mobile_app_iklumpke
+      data_template:
+        title: "Internet storing"
+        message: "Er is een storing geweest. Het modem is opnieuw opgestart"

@@ -1,0 +1,5 @@
+# https://www.home-assistant.io/integrations/ping/
+binary_sensor:
+  - platform: ping
+    name: Ping Internet status
+    host: 8.8.8.8
