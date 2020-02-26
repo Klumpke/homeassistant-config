@@ -112,6 +112,7 @@ recorder:
       - sensor.speedtest_download
       - sensor.speedtest_upload
       - sensor.speedtest_ping
+      - binary_sensor.ping_internet_status
 
       # UniFi Gateway
       - sensor.unifi_gateway_alerts
