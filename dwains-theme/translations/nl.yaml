@@ -70,8 +70,12 @@ nl:
     idle: 'Stand-by'
     heating: 'Verwarmen naar'
     off_text: 'Uit'
-    program: 'Programma'
+    auto: 'Programma'
     heat: 'Verwarm'
+    cool: 'Koel'
+    heat_cool: 'Verwarm/Koel'
+    dry: 'Droog'
+    fan_only: 'Alleen ventilator'
     this_room: 'Deze kamer'
     temperature: 'Temperatuur'
     humidity: 'Vochtigheid'
@@ -80,7 +84,7 @@ nl:
     title: 'Cover'
     title_plural: 'Covers'
     cover_open: 'Open'
-    cover_closed: 'Closed'
+    cover_closed: 'Gesloten'
 
   device:
     title: 'Apparaat'
@@ -113,7 +117,8 @@ nl:
   plant:
     title: 'Plant'
     title_plural: 'Planten'
-
+    plant_problem: 'plant problem'
+    plants_problem: 'plants problem'
 
   home:
     title: 'Homepage'
@@ -143,10 +148,11 @@ nl:
       developer_tools: 'Developer tools'
     settings:
       title: 'Thema instellingen'
+      reload_configuration: 'Herlaad theme configuratie'
       theme_docs: 'Thema documentatie'
       support_paypal: 'Doneren met PayPal'
       buy_coffee: 'Buy me a coffee'
       by: 'Door'
       version: 'Versie'
-      update_available: 'Update available of Dwains Theme!'
+      update_available: 'Update beschikbaar van Dwains Theme!'
     more_page_addons: 'Meer addons'

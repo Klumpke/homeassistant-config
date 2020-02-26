@@ -1,11 +1,11 @@
 # dwains_theme
-# Custom button for room addon: hello room
+# Custom button for room addon: printer
 
 type: custom:button-card
 entity: {{ (data | fromjson)['entity'] }}
 template: rooms_child
-name: {{ name }}
 icon: {{ icon|default('fas:puzzle-piece') }}
+name: {{ name }}
 label: >
   [[[ 
     if(entity){
@@ -14,3 +14,6 @@ label: >
       return 'Entity error!';
     }
   ]]]
+tap_action: 
+  action: navigate
+  navigation_path: /lovelace/kleine_kamer_addon_printer

@@ -20,6 +20,9 @@ rooms:
       - name: Stofzuiger
         icon: fal:vacuum-robot
         path: 'dwains-theme/addons/rooms/vacuum-addon/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/vacuum-addon/button.yaml'
+        data:
+          entity: vacuum.xiaomi_vacuum_cleaner
 
   - name: Keuken
     icon: fal:refrigerator
@@ -45,6 +48,9 @@ rooms:
       - name: Printer
         icon: fal:print
         path: 'dwains-theme/addons/rooms/hp-printer/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/hp-printer/button.yaml'
+        data:
+          entity: sensor.hp_m281fdw_status
 
   - name: Logeerkamer
     icon: fal:bed
