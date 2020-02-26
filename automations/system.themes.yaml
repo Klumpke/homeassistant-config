@@ -1,25 +1,25 @@
-  #Theme Selector
-  - alias: 'Systeem: Themes'
-    initial_state: 'true'
-    trigger:
-      - platform: state
-        entity_id: input_select.theme_selector
-      - platform: homeassistant
-        event: start
-      - platform: state
-        entity_id: sun.sun
-    action:
-      - service: frontend.set_theme
-        data_template:
-          name: >
-            {% if (is_state('sun.sun', 'above_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
-              dwains-theme-light
-            {% elif (is_state('sun.sun', 'below_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
-              dwains-theme-dark
-            {% elif is_state('input_select.theme_selector', 'Dark Mode') %}
-              dwains-theme-dark
-            {% elif is_state('input_select.theme_selector', 'Light Mode') %}
-              dwains-theme-light
-            {% else %}
-              dwains-theme-light
-            {% endif %}
+#Theme Selector
+- alias: 'Systeem: Themes'
+  initial_state: 'true'
+  trigger:
+    - platform: state
+      entity_id: input_select.theme_selector
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: sun.sun
+  action:
+    - service: frontend.set_theme
+      data_template:
+        name: >
+          {% if (is_state('sun.sun', 'above_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
+            dwains-theme-light
+          {% elif (is_state('sun.sun', 'below_horizon')) and (is_state('input_select.theme_selector', 'Auto Mode'))  %}
+            dwains-theme-dark
+          {% elif is_state('input_select.theme_selector', 'Dark Mode') %}
+            dwains-theme-dark
+          {% elif is_state('input_select.theme_selector', 'Light Mode') %}
+            dwains-theme-light
+          {% else %}
+            dwains-theme-light
+          {% endif %}
