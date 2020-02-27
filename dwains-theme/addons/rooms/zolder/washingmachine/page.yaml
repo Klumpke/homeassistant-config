@@ -1,0 +1,25 @@
+- type: 'vertical-stack'
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: entities
+          style: |
+            ha-card {
+              padding: 8px; 
+            }
+          entities:
+            - entity: input_select.washing_machine_status
+              name: Status
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.fib_fgwpf102_wasmachine_power
+          name: VERBRUIK
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 2
+          decimals: 0
+          show:
+            graph: bar
+            extrema: true

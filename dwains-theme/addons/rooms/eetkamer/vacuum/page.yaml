@@ -75,7 +75,7 @@
               template: room_vacuum_top_icons
               tap_action:
                 !include 
-                  - ../../../views/popups/more-info.yaml
+                  - ../../../../views/popups/more-info.yaml
                   - entity: vacuum.xiaomi_vacuum_cleaner
 
       - type: custom:mod-card
@@ -180,7 +180,7 @@
 
 
       - !include
-        - ../../../views/partials/heading.yaml
+        - ../../../../views/partials/heading.yaml
         - title: Presets
       # - type: markdown
       #   style: |

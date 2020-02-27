@@ -19,8 +19,8 @@ rooms:
     addons:
       - name: Stofzuiger
         icon: fal:vacuum-robot
-        path: 'dwains-theme/addons/rooms/vacuum-addon/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/vacuum-addon/button.yaml'
+        path: 'dwains-theme/addons/rooms/eetkamer/vacuum/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/eetkamer/vacuum/button.yaml'
         data:
           entity: vacuum.xiaomi_vacuum_cleaner
 
@@ -29,6 +29,13 @@ rooms:
     light: group.keuken_lights
     media_player: media_player.hub_keuken
     device: group.keuken_devices
+    addons:
+      - name: Vaatwasser
+        icon: fal:dryer
+        path: 'dwains-theme/addons/rooms/keuken/dishwasher/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/keuken/dishwasher/button.yaml'
+        data:
+          entity: input_select.dishwasher_status
 
   - name: Slaapkamer
     icon: fal:bed-alt
@@ -47,8 +54,8 @@ rooms:
     addons:
       - name: Printer
         icon: fal:print
-        path: 'dwains-theme/addons/rooms/hp-printer/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/hp-printer/button.yaml'
+        path: 'dwains-theme/addons/rooms/kleine_kamer/printer/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/kleine_kamer/printer/button.yaml'
         data:
           entity: sensor.hp_m281fdw_status
 
@@ -87,27 +94,17 @@ rooms:
     temperature: sensor.temp_zolder
     humidity: sensor.temp_zolder_humidity
     window: binary_sensor.contact_zolderraam
-    device: group.zolder_devices
-
-
-
-
-  # - name: Hallway
-  #   icon: fas:key
-  #   light: light.hallway
-  #   temperature: sensor.hallway_temperature
-  #   climate: climate.hallway_climate
-  #   humidity: sensor.halway_humidity
-  #   motion: binary_sensor.hallway_sensor_motion
-  #   door: binary_sensor.hallway_door_contact
-  #   window: binary_sensor.hallway_window_contact
-  #   cover: group.hallway_covers
-  #   vacuum: 
-  #     entity: vacuum.rockrobo
-  #     camera: camera.rockrobo_map
-  #   plant: plant.hallway_plant
-  #   media_player: media_player.awesome_hallway_tv
-  # - name: Garage
-  #   icon: fas:garage
-  #   light: group.garage_lights
-  #   door: group.garage_doors
+    #device: group.zolder_devices
+    addons:
+      - name: Wasmachine
+        icon: fal:washer
+        path: 'dwains-theme/addons/rooms/zolder/washingmachine/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/zolder/washingmachine/button.yaml'
+        data:
+          entity: input_select.washing_machine_status
+      - name: Droger
+        icon: fal:dryer-alt
+        path: 'dwains-theme/addons/rooms/zolder/dryer/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/zolder/dryer/button.yaml'
+        data:
+          entity: input_select.dryer_status

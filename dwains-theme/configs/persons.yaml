@@ -2,12 +2,12 @@ persons:
   - name: Joyce
     track: person.joyce
     picture_path: 'images/persons/joyce.png'
-    addons:
-      - name: Map
-        path: 'dwains-theme/addons/persons/map-joyce/page.yaml'
+    # addons:
+    #   - name: Map
+    #     path: 'dwains-theme/addons/persons/map-joyce/page.yaml'
   - name: Jeroen
     track: person.jeroen
     picture_path: 'images/persons/jeroen.png'
-    addons:
-      - name: Map
-        path: 'dwains-theme/addons/persons/map-jeroen/page.yaml'
+    # addons:
+    #   - name: Map
+    #     path: 'dwains-theme/addons/persons/map-jeroen/page.yaml'
