@@ -91,9 +91,19 @@ history:
       - sensor.dsmr_reading_phase_voltage_l1
       - sensor.dsmr_consumption_gas_currently_delivered
       - sensor.dsmr_day_consumption_gas
+
       # S0PCM
       - sensor.s0pcm_vandaag
       - sensor.s0pcm_hourly
+
+      # Wasmachine
+      - sensor.fib_fgwpf102_wasmachine_power
+
+      # Droger
+      - sensor.fib_fgwpf102_droger_power
+
+      # Vaatwasser
+      - sensor.vaatwasser_power
 
       # Thermostat
       - climate.woonkamer
