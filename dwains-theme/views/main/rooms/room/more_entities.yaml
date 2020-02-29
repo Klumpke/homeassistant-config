@@ -4,15 +4,15 @@
 
 {% for room in _d_t_config.rooms %}
 {% if room["more_entities"] %}
-- title: {{ room["name"] }} {{ _d_t_trans.media_player.title_plural }}
-  path: {{ room["name"]|lower|replace(" ", "_") }}_more_entities
+- title: {{ room["name"] }} {{ _d_t_trans.more_entities.title }}
+  path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_more_entities
   cards:   
     #Header
     - !include
       - ../../../partials/header.yaml
-      - title: More entities
+      - title: {{ _d_t_trans.more_entities.title }}
         subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace(" ", "_") }}  
+        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
     #Start for room more_entities content page
     - type: custom:mod-card
       style: |
@@ -21,8 +21,8 @@
         }
       card:
         type: custom:layout-card
-        min_columns: 2
-        max_columns: 2
+        min_columns: {{ room["more_entities"]["columns"] | default('2') }}
+        max_columns: {{ room["more_entities"]["columns"] | default('2') }}
         layout: horizontal
         justify_content: start
         cards:

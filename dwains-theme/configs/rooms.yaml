@@ -36,6 +36,7 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/keuken/dishwasher/button.yaml'
         data:
           entity: input_select.dishwasher_status
+        #  navigation_path: /lovelace/keuken_addon_vaatwasser
 
   - name: Slaapkamer
     icon: fal:bed-alt

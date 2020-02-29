@@ -4,16 +4,16 @@
 type: custom:button-card
 entity: {{ (data | fromjson)['entity'] }}
 template: rooms_child
-icon: {{ icon|default('fas:puzzle-piece') }}
 name: {{ name }}
+icon: {{ icon|default('fas:puzzle-piece') }}
+tap_action:
+  action: navigate
+  navigation_path: {{ navigation_path }}
 label: >
-  [[[ 
+  [[[
     if(entity){
       return entity.state;
     } else {
       return 'Entity error!';
     }
   ]]]
-tap_action: 
-  action: navigate
-  navigation_path: /lovelace/zolder_addon_droger
