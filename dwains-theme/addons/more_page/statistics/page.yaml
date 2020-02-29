@@ -1,4 +1,8 @@
 - type: entities
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   entities:
     - entity: sensor.last_boot
       #icon: 

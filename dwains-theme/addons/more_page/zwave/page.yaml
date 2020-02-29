@@ -1,4 +1,8 @@
 - type: entities
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   entities:
     - entity: zwave.aeon_labs_zw090_z_stick_gen5_eu
     - entity: zwave.fib_fgbs001_deurbel

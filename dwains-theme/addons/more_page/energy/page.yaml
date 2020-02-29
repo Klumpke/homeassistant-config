@@ -1,4 +1,8 @@
 - type: custom:mini-graph-card
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   entities:
     - sensor.power_consumption_watt
   name: STROOM VERBRUIK
@@ -10,6 +14,10 @@
     graph: bar
     extrema: true
 - type: custom:mini-graph-card
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   entities:
     - sensor.dsmr_consumption_gas_currently_delivered
   name: GAS VERBRUIK
@@ -21,6 +29,10 @@
     graph: bar
     extrema: true
 - type: custom:mini-graph-card
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   entities:
     - sensor.s0pcm_hourly
   name: WATER VERBRUIK

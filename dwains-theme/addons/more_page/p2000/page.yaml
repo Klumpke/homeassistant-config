@@ -1,12 +1,24 @@
 - entity: sensor.p2000_someren
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   #icon: 'mdi:ambulance'
   name: Someren
   type: sensor
 - entity: sensor.p2000_brabant_zuid_oost
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   #icon: 'mdi:ambulance'
   name: Brabant Zuid & Oost
   type: sensor
 - entity: sensor.p2000_limburg_noord
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   #icon: 'mdi:ambulance'
   name: Limburg Noord
   type: sensor

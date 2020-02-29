@@ -6,6 +6,7 @@
           style: |
             ha-card {
               padding: 8px;
+              background-color: var(--dwains-theme-primary);
             }
           entity: sensor.blink_vandaag
           name: Vandaag
@@ -33,6 +34,7 @@
       style: |
         ha-card {
           padding: 8px;
+          background-color: var(--dwains-theme-primary);
         }
       entities:
         - entity: sensor.blink_restafval

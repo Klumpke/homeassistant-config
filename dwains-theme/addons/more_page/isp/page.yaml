@@ -1,4 +1,8 @@
 - type: custom:mini-graph-card
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   entities:
     - entity: sensor.speedtest_download
       name: Download
@@ -12,6 +16,10 @@
     graph: line
     extrema: true
 - type: custom:mini-graph-card
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   entities:
     - entity: sensor.speedtest_upload
   name: Speedtest Upload

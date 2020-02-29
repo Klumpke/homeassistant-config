@@ -1,18 +1,53 @@
+# - type: 'vertical-stack'
+#   cards:
+#     - type: horizontal-stack
+#       cards:
+#         - type: entities
+#           style: |
+#             ha-card {
+#               padding: 8px; 
+#             }
+#           entities:
+#             - entity: input_select.dishwasher_status
+#               name: Status
+#     - type: horizontal-stack
+#       cards:
+#         - type: custom:mini-graph-card
+#           entities:
+#             - sensor.vaatwasser_power
+#           name: VERBRUIK
+#           hours_to_show: 24
+#           hour24: true
+#           points_per_hour: 2
+#           decimals: 0
+#           show:
+#             graph: bar
+#             extrema: true
 - type: 'vertical-stack'
   cards:
     - type: horizontal-stack
+      style: |
+        ha-card {
+          padding: 8px; 
+        }
       cards:
-        - type: entities
-          style: |
-            ha-card {
-              padding: 8px; 
-            }
+        - type: history-graph
           entities:
             - entity: input_select.dishwasher_status
-              name: Status
+          style: |
+            ha-card {
+              background-color: var(--dwains-theme-primary);
+            }
+            .content {
+              padding: 10px 0 0 0;
+            }
     - type: horizontal-stack
       cards:
         - type: custom:mini-graph-card
+          style: |
+              ha-card {
+                background-color: var(--dwains-theme-primary);
+              }
           entities:
             - sensor.vaatwasser_power
           name: VERBRUIK

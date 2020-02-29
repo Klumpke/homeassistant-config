@@ -1,4 +1,8 @@
 - type: entities
+  style: |
+    ha-card {
+      background-color: var(--dwains-theme-primary);
+    }
   entities:
     - entity: switch.tv_woonkamer_ambilight_hue
       icon: fas:tv
