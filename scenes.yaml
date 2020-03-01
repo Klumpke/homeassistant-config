@@ -22,16 +22,90 @@
   name: TV Kijken Slaapkamer
   entities:
     light.nachtlampjes:
-      brightness: 85
+      brightness: 18
       color_temp: 405
+      effect: none
       effect_list:
       - colorloop
       - random
       friendly_name: Nachtlampjes
       max_mireds: 500
       min_mireds: 153
-      state: 'off'
+      state: 'on'
       supported_features: 63
     switch.tv_slaapkamer_ambilight_hue:
       friendly_name: TV Slaapkamer Ambilight+Hue
       state: 'on'
+- id: '1582667750526'
+  name: Slaapkamer romantisch
+  entities:
+    light.ledstrip_slaapkamer:
+      brightness: 118
+      effect: None
+      effect_list:
+      - None
+      - Random
+      - Strobe
+      - Flicker
+      friendly_name: Ledstrip
+      hs_color:
+      - 0
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      state: 'on'
+      supported_features: 189
+      templates:
+        icon: mdi:led-strip
+      white_value: 0
+      xy_color:
+      - 0.701
+      - 0.299
+    light.nachtkast_l:
+      brightness: 53
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Jeroen
+      hs_color:
+      - 10.118
+      - 100
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 43
+      - 0
+      state: 'on'
+      supported_features: 63
+      templates:
+        icon: mdi:lamp
+      xy_color:
+      - 0.689
+      - 0.309
+    light.nachtkast_r:
+      brightness: 53
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Joyce
+      hs_color:
+      - 10.118
+      - 100
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 43
+      - 0
+      state: 'on'
+      supported_features: 63
+      templates:
+        icon: mdi:lamp
+      xy_color:
+      - 0.689
+      - 0.309

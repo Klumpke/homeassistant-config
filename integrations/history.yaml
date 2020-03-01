@@ -147,6 +147,11 @@ history:
       - sensor.olijfboom_rechts_soil_conductivity
       - sensor.olijfboom_rechts_temperature
 
+      # AdGuard
+      - sensor.adguard_dns_queries
+      - sensor.adguard_dns_queries_blocked
+      - sensor.adguard_dns_queries_blocked_ratio
+
 #  exclude:
 #    domains:
 #      - automation

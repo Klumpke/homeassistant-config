@@ -20,6 +20,9 @@ more_page:
       - name: Ambilight + Hue
         icon: fal:tv
         path: 'dwains-theme/addons/more_page/ambilight/page.yaml'
+      - name: AdGuard
+        icon: fal:ad
+        path: 'dwains-theme/addons/more_page/adguard/page.yaml'
       - name: ISP
         icon: fal:tachometer-alt
         path: 'dwains-theme/addons/more_page/isp/page.yaml'
