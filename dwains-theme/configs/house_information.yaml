@@ -6,7 +6,12 @@ house_information:
     - entity: binary_sensor.contact_garagedeur
       icon_on: fas:door-open
       icon_off: fas:door-closed
-
+    - entity: binary_sensor.contact_achterdeur
+      icon_on: fas:door-open
+      icon_off: fas:door-closed
+    - entity: input_select.washing_machine_status
+    - entity: input_select.dryer_status
+    - entity: input_select.dishwasher_status
   calendar:
     # - calendar.trash
     # - calendar.birthdays
