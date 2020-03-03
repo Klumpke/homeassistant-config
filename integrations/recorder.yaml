@@ -160,3 +160,14 @@ recorder:
       - sensor.adguard_dns_queries
       - sensor.adguard_dns_queries_blocked
       - sensor.adguard_dns_queries_blocked_ratio
+
+      # Coronavirus
+      - sensor.netherlands_coronavirus_current
+      - sensor.netherlands_coronavirus_confirmed
+      - sensor.netherlands_coronavirus_recovered
+      - sensor.netherlands_coronavirus_deaths
+
+      - sensor.worldwide_coronavirus_current
+      - sensor.worldwide_coronavirus_confirmed
+      - sensor.worldwide_coronavirus_recovered
+      - sensor.worldwide_coronavirus_deaths

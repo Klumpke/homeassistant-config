@@ -29,3 +29,6 @@ more_page:
       - name: Zwave
         icon: fal:wifi
         path: 'dwains-theme/addons/more_page/zwave/page.yaml'
+      - name: Coronavirus
+        icon: fal:disease
+        path: 'dwains-theme/addons/more_page/coronavirus/page.yaml'
