@@ -6,6 +6,13 @@ rooms:
     humidity: sensor.temp_woonkamer_humidity
     motion: binary_sensor.motion_woonkamer
     media_player: group.woonkamer_mediaplayers
+    addons:
+      - name: Sonos
+        icon: fal:speaker
+        path: 'dwains-theme/addons/rooms/woonkamer/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/woonkamer/sonos/button.yaml'
+        data:
+          entity: media_player.woonkamer
 
   - name: Eetkamer
     icon: fal:utensils
@@ -23,6 +30,12 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/eetkamer/vacuum/button.yaml'
         data:
           entity: vacuum.xiaomi_vacuum_cleaner
+      - name: Sonos
+        icon: fal:speaker
+        path: 'dwains-theme/addons/rooms/eetkamer/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/eetkamer/sonos/button.yaml'
+        data:
+          entity: media_player.eetkamer
 
   - name: Keuken
     icon: fal:refrigerator
@@ -59,6 +72,12 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/kleine_kamer/printer/button.yaml'
         data:
           entity: sensor.hp_m281fdw_status
+      - name: Sonos
+        icon: fal:speaker
+        path: 'dwains-theme/addons/rooms/kleine_kamer/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/kleine_kamer/sonos/button.yaml'
+        data:
+          entity: media_player.boven
 
   - name: Logeerkamer
     icon: fal:bed
@@ -89,6 +108,13 @@ rooms:
     door: binary_sensor.contact_achterdeur
     plant: plant.olijfboom_rechts
     media_player: media_player.tuin
+    addons:
+      - name: Sonos
+        icon: fal:speaker
+        path: 'dwains-theme/addons/rooms/tuin/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/tuin/sonos/button.yaml'
+        data:
+          entity: media_player.tuin
 
   - name: Zolder
     icon: fal:box-full
@@ -109,3 +135,9 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/zolder/dryer/button.yaml'
         data:
           entity: input_select.dryer_status
+    # page_entities:
+    #   columns: 1 #optional
+    #   show_title: 'false' #optional
+    #   entities:
+    #     - entity: sensor.reistijd_jeroen_alfion
+    #     - entity: sensor.reistijd_joycejeroen

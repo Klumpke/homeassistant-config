@@ -1,0 +1,62 @@
+- type: vertical-stack
+  cards:
+    - type: entities
+      style: |
+        ha-card {
+          padding: 8px;
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        #- entity: {{ (data | fromjson)['entity'] }}
+        - entity: media_player.eetkamer
+          group: true
+          name: Sonos
+          info: scroll
+          type: 'custom:mini-media-player'
+          hide:
+            power: true
+            icon: true
+            source: true
+            icon_state: false
+            power_color: false
+          speaker_group:
+            platform: sonos
+            show_group_count: true
+            entities:
+              - entity_id: media_player.woonkamer
+                name: Woonkamer
+              - entity_id: media_player.eetkamer
+                name: Eetkamer
+              - entity_id: media_player.boven
+                name: Boven
+              - entity_id: media_player.tuin
+                name: Tuin
+          shortcuts:
+            columns: 3
+            hide_when_off: true
+            label: Select Input
+            align_text: center
+            buttons:
+              - name: Radio 538
+                #icon: mdi:netflix
+                type: source
+                id: Radio 538
+              - name: 100% NL
+                #icon: mdi:kodi
+                type: source
+                id: 100% NL
+              - name: Qmusic
+                #icon: mdi:plex
+                type: source
+                id: Qmusic
+              - name: SLAM!
+                #icon: mdi:volume-source
+                type: source
+                id: SLAM!
+              - name: L1 Radio
+                #icon: mdi:volume-mute
+                type: source
+                id: L1 Radio
+              - name: Omroep Brabant
+                type: source
+                id: Omroep Brabant

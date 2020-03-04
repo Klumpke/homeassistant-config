@@ -6,3 +6,5 @@
 #   url: /to_your_folder/filename.js
 - url: /community_plugin/bar-card/bar-card.js
   type: js
+- url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+  type: module
