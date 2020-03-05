@@ -1,0 +1,13 @@
+- alias: "Notificatie: Coronavirus"
+  trigger:
+    platform: state
+    entity_id: sensor.netherlands_coronavirus_current
+  action:
+  - service: notify.mobile_app_iklumpke
+    data_template:
+        message: >
+          {%- if trigger.from_state.state | int < trigger.to_state.state | int -%}
+            Aantal corona besmettingen in Nederland gestegen naar {{states('sensor.netherlands_coronavirus_current')}}
+          {%- else -%}
+            Aantal Corona besmettingen in Nederland gedaald naar {{states('sensor.netherlands_coronavirus_current')}}
+          {%- endif -%}
