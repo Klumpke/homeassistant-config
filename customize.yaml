@@ -26,14 +26,23 @@ sensor.hp_m281fdw_toner_magenta:
 sensor.hp_m281fdw_toner_yellow:
   friendly_name: Geel
 
-sensor.printer_toner_cyaan:
-  friendly_name: Cyaan
-sensor.printer_toner_geel:
-  friendly_name: Geel
-sensor.printer_toner_magenta:
-  friendly_name: Magenta
-sensor.printer_toner_zwart:
-  friendly_name: Zwart
+
+sensor.joyce_battery_level:
+  friendly_name: Batterij
+sensor.joyce_battery_state:
+  friendly_name: Batterij
+  sensor.joyce_distance:
+  friendly_name: Afstand
+sensor.joyce_steps:
+  friendly_name: Stappen
+sensor.iklumpke_battery_level:
+  friendly_name: Batterij
+sensor.iklumpke_battery_state:
+  friendly_name: Batterij
+  sensor.iklumpke_distance:
+  friendly_name: Afstand
+sensor.iklumpke_steps:
+  friendly_name: Stappen
 
 
 # Lights
