@@ -1,276 +1,107 @@
-#Start for room vacuum content page
+- !include
+  - ../../../../views/partials/heading.yaml
+  - title: Map
+- type: custom:mod-card
+  style: |
+    ha-card {
+      padding: 0px 16px 0px 16px;
+    }
+  card:
+    type: vertical-stack
+    cards:
+      - type: picture-entity
+        entity: camera.rockrobo_map
+        show_name: false
+        show_state: false
+        tap_action: none
+        hold_action: none
+
+- !include
+  - ../../../../views/partials/heading.yaml
+  - title: Presets
 - type: custom:mod-card
   style: |
     ha-card {
       padding: 8px;
     }
   card:
-    type: vertical-stack
+    type: custom:layout-card
+    min_columns: 2
+    max_columns: 2
+    layout: horizontal
+    justify_content: start
     cards:
-      - type: custom:mod-card
-        style: |
-          ha-card {
-            margin-top: 14px;
-            background: #fff;
-            padding: 0px 8px 10px 8px;
-            border-radius: 0;
-          }
-        card:
-          type: custom:layout-card
-          min_columns: 5
-          max_columns: 5
-          layout: horizontal
-          justify_content: start
-          column_width: [55, 55, 55, 55, 55]
-          #column_width: 55px
-          cards:
-            #First card is start
-            - type: custom:button-card
-              entity: vacuum.xiaomi_vacuum_cleaner
-              template: room_vacuum_top_icons
-              icon: 'mdi:play'
-              tap_action:
-                haptic: heavy  
-                action: call-service
-                service: vacuum.start
-                service_data:
-                  entity_id: vacuum.xiaomi_vacuum_cleaner
-            #Second card is Pause
-            - type: custom:button-card
-              entity: vacuum.xiaomi_vacuum_cleaner
-              template: room_vacuum_top_icons
-              icon: 'mdi:pause'
-              tap_action:
-                haptic: heavy  
-                action: call-service
-                service: vacuum.pause
-                service_data:
-                  entity_id: vacuum.xiaomi_vacuum_cleaner
-            #Third card is Locate
-            - type: custom:button-card
-              entity: vacuum.xiaomi_vacuum_cleaner
-              icon: 'mdi:map-marker'
-              template: room_vacuum_top_icons
-              tap_action:
-                haptic: heavy  
-                action: call-service
-                service: vacuum.locate
-                service_data:
-                  entity_id: vacuum.xiaomi_vacuum_cleaner
-            #Fourth card is Go back to dock
-            - type: custom:button-card
-              entity: vacuum.xiaomi_vacuum_cleaner
-              icon: 'mdi:home'
-              template: room_vacuum_top_icons
-              tap_action:
-                haptic: heavy  
-                action: call-service
-                service: vacuum.return_to_base
-                service_data:
-                  entity_id: vacuum.xiaomi_vacuum_cleaner
-            #Fifth card is Info
-            - type: custom:button-card
-              entity: vacuum.xiaomi_vacuum_cleaner
-              icon: 'mdi:information-outline'
-              template: room_vacuum_top_icons
-              tap_action:
-                !include 
-                  - ../../../../views/popups/more-info.yaml
-                  - entity: vacuum.xiaomi_vacuum_cleaner
+      - type: custom:button-card
+        template: room_vacuum
+        entity: input_boolean.dummy1
+        name: Woonkamer
+        icon: fal:couch
+        show_state: false
+        show_last_changed: false
+        tap_action:
+          action: call-service
+          service: vacuum.send_command
+          service_data:
+            entity_id: vacuum.xiaomi_vacuum_cleaner
+            command: app_zoned_clean
+            params: [[23326,29399,29076,33099,1]]
 
-      - type: custom:mod-card
-        style: |
-          ha-card {
-            margin-top: 0px;
-            background: #33a1f5;
-            padding: 0px 8px 10px 8px;
-            margin-bottom: -11px;
-            border-radius: 0;
-          }
-        card:
-          type: custom:layout-card
-          min_columns: 3
-          max_columns: 3
-          layout: horizontal
-          justify_content: start
-          cards:
-            #First card is state
-            - type: custom:button-card
-              entity: vacuum.xiaomi_vacuum_cleaner
-              template: room_vacuum_card_icons
-              show_label: false
-              show_state: true
-              styles:
-                state:
-                  - align-self: start
-                  - justify-self: left
-            #Second card is vacuum mode
-            - type: custom:button-card
-              entity: vacuum.xiaomi_vacuum_cleaner
-              template: room_vacuum_card_icons
-              styles:
-                label:
-                  - font-weight: normal
-              label: >
-                [[[
-                  return entity.attributes.fan_speed + `<ha-icon style="height: 20px" icon="mdi:fan"></ha-icon>`;
-                ]]]
-            #Third card is battery percentage
-            - type: custom:button-card
-              entity: vacuum.xiaomi_vacuum_cleaner
-              template: room_vacuum_card_icons
-              styles:
-                label:
-                  - align-self: end
-                  - justify-self: right
-              label: >
-                [[[
-                  if (entity.state != 'unknown' && entity.attributes.battery_level != 100) {
-                    var battery = Math.round(states[`this.entity_id`].state / 10) * 10
-                    return  entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="mdi:battery-' + battery + '"></ha-icon>';
-                  } else {
-                    return  entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="mdi:battery"></ha-icon>';
-                  }
-                ]]]
+      - type: custom:button-card
+        template: room_vacuum
+        entity: input_boolean.dummy1
+        name: Keuken
+        icon: fal:refrigerator
+        show_state: false
+        show_last_changed: false
+        tap_action:
+          action: call-service
+          service: vacuum.send_command
+          service_data:
+            entity_id: vacuum.xiaomi_vacuum_cleaner
+            command: app_zoned_clean
+            params: [[23823,26472,29073,29372,1]]
 
-      # #The card itself with zone support
-      # - type: 'custom:xiaomi-vacuum-map-card'
-      #   entity: vacuum.xiaomi_vacuum_cleaner
-      #   #map_camera: {{ room["vacuum"]["camera"] }}
-      #   map_image: '/local/images/xiaomi-map.png'
-      #   language: nl
-      #   debug: false
-      #   #default_mode: predefined_zones
-      #   calibration_points:
-      #     - vacuum:
-      #         x: 24250
-      #         y: 22100
-      #       map:
-      #         x: 285
-      #         y: 735
-      #     - vacuum:
-      #         x: 28650
-      #         y: 33050
-      #       map:
-      #         x: 565
-      #         y: 21
-      #     - vacuum:
-      #         x: 28650
-      #         y: 22150
-      #       map:
-      #         x: 565
-      #         y: 715
-      #   zones:
-      #     # Woonkamer
-      #     - [[23326, 29399, 29076, 33099]]
-      #     # Keuken
-      #     - [[23823, 26472, 29073, 29372]]
-      #     # Eetkamer
-      #     - [[24305, 22220, 29055, 26470]]
-      #     # Hal
-      #     - [[23736, 21848, 25336, 25448]]
-      #     # Garage
-      #     - [[20080, 26771, 23280, 33121]]
-      #     # # Hal, Garage
-      #     # - [[23736, 21848, 25336, 25448], [20080, 26771, 23280, 33121]]
-      #     # # Woonkamer, Keuken, Eetkamer
-      #     # - [[23326, 29399, 29076, 33099], [23823, 26472, 29073, 29372], [24305, 22220, 29055, 26470]]
-      #     # # Woonkamer, Keuken, Eetkamer, Hal, Garage
-      #     # - [[23326, 29399, 29076, 33099], [23823, 26472, 29073, 29372], [24305, 22220, 29055, 26470], [23736, 21848, 25336, 25448], [20080,26771,23280,33121]]
+      - type: custom:button-card
+        template: room_vacuum
+        entity: input_boolean.dummy1
+        name: Eetkamer
+        icon: fal:coffee
+        show_state: false
+        show_last_changed: false
+        tap_action:
+          action: call-service
+          service: vacuum.send_command
+          service_data:
+            entity_id: vacuum.xiaomi_vacuum_cleaner
+            command: app_zoned_clean
+            params: [[24305,22220,29055,26470,1]]
 
+      - type: custom:button-card
+        template: room_vacuum
+        entity: input_boolean.dummy1
+        name: Hal
+        icon: fal:key-skeleton
+        show_state: false
+        show_last_changed: false
+        tap_action:
+          action: call-service
+          service: vacuum.send_command
+          service_data:
+            entity_id: vacuum.xiaomi_vacuum_cleaner
+            command: app_zoned_clean
+            params: [[23736,21848,25336,25448,1]]
 
-      - !include
-        - ../../../../views/partials/heading.yaml
-        - title: Presets
-      # - type: markdown
-      #   style: |
-      #       ha-card {
-      #         margin: 16px 0px 0px 0px;
-      #       }
-      #   content: Presets
-      - type: custom:mod-card
-        style: |
-          ha-card {
-            padding: 8px;
-          }
-        card:
-          type: custom:layout-card
-          min_columns: 2
-          max_columns: 2
-          layout: horizontal
-          justify_content: start
-          cards:
-            - type: custom:button-card
-              template: room_vacuum
-              entity: input_boolean.dummy1
-              name: Woonkamer
-              icon: fal:couch
-              show_state: false
-              show_last_changed: false
-              tap_action:
-                action: call-service
-                service: vacuum.send_command
-                service_data:
-                  entity_id: vacuum.xiaomi_vacuum_cleaner
-                  command: app_zoned_clean
-                  params: [[23326,29399,29076,33099,1]]
-
-            - type: custom:button-card
-              template: room_vacuum
-              entity: input_boolean.dummy1
-              name: Keuken
-              icon: fal:refrigerator
-              show_state: false
-              show_last_changed: false
-              tap_action:
-                action: call-service
-                service: vacuum.send_command
-                service_data:
-                  entity_id: vacuum.xiaomi_vacuum_cleaner
-                  command: app_zoned_clean
-                  params: [[23823,26472,29073,29372,1]]
-
-            - type: custom:button-card
-              template: room_vacuum
-              entity: input_boolean.dummy1
-              name: Eetkamer
-              icon: fal:coffee
-              show_state: false
-              show_last_changed: false
-              tap_action:
-                action: call-service
-                service: vacuum.send_command
-                service_data:
-                  entity_id: vacuum.xiaomi_vacuum_cleaner
-                  command: app_zoned_clean
-                  params: [[24305,22220,29055,26470,1]]
-
-            - type: custom:button-card
-              template: room_vacuum
-              entity: input_boolean.dummy1
-              name: Hal
-              icon: fal:key-skeleton
-              show_state: false
-              show_last_changed: false
-              tap_action:
-                action: call-service
-                service: vacuum.send_command
-                service_data:
-                  entity_id: vacuum.xiaomi_vacuum_cleaner
-                  command: app_zoned_clean
-                  params: [[23736,21848,25336,25448,1]]
-
-            - type: custom:button-card
-              template: room_vacuum
-              entity: input_boolean.dummy1
-              name: Garage
-              icon: fal:warehouse
-              show_state: false
-              show_last_changed: false
-              tap_action:
-                action: call-service
-                service: vacuum.send_command
-                service_data:
-                  entity_id: vacuum.xiaomi_vacuum_cleaner
-                  command: app_zoned_clean
-                  params: [[20080,26771,23280,33121,1]]
+      - type: custom:button-card
+        template: room_vacuum
+        entity: input_boolean.dummy1
+        name: Garage
+        icon: fal:warehouse
+        show_state: false
+        show_last_changed: false
+        tap_action:
+          action: call-service
+          service: vacuum.send_command
+          service_data:
+            entity_id: vacuum.xiaomi_vacuum_cleaner
+            command: app_zoned_clean
+            params: [[20080,26771,23280,33121,1]]
