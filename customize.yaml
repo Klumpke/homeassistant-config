@@ -31,7 +31,7 @@ sensor.joyce_battery_level:
   friendly_name: Batterij
 sensor.joyce_battery_state:
   friendly_name: Batterij
-  sensor.joyce_distance:
+sensor.joyce_distance:
   friendly_name: Afstand
 sensor.joyce_steps:
   friendly_name: Stappen
@@ -39,7 +39,7 @@ sensor.iklumpke_battery_level:
   friendly_name: Batterij
 sensor.iklumpke_battery_state:
   friendly_name: Batterij
-  sensor.iklumpke_distance:
+sensor.iklumpke_distance:
   friendly_name: Afstand
 sensor.iklumpke_steps:
   friendly_name: Stappen
