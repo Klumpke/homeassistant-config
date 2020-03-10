@@ -1,5 +1,13 @@
-- alias: 'AB Bijkeuken Aan'
-  initial_state: 'on'
+  # button 1002 On
+  # button 1001 Move up (with on/off)
+  # button 1003 Stop (with on/off)
+
+  # button 2002 Off
+  # button 2001 Move down
+  # button 2003 Stop
+
+- alias: "AB Bijkeuken: AAN"
+  initial_state: on
   trigger:
     platform: event
     event_type: deconz_event
@@ -7,31 +15,72 @@
       id: ab_bijkeuken
       event: 1002
   action:
-    # service: light.turn_on
-    # entity_id: light.bijkeuken_leds
-    - service_template: >
-        {% if is_state('light.bijkeuken_leds', 'on') %}
-          homeassistant.turn_off
-        {% elif is_state('light.bijkeuken_leds', 'off') %}
-          homeassistant.turn_on
-        {% endif %}
-      entity_id: light.bijkeuken_leds
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.bijkeuken_leds
+        brightness_pct: 55
 
-- alias: 'AB Bijkeuken Uit'
+- alias: "AB Bijkeuken: UIT"
   initial_state: 'on'
   trigger:
     platform: event
     event_type: deconz_event
     event_data:
       id: ab_bijkeuken
-      event:  2002
+      event: 2002
   action:
-    # service: light.turn_off
-    # entity_id: light.bijkeuken_leds
-    - service_template: >
-        {% if is_state('light.bijkeuken_leds', 'on') %}
-          homeassistant.turn_off
-        {% elif is_state('light.bijkeuken_leds', 'off') %}
-          homeassistant.turn_on
-        {% endif %}
-      entity_id: light.bijkeuken_leds
+    - service: light.turn_off
+      entity_id:
+          - light.bijkeuken_leds
+
+
+- alias: 'AB Bijkeuken: Increase brightness'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_bijkeuken
+      event: 1001
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.bijkeuken_leds
+        field: "/state"
+        data: {"bri_inc":254, "transitiontime":50}
+
+- alias: 'AB Bijkeuken: Decrease brightness'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: ab_bijkeuken
+      event: 2001
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.bijkeuken_leds
+        field: "/state"
+        data: {"bri_inc":-254, "transitiontime":50}
+
+- alias: 'AB Bijkeuken: Stop brightness'
+  initial_state: 'on'
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_bijkeuken
+        event: 2003
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_bijkeuken
+        event: 1003
+  action:
+    - service: deconz.configure
+      data:
+        entity: light.bijkeuken_leds
+        field: "/state"
+        data: {"bri_inc":0}
