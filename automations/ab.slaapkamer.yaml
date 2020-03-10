@@ -80,121 +80,100 @@
       entity_id: light.nachtlampjes
 
 
-# deCONZ Slaapkamer A IKEA TRADFRI Remote
-- alias: 'AB Slaapkamer A Midden'
+# deCONZ Slaapkamer IKEA TRADFRI Remote
+- alias: 'AB Slaapkamer Midden'
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: ab_slaapkamer_a
-      event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_slaapkamer_a
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_slaapkamer_b
+        event: 1002
   action:
-    service: light.toggle
-    entity_id: light.nachtlampjes
+    - service: light.toggle
+      data:
+        entity_id: light.nachtlampjes
+        brightness: 16
+        color_temp: 400
+        # kelvin: 2700
 
-- alias: 'AB Slaapkamer A Links Joyce'
+- alias: 'AB Slaapkamer Links Joyce'
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: ab_slaapkamer_a
-      event: 4002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_slaapkamer_a
+        event: 4002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_slaapkamer_b
+        event: 4002
   action:
-    service: light.toggle
-    entity_id: light.nachtkast_r
-- alias: 'AB Slaapkamer A Rechts Jeroen'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: ab_slaapkamer_a
-      event: 5002
-  action:
-    service: light.toggle
-    entity_id: light.nachtkast_l
+    - service: light.toggle
+      data:
+        entity_id: light.nachtkast_r
+        brightness: 16
+        color_temp: 400
+        # kelvin: 2700
 
-- alias: 'AB Slaapkamer A Omhoog'
+- alias: 'AB Slaapkamer Rechts Jeroen'
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: ab_slaapkamer_a
-      event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_slaapkamer_a
+        event: 5002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_slaapkamer_b
+        event: 5002
+  action:
+    - service: light.toggle
+      data:
+        entity_id: light.nachtkast_l
+        brightness: 16
+        color_temp: 400
+        # kelvin: 2700
+
+- alias: 'AB Slaapkamer Omhoog'
+  initial_state: 'on'
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_slaapkamer_a
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: ab_slaapkamer_b
+        event: 2002
   action:
     service: light.toggle
     entity_id: light.ledstrip_slaapkamer
-# - alias: 'AB Slaapkamer A Omlaag'
+
+# - alias: 'AB Slaapkamer Omlaag'
 #   initial_state: 'on'
 #   trigger:
-#     platform: event
-#     event_type: deconz_event
-#     event_data:
-#       id: ab_slaapkamer_a
-#       event: 3002
-#   action:
-#     service: scene.turn_on
-#     entity_id: scene.wassen
-
-
-# deCONZ Slaapkamer B IKEA TRADFRI Remote
-- alias: 'AB Slaapkamer B Midden'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: ab_slaapkamer_b
-      event: 1002
-  action:
-    service: light.toggle
-    entity_id: light.nachtlampjes
-
-- alias: 'AB Slaapkamer B Links Joyce'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: ab_slaapkamer_b
-      event: 4002
-  action:
-    service: light.toggle
-    entity_id: light.nachtkast_r
-- alias: 'AB Slaapkamer B Rechts Jeroen'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: ab_slaapkamer_b
-      event: 5002
-  action:
-    service: light.toggle
-    entity_id: light.nachtkast_l
-
-- alias: 'AB Slaapkamer B Omhoog'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: ab_slaapkamer_b
-      event: 2002
-  action:
-    service: light.toggle
-    entity_id: light.ledstrip_slaapkamer
-# - alias: 'AB Slaapkamer B Omlaag'
-#   initial_state: 'on'
-#   trigger:
-#     platform: event
-#     event_type: deconz_event
-#     event_data:
-#       id: ab_slaapkamer_b
-#       event: 3002
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: ab_slaapkamer_a
+#        event: 3002
+#     - platform: event
+#       event_type: deconz_event
+#       event_data:
+#         id: ab_slaapkamer_b
+#        event: 3002
 #   action:
 #     service: scene.turn_on
 #     entity_id: scene.wassen
