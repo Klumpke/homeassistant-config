@@ -105,3 +105,32 @@
             entity_id: vacuum.xiaomi_vacuum_cleaner
             command: app_zoned_clean
             params: [[20080,26771,23280,33121,1]]
+
+- !include
+  - ../../../../views/partials/heading.yaml
+  - title: Informatie
+- type: custom:mod-card
+  style: |
+    ha-card {
+      padding: 0px 8px 0px 8px;
+    }
+  card:
+    type: glance
+    style: |
+      ha-card {
+        border-radius: 5px;
+        background-color: var(--dwains-theme-primary);
+      }
+    entities:
+      - entity: sensor.vacuum_main_brush_left
+        name: Hoofdborstel
+        icon: mdi:broom
+      - entity: sensor.vacuum_side_brush_left
+        name: Zijborstel
+        icon: mdi:broom
+      - entity: sensor.vacuum_filter_left
+        name: Filter
+        icon: mdi:broom
+      - entity: sensor.vacuum_sensor_dirty_left
+        name: Sensoren
+        icon: mdi:air-filter
