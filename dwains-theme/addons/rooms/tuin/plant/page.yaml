@@ -1,0 +1,28 @@
+- type: vertical-stack
+  cards:
+    - type: custom:flower-card
+      style: |
+        ha-card {
+          padding: 8px;
+          background-color: var(--dwains-theme-primary);
+        }
+      entity: plant.olijfboom_rechts
+      species: "olea europaea"
+    - type: glance
+      style: |
+        ha-card {
+          padding: 8px;
+          background-color: var(--dwains-theme-primary);
+        }
+      show_name: false
+      entities:
+      - entity: sensor.olijfboom_rechts_temperature
+        icon: mdi:thermometer
+      - entity: sensor.olijfboom_rechts_moisture
+        icon: mdi:water-percent
+      - entity: sensor.olijfboom_rechts_illuminance
+        icon: mdi:white-balance-sunny
+      - entity: sensor.olijfboom_rechts_soil_conductivity
+        icon: mdi:leaf
+      #- entity: sensor.olijfboom_rechts_battery_level
+      #   icon: mdi:battery-high

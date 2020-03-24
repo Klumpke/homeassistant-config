@@ -8,3 +8,7 @@
   type: js
 - url: /community_plugin/mini-media-player/mini-media-player-bundle.js
   type: module
+- url: /community_plugin/lovelace-flower-card/flower-card.js
+  type: module
+- url: /community_plugin/lovelace-card-tools/card-tools.js
+  type: module

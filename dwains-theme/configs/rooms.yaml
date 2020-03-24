@@ -21,7 +21,7 @@ rooms:
     # vacuum:
     #   entity: vacuum.xiaomi_vacuum_cleaner
     #   camera: '/local/images/xiaomi-map.png'
-    plant: plant.olijfboom_links
+    # plant: plant.olijfboom_links
     addons:
       - name: Stofzuiger
         icon: fal:vacuum-robot
@@ -35,6 +35,13 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/eetkamer/sonos/button.yaml'
         data:
           entity: media_player.eetkamer
+      - name: Olijfboom
+        icon: fas:leaf
+        # icon: fal:spa
+        path: 'dwains-theme/addons/rooms/eetkamer/plant/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/eetkamer/plant/button.yaml'
+        data:
+          entity: plant.olijfboom_links
 
   - name: Keuken
     icon: fal:refrigerator
@@ -104,7 +111,7 @@ rooms:
     temperature: sensor.temp_tuin
     humidity: sensor.temp_tuin_humidity
     door: binary_sensor.contact_achterdeur
-    plant: plant.olijfboom_rechts
+    # plant: plant.olijfboom_rechts
     addons:
       - name: Sonos
         icon: fal:speaker
@@ -112,6 +119,13 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/tuin/sonos/button.yaml'
         data:
           entity: media_player.tuin
+      - name: Olijfboom
+        icon: fas:leaf
+        # icon: fal:spa
+        path: 'dwains-theme/addons/rooms/tuin/plant/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/tuin/plant/button.yaml'
+        data:
+          entity: plant.olijfboom_rechts
 
   - name: Zolder
     icon: fal:box-full
