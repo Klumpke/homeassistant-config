@@ -8,26 +8,90 @@
       #icon: 
       name: Laatste start
     - entity: sensor.version_current
-      #icon: 'mdi:update'
       name: HA versie
     - entity: sensor.hacs
       icon: 'mdi:update'
       name: HACS Updates
-    - entity: sensor.processor_use
-      #icon: 'mdi:update'
-      name: CPU gebruik
-    - entity: sensor.memory_use_percent
-      #icon: 'mdi:update'
-      name: RAM gebruik
-    - entity: sensor.disk_use_percent
-      #icon: 'mdi:update'
-      name: HDD gebruik
+    # - entity: sensor.processor_use
+    #   name: CPU gebruik
+    # - entity: sensor.memory_use_percent
+    #   name: RAM gebruik
+    # - entity: sensor.disk_use_percent
+    #   name: HDD gebruik
     - entity: sensor.network_in_eno1
-      #icon: 'mdi:update'
       name: LAN in eno1
     - entity: sensor.network_out_eno1
-      #icon: 'mdi:update'
       name: LAN uit eno1
     - entity: sensor.cpu_temp
-      #icon: 'mdi:update'
       name: CPU Temp
+- type: horizontal-stack
+  cards:
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - sensor.processor_use
+      name: CPU
+      hours_to_show: 24
+      hour24: true
+      points_per_hour: 1
+      smoothing: true
+      show:
+        points: false
+        graph: bar
+      #   extrema: false
+
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - sensor.memory_use_percent
+      name: RAM
+      hours_to_show: 24
+      hour24: true
+      points_per_hour: 1
+      smoothing: true
+      show:
+        points: false
+        graph: bar
+      #   extrema: false
+
+- type: horizontal-stack
+  cards:
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - sensor.disk_use_percent
+      name: SSD
+      hours_to_show: 24
+      hour24: true
+      points_per_hour: 1
+      smoothing: true
+      show:
+        points: false
+        graph: bar
+      #   extrema: false
+
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--dwains-theme-primary);
+        }
+      entities:
+        - sensor.server_power
+      name: Verbruik
+      hours_to_show: 24
+      hour24: true
+      points_per_hour: 1
+      smoothing: true
+      show:
+        points: false
+        graph: bar
+      #   extrema: false
