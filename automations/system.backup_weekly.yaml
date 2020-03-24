@@ -1,14 +1,29 @@
-  - alias: 'Systeem: Backup wekelijks'
-    initial_state: 'on'
-    trigger:
-      platform: time
-      at: '03:00:00'
-    condition:  
-      condition: time
-      weekday:
-        - sun
-    action:
-      - service: hassio.snapshot_full
-        data_template:
-          name: Hassio Weekly {{now().strftime('%Y-%m-%d')}}
-      - service: clean_up_backups_service.clean_up
+- alias: 'Systeem: Snapshot wekelijks'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '03:00:00'
+  condition:
+    condition: time
+    weekday:
+      - sun
+  action:
+    - service: auto_backup.snapshot_full
+      data_template:
+        name: Hassio Weekly {{now().strftime('%Y-%m-%d')}}
+        keep_days: 90
+        exclude:
+          # addons:
+          #   - Portainer
+          folders:
+            - share
+
+- alias: "Notificatie: Snapshot mislukt"
+  trigger:
+    platform: event
+    event_type: auto_backup.snapshot_failed
+  action:
+    - service: notify.mobile_app_iklumpke
+      data_template:
+        title: "Snaptshot mislukt"
+        message: "Naam: {{ trigger.event.data.name }}\nFout: {{ trigger.event.data.error }}"

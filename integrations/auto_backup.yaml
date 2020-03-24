@@ -1,0 +1,3 @@
+# https://github.com/jcwillox/hass-auto-backup
+auto_backup:
+  auto_purge: true

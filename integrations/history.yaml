@@ -16,6 +16,12 @@ history:
       - sensor.processor_use
       - sensor.memory_use_percent
       - sensor.disk_use_percent
+      - sensor.cpu_temp
+      # Server
+      - sensor.server_power
+      - sensor.server_energy
+      # Backup
+      - sensor.auto_backup
 
       # Verlichting SWITCH
       - switch.fib_fgs223_achterdeur
@@ -101,10 +107,6 @@ history:
       # Vaatwasser
       - sensor.vaatwasser_power
       - input_select.dishwasher_status
-
-      # Server
-      - sensor.server_power
-      - sensor.server_energy
 
       # Thermostat
       - climate.woonkamer
