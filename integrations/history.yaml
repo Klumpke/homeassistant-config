@@ -12,12 +12,6 @@ history:
       - person
       - media_player
     entities:
-      # Persoonlijke devices
-      #- device_tracker.iklumpke
-      #- device_tracker.ios_joyce
-      #- device_tracker.iphone_jeroen
-      #- device_tracker.iphone_joyce
-
       # Nuc performance
       - sensor.processor_use
       - sensor.memory_use_percent
@@ -107,6 +101,10 @@ history:
       # Vaatwasser
       - sensor.vaatwasser_power
       - input_select.dishwasher_status
+
+      # Server
+      - sensor.server_power
+      - sensor.server_energy
 
       # Thermostat
       - climate.woonkamer

@@ -50,6 +50,28 @@ sensor:
     value_template: '{{ value_json["ENERGY"]["Current"] }}'
     unit_of_measurement: "A"
 
+  # Server
+  - platform: mqtt
+    name: "Server Energy"
+    state_topic: "tele/server/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Today"] }}'
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Server Power"
+    state_topic: "tele/server/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Power"] }}'
+    unit_of_measurement: "W"
+  - platform: mqtt
+    name: "Server Voltage"
+    state_topic: "tele/server/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+    unit_of_measurement: "V"
+  - platform: mqtt
+    name: "Server Current"
+    state_topic: "tele/server/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Current"] }}'
+    unit_of_measurement: "A"
+
 
   # https://www.home-assistant.io/components/sensor.version/
   # The version sensor platform is displaying the
@@ -79,46 +101,3 @@ sensor:
   # and displays the certificate expiry in days.
   - platform: cert_expiry
     host: hass.klompen.net
-
-
-  - platform: template
-    sensors:
-      insignia_olie_visible:
-        value_template: "{{ state_attr('sensor.insignia_olie', 'visible') }}"
-  - platform: template
-    sensors:
-      insignia_banden_visible:
-        value_template: "{{ state_attr('sensor.insignia_banden', 'visible') }}"
-  - platform: template
-    sensors:
-      insignia_clean_visible:
-        value_template: "{{ state_attr('sensor.insignia_clean', 'visible') }}"
-  - platform: template
-    sensors:
-      insignia_stof_visible:
-        value_template: "{{ state_attr('sensor.insignia_stof', 'visible') }}"
-  - platform: template
-    sensors:
-      insignia_window_visible:
-        value_template: "{{ state_attr('sensor.insignia_window', 'visible') }}"
-
-  - platform: template
-    sensors:
-      polo_olie_visible:
-        value_template: "{{ state_attr('sensor.polo_olie', 'visible') }}"
-  - platform: template
-    sensors:
-      polo_banden_visible:
-        value_template: "{{ state_attr('sensor.polo_banden', 'visible') }}"
-  - platform: template
-    sensors:
-      polo_stof_visible:
-        value_template: "{{ state_attr('sensor.polo_stof', 'visible') }}"
-  - platform: template
-    sensors:
-      polo_window_visible:
-        value_template: "{{ state_attr('sensor.polo_window', 'visible') }}"
-  - platform: template
-    sensors:
-      polo_clean_visible:
-        value_template: "{{ state_attr('sensor.polo_clean', 'visible') }}"
