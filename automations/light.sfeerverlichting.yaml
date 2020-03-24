@@ -30,10 +30,12 @@
         after: sunset
         after_offset: "-00:30:00"
   action:
-    service: homeassistant.turn_on
-    entity_id: group.sfeerverlichting
-
-
+    # - service: homeassistant.turn_on
+    #   entity_id: group.sfeerverlichting
+    - service: scene.turn_on
+      entity_id: scene.binnenverlichting_sfeer
+    - service: scene.turn_on
+      entity_id: scene.buitenverlichting_sfeer
 
 # WOONHUIS BINNENVERLICHTING DOORDEWEEK UIT OM 23:45u OF AFWEZIGHEID
 - alias: "Sfeerverlichting doordeweek uit om 23:45u of afwezigheid"

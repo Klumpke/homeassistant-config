@@ -109,3 +109,58 @@
       xy_color:
       - 0.689
       - 0.309
+- id: '1584563016865'
+  name: Binnenverlichting Sfeer
+  entities:
+    light.broodkast:
+      brightness: 47
+      friendly_name: Broodkast
+      is_deconz_group: false
+      state: 'on'
+      supported_features: 41
+      templates:
+        icon: mdi:lightbulb
+    light.combikast:
+      brightness: 35
+      color_temp: 405
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Combikast
+      max_mireds: 500
+      min_mireds: 153
+      state: 'on'
+      supported_features: 63
+      templates:
+        icon: mdi:floor-lamp
+    light.dressoir:
+      brightness: 73
+      friendly_name: Dressoir
+      state: 'on'
+      supported_features: 41
+      templates:
+        icon: mdi:floor-lamp
+    light.fib_fgd212_keuken_nis:
+      brightness: 67
+      friendly_name: Nis
+      friendy_name: Nis
+      node_id: 13
+      power_consumption: 5.5
+      state: 'on'
+      supported_features: 33
+      templates:
+        icon: mdi:ceiling-light
+      value_id: '72057594260848641'
+      value_index: 0
+      value_instance: 1
+- id: '1584563045947'
+  name: Tuinverlichting Sfeer
+  entities:
+    light.tuin:
+      brightness: 137
+      friendly_name: Tuin
+      state: 'on'
+      supported_features: 41
+      templates:
+        icon: mdi:floor-lamp
