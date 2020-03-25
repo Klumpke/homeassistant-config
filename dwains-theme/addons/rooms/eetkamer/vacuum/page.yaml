@@ -42,9 +42,10 @@
           action: call-service
           service: vacuum.send_command
           service_data:
-            entity_id: vacuum.xiaomi_vacuum_cleaner
-            command: app_zoned_clean
-            params: [[23326,29399,29076,33099,1]]
+            entity_id: vacuum.rockrobo
+            command: zoned_cleanup
+            params:
+              'zone_ids': ['Woonkamer']
 
       - type: custom:button-card
         template: room_vacuum
@@ -57,9 +58,10 @@
           action: call-service
           service: vacuum.send_command
           service_data:
-            entity_id: vacuum.xiaomi_vacuum_cleaner
-            command: app_zoned_clean
-            params: [[23823,26472,29073,29372,1]]
+            entity_id: vacuum.rockrobo
+            command: zoned_cleanup
+            params:
+              'zone_ids': ['Keuken']
 
       - type: custom:button-card
         template: room_vacuum
@@ -72,9 +74,10 @@
           action: call-service
           service: vacuum.send_command
           service_data:
-            entity_id: vacuum.xiaomi_vacuum_cleaner
-            command: app_zoned_clean
-            params: [[24305,22220,29055,26470,1]]
+            entity_id: vacuum.rockrobo
+            command: zoned_cleanup
+            params:
+              'zone_ids': ['Eetkamer']
 
       - type: custom:button-card
         template: room_vacuum
@@ -87,9 +90,10 @@
           action: call-service
           service: vacuum.send_command
           service_data:
-            entity_id: vacuum.xiaomi_vacuum_cleaner
-            command: app_zoned_clean
-            params: [[23736,21848,25336,25448,1]]
+            entity_id: vacuum.rockrobo
+            command: zoned_cleanup
+            params:
+              'zone_ids': ['Hal']
 
       - type: custom:button-card
         template: room_vacuum
@@ -102,9 +106,10 @@
           action: call-service
           service: vacuum.send_command
           service_data:
-            entity_id: vacuum.xiaomi_vacuum_cleaner
-            command: app_zoned_clean
-            params: [[20080,26771,23280,33121,1]]
+            entity_id: vacuum.rockrobo
+            command: zoned_cleanup
+            params:
+              'zone_ids': ['Garage']
 
 - !include
   - ../../../../views/partials/heading.yaml
