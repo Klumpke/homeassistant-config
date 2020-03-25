@@ -6,12 +6,12 @@
           background-color: var(--dwains-theme-primary);
         }
       entities:
-        - sensor.netherlands_coronavirus_current
+        - sensor.netherlands_coronavirus_confirmed
       name: Nederland Current
-      hours_to_show: 24
+      hours_to_show: 168
       hour24: true
-      points_per_hour: 1
-      smoothing: false
+      points_per_hour: 0.25
+      smoothing: true
       show:
         points: false
         graph: line
@@ -23,12 +23,12 @@
           background-color: var(--dwains-theme-primary);
         }
       entities:
-        - sensor.worldwide_coronavirus_current
+        - sensor.worldwide_coronavirus_confirmed
       name: Wereldwijd Current
-      hours_to_show: 24
+      hours_to_show: 168
       hour24: true
-      points_per_hour: 1
-      smoothing: false
+      points_per_hour: 0.25
+      smoothing: true
       show:
         points: false
         graph: line
