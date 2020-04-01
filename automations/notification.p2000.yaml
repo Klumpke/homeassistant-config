@@ -6,7 +6,7 @@
     #- service_template: notify.ios_notifier
     - service_template: notify.mobile_app_iklumpke
       data_template:
-        title: "Hulpdiensten omgeving Someren"
+        title: "P2000 Someren"
         message: >
           {{ states.sensor.p2000_someren.state + states.sensor.p2000_someren.attributes.capcodes }}
         data:

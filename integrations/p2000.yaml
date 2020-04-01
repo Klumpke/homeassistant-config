@@ -3,22 +3,22 @@ sensor:
   - platform: p2000
     name: P2000 Someren
     regios: 22
-    disciplines: 1,2,3,4
+    disciplines: 1,2,3
     radius: 5000
-    scan_interval: 10
+    scan_interval: 30
     latitude: !secret zone_home_latitude
     longitude: !secret zone_home_longitude
 
   - platform: p2000
     name: P2000 Brabant Zuid Oost
     regios: 22
-    disciplines: 1,2,3,4
+    disciplines: 1,2,3
     radius: 15000
-    scan_interval: 10
+    scan_interval: 30
 
   - platform: p2000
     name: P2000 Limburg Noord
     regios: 23
-    disciplines: 1,2,3,4
+    disciplines: 1,2,3
     radius: 20000
-    scan_interval: 10
+    scan_interval: 30
