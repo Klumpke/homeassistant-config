@@ -3,6 +3,7 @@
 # Heading partial
 {% if not type and type != 'button' %}
 type: markdown
+item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
 style: |
   ha-card {
     box-shadow: none;
@@ -12,7 +13,7 @@ style: |
     font-size: 14px;
   }
   .markdown {
-    padding: 0px 16px 0px 16px;
+    padding: 0px 16px 0px {{ padding_left | default('0px') }} !important;
   }
 content: "{{ title }}"
 {% else %}

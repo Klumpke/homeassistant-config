@@ -6,44 +6,47 @@
 {% if room["light"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.light.title_plural }}
   path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_lights
-  cards:   
-    #Header
-    - !include
-      - ../../../partials/header.yaml
-      - title: {{ _d_t_trans.light.title_plural }}
-        subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
-    #Start for room lights content page
-    {% if room["light"].split('.')[0] == 'light' %}
-    # this room has only 1 light
-    {% else %}
-    # this room has group of lights
-    - type: entities
-      style: |
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
         ha-card {
-          box-shadow: none;
-          background: transparent;
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
-      entities:
-        - type: custom:auto-entities
-          filter:
-            include:
-              - group: {{ room["light"] }}
-                options:
-                  type: custom:button-card
-                  template: room_light
-                  tap_action:
-                    !include 
-                      - ../../../popups/light.yaml
-                      - entity: this.entity_id
-          sort:
-            method: name
-            ignore_case: true
-          card:
-            type: custom:layout-card
-            min_columns: 2
-            max_columns: 2
-            layout: horizontal
-    {% endif %}
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - !include
+            - ../../../partials/header.yaml
+            - title: {{ _d_t_trans.light.title_plural }}
+              subtitle: {{ room["name"] }}
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          #Start for room lights content page
+          {% if room["light"].split('.')[0] != 'group' %}
+          # this room has only 1 light
+          {% else %}
+          # this room has group of lights
+          - type: custom:auto-entities
+            filter:
+              include:
+                - group: {{ room["light"] }}
+                  options:
+                    type: custom:button-card
+                    template: room_light
+                    double_tap_action:
+                      !include 
+                        - ../../../popups/light.yaml
+                        - entity: this.entity_id
+            sort:
+              method: name
+              ignore_case: true
+            card:
+              type: custom:dwains-flexbox-card
+              padding: true
+              items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+          {% endif %}
 {% endif %}
 {% endfor %}

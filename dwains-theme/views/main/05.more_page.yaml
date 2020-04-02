@@ -5,26 +5,27 @@
   icon: {{ _d_t_icons.menu_more_page|default('mdi:menu') }}
   title: {{ _d_t_trans.more_page.title }}
   badges: []
-  cards:
-    - type: vertical-stack
-      cards:
-        #Header
-        - !include
-          - ../partials/header.yaml
-          - title: {{ _d_t_trans.more_page.title }}
-        #Start for more_page page
-        #Main dwains theme more_page buttons
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 8px 8px 10px 8px;
-            }
-          card:
-            type: custom:layout-card
-            min_columns: 3
-            max_columns: 3
-            layout: horizontal
-            justify_content: start
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
+        ha-card {
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
+        }
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - !include
+            - ../partials/header.yaml
+            - title: {{ _d_t_trans.more_page.title }}
+          #Start for more_page page
+          #Main dwains theme more_page buttons
+          - type: custom:dwains-flexbox-card
+            items_classes: 'col-xs-4 col-sm-3 col-md-2 col-lg-2'
+            padding: true
             cards:
               - type: custom:button-card
                 template: more_page_main
@@ -47,24 +48,12 @@
                 tap_action: 
                   action: navigate
                   navigation_path: more_page_settings
-        {% if _d_t_config.more_page and _d_t_config.more_page["addons"] %}
-        #heading Addons
-        - !include
-          - ../partials/heading.yaml
-          - title: {{ _d_t_trans.more_page.more_page_addons }}
-        #Addons start
-        - type: custom:mod-card
-          style: |
-            ha-card {
-              padding: 0px 8px 10px 8px;
-            }
-          card:
-            type: custom:layout-card
-            min_columns: 3
-            max_columns: 3
-            layout: horizontal
-            justify_content: start
-            cards:
+              {% if _d_t_config.more_page and _d_t_config.more_page["addons"] %}
+              #heading Addons
+              - !include
+                - ../partials/heading.yaml
+                - title: {{ _d_t_trans.more_page.more_page_addons }}
+              #Addons start
               {% for more_page in _d_t_config.more_page["addons"] %}
               - type: custom:button-card
                 template: more_page_main
@@ -80,4 +69,4 @@
               - type: custom:button-card
                 color_type: blank-card
                 aspect_ratio: 1/1
-        {% endif %}
+              {% endif %}

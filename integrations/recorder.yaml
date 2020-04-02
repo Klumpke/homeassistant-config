@@ -50,32 +50,32 @@ recorder:
       - sensor.dark_sky_wind_speed
 
       # Temperatuur sensoren
+      - sensor.temp_kleine_kamer
+      - sensor.temp_logeerkamer
       - sensor.temp_slaapkamer
       - sensor.temp_badkamer
       - sensor.temp_zolder
       - sensor.temp_woonkamer
       - sensor.temp_garage
-      - sensor.temp_vriezer
       - sensor.temp_tuin
-      - sensor.temp_koelkast
       - sensor.temp_test
+      - sensor.temp_kleine_kamer_humidity
+      - sensor.temp_logeerkamer_humidity
       - sensor.temp_slaapkamer_humidity
       - sensor.temp_badkamer_humidity
       - sensor.temp_zolder_humidity
       - sensor.temp_woonkamer_humidity
       - sensor.temp_garage_humidity
-      - sensor.temp_vriezer_humidity
       - sensor.temp_tuin_humidity
-      - sensor.temp_koelkast_humidity
       - sensor.temp_test_humidity
+      - sensor.temp_kleine_kamer_pressure
+      - sensor.temp_logeerkamer_pressure
       - sensor.temp_slaapkamer_pressure
       - sensor.temp_badkamer_pressure
       - sensor.temp_zolder_pressure
       - sensor.temp_woonkamer_pressure
       - sensor.temp_garage_pressure
-      - sensor.temp_vriezer_pressure
       - sensor.temp_tuin_pressure
-      - sensor.temp_koelkast_pressure
       - sensor.temp_test_pressure
 
       # Raam / Deur sensoren

@@ -5,44 +5,47 @@
 {% if room["plant"] %}
 - title: {{ room["name"] }} {{ _d_t_trans.plant.title_plural }}
   path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}_plants
-  cards:   
-    #Header
-    - !include
-      - ../../../partials/header.yaml
-      - title: {{ _d_t_trans.plant.title_plural }}
-        subtitle: {{ room["name"] }}
-        navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
-    #Start for room lights content page
-    {% if room["plant"].split('.')[0] == 'plant' %}
-      #this is not used because its never linked to
-    {% else %}
-    # this room has group of plants
-    - type: entities
-      style: |
+  panel: true
+  cards:    
+    - type: custom:mod-card
+      style: | 
         ha-card {
-          box-shadow: none;
-          background: transparent;
+          max-width: 1465px;
+          padding-bottom: 50px;
+          margin: 0 auto;
         }
-      entities:
-        - type: custom:auto-entities
-          filter:
-            include:
-              - group: {{ room["plant"] }}
-                options:
-                  type: custom:button-card
-                  template: room_plant
-                  tap_action:
-                    !include 
-                      - ../../../popups/more-info.yaml
-                      - entity: this.entity_id
-          sort:
-            method: name
-            ignore_case: true
-          card:
-            type: custom:layout-card
-            min_columns: 2
-            max_columns: 2
-            layout: horizontal
-    {% endif %}
+      card:
+        type: vertical-stack
+        cards:
+          #Header
+          - !include
+            - ../../../partials/header.yaml
+            - title: {{ _d_t_trans.plant.title_plural }}
+              subtitle: {{ room["name"] }}
+              navigation_path: {{ room["name"]|lower|replace("'", "_")|replace(" ", "_") }}  
+          #Start for room lights content page
+          {% if room["plant"].split('.')[0] == 'plant' %}
+            #this is not used because its never linked to
+          {% else %}
+          # this room has group of plants
+          - type: custom:auto-entities
+            filter:
+              include:
+                - group: {{ room["plant"] }}
+                  options:
+                    type: custom:button-card
+                    template: room_plant
+                    tap_action:
+                      !include 
+                        - ../../../popups/more-info.yaml
+                        - entity: this.entity_id
+            sort:
+              method: name
+              ignore_case: true
+            card:
+              type: custom:dwains-flexbox-card
+              padding: true
+              items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+          {% endif %}
 {% endif %}
 {% endfor %}

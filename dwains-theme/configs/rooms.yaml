@@ -70,6 +70,8 @@ rooms:
   - name: Kleine kamer
     icon: fal:briefcase
     light: light.kleine_kamer
+    temperature: sensor.temp_kleine_kamer
+    humidity: sensor.temp_kleine_kamer_humidity
     addons:
       - name: Printer
         icon: fal:print
@@ -87,6 +89,8 @@ rooms:
   - name: Logeerkamer
     icon: fal:bed
     light: light.logeerkamer
+    temperature: sensor.temp_logeerkamer
+    humidity: sensor.temp_logeerkamer_humidity
 
   - name: Badkamer
     icon: fal:bath

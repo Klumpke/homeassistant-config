@@ -33,6 +33,14 @@ scene: !include scenes.yaml
 # Lovelace Mode
 lovelace:
   mode: yaml
+  resources: !include_dir_merge_list dwains-theme/resources/
+  dashboards:
+    dwains-theme:
+      mode: yaml
+      title: Dwains Theme
+      icon: mdi:alpha-d-box
+      show_in_sidebar: true
+      filename: dwains-theme-lovelace.yaml
 
 # Frontend and HTTP
 frontend:
@@ -49,8 +57,10 @@ browser_mod:
 
 #Dwains theme definitions (this is for doing all the jinja2 inside YAML files)
 dwains_theme:
-  information:
-    version: '1.2.1'
+  global:
+    version: '1.3.0'
+  styles:
+    padding-left: '10px'
   translations:
     !include_dir_merge_named dwains-theme/translations/
   configuration:
@@ -61,17 +71,21 @@ dwains_theme:
 #Sensor for latest version
 sensor:
   - platform: scrape
-    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.2.1
+    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.3.0
     name: Dwains Theme Version
     select: ".current-version h1"
     value_template: '{{ value.split(":")[1] }}'
+    scan_interval: 3600
 
 #Input select
 input_select:
   #Theme selector
   theme_selector:
-    name: Theme Selector
+    name: Theme Selector 
     options:
-      - Auto Mode
+      - Auto Mode (Dark/Light)
       - Dark Mode
       - Light Mode
+      - Auto Mode (Black/White)
+      - Black Mode
+      - White Mode

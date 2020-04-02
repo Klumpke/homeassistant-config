@@ -5,33 +5,37 @@ type: custom:mod-card
 style: |
   ha-card {
     box-shadow: none;
-    padding: 10px 0px;
+    padding: 10px 0px 8px 0px;
     color: #fff;
     background-color: var(--dwains-theme-header-background);
-    margin-top: -4px;
     border-radius: 0; 
     font-weight: bold;
     font-size: 14px;
+    overflow: hidden;
+    margin-bottom: 1px;
+  }
+  @media only screen and (min-width: 600px) {
+    ha-card {
+      margin-top: 25px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
   }
 card:
-  type: custom:layout-card
-  layout: grid
-  gridrows: auto
-  gridcols: 90% 10%
-  cards:    
+  type: custom:dwains-flexbox-card
+  cards:
     - type: markdown
-      gridrow: 1 / 1
-      gridcol: 1 / 2
+      item_classes: 'col-xs-8'
       style: | 
         ha-card {
           background: transparent;
           box-shadow: none;
-          margin-top: -8px;
+          margin-top: -4px;
         }
         ha-markdown {
           padding-top: 0px !important;
-          padding-bottom: 7px !important;
-          padding-left: 8px !important;
+          padding-bottom: 3px !important;
+          padding-left: 11px !important;
         }
         ha-card a {
           color: var(--dwains-theme-header-text) !important;
@@ -59,12 +63,11 @@ card:
           {% endif %}
         }
       content: |
-        {% if navigation_path %}[<ha-icon icon="{{ _d_t_icons.menu_back|default('fas:chevron-left') }}"></ha-icon>](/lovelace/{{ navigation_path }}){% endif %}
+        {% if navigation_path %}[<ha-icon icon="{{ _d_t_icons.menu_back|default('fas:chevron-left') }}"></ha-icon>](/dwains-theme/{{ navigation_path }}){% endif %}
         <h3>{{ subtitle }}</h3>
         <h1>{{ title }}</h1>
     - type: vertical-stack
-      gridrow: 1 / 1
-      gridcol: 2 / 2
+      item_classes: 'col-xs-4'
       cards:
         {% if type and type == 'button' %}
         - type: custom:button-card

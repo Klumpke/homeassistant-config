@@ -1,6 +1,6 @@
 person_more_entity:
   show_name: true
-  show_icon: false
+  show_icon: true
   show_state: true
   color: 'auto'
   styles:
