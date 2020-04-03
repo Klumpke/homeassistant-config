@@ -4,6 +4,7 @@ rooms:
     light: group.woonkamer_lights
     temperature: sensor.temp_woonkamer
     humidity: sensor.temp_woonkamer_humidity
+    pressure: sensor.temp_woonkamer_pressure
     motion: binary_sensor.motion_woonkamer
     media_player: media_player.tv_woonkamer
     addons:
@@ -62,6 +63,7 @@ rooms:
     light: group.slaapkamer_lights
     temperature: sensor.temp_slaapkamer
     humidity: sensor.temp_slaapkamer_humidity
+    pressure: sensor.temp_slaapkamer_pressure
     motion: binary_sensor.motion_slaapkamer
     window: binary_sensor.contact_slaapkamerraam
     cover: cover.slaapkamer
@@ -72,6 +74,7 @@ rooms:
     light: light.kleine_kamer
     temperature: sensor.temp_kleine_kamer
     humidity: sensor.temp_kleine_kamer_humidity
+    pressure: sensor.temp_kleine_kamer_pressure
     addons:
       - name: Printer
         icon: fal:print
@@ -91,11 +94,13 @@ rooms:
     light: light.logeerkamer
     temperature: sensor.temp_logeerkamer
     humidity: sensor.temp_logeerkamer_humidity
+    pressure: sensor.temp_logeerkamer_pressure
 
   - name: Badkamer
     icon: fal:bath
     temperature: sensor.temp_badkamer
     humidity: sensor.temp_badkamer_humidity
+    pressure: sensor.temp_badkamer_pressure
 
   - name: Garage
     icon: fal:warehouse
@@ -104,6 +109,7 @@ rooms:
     humidity: sensor.temp_garage_humidity
     motion: binary_sensor.motion_garage
     door: binary_sensor.contact_garagedeur
+    #media_player: media_player.eetkamer
 
   - name: Hal
     icon: fal:key-skeleton
