@@ -82,36 +82,3 @@ sensor:
         friendly_name: Vacuum Cleaner Status Sensor
         value_template: >-
           {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.status }}
-  # PostNL Template Sensors
-      postnl_jimmy_packages:
-        value_template: >-
-          {{ states.sensor.postnl_jimmy_delivery.state }}
-      postnl_stephanie_packages:
-        value_template: >-
-          {{ states.sensor.postnl_stephanie_delivery.state }}
-
-  # - platform: rest
-  #   resource: http://192.168.178.90/api/map/latest
-  #   name: xiaomi_map
-  #   json_attributes:
-  #     - image
-  #     - path
-  #     - charger
-  #     - robot
-  #   value_template: 'OK'
-  #   scan_interval: 5
-
-# switch:
-# - platform: template
-#   switches:
-#       vacuum_switch:
-#         entity_id: vacuum.xiaomi_vacuum_cleaner
-#         value_template: "{{ is_state('vacuum.xiaomi_vacuum_cleaner', 'on') }}"
-#         turn_on:
-#           service: vacuum.start
-#           data:
-#             entity_id: vacuum.xiaomi_vacuum_cleaner
-#         turn_off:
-#           service: vacuum.stop
-#           data:
-#             entity_id: vacuum.xiaomi_vacuum_cleaner
