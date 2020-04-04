@@ -1,6 +1,6 @@
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-sm-6'
-  padding: true
+  #padding: true
   cards:
     - type: entities
       style: |
