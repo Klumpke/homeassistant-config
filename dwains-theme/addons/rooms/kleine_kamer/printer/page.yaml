@@ -21,35 +21,41 @@
     - type: 'custom:bar-card'
       style: |
         ha-card {
-          padding: 8px 8px 0px 8px;
           border-radius: 5px;
           background-color: var(--dwains-theme-primary);
         }
-      title_style:
-        color: var(--name-color-on);
-        font-size: 12px
-        text-transform: capitalize
-      columns: 4
+        bar-card-value {
+          color: white;
+          margin-bottom: 45%;
+        }
+        bar-card-iconbar {
+          color: white;
+          margin-top: 55%;
+        }
+        bar-card-title {
+          color: var(--name-color-on);
+          text-transform: capitalize;
+        }
       direction: up
-      entities:
-        - color: Black
-          entity: sensor.hp_m281fdw_toner_black
-          icon: mdi:water
-        - color: MediumTurquoise
-          entity: sensor.hp_m281fdw_toner_cyan
-          icon: mdi:water
-        - color: MediumOrchid
-          entity: sensor.hp_m281fdw_toner_magenta
-          icon: mdi:water
-        - color: Gold
-          entity: sensor.hp_m281fdw_toner_yellow
-          icon: mdi:water
+      stack: horizontal
+      positions:
+        icon: inside
+        title: outside
+        value: inside
       height: 200px
-      max: 100
-      min: 0
-      padding: 2px
       target: 10
-      title_position: bottom
-      icon_position: inside
       unit_of_measurement: '%'
       width: 100%
+      entities:
+        - entity: sensor.hp_m281fdw_toner_black
+          color: Black
+          icon: mdi:water
+        - entity: sensor.hp_m281fdw_toner_cyan
+          color: MediumTurquoise
+          icon: mdi:water
+        - entity: sensor.hp_m281fdw_toner_magenta
+          color: MediumOrchid
+          icon: mdi:water
+        - entity: sensor.hp_m281fdw_toner_yellow
+          color: Gold
+          icon: mdi:water
