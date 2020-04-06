@@ -15,6 +15,7 @@
             'papier': /local/images/afval_papier_large.png
             'restafval': /local/images/afval_rest_large.png
             'pmd': /local/images/afval_pmd_large.png
+            'papier, pmd': /local/images/afval_papier-pmd_large.png
             'Geen': /local/images/afval_geen_large.png
         - type: picture-entity
           style: |
@@ -28,6 +29,7 @@
             'papier': /local/images/afval_papier_large.png
             'restafval': /local/images/afval_rest_large.png
             'pmd': /local/images/afval_pmd_large.png
+            'papier, pmd': /local/images/afval_papier-pmd_large.png
             'Geen': /local/images/afval_geen_large.png
 
     - type: glance
