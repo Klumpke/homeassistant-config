@@ -48,14 +48,18 @@
       width: 100%
       entities:
         - entity: sensor.hp_m281fdw_toner_black
+          name: Zwart
           color: Black
           icon: mdi:water
         - entity: sensor.hp_m281fdw_toner_cyan
+          name: Cyaan
           color: MediumTurquoise
           icon: mdi:water
         - entity: sensor.hp_m281fdw_toner_magenta
+          name: Magenta
           color: MediumOrchid
           icon: mdi:water
         - entity: sensor.hp_m281fdw_toner_yellow
+          name: Geel
           color: Gold
           icon: mdi:water

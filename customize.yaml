@@ -17,16 +17,6 @@ sensor.blink_pmd:
   friendly_name: PMD
 
 
-sensor.hp_m281fdw_toner_black:
-  friendly_name: Zwart
-sensor.hp_m281fdw_toner_cyan:
-  friendly_name: Cyaan
-sensor.hp_m281fdw_toner_magenta:
-  friendly_name: Magenta
-sensor.hp_m281fdw_toner_yellow:
-  friendly_name: Geel
-
-
 sensor.joyce_battery_level:
   friendly_name: Batterij
 sensor.joyce_battery_state:
