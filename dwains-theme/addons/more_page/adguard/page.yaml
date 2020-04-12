@@ -39,6 +39,7 @@
     ha-card {
       background-color: var(--dwains-theme-primary);
     }
+  show_header_toggle: false
   entities:
     - entity: switch.adguard_protection
     - entity: switch.adguard_filtering
