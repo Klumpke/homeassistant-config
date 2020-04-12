@@ -29,16 +29,16 @@ sensor:
   - platform: yr
 
 # Air Visual
-  - platform: airvisual
-    api_key: !secret airvisual_api
-    monitored_conditions:
-      - us
-    show_on_map: false
-    scan_interval: 300
+  # - platform: airvisual
+  #   api_key: !secret airvisual_api
+  #   monitored_conditions:
+  #     - us
+  #   show_on_map: false
+  #   scan_interval: 300
+  #   latitude: !secret zone_home_latitude
+  #   longitude: !secret zone_home_longitude
+airvisual:
+  api_key: !secret airvisual_api
+  geographies:
     latitude: !secret zone_home_latitude
     longitude: !secret zone_home_longitude
-# airvisual:
-#   api_key: !secret airvisual_api
-#   geographies:
-#     latitude: !secret zone_home_latitude
-#     longitude: !secret zone_home_longitude
