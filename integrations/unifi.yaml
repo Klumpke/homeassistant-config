@@ -1,24 +1,4 @@
 ---
-# Home Assistant can get information from various devices. These can be used,
-# for example, to track the location of your mobile phone.
-#
-# This configuration loads up my device trackers
-#
-#
-# https://github.com/hassio-addons/addon-unifi
-# https://www.home-assistant.io/components/unifi/
-#
-unifi:
-  controllers:
-      # Same address as relevant config entry, needed to identify config entry
-    - host: !secret device_tracker_unifi_host
-      # Same site as relevant config entry, needed to identify config entry
-      site: !secret device_tracker_unifi_siteid
-      # Filter the SSIDs that tracking will occur on.
-      ssid_filter:
-      - 'Wooden Shoes'
-
-
 # https://github.com/custom-components/sensor.unifigateway
 #
 sensor:
