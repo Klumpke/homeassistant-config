@@ -114,6 +114,12 @@ rooms:
   - name: Hal
     icon: fal:key-skeleton
     light: group.other_lights
+    device: switch.deurbel_bel_actief
+    # page_entities:
+    #   columns: 1
+    #   show_title: 'true'
+    #   entities:
+    #     - entity: switch.deurbel_bel_actief
 
   - name: Tuin
     icon: fal:tree-alt
