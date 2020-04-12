@@ -1,0 +1,9 @@
+{
+    "repeat": 3,
+    "lifetime": 6,
+    "clock":{ 
+        "show": true,
+        "switchAktiv": true,
+            "switchSec": 3
+    }
+}
