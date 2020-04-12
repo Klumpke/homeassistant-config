@@ -5,7 +5,7 @@
   initial_state: true
   trigger:
   - platform: state
-    entity_id: binary_sensor.fib_fgbs001_deurbel
+    entity_id: binary_sensor.deurbel_knop
     from: 'off'
     to: 'on'
   # condition:
@@ -36,15 +36,9 @@
     data:
       entity_id: camera.voordeur_2
       media_player: media_player.hub_keuken
-  # - service: media_player.play_media
-  #   data:
-  #     entity_id: media_player.hub_keuken
-  #     media_content_id: "https://hass.klompen.net/local/audio/deurbel.mp3"
-  #     media_content_type: music
-  # - delay: '00:00:03'
   - service: script.sonos_play
     data:
-      sonos_entity: media_player.woonkamer, media_player.boven, media_player.tuin
+      sonos_entity: media_player.woonkamer, media_player.eetkamer, media_player.boven, media_player.tuin
       volume: 0.4
       media_content: "https://hass.klompen.net/local/audio/deurbel.mp3"
       delay: '00:00:03'
@@ -52,3 +46,23 @@
   - service: media_player.turn_off
     data:
       entity_id: media_player.hub_keuken
+
+
+# Deurbel aan na 8.00u
+# Deurbel uit na 22.00u
+#
+- alias: "Deurbel AAN na 07.30u"
+  trigger:
+    platform: time
+    at: "07:30:00"
+  action:
+    service: switch.turn_on
+    entity_id: switch.deurbel_bel_actief
+
+- alias: "Deurbel UIT na 22.00u"
+  trigger:
+    platform: time
+    at: "22:00:00"
+  action:
+    service: switch.turn_off
+    entity_id: switch.deurbel_bel_actief

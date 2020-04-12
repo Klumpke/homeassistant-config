@@ -23,6 +23,9 @@ history:
       # Backup
       - sensor.auto_backup
 
+      # Deurbel
+      - binary_sensor.deurbel_knop
+
       # Verlichting SWITCH
       - switch.fib_fgs223_achterdeur
       - switch.fib_fgs223_carport
