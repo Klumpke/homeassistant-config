@@ -1,9 +1,4 @@
-- type: custom:mod-card
-  style: |
-    ha-card {
-      padding: 8px; 
-    }
-  card:
-    type: map
-    entities:
-      - person.joyce
+- type: map
+  hours_to_show: 48
+  entities:
+    - person.joyce
