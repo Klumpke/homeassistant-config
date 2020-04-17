@@ -12,6 +12,8 @@
     - entity: sensor.hacs
       icon: 'mdi:update'
       name: HACS Updates
+    # - entity: sensor.auto_backup
+    #   name: Snapshots
     # - entity: sensor.processor_use
     #   name: CPU gebruik
     # - entity: sensor.memory_use_percent
@@ -34,6 +36,7 @@
       entities:
         - sensor.processor_use
       name: CPU
+      line_color: 'var(--dwains-theme-accent)'
       hours_to_show: 24
       hour24: true
       points_per_hour: 1
@@ -51,6 +54,7 @@
       entities:
         - sensor.memory_use_percent
       name: RAM
+      line_color: 'var(--dwains-theme-accent)'
       hours_to_show: 24
       hour24: true
       points_per_hour: 1
@@ -70,6 +74,7 @@
       entities:
         - sensor.disk_use_percent
       name: SSD
+      line_color: 'var(--dwains-theme-accent)'
       hours_to_show: 24
       hour24: true
       points_per_hour: 1
@@ -87,6 +92,7 @@
       entities:
         - sensor.server_power
       name: Verbruik
+      line_color: 'var(--dwains-theme-accent)'
       hours_to_show: 24
       hour24: true
       points_per_hour: 1
