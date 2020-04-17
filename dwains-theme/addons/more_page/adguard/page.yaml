@@ -8,6 +8,7 @@
       entities:
         - sensor.adguard_dns_queries
       name: DNS Queries
+      line_color: 'var(--dwains-theme-accent)'
       hours_to_show: 24
       hour24: true
       points_per_hour: 1
@@ -25,6 +26,7 @@
       entities:
         - sensor.adguard_dns_queries_blocked
       name: DNS Queries Blocked
+      line_color: 'var(--dwains-theme-accent)'
       hours_to_show: 24
       hour24: true
       points_per_hour: 1
