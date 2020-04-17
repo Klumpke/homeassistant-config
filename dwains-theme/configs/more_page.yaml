@@ -25,10 +25,13 @@ more_page:
         path: 'dwains-theme/addons/more_page/adguard/page.yaml'
       - name: ISP
         icon: fal:tachometer-alt
-        path: 'dwains-theme/addons/more_page/isp/page.yaml'
+        path: 'dwains-theme/addons/more_page/unifi/page.yaml'
       - name: Zwave
         icon: fal:wifi
         path: 'dwains-theme/addons/more_page/zwave/page.yaml'
       - name: Coronavirus
         icon: fal:disease
         path: 'dwains-theme/addons/more_page/coronavirus/page.yaml'
+      - name: TEST 2
+        icon: fal:chart-area
+        path: 'dwains-theme/addons/more_page/test2/page.yaml'

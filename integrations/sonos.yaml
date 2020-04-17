@@ -8,3 +8,46 @@ sonos:
       - 192.168.178.51
       - 192.168.178.52
       - 192.168.178.53
+      - 192.168.178.54
+
+sensor:
+  - platform: template
+    sensors:
+      sonos_woonkamermedia_title:
+        entity_id: media_player.woonkamer
+        value_template: "{{ state_attr('media_player.woonkamer', 'media_title') }}"
+        friendly_name: Sonos Woonkamer Media Title
+  - platform: template
+    sensors:
+      sonos_eetkamer_media_title:
+        entity_id: media_player.eetkamer
+        value_template: "{{ state_attr('media_player.eetkamer', 'media_title') }}"
+        friendly_name: Sonos Eetkamer Media Title
+  - platform: template
+    sensors:
+      sonos_boven_media_title:
+        entity_id: media_player.boven
+        value_template: "{{ state_attr('media_player.boven', 'media_title') }}"
+        friendly_name: Sonos Boven Media Title
+  - platform: template
+    sensors:
+      sonos_zolder_media_title:
+        entity_id: media_player.zolder
+        value_template: "{{ state_attr('media_player.zolder', 'media_title') }}"
+        friendly_name: Sonos Eetkamer Media Title
+  - platform: template
+    sensors:
+      sonos_tuin_media_title:
+        entity_id: media_player.tuin
+        value_template: "{{ state_attr('media_player.tuin', 'media_title') }}"
+        friendly_name: Sonos Tuin Media Title
+
+group:
+  sonos_media_title:
+    name: Sonos Media Title
+    entities:
+      - sensor.sonos_woonkamer_media_title
+      - sensor.sonos_eetkamer_media_title
+      - sensor.sonos_boven_media_title
+      - sensor.sonos_zolder_media_title
+      - sensor.sonos_tuin_media_title

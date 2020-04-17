@@ -10,7 +10,7 @@
         }
       entities:
         #- entity: {{ (data | fromjson)['entity'] }}
-        - entity: media_player.woonkamer
+        - entity: media_player.zolder
           group: true
           name: Sonos
           info: scroll
@@ -64,9 +64,6 @@
               - name: Omroep Brabant
                 type: source
                 id: Omroep Brabant
-              - name: TV
-                type: source
-                id: TV
 
     - type: entities
       style: |

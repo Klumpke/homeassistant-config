@@ -150,6 +150,12 @@ rooms:
     window: binary_sensor.contact_zolderraam
     #device: group.zolder_devices
     addons:
+      - name: Sonos
+        icon: fal:speaker
+        path: 'dwains-theme/addons/rooms/zolder/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/zolder/sonos/button.yaml'
+        data:
+          entity: media_player.zolder
       - name: Wasmachine
         icon: fal:washer
         path: 'dwains-theme/addons/rooms/zolder/washingmachine/page.yaml'
