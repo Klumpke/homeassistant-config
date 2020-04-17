@@ -138,6 +138,13 @@ recorder:
       - sensor.unifi_gateway_wlan
       - sensor.unifi_gateway_www
 
+      - sensor.unifi_gateway_www_xput_up
+      - sensor.unifi_gateway_www_xput_down
+      - sensor.unifi_gateway_www_speedtest_ping
+      - sensor.unifi_gateway_lan_num_user
+      - sensor.unifi_gateway_wlan_num_user
+      - sensor.unifi_gateway_wan_download
+
       # P2000
       - sensor.p2000_someren
       - sensor.p2000_limburg_noord

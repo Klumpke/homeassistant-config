@@ -9,8 +9,35 @@ sensor:
     password: !secret device_tracker_unifi_pass
     monitored_conditions:
       - www
+      - wan
+      - vpn
       - lan
       - wlan
-      - vpn
       - alerts
       - firmware
+
+
+  - platform: template
+    sensors:
+      unifi_gateway_wan_download:
+        friendly_name: 'WAN Download'
+        icon_template: "mdi:progress-download"
+        unit_of_measurement: KBps
+        value_template: "{{ (states.sensor.unifi_gateway_www.attributes['rx_bytes-r'] / 100) | int }}"
+      unifi_gateway_wan_cpu:
+        friendly_name: "CPU"
+        unit_of_measurement: "%"
+        value_template: "{{ states.sensor.unifi_gateway_wan.attributes['gw_system-stats']['cpu'] }}"
+      unifi_gateway_wan_mem:
+        friendly_name: "Memory"
+        unit_of_measurement: "%"
+        value_template: "{{ states.sensor.unifi_gateway_wan.attributes['gw_system-stats']['mem'] }}"
+      unifi_gateway_lan_num_user:
+        friendly_name: 'Users LAN'
+        value_template: '{{ states.sensor.unifi_gateway_lan.attributes.num_user }}'
+      unifi_gateway_wlan_num_user:
+        friendly_name: 'Users WLAN'
+        value_template: '{{ states.sensor.unifi_gateway_wlan.attributes.num_user }}'
+      unifi_gateway_wlan_num_guest:
+        friendly_name: 'Guests WLAN'
+        value_template: '{{ states.sensor.unifi_gateway_wlan.attributes.num_guest }}'
