@@ -8,13 +8,17 @@ substitutions:
 esphome:
   name: ${device_name}
   platform: ESP8266
-  board: nodemcuv2
+  board: esp01_1m
 
 # WiFi connection, correct these
 # with values for your WiFi.
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_pass
+  # manual_ip:
+  #   static_ip: 192.168.178.76
+  #   gateway: 192.168.178.254
+  #   subnet: 255.255.255.0
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -83,9 +87,9 @@ switch:
   # Switch to turn on/off the chime.
   - platform: gpio
     id: relay
-    inverted: true
+    inverted: false
     name: "${friendly_name} Bel"
-    pin: GPIO5
+    pin: GPIO0
 
   # Switch to turn on/off chime when
   # doorbell button is pushed.
@@ -115,7 +119,7 @@ binary_sensor:
     name: "${friendly_name} Knop"
     pin:
       # Connected to GPIO on the ESP-01S.
-      number: GPIO4
+      number: GPIO2
       mode: INPUT_PULLUP
       inverted: true
     filters:

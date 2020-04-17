@@ -38,7 +38,7 @@
       media_player: media_player.hub_keuken
   - service: script.sonos_play
     data:
-      sonos_entity: media_player.woonkamer, media_player.eetkamer, media_player.boven, media_player.tuin
+      sonos_entity: media_player.woonkamer, media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
       volume: 0.4
       media_content: "https://hass.klompen.net/local/audio/deurbel.mp3"
       delay: '00:00:03'
