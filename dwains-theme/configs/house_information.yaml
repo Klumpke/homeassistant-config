@@ -13,8 +13,6 @@ house_information:
     - entity: input_select.dryer_status
     - entity: input_select.dishwasher_status
   calendar:
-    # - calendar.trash
-    # - calendar.birthdays
     - calendar.jeroen
     - calendar.joyce
     - calendar.gezamenlijk
