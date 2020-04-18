@@ -107,14 +107,27 @@ rooms:
     light: group.garage_lights
     temperature: sensor.temp_garage
     humidity: sensor.temp_garage_humidity
+    pressure: sensor.temp_garage_pressure
     motion: binary_sensor.motion_garage
     door: binary_sensor.contact_garagedeur
     #media_player: media_player.eetkamer
+    addons:
+      - name: Camera
+        path: 'dwains-theme/addons/rooms/tuin/camera/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/tuin/camera/button.yaml'
+        data:
+          entity: camera.carport
 
   - name: Hal
     icon: fal:key-skeleton
     light: group.other_lights
     device: switch.deurbel_bel_actief
+    addons:
+      - name: Camera
+        path: 'dwains-theme/addons/rooms/tuin/camera/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/tuin/camera/button.yaml'
+        data:
+          entity: camera.voordeur
     # page_entities:
     #   columns: 1
     #   show_title: 'true'
@@ -126,6 +139,7 @@ rooms:
     light: group.buiten_lights
     temperature: sensor.temp_tuin
     humidity: sensor.temp_tuin_humidity
+    pressure: sensor.temp_tuin_pressure
     door: binary_sensor.contact_achterdeur
     # plant: plant.olijfboom_rechts
     addons:
@@ -142,11 +156,17 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/tuin/plant/button.yaml'
         data:
           entity: plant.olijfboom_rechts
+      - name: Camera
+        path: 'dwains-theme/addons/rooms/tuin/camera/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/tuin/camera/button.yaml'
+        data:
+          entity: camera.tuin
 
   - name: Zolder
     icon: fal:box-full
     temperature: sensor.temp_zolder
     humidity: sensor.temp_zolder_humidity
+    pressure: sensor.temp_zolder_pressure
     window: binary_sensor.contact_zolderraam
     #device: group.zolder_devices
     addons:
