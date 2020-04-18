@@ -1,8 +1,5 @@
-#dynamic_page:
-  # addon:
-  #   name: Hello dynamic page
-  #   icon: fas:puzzle-piece
-  #   path: 'dwains-theme/addons/dynamic_page/hello-dynamic-page/page.yaml'
-  #   data:
-  #     some_data: 'This is some data parsed.'
-  #     some_other_data: 'and some other data.'
+dynamic_page:
+  addon:
+    name: Camera's
+    icon: mdi:cctv
+    path: 'dwains-theme/addons/dynamic_page/camera_hide-state/page.yaml'
