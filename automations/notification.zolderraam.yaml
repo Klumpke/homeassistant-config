@@ -16,9 +16,6 @@
   - entity_id: sensor.yr_symbol
     platform: state
     to: '46'
-  # - entity_id: sensor.yr_symbol
-  #   platform: state
-  #   to: 46
   condition:
   - entity_id: binary_sensor.contact_zolderraam
     state: 'on'

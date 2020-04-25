@@ -45,6 +45,7 @@ node-red
 tts
 _OLD
 www/images/snapshots
+www/images/persons
 www/dwains-theme/fonts
 
 # ESPHome ignores

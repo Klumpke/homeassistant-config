@@ -10,7 +10,7 @@
   action:
     - service: auto_backup.snapshot_full
       data_template:
-        name: Hassio Weekly {{now().strftime('%Y-%m-%d')}}
+        name: Hassio weekly {{now().strftime('%Y-%m-%d')}}
         keep_days: 90
         exclude:
           # addons:
@@ -25,5 +25,5 @@
   action:
     - service: notify.mobile_app_iklumpke
       data_template:
-        title: "Snaptshot mislukt"
+        title: "Snapshot mislukt"
         message: "Naam: {{ trigger.event.data.name }}\nFout: {{ trigger.event.data.error }}"

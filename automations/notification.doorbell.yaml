@@ -11,7 +11,7 @@
   # condition:
   # ### dit voorkomt het klapperen
   #   condition: template
-  #   value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.automation_notify_doorbell.attributes.last_triggered | default(0)) | int > 10)}}'
+  #   value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.notificatie_deurbel.attributes.last_triggered | default(0)) | int > 10)}}'
   action:
   - service: camera.snapshot
     data:
@@ -23,7 +23,7 @@
       message: "Er is aangebeld!"
       data:
         attachment:
-          url: "https://hass.klompen.net/local/images/snapshots/cam_voordeur.jpg"
+          url: !secret http_camera_voordeur
           content-type: jpeg
           hide-thumbnail: false
 #  - service: notify.pushover
@@ -31,7 +31,7 @@
 #      title: "Deurbel"
 #      message: "Er is aangebeld!"
 #      data:
-#        attachment: "https://hass.klompen.net/local/images/snapshots/cam_voordeur.jpg"
+#        attachment: !secret http_camera_voordeur
   - service: camera.play_stream
     data:
       entity_id: camera.voordeur_2
@@ -40,7 +40,7 @@
     data:
       sonos_entity: media_player.woonkamer, media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
       volume: 0.4
-      media_content: "https://hass.klompen.net/local/audio/deurbel.mp3"
+      media_content: !secret http_audio_deurbel
       delay: '00:00:03'
   - delay: "00:00:30"
   - service: media_player.turn_off

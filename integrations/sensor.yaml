@@ -100,4 +100,4 @@ sensor:
   # The cert_expiry sensor fetches information from a configured URL
   # and displays the certificate expiry in days.
   - platform: cert_expiry
-    host: hass.klompen.net
+    host: !secret http_sensor_cert

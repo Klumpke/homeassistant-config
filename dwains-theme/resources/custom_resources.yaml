@@ -22,6 +22,6 @@
 
 # TEST 2
 - url: /hacsfiles/list-card/list-card.js
-  type: js
+  type: module
 - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js?v=0.3.2
-  type: js
+  type: module

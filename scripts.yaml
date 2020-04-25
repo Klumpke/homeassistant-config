@@ -56,6 +56,6 @@ camera_snapshot:
         message: "Camera om {{ now().strftime('%d-%m-%Y %H:%M:%S') }}"
         data:
           attachment:
-            url: "https://hass.klompen.net/local/images/snapshots/{{ camera_entity }}.jpg"
+            url: !secret http_camera_snapshot
             content-type: jpeg
             hide-thumbnail: false
