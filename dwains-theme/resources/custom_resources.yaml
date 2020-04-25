@@ -5,7 +5,7 @@
 # - type: module
 #   url: /to_your_folder/filename.js
 - url: /hacsfiles/bar-card/bar-card.js
-  type: js
+  type: module
 - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
   type: module
 - url: /hacsfiles/lovelace-flower-card/flower-card.js
@@ -18,3 +18,10 @@
 # Inklap menu voor Sonos Speakers
 - url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
   type: module
+
+
+# TEST 2
+- url: /hacsfiles/list-card/list-card.js
+  type: js
+- url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js?v=0.3.2
+  type: js
