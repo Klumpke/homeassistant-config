@@ -16,22 +16,23 @@
   - service: camera.snapshot
     data:
       entity_id: camera.voordeur
-      filename: '/config/www/images/snapshots/cam_voordeur.jpg'
-  - service: notify.ios_notifier
+      filename: "/config/www/images/snapshots/cam_voordeur.jpg"
+  # - service: notify.ios_notifier
+  #   data:
+  #     title: "Deurbel"
+  #     message: "Er is aangebeld!"
+  #     data:
+  #       attachment:
+  #         url: !secret http_camera_voordeur
+  #         content-type: jpeg
+  #         hide-thumbnail: false
+  - service: notify.pushover
     data:
       title: "Deurbel"
       message: "Er is aangebeld!"
       data:
-        attachment:
-          url: !secret http_camera_voordeur
-          content-type: jpeg
-          hide-thumbnail: false
-#  - service: notify.pushover
-#    data:
-#      title: "Deurbel"
-#      message: "Er is aangebeld!"
-#      data:
-#        attachment: !secret http_camera_voordeur
+        sound: pushover
+        attachment: "/config/www/images/snapshots/cam_voordeur.jpg"
   - service: camera.play_stream
     data:
       entity_id: camera.voordeur_2
