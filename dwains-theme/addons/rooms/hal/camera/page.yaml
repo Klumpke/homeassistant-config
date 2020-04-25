@@ -1,4 +1,8 @@
 # dwains_theme
+## Room add-on: Camera
+## Created by Jeroen Klompen
+## Version: 1.0.0
+
 - type: picture-entity
   entity: {{ (data | fromjson)['entity'] }}
   camera_view: live

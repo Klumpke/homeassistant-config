@@ -1,3 +1,7 @@
+## More-page add-on: Coronavirus
+## Created by Jeroen Klompen
+## Version: 1.0.1
+
 - type: horizontal-stack
   cards:
     - type: custom:mini-graph-card
