@@ -14,6 +14,13 @@ more_page:
       - name: Afvalwijzer
         icon: fal:recycle
         path: 'dwains-theme/addons/more_page/afvalwijzer/page.yaml'
+        data:
+          afval_vandaag: sensor.blink_vandaag
+          afval_morgen: sensor.blink_morgen
+          afval_rest: sensor.blink_restafval
+          afval_gft: sensor.blink_gft
+          afval_pmd: sensor.blink_pmd
+          afval_papier: sensor.blink_papier
       - name: P2000
         icon: fal:ambulance
         path: 'dwains-theme/addons/more_page/p2000/page.yaml'
