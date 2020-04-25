@@ -1,7 +1,7 @@
 ---
 # VERSTUUR NOTIFICATIE + SNAPSHOT WANNEER ER WORDT AANGEBELD
 - id: deurbel
-  alias: "Notificatie: Deurbel"
+  alias: "Notificatie: Deurbel snapshot"
   initial_state: true
   trigger:
   - platform: state
@@ -11,7 +11,7 @@
   # condition:
   # ### dit voorkomt het klapperen
   #   condition: template
-  #   value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.notificatie_deurbel.attributes.last_triggered | default(0)) | int > 10)}}'
+  #   value_template: '{{ (as_timestamp(now()) - as_timestamp(states.automation.notificatie_deurbel_snapshot.attributes.last_triggered | default(0)) | int > 10)}}'
   action:
   - service: camera.snapshot
     data:
@@ -33,17 +33,35 @@
       data:
         sound: pushover
         attachment: "/config/www/images/snapshots/cam_voordeur.jpg"
-  - service: camera.play_stream
-    data:
-      entity_id: camera.voordeur_2
-      media_player: media_player.hub_keuken
+
+- alias: "Notificatie: Deurbel audio"
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.deurbel_knop
+    from: 'off'
+    to: 'on'
+  action:
   - service: script.sonos_play
     data:
       sonos_entity: media_player.woonkamer, media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
       volume: 0.4
       media_content: !secret http_audio_deurbel
       delay: '00:00:03'
-  - delay: "00:00:30"
+
+- alias: "Notificatie: Deurbel stream"
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.deurbel_knop
+    from: 'off'
+    to: 'on'
+  action:
+  - service: camera.play_stream
+    data:
+      entity_id: camera.voordeur_2
+      media_player: media_player.hub_keuken
+  - delay: "00:02:00"
   - service: media_player.turn_off
     data:
       entity_id: media_player.hub_keuken
