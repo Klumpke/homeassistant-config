@@ -42,3 +42,20 @@ sonos_play:
     - service: sonos.restore
       data_template:
         entity_id: "{{ sonos_entity }}"
+
+
+camera_snapshot:
+  alias: "Camera - Take snapshot"
+  sequence:
+    - service: camera.snapshot
+      data_template:
+        entity_id: "{{ camera_entity }}"
+        filename: "/config/www/images/snapshots/{{ camera_entity }}.jpg"
+    - service: notify.ios_notifier
+      data_template:
+        message: "Camera om {{ now().strftime('%d-%m-%Y %H:%M:%S') }}"
+        data:
+          attachment:
+            url: "https://hass.klompen.net/local/images/snapshots/{{ camera_entity }}.jpg"
+            content-type: jpeg
+            hide-thumbnail: false
