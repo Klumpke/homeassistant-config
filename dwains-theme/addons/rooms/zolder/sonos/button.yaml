@@ -1,16 +1,18 @@
 # dwains_theme
-# Custom button for room addon: hello room
+## Room add-on custom button: Sonos
+## Created by Jeroen Klompen
+## Version: 1.0.1
 
 type: custom:button-card
 entity: {{ (data | fromjson)['entity'] }}
 template: rooms_child
 name: {{ name }}
 icon: {{ icon|default('fas:puzzle-piece') }}
-tap_action: 
+tap_action:
   action: navigate
-  navigation_path: {{ navigation_path }}   
+  navigation_path: {{ navigation_path }}
 label: >
-  [[[ 
+  [[[
     if(entity){
       return entity.state;
     } else {
