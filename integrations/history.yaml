@@ -50,6 +50,7 @@ history:
       - sensor.temp_badkamer
       - sensor.temp_zolder
       - sensor.temp_woonkamer
+      - sensor.woonkamer_temperature
       - sensor.temp_garage
       - sensor.temp_tuin
       - sensor.temp_test
@@ -59,6 +60,7 @@ history:
       - sensor.temp_badkamer_humidity
       - sensor.temp_zolder_humidity
       - sensor.temp_woonkamer_humidity
+      - sensor.woonkamer_humidity
       - sensor.temp_garage_humidity
       - sensor.temp_tuin_humidity
       - sensor.temp_test_humidity
