@@ -1,0 +1,41 @@
+homeassistant:
+
+  customize_glob:
+    "sensor.euro_*":
+      unit_of_measurement: "€/L"
+      icon: mdi:gas-station
+    "sensor.diesel_*":
+      unit_of_measurement: "€/L"
+      icon: mdi:gas-station
+
+sensor:
+  ## United Consumers
+  - platform: scrape
+    name: Euro (Advies)
+    resource: "https://www.unitedconsumers.com/brandstofprijzen"
+    select: ".table div:nth-of-type(2) div:nth-of-type(3)"
+    value_template: "{{ value|replace('€', '')|replace(',', '.')|float|round(3) }}"
+    scan_interval: 3600 # be nice; once per hour only
+
+  - platform: scrape
+    name: Diesel (Advies)
+    resource: "https://www.unitedconsumers.com/brandstofprijzen"
+    select: ".table div:nth-of-type(3) div:nth-of-type(3)"
+    value_template: "{{ value|replace('€', '')|replace(',', '.')|float|round(3) }}"
+    scan_interval: 3600 # be nice; once per hour only
+
+  ## Tinq
+  - platform: scrape
+    name: Euro (Tinq Wessem)
+    resource: "https://www.tinq.nl/tankstations/wessem-molenweg"
+    select: ".field--name-field-station-prices .taxonomy-term-Euro95 .field--name-field-prices-price-pump"
+    value_template: "{{ value|replace('€', '')|replace('EUR/L', '')|float|round(3) }}"
+    scan_interval: 3600 # be nice; once per hour only
+
+  ## Tango
+  - platform: scrape
+    resource: "https://www.tango.nl/stations/tango-someren"
+    name: Euro (Tango Someren)
+    select: "#euro95 .pump_price span.price"
+    #value_template: "{{ value.split(' ')[0].replace(',', '.') | float }}"
+    scan_interval: 3600 # be nice; once per hour only

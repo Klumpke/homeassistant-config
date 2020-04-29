@@ -30,6 +30,9 @@ more_page:
       - name: AdGuard
         icon: fal:ad
         path: 'dwains-theme/addons/more_page/adguard/page.yaml'
+      - name: Brandstofprijzen
+        icon: fal:gas-pump
+        path: 'dwains-theme/addons/more_page/fuel_prices/page.yaml'
       - name: ISP
         icon: fal:tachometer-alt
         path: 'dwains-theme/addons/more_page/unifi/page.yaml'

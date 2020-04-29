@@ -46,3 +46,8 @@ influxdb:
       - sensor.speedtest_download
       - sensor.speedtest_ping
       - sensor.speedtest_upload
+      # Brandstofprijzen
+      - sensor.euro_advies
+      - sensor.diesel_advies
+      - sensor.euro_tango_someren
+      - sensor.euro_tinq_wessem

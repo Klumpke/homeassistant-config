@@ -175,6 +175,12 @@ history:
       - sensor.worldwide_coronavirus_recovered
       - sensor.worldwide_coronavirus_deaths
 
+      # Brandstofprijzen
+      - sensor.euro_advies
+      - sensor.diesel_advies
+      - sensor.euro_tango_someren
+      - sensor.euro_tinq_wessem
+
 #  exclude:
 #    domains:
 #      - automation

@@ -1,0 +1,126 @@
+## Room add-on: Fuel Prices
+## Created by Jeroen Klompen
+## Version: 1.1.0
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-6'
+  cards:
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-12 col-sm-12'
+      padding: true
+      cards:
+        - type: entities
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - sensor.euro_advies
+            - sensor.diesel_advies
+            - sensor.euro_tango_someren
+            - sensor.euro_tinq_wessem
+
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-12 col-sm-12'
+      padding: true
+      cards:
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-6'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - sensor.euro_advies
+          name: Euro (Advies)
+          # icon: mdi:thermometer
+          # align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 720
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          decimals: 3
+          show:
+            name: true
+            points: hover
+            graph: line
+            extrema: true
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-6'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - sensor.diesel_advies
+          name: Diesel (Advies)
+          # icon: mdi:water-percent
+          # align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 720
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          decimals: 3
+          show:
+            name: true
+            points: hover
+            graph: line
+            extrema: true
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-6'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - sensor.euro_tango_someren
+          name: Someren (Tango)
+          # icon: mdi:white-balance-sunny
+          # align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 720
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          decimals: 3
+          show:
+            name: true
+            points: hover
+            graph: line
+            extrema: true
+
+        - type: custom:mini-graph-card
+          item_classes: 'col-xs-6 col-md-6'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - sensor.euro_tinq_wessem
+          name: Wessem (Tinq)
+          # icon: mdi:leaf
+          # align_header: right
+          font_size: 70
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 720
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          decimals: 3
+          show:
+            name: true
+            points: hover
+            graph: line
+            extrema: true
