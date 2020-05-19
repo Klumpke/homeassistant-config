@@ -1,0 +1,69 @@
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-6'
+  cards:
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-12 col-sm-12'
+      padding: true
+      cards:
+        - type: entities
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - entity: sensor.nextcloud_system_version
+              name: Nextcloud versie
+              icon: fal:folders
+            - entity: sensor.nextcloud_storage_num_files
+              icon: fal:file
+              name: Aantal bestanden
+        - type: custom:mini-graph-card
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+            - sensor.nextcloud_storage_num_files
+          name: Bestanden
+          icon: fal:file
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 24
+          hour24: true
+          points_per_hour: 1
+          smoothing: true
+          show:
+            points: true
+            graph: line
+            extrema: true
+
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-xs-12 col-sm-12 col-sm-12'
+      padding: true
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: custom:mini-graph-card
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
+              entities:
+                - entity: sensor.nextcloud_activeusers_last5minutes
+                  name: 5 min
+                - entity: sensor.nextcloud_activeusers_last1hour
+                  name: 1 uur
+                - entity: sensor.nextcloud_activeusers_last24hours
+                  name: 24 uur
+              icon: fal:user
+              line_color: 'var(--dwains-theme-accent)'
+              hours_to_show: 24
+              hour24: true
+              points_per_hour: 1
+              smoothing: true
+              show:
+                points: true
+                graph: line
+                extrema: true

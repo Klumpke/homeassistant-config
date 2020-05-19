@@ -181,6 +181,15 @@ history:
       - sensor.euro_tango_someren
       - sensor.euro_tinq_wessem
 
+      # Nextcloud
+      - sensor.nextcloud_storage_num_files
+      - sensor.nextcloud_activeusers_last1hour
+      - sensor.nextcloud_activeusers_last24hours
+      - sensor.nextcloud_activeusers_last5minutes
+
+      # Deepstack
+      - image_processing.deepstack_person_detector_carport
+      - image_processing.deepstack_person_detector_voordeur
 #  exclude:
 #    domains:
 #      - automation

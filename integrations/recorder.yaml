@@ -8,10 +8,9 @@ recorder:
   # The URL that points to your database.
   db_url: !secret mariadb_url
   # The number of days of history to keep in the recorder database
-  purge_keep_days: 7
-
-  # How often (in days) the purge task runs
-  purge_interval: 1
+  purge_keep_days: 10
+  # Automatically purge the database every night at 04:12 local time
+  auto_purge: true
 
   # Configure which components should be included in recordings
   include:
@@ -189,3 +188,13 @@ recorder:
       - sensor.diesel_advies
       - sensor.euro_tango_someren
       - sensor.euro_tinq_wessem
+
+      # Nextcloud
+      - sensor.nextcloud_storage_num_files
+      - sensor.nextcloud_activeusers_last1hour
+      - sensor.nextcloud_activeusers_last24hours
+      - sensor.nextcloud_activeusers_last5minutes
+
+      # Deepstack
+      - image_processing.deepstack_person_detector_carport
+      - image_processing.deepstack_person_detector_voordeur
