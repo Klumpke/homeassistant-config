@@ -35,8 +35,6 @@
           entities:
             - sensor.euro_advies
           name: Euro (Advies)
-          # icon: mdi:thermometer
-          # align_header: right
           font_size: 70
           line_color: 'var(--dwains-theme-accent)'
           hours_to_show: 720
@@ -60,8 +58,6 @@
           entities:
             - sensor.diesel_advies
           name: Diesel (Advies)
-          # icon: mdi:water-percent
-          # align_header: right
           font_size: 70
           line_color: 'var(--dwains-theme-accent)'
           hours_to_show: 720
@@ -85,8 +81,6 @@
           entities:
             - sensor.euro_tango_someren
           name: Someren (Tango)
-          # icon: mdi:white-balance-sunny
-          # align_header: right
           font_size: 70
           line_color: 'var(--dwains-theme-accent)'
           hours_to_show: 720
@@ -110,8 +104,6 @@
           entities:
             - sensor.euro_tinq_wessem
           name: Wessem (Tinq)
-          # icon: mdi:leaf
-          # align_header: right
           font_size: 70
           line_color: 'var(--dwains-theme-accent)'
           hours_to_show: 720
