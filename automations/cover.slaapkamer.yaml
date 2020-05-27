@@ -27,10 +27,10 @@
       event: sunset
     - platform: time
       at: '21:30:00'
-  condition:
-    - condition: state
-      entity_id: cover.slaapkamer
-      state: 'open'
+  # condition:
+  #   - condition: state
+  #     entity_id: cover.slaapkamer
+  #     state: 'open'
   action:
-    - service: cover.close_cover
+    - service: cover.stop_cover
       entity_id: cover.slaapkamer

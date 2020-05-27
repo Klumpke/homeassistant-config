@@ -1,0 +1,196 @@
+- alias: "Rolluik slaapkamer openen 's-morgens"
+  trigger:
+    - platform: sun
+      event: sunrise
+    - platform: time
+      at: '10:00:00'
+  condition:
+    condition: and
+    conditions:
+    # Boolean condities
+      - condition: sun
+        after: sunrise
+      - condition: state
+        entity_id: cover.slaapkamer
+        state: 'closed'
+        for:
+          minutes: 15
+      # indien al handmatig geopend dan niet nogmaals
+      # - condition: state
+      #   entity_id: input_boolean.rolluik_keuken_handmatig_geopend_smorgens
+      #   state: 'off'
+    # Het weer gerelateerde condities
+      - condition: numeric_state
+        entity_id: sensor.br_temperature
+        above: 0
+        below: 20
+    # werkdag onafhankelijke tijd condities
+      - condition: time
+        before: '12:00:00'
+    # Tijdgerelateerde condities met onderscheid tussen werkdag en niet-werkdag
+      - condition: or
+        conditions:
+          # Maandag t/m zaterdag
+          - condition: and
+            conditions:
+              - condition: time
+                weekday:
+                  - mon
+                  - tue
+                  - wed
+                  - thu
+                  - fri
+                  - sat
+              - condition: time
+                after: '10:00:00'
+          # Zondag
+          - condition: and
+            conditions:
+              - condition: time
+                weekday:
+                  - sun
+              - condition: time
+                after: '11:00:00'
+  action:
+    # - service: input_boolean.turn_on
+    #   data:
+    #     entity_id: input_boolean.rolluik_slaapkamer_automatisch_geopend_smorgens
+    - service: cover.set_cover_position
+      entity_id: cover.slaapkamer
+      data:
+        position: 100
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "Rolluik slaapkamer"
+        message: "Geopend door 's-morgens automation"
+
+
+
+- alias: "Rolluik slaapkamer sluiten zon"
+  trigger:
+    # De irradiance is boven 700 W/m2
+    - platform: numeric_state
+      entity_id: sensor.br_irradiance
+      above: 700
+    # tenminste een kwartier
+#      for:
+#        minutes: 15
+  condition:
+    # - condition: state
+    #   entity_id: 'binary_sensor.door_window_detector_sensor_1'
+    #   state: 'off'
+    - condition: state
+      entity_id: cover.slaapkamer
+      state: 'open'
+      for:
+        minutes: 15
+    # na 09:00, eerder staat de zon er niet op
+    - condition: time
+      after: '09:00:00'
+    # tot een uur voor zonsondergang
+    - condition: sun
+      before: sunset
+      before_offset: -01:00:00
+    # De temperatuur is boven 15 graden buienradar
+    - condition: numeric_state
+      entity_id: sensor.br_temperature
+      above: 15
+    # De irradiance is boven 700 W/m2
+    - condition: numeric_state
+      entity_id: sensor.br_irradiance
+      above: 700
+    # tenminste een kwartier
+#      for:
+#        minutes: 15
+
+  action:
+    - service: cover.set_cover_position
+      entity_id: cover.slaapkamer
+      data:
+        position: 0
+    # rolluik slaapkamer gesloten i.v.m. zon
+    # - service: input_boolean.turn_on
+    #   data:
+    #     entity_id: input_boolean.rolluik_slaapkamer_gesloten_zon
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "Rolluik slaapkamer"
+        message: "Gesloten ivm zon"
+
+
+
+- alias: "Rolluik slaapkamer openen zon"
+  trigger:
+    # De irradiance is onder 300 W/m2
+    - platform: numeric_state
+      entity_id: sensor.br_irradiance
+      below: 300
+  condition:
+    - condition: state
+      entity_id: cover.slaapkamer
+      state: 'closed'
+      for:
+        minutes: 15
+    # rolluik keuken is gesloten i.v.m. zon
+    # - condition: state
+    #   entity_id: input_boolean.rolluik_slaapkamer_gesloten_zon
+    #   state: 'on'
+    # altijd dicht tot 17:00 (voorkomt reactie op wolken)
+    - condition: time
+      after: '17:00:00'
+    - condition: time
+      before: '21:30:00'
+    - condition: sun
+      before: sunset
+    # De irradiance is onder 300 W/m2
+    - condition: numeric_state
+      entity_id: sensor.br_irradiance
+      below: 300
+  action:
+    - service: cover.set_cover_position
+      entity_id: cover.slaapkamer
+      data:
+        position: 100
+    # rolluik slaapkamer gesloten i.v.m. zon
+    # - service: input_boolean.turn_off
+    #   data:
+    #     entity_id: input_boolean.rolluik_slaapkamer_gesloten_zon
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "Rolluik slaapkamer"
+        message: "Geopend, zon is weg"
+
+
+
+- alias: "Rolluik slaapkamer sluiten 's-avonds"
+  trigger:
+    - platform: sun
+      event: sunset
+    - platform: time
+      at: '21:30:00'
+  condition:
+    # - condition: state
+    #   entity_id: 'binary_sensor.door_window_detector_sensor_1'
+    #   state: 'off'
+    - condition: state
+      entity_id: cover.slaapkamer
+      state: 'open'
+      for:
+        minutes: 15
+    - condition: template
+      # value_template: "{{ state_attr('cover.slaapkamer', 'current_position') < '1' }}"
+      # value_template: "{{ state_attr('cover.slaapkamer', 'current_position') == '0' }}"
+      value_template: "{{ state_attr('cover.slaapkamer', 'current_position') > '17' }}"
+  action:
+    - service: cover.set_cover_position
+      entity_id: cover.slaapkamer
+      data:
+        position: 17
+    # rolluik slaapkamer gesloten i.v.m. zon
+    # - service: input_boolean.turn_off
+    #   data:
+    #     entity_id: input_boolean.rolluik_slaapkamer_gesloten_zon
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "Rolluik slaapkamer"
+        message: "Gesloten voor zonsondergang"
