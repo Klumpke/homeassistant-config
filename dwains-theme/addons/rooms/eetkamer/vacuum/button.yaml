@@ -1,5 +1,7 @@
 # dwains_theme
-# Custom button for room addon: printer
+## Room add-on custom button: Vacuum
+## Created by Jeroen Klompen
+## Version: 1.0.1
 
 type: custom:button-card
 entity: {{ (data | fromjson)['entity'] }}
@@ -9,6 +11,11 @@ icon: {{ icon|default('fas:puzzle-piece') }}
 tap_action:
   action: navigate
   navigation_path: {{ navigation_path }}
+# double_tap_action:
+#   action: call-service
+#   service: [[[ if (entity.state === 'docked') return "vacuum.start"; else return "vacuum.return_to_base"; ]]]
+#   service_data:
+#     entity_id: {{ (data | fromjson)['entity'] }}
 label: >
   [[[
     if(entity){
