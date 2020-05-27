@@ -55,6 +55,22 @@ group:
       - light.tuin
       - light.terras
 
+  all_automations:
+    name: Alle automations
+    entities:
+      - group.deur_notifications
+      - group.beweging_notifications
+      - group.vakantie_modus
+      - group.kerstmis_modus
+
+  rolluik_slaapkamer:
+    name: Rolluik slaapkamer
+    entities:
+      - automation.rolluik_slaapkamer_openen_s_morgens
+      - automation.rolluik_slaapkamer_sluiten_s_avonds
+      - automation.rolluik_slaapkamer_openen_zon
+      - automation.rolluik_slaapkamer_sluiten_zon
+
   deur_notifications:
     name: Deur notificaties
     entities:

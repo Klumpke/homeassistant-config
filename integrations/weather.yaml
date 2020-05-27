@@ -6,12 +6,19 @@
 #
 weather:
 
-# The darksky platform uses the Dark Sky web service as a source for
-# meteorological data for your location.
+# DarkSky
 # https://www.home-assistant.io/components/weather.darksky/
   - platform: darksky
     api_key: !secret darksky_api_key
     mode: daily
+
+# Air Visual
+# https://www.home-assistant.io/integrations/airvisual/
+airvisual:
+  api_key: !secret airvisual_api
+  geographies:
+    latitude: !secret zone_home_latitude
+    longitude: !secret zone_home_longitude
 
 sensor:
   # DarkSky
@@ -26,19 +33,21 @@ sensor:
     language: nl
 
   # Weather prediction
+  # https://www.home-assistant.io/integrations/yr/
   - platform: yr
+    monitored_conditions:
+      - symbol
+      - temperature
+      - humidity
+      - windSpeed
+      - precipitation
 
-# Air Visual
-  # - platform: airvisual
-  #   api_key: !secret airvisual_api
-  #   monitored_conditions:
-  #     - us
-  #   show_on_map: false
-  #   scan_interval: 300
-  #   latitude: !secret zone_home_latitude
-  #   longitude: !secret zone_home_longitude
-airvisual:
-  api_key: !secret airvisual_api
-  geographies:
-    latitude: !secret zone_home_latitude
-    longitude: !secret zone_home_longitude
+  # Buienrader
+  # https://www.home-assistant.io/integrations/sensor.buienradar/
+  - platform: buienradar
+    monitored_conditions:
+      - temperature
+      - humidity
+      - windspeed
+      - precipitation
+      - irradiance
