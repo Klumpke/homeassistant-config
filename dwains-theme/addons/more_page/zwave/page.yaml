@@ -1,19 +1,16 @@
-- type: entities
-  style: |
-    ha-card {
-      background-color: var(--dwains-theme-primary);
-    }
-  entities:
-    - entity: zwave.aeon_labs_zw090_z_stick_gen5_eu
-    - entity: zwave.fib_fgbs001_deurbel
-    - entity: zwave.fib_fgd212_eetkamer
-    - entity: zwave.fib_fgd212_keuken
-    - entity: zwave.fib_fgd212_nis
-    - entity: zwave.fib_fgd212_woonkamer_spots
-    - entity: zwave.fib_fgs223_achterdeur
-    - entity: zwave.fib_fgs223_carport
-    - entity: zwave.fib_fgsd002_overloop_brandmelder
-    - entity: zwave.fibaro_system_fgkf601_keyfob
-    - entity: zwave.fibaro_system_fgs223_double_relay
-    - entity: zwave.fibaro_system_fgwpe_f_wall_plug_gen5
-    - entity: zwave.fibaro_system_fgwpe_f_wall_plug_gen5_2
+- type: 'custom:auto-entities'
+  card:
+    type: entities
+    style: |
+      ha-card {
+        border-radius: 5px;
+        background-color: var(--dwains-theme-primary);
+      }
+  filter:
+    # exclude:
+    #   - entity_id: zwave.fib_fgbs001_deurbel
+    include:
+      - entity_id: zwave.*
+  show_header_toggle: false
+  sort:
+    method: name
