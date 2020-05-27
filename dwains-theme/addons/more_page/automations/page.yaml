@@ -1,0 +1,120 @@
+# dwains_theme
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-4 col-md-3 col-lg-2'
+  padding: true
+  cards:
+    - type: custom:button-card
+      template: scene
+      entity: group.all_automations
+      icon: 'mdi:alpha-a-box'
+      show_state: true
+      tap_action:
+        haptic: light
+        action: toggle
+      styles:
+        img_cell:
+          - background: 'var(--dwains-theme-header-background)'
+        icon:
+          - color: 'var(--dwains-theme-header-text)'
+        grid:
+          - grid-template-areas: '"i n""i s"'
+
+    - type: custom:button-card
+      template: scene
+      entity: group.rolluik_slaapkamer
+      icon: 'mdi:window-shutter'
+      show_state: true
+      tap_action:
+        haptic: light
+        action: toggle
+      styles:
+        img_cell:
+          - background: 'var(--dwains-theme-header-background)'
+        icon:
+          - color: 'var(--dwains-theme-header-text)'
+        grid:
+          - grid-template-areas: '"i n""i s"'
+
+    - type: custom:button-card
+      template: scene
+      entity: group.deur_notifications
+      icon: 'mdi:door'
+      show_state: true
+      tap_action:
+        haptic: light
+        action: toggle
+      styles:
+        img_cell:
+          - background: 'var(--dwains-theme-header-background)'
+        icon:
+          - color: 'var(--dwains-theme-header-text)'
+        grid:
+          - grid-template-areas: '"i n""i s"'
+
+    - type: custom:button-card
+      template: scene
+      entity: group.beweging_notifications
+      icon: 'mdi:motion-sensor'
+      show_state: true
+      tap_action:
+        haptic: light
+        action: toggle
+      styles:
+        img_cell:
+          - background: 'var(--dwains-theme-header-background)'
+        icon:
+          - color: 'var(--dwains-theme-header-text)'
+        grid:
+          - grid-template-areas: '"i n""i s"'
+
+    - type: custom:button-card
+      template: scene
+      entity: group.vakantie_modus
+      icon: 'mdi:beach'
+      show_state: true
+      tap_action:
+        haptic: light
+        action: toggle
+      styles:
+        img_cell:
+          - background: 'var(--dwains-theme-header-background)'
+        icon:
+          - color: 'var(--dwains-theme-header-text)'
+        grid:
+          - grid-template-areas: '"i n""i s"'
+
+    - type: custom:button-card
+      template: scene
+      entity: group.kerstmis_modus
+      icon: 'mdi:pine-tree'
+      show_state: true
+      tap_action:
+        haptic: light
+        action: toggle
+      styles:
+        img_cell:
+          - background: 'var(--dwains-theme-header-background)'
+        icon:
+          - color: 'var(--dwains-theme-header-text)'
+        grid:
+          - grid-template-areas: '"i n""i s"'
+
+
+
+
+# - entity: group.beweging_notifications
+# - name: Beweging Notificaties
+# - icon: mdi:motion-sensor
+
+# - entity: group.all_automations
+# - name: Alle automations
+# - icon: mdi:alpha-a-box
+
+# - entity: group.kerstmis_modus
+# - name: Kerstmis Modus
+# - icon: mdi:pine-tree
+
+# - entity: group.vakantie_modus
+# - name: Vakantie Modus
+# - icon: mdi:beach
