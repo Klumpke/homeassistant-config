@@ -28,3 +28,17 @@ camera:
     stream_source: "rtsp://192.168.178.251:7447/5c1e0841d5de0f4a9fe2c4fa_1"
 
 stream:
+
+
+binary_sensor:
+  - platform: mqtt
+    name: Carport Motion
+    state_topic: "camera/motion/Carport"
+
+  - platform: mqtt
+    name: Tuin Motion
+    state_topic: "camera/motion/Tuin"
+
+  - platform: mqtt
+    name: Voordeur Motion
+    state_topic: "camera/motion/Voordeur"

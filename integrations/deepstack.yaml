@@ -1,0 +1,26 @@
+image_processing:
+  - platform: deepstack_object
+    ip_address: !secret deepstack_host
+    port: 5000
+    #api_key: !secret deepstack_api_key
+    scan_interval: 30 # Optional, in seconds
+    save_file_folder: /config/www/images/snapshots/deepstack/
+    #save_timestamped_file: True
+    targets:
+      - person
+#      - car
+    source:
+      - entity_id: camera.carport
+        name: deepstack_person_detector_carport
+      - entity_id: camera.voordeur
+        name: deepstack_person_detector_voordeur
+
+
+camera:
+  - platform: local_file
+    file_path: /config/www/images/snapshots/deepstack/deepstack_person_detector_carport_latest.jpg
+    name: deepstack_carport_latest
+  - platform: local_file
+    file_path: /config/www/images/snapshots/deepstack/deepstack_person_detector_voordeur_latest.jpg
+    name: deepstack_voordeur_latest
+

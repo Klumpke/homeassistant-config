@@ -1,0 +1,19 @@
+- alias: 'Deepstack detect: Voordeur'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.voordeur_motion
+      to: 'on'
+  action:
+    # - delay: "00:00:01"
+    - service: image_processing.scan
+      entity_id: image_processing.deepstack_person_detector_voordeur
+
+- alias: 'Deepstack detect: Carport'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.carport_motion
+      to: 'on'
+  action:
+    - delay: "00:00:02"
+    - service: image_processing.scan
+      entity_id: image_processing.deepstack_person_detector_carport

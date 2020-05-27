@@ -1,8 +1,5 @@
 more_page:
     addons:
-      - name: Statistieken
-        icon: fal:chart-area
-        path: 'dwains-theme/addons/more_page/statistics/page.yaml'
       - name: Energie
         icon: fal:plug
         path: 'dwains-theme/addons/more_page/energy/page.yaml'
@@ -13,6 +10,12 @@ more_page:
           wastecollector: blink
           # sort_attribute: Sort-date
           # language: nl
+      - name: Automations
+        icon: fal:flux-capacitor
+        path: 'dwains-theme/addons/more_page/automations/page.yaml'
+      - name: Statistieken
+        icon: fal:chart-area
+        path: 'dwains-theme/addons/more_page/statistics/page.yaml'
       - name: P2000
         icon: fal:ambulance
         path: 'dwains-theme/addons/more_page/p2000/page.yaml'
