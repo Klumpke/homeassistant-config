@@ -50,12 +50,9 @@ more_page:
       - name: Nextcloud
         icon: fal:cloud
         path: 'dwains-theme/addons/more_page/nextcloud/page.yaml'
-      - name: TEST 2
+      - name: TEST
         icon: fal:chart-area
-        path: 'dwains-theme/addons/more_page/test2/page.yaml'
+        path: 'dwains-theme/addons/more_page/test/page.yaml'
       - name: DeepStack
         icon: fal:brain
         path: 'dwains-theme/addons/more_page/deepstack/page.yaml'
-      - name: TEST 3
-        icon: fal:chart-area
-        path: 'dwains-theme/addons/more_page/test3/page.yaml'
