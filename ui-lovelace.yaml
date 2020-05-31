@@ -1,9 +1,7 @@
 title: Home Assistant
 views:
-    # View tab title.
   - title: Lovelace
     cards:
-        # The markdown card will render markdown text.
       - type: markdown
         title: Lovelace
         content: >
