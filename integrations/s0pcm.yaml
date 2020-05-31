@@ -6,16 +6,19 @@
 sensor:
   - platform: mqtt
     name: "S0pcm Totaal"
+    icon: "mdi:counter"
     state_topic: "s0pcmreader/1/total"
     unit_of_measurement: "l"
 
   - platform: mqtt
     name: "S0pcm vandaag"
+    icon: "mdi:counter"
     state_topic: "s0pcmreader/1/today"
     unit_of_measurement: "l"
 
   - platform: mqtt
     name: "S0pcm gisteren"
+    icon: "mdi:counter"
     state_topic: "s0pcmreader/1/yesterday"
     unit_of_measurement: "l"
 
