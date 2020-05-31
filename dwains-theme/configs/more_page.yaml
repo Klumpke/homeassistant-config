@@ -3,6 +3,16 @@ more_page:
       - name: Energie
         icon: fal:plug
         path: 'dwains-theme/addons/more_page/energy/page.yaml'
+        data:
+          power: sensor.power_consumption_watt
+          power_usage: sensor.dsmr_day_consumption_electricity_merged
+          power_cost: sensor.dsmr_day_consumption_electricity_cost_merged
+          gas: sensor.dsmr_consumption_gas_currently_delivered
+          gas_usage: sensor.dsmr_day_consumption_gas
+          gas_cost: sensor.dsmr_day_consumption_gas_cost
+          water: sensor.s0pcm_hourly
+          water_usage: sensor.s0pcm_vandaag
+          water_cost: sensor.s0pcm_day_consumption_water_cost
       - name: Afvalwijzer
         icon: fal:recycle
         path: 'dwains-theme/addons/more_page/afvalwijzer/page.yaml'

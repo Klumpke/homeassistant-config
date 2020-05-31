@@ -11,13 +11,3 @@ sensor:
         friendly_name: "Power Consumption Watt"
         unit_of_measurement: "W"
         value_template: "{{ states('sensor.dsmr_reading_electricity_currently_delivered') | float * 1000 }}"
-
-
-# https://www.home-assistant.io/components/utility_meter/
-# utility_meter:
-  # power_hourly:
-  #   source: sensor.power_consumption_today
-  #   cycle: hourly
-  # hourly_gas_consumption:
-  #   source: sensor.dsmr_day_consumption_gas
-  #   cycle: hourly

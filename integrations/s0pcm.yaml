@@ -4,11 +4,6 @@
 
 # https://github.com/Jorei/home-assistant.io/blob/c3074789fb81ddb235cfaa248591f530c3c1ec13/source/_components/sensor.s0pcm.markdown
 sensor:
-#  - platform: s0pcm
-#    device: "/dev/serial/by-id/usb-Arduino_LLC_Arduino_Leonardo-if00"
-#    channels:
-#      - 0
-
   - platform: mqtt
     name: "S0pcm Totaal"
     state_topic: "s0pcmreader/1/total"
@@ -23,6 +18,14 @@ sensor:
     name: "S0pcm gisteren"
     state_topic: "s0pcmreader/1/yesterday"
     unit_of_measurement: "l"
+
+  - platform: template
+    sensors:
+      s0pcm_day_consumption_water_cost:
+        friendly_name: "Water cost"
+        unit_of_measurement: '€'
+        icon_template: mdi:currency-eur
+        value_template: "{{ ((states('sensor.s0pcm_vandaag') | float / 1000 ) * 0.7832) | round(2) }}"
 
 # https://www.home-assistant.io/components/utility_meter/
 utility_meter:
