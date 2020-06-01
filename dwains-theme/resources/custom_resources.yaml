@@ -32,3 +32,9 @@
 
 - url: /hacsfiles/vacuum-card/vacuum-card.js
   type: module
+
+# voor Statistics addon
+- url: /hacsfiles/secondaryinfo-entity-row/secondaryinfo-entity-row.js
+  type: module
+- url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
+  type: module
