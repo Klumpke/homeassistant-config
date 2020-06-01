@@ -18,7 +18,14 @@
               background-color: var(--dwains-theme-primary);
             }
           entities:
-            - {{ (data | fromjson)['power'] }}
+            - entity: {{ (data | fromjson)['power'] }}
+            # - entity: input_number.nighttime
+            #   color: gray
+            #   name: Nacht
+            #   show_line: false
+            #   show_points: false
+            #   show_legend: false
+            #   y_axis: secondary
           name: STROOM VERBRUIK
           line_color: 'var(--dwains-theme-accent)'
           hours_to_show: 24
@@ -117,7 +124,7 @@
               background-color: var(--dwains-theme-primary);
             }
           entities:
-            - {{ (data | fromjson)['gas'] }}
+            - entity: {{ (data | fromjson)['gas'] }}
           name: GAS VERBRUIK
           line_color: 'var(--dwains-theme-accent)'
           hours_to_show: 24
@@ -216,7 +223,7 @@
               background-color: var(--dwains-theme-primary);
             }
           entities:
-            - {{ (data | fromjson)['water'] }}
+            - entity: {{ (data | fromjson)['water'] }}
           name: WATER VERBRUIK
           line_color: 'var(--dwains-theme-accent)'
           hours_to_show: 24

@@ -1,0 +1,7 @@
+input_number:
+  nighttime:
+    name: "Nacht 1 of Dag 0"
+    icon: "mdi:calendar-clock"
+    min: 0
+    max: 1
+    step: 1

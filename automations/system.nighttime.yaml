@@ -1,0 +1,20 @@
+- alias: "Systeem: Status Nacht"
+  trigger:
+  - event: sunset
+    platform: sun
+  condition: []
+  action:
+  - data:
+      value: 1
+      entity_id: input_number.nighttime
+    service: input_number.set_value
+- alias: "Systeem: Status Dag"
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - data:
+      value: 0
+      entity_id: input_number.nighttime
+    service: input_number.set_value

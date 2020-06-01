@@ -38,6 +38,9 @@ history:
       - binary_sensor.fib_fgsd002_overloop_brandmelder
       - sensor.fibaro_system_fgsd002_smoke_sensor_smoke
 
+      # Nighttime sensor
+      - input_number.nighttime
+
       # DarkSky
       - sensor.dark_sky_temperature
       - sensor.dark_sky_humidity

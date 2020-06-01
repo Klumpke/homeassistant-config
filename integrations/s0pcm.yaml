@@ -26,8 +26,8 @@ sensor:
     sensors:
       s0pcm_day_consumption_water_cost:
         friendly_name: "Water cost"
-        unit_of_measurement: '€'
-        icon_template: mdi:currency-eur
+        unit_of_measurement: "€"
+        icon_template: "mdi:currency-eur"
         value_template: "{{ ((states('sensor.s0pcm_vandaag') | float / 1000 ) * 0.7832) | round(2) }}"
 
 # https://www.home-assistant.io/components/utility_meter/

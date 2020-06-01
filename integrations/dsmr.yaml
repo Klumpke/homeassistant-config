@@ -10,4 +10,5 @@ sensor:
       power_consumption_watt:
         friendly_name: "Power Consumption Watt"
         unit_of_measurement: "W"
+        icon_template: "mdi:flash"
         value_template: "{{ states('sensor.dsmr_reading_electricity_currently_delivered') | float * 1000 }}"
