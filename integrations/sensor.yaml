@@ -73,20 +73,6 @@ sensor:
     unit_of_measurement: "A"
 
 
-  # https://www.home-assistant.io/components/sensor.version/
-  # The version sensor platform is displaying the
-  # available version online.
-  - platform: version
-    name: version_available
-    source: hassio
-    image: qemux86-64
-
-  # The version sensor platform is displaying the
-  # current version.
-  - platform: version
-    name: version_current
-
-
   # https://www.home-assistant.io/components/time_date/
   # The time and date (time_date) sensor platform simple 
   # displays the time in various formats, the date, or both.
@@ -95,7 +81,6 @@ sensor:
       - time
       - date
       - time_utc
-
 
   # The cert_expiry sensor fetches information from a configured URL
   # and displays the certificate expiry in days.
