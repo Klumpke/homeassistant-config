@@ -187,6 +187,13 @@
                         show_state: true
                         show_indicator: true
                       {% endif %}
+                      - entity: input_number.nighttime
+                        color: gray
+                        name: Nacht
+                        show_line: false
+                        show_points: false
+                        show_legend: false
+                        y_axis: secondary
                     graph: line
                     show:
                       icon: false
@@ -214,6 +221,13 @@
                         show_indicator: true
                         name: {{ _d_t_trans.climate.humidity }}
                       {% endif %}
+                      - entity: input_number.nighttime
+                        color: gray
+                        name: Nacht
+                        show_line: false
+                        show_points: false
+                        show_legend: false
+                        y_axis: secondary
                     graph: line
                     show:
                       icon: false        
