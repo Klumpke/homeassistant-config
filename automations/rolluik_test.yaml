@@ -180,7 +180,8 @@
     - condition: template
       # value_template: "{{ state_attr('cover.slaapkamer', 'current_position') < '1' }}"
       # value_template: "{{ state_attr('cover.slaapkamer', 'current_position') == '0' }}"
-      value_template: "{{ state_attr('cover.slaapkamer', 'current_position') > '17' }}"
+      value_template: "{{ state_attr('cover.slaapkamer', 'current_position') > 17 }}"
+      # value_template: "{{ (state_attr('cover.slaapkamer', 'current_position')|int) > 17 }}"
   action:
     - service: cover.set_cover_position
       entity_id: cover.slaapkamer
