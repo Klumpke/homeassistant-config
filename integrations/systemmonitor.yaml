@@ -2,26 +2,188 @@
 # The systemmonitor sensor platform allows you to monitor disk 
 # usage, memory usage, CPU usage, and running processes. 
 # This platform has superseded the process integration which is now considered deprecated.
-# https://www.home-assistant.io/components/systemmonitor/
 
+# https://www.home-assistant.io/components/systemmonitor/
 sensor:
   - platform: systemmonitor
     resources:
       - type: processor_use
+      # - type: load_1m
+      # - type: load_5m
+      # - type: load_15m
       - type: memory_use_percent
       - type: disk_use_percent
         arg: /
-      #- type: disk_use_percent
-      #  arg: /data
       - type: network_in
         arg: eno1
       - type: network_out
         arg: eno1
       - type: last_boot
 
-# CPU Temp
+  # NUC CPU Temp
   - platform: command_line
     name: CPU Temp
-    command: "cat /sys/class/thermal/thermal_zone2/temp"
+    command: "cat /sys/class/thermal/thermal_zone3/temp"
     unit_of_measurement: "°C"
-    value_template: '{{ value | multiply(0.001) | round(2)  }}'
+    value_template: '{{ value | multiply(0.001) | round(0)  }}'
+  # NUC bios version
+  - platform: command_line
+    name: NUC BIOS version
+    command: "cat /sys/class/dmi/id/bios_version"
+    value_template: '{{ value[0:17] }}'
+  # NUC bios vendor
+  - platform: command_line
+    name: NUC BIOS vendor
+    command: "cat /sys/class/dmi/id/bios_vendor"
+  # NUC board name
+  - platform: command_line
+    name: NUC board name
+    command: "cat /sys/class/dmi/id/board_name"
+  # NUC product model
+  - platform: command_line
+    name: NUC model
+    command: "cat /sys/class/dmi/id/product_name"
+
+  # Home Assistant version available
+  # https://www.home-assistant.io/components/sensor.version/
+  - platform: version
+    name: version_available
+    # name: Latest Available Version
+    beta: false
+    source: hassio
+    image: qemux86-64
+  # Home Assistant version installed
+  - platform: version
+    name: version_current
+    # name: Installed Version
+    source: local
+
+  # Uptime sensor platform displays the time since the last Home Assistant restart
+  # https://www.home-assistant.io/integrations/uptime/
+  - platform: uptime
+  # Home Assistant log size
+  - platform: filesize
+    file_paths:
+      - /config/home-assistant.log
+  # Home Assistant DB size
+  - platform: sql
+    db_url: !secret mariadb_url
+    queries:
+      - name: Home Assistant DB size
+        query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1048576, 2) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
+        column: 'value'
+        unit_of_measurement: MB
+
+  - platform: template
+    sensors:
+      # NUC last boot date and time
+      last_boot_date_time:
+        friendly_name: Last Boot
+        value_template: >
+          {% set date = as_timestamp(states('sensor.last_boot')) | timestamp_custom('%d') %}
+          {% set date = '{:01}'.format(date | int) %}
+          {% if date in ('1', '21', '31') %}
+            {% set date = date ~ 'st' %}
+          {% elif date in ('2', '22') %}
+            {% set date = date ~ 'nd' %}
+          {% elif date in ('3', '23') %}
+            {% set date = date ~ 'rd' %}
+          {% else %}
+            {% set date = date ~ 'th' %}
+          {% endif %}
+
+          {{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%H:%M on %a') }} {{ date }} {{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%b %Y') }}
+
+      # NUC Uptime
+      system_uptime:
+        friendly_name: Nuc Uptime
+        entity_id: sensor.time
+        value_template: >
+          {% set up_time = as_timestamp(now()) - as_timestamp(states('sensor.last_boot')) %}
+
+          {% set minutes = (up_time // 60) | int %}
+          {% set hours = (minutes // 60) %}
+          {% set days = (hours // 24) %}
+          {% set weeks = (days // 7) %}
+
+          {% set minutes = (minutes % 60) %}
+          {% set hours =  (hours % 24) %}
+          {% set days = (days % 7) %}
+
+          {% macro phrase(value, name) %}
+                    {%- set value = value %}
+                    {%- set end = 's' if value > 1 else '' %}
+                    {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+          {%- endmacro %}
+
+          {% set text = [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') %}
+          {% set last_comma = text.rfind(',') %}
+          {% if last_comma != -1 %}
+            {% set text = text[:last_comma] + ' and' + text[last_comma + 1:] %}
+          {% endif %}
+
+          {{ text }}
+
+      # Home Assistant uptime
+      ha_uptime:
+        friendly_name: HA Uptime
+        value_template: >
+          {% if states('sensor.uptime') == '0.0' %}
+            Zojuist herstart...
+          {% else %}
+            {% macro phrase(value, name) %}
+            {%- set value = value | int %}
+            {%- set end = 's' if value > 1 else '' %}
+            {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+            {%- endmacro %}
+
+            {% set weeks = (states('sensor.uptime') | int / 7) | int %}
+            {% set days = (states('sensor.uptime') | int) - (weeks * 7) %}
+            {% set hours = (states('sensor.uptime') | float - states('sensor.uptime') | int) * 24 %}
+            {% set minutes = (hours - hours | int) * 60 %}
+
+            {% set text = [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') %}
+            {% set last_comma = text.rfind(',') %}
+            {% if last_comma != -1 %}
+              {% set text = text[:last_comma] + ' and' + text[last_comma + 1:] %}
+            {% endif %}
+
+            {{ text }}
+          {% endif %}
+
+  # Supervisor & add-ons available updates
+  - platform: command_line
+    name: Supervisor updates
+    command: 'curl http://supervisor/supervisor/info -H "Authorization: Bearer $(printenv SUPERVISOR_TOKEN)" | jq ''{"newest_version":.data.version_latest,"current_version":.data.version,"addons":[.data.addons[] | select(.version != .installed)]}'''
+    value_template: "{{ value_json.addons | length }}"
+    unit_of_measurement: "pending update(s)"
+    json_attributes:
+    - newest_version
+    - current_version
+    - addons
+
+binary_sensor:
+  - platform: template
+    sensors:
+      # True if there's an update available for supervisor
+      updater_supervisor:
+        friendly_name: 'Updater - Supervisor'
+        device_class: problem
+        entity_id:
+        - sensor.supervisor_updates
+        value_template: "{{ state_attr('sensor.supervisor_updates', 'current_version') != state_attr('sensor.supervisor_updates', 'newest_version') }}"
+        availability_template: "{{ (states('sensor.supervisor_updates') | int(-1)) > -1 }}"
+      # True if there's updates available for any addons
+      updater_addons:
+        friendly_name: 'Updater - Addons'
+        device_class: problem
+        entity_id:
+        - sensor.supervisor_updates
+        value_template: "{{ states('sensor.supervisor_updates') | int > 0 }}"
+      # True if there's updates available for any HACS components
+      updater_hacs:
+        friendly_name: 'Updater - HACS'
+        device_class: problem
+        entity_id:
+        - sensor.hacs
+        value_template: "{{ states('sensor.hacs') | int > 0 }}"
