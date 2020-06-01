@@ -12,6 +12,9 @@ homeassistant:
   time_zone: Europe/Amsterdam
   # Customization file
   customize: !include customize.yaml
+  # List of folders that can be used as sources for sending files.
+  whitelist_external_dirs:
+    - /config
 
   # Load packages
   packages: !include_dir_named integrations/
