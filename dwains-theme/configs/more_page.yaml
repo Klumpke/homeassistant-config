@@ -38,6 +38,11 @@ more_page:
       - name: Brandstofprijzen
         icon: fal:gas-pump
         path: 'dwains-theme/addons/more_page/fuel_prices/page.yaml'
+        data:
+          advice_euro: sensor.euro_advies
+          advice_diesel: sensor.diesel_advies
+          price_local1: sensor.euro_tango_someren
+          price_local2: sensor.euro_tinq_wessem
       - name: ISP
         icon: fal:tachometer-alt
         path: 'dwains-theme/addons/more_page/unifi/page.yaml'
