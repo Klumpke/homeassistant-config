@@ -1,5 +1,8 @@
 # https://www.home-assistant.io/integrations/ping/
 binary_sensor:
   - platform: ping
-    name: Ping Internet status
+    name: Ping Google DNS
     host: 8.8.8.8
+  - platform: ping
+    name: Ping Cloudflare DNS
+    host: 1.1.1.1

@@ -2,7 +2,7 @@
 - alias: 'Systeem: Internet status'
   trigger:
     - platform: state
-      entity_id: binary_sensor.ping_internet_status
+      entity_id: binary_sensor.ping_google_dns
       from: 'on'
       to: 'off'
       for:
