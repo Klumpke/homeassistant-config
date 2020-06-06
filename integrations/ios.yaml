@@ -6,33 +6,15 @@
 # https://www.home-assistant.io/docs/ecosystem/ios/
 #
 ios:
-#  push:
-#    categories:
-#      - name: Droger Alert
-#        identifier: 'droger_alert'
-#        actions:
-#          - identifier: 'DROGER_UITSCHAKELEN'
-#            title: 'Droger Uitschakelen'
-#          - identifier: 'VAATWASSER_INSCHAKELEN'
-#            title: 'Vaatwasser Inschakelen'
-#          - identifier: 'DROGER_ANNULEREN'
-#            title: 'Annuleren'
-#            destructive: yes
-#      - name: Wasmachine Alert
-#        identifier: 'wasmachine_alert'
-#        actions:
-#          - identifier: 'WASMACHINE_UITSCHAKELEN'
-#            title: 'Wasmachine Uitschakelen'
-#          - identifier: 'VAATWASSER_INSCHAKELEN'
-#            title: 'Vaatwasser Inschakelen'
-#          - identifier: 'WASMACHINE_ANNULEREN'
-#            title: 'Annuleren'
-#            destructive: yes
-#      - name: Vaatwasser Alert
-#        identifier: 'vaatwasser_alert'
-#        actions:
-#          - identifier: 'VAATWASSER_UITSCHAKELEN'
-#            title: 'Vaatwasser Uitschakelen'
-#          - identifier: 'VAATWASSER_ANNULEREN'
-#            title: 'Annuleren'
-#            destructive: yes
+ push:
+   categories:
+     - name: Sonos Alert
+       identifier: 'sonos_alert'
+       actions:
+         - identifier: 'SONOS_UITSCHAKELEN'
+           title: 'Uitschakelen'
+        #  - identifier: 'SONOS_INSCHAKELEN'
+        #    title: 'Inschakelen'
+         - identifier: 'SONOS_ANNULEREN'
+           title: 'Annuleren'
+           destructive: true
