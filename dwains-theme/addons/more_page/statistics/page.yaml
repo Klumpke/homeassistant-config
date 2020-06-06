@@ -202,16 +202,28 @@
                   background-color: var(--dwains-theme-primary);
                 }
               entities:
-                - sensor.processor_use
+                - entity: sensor.load_1m
+                  name: "1m"
+                - entity: sensor.load_5m
+                  name: "5m"
+                - entity: sensor.load_15m
+                  name: "15m"
               name: CPU
               line_color: 'var(--dwains-theme-accent)'
+              # color_thresholds:
+              #   - value: 0
+              #     color: '#40bf40'
+              #   - value: 10
+              #     color: '#ffde00'
+              #   - value: 50
+              #     color: '#bf4040'
               hours_to_show: 24
               hour24: true
               points_per_hour: 1
               smoothing: true
               show:
                 points: false
-                graph: bar
+                graph: line
               #   extrema: false
 
             - type: custom:mini-graph-card
@@ -223,13 +235,20 @@
                 - sensor.memory_use_percent
               name: RAM
               line_color: 'var(--dwains-theme-accent)'
+              # severity:
+              # - value: 20
+              #   color: '#40bf40'
+              # - value: 50
+              #   color: 'var(--primary-color)'
+              # - value: 100
+              #   color: '#bf4040'
               hours_to_show: 24
               hour24: true
               points_per_hour: 1
               smoothing: true
               show:
                 points: false
-                graph: bar
+                graph: line
               #   extrema: false
 
         - type: horizontal-stack
@@ -243,13 +262,20 @@
                 - sensor.disk_use_percent
               name: SSD
               line_color: 'var(--dwains-theme-accent)'
+              # severity:
+              # - value: 50
+              #   color: '#40bf40'
+              # - value: 80
+              #   color: '#ffde00'
+              # - value: 100
+              #   color: '#bf4040'
               hours_to_show: 24
               hour24: true
               points_per_hour: 1
               smoothing: true
               show:
                 points: false
-                graph: bar
+                graph: line
               #   extrema: false
 
             - type: custom:mini-graph-card
@@ -267,5 +293,25 @@
               smoothing: true
               show:
                 points: false
-                graph: bar
+                graph: line
               #   extrema: false
+        - type: 'custom:auto-entities'
+          card:
+            type: glance
+            style: |
+              ha-card {
+                border-radius: 5px;
+                background-color: var(--dwains-theme-primary);
+              }
+            columns: 6
+          filter:
+            # exclude:
+            #   - entity_id: sensor.count_123
+            include:
+              - entity_id: sensor.count_*
+          show_header_toggle: false
+          
+          # sort:
+          #   attribute: {{ (data | fromjson)['sort_attribute']|default('Sort-date') }}
+          #   method: attribute
+          #   numeric: true
