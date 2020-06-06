@@ -10,7 +10,7 @@
   action:
     - service: auto_backup.snapshot_full
       data_template:
-        name: Hassio weekly {{now().strftime('%Y-%m-%d')}}
+        name: Home Assistant weekly {{now().strftime('%Y-%m-%d')}}
         keep_days: 90
         exclude:
           # addons:
