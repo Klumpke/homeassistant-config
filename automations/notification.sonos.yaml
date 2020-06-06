@@ -1,0 +1,45 @@
+- alias: "iOS Actionable Notificatie: Sonos"
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: group.device_status
+    from: 'home'
+    to: 'not_home'
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: 'media_player.woonkamer'
+      state: 'playing'
+    - condition: state
+      entity_id: 'media_player.eetkamer'
+      state: 'playing'
+    - condition: state
+      entity_id: 'media_player.boven'
+      state: 'playing'
+    - condition: state
+      entity_id: 'media_player.zolder'
+      state: 'playing'
+    - condition: state
+      entity_id: 'media_player.tuin'
+      state: 'playing'
+  action:
+  - service: notify.mobile_app_iklumpke
+    data:
+      title: Sonos
+      message: Let op, speakers staan nog aan
+      data:
+        push:
+          category: "sonos_alert"
+
+
+- alias: "iOS Actionable Notificatie: Sonos uitschakelen"
+  initial_state: true
+  trigger:
+    platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: SONOS_UITSCHAKELEN
+  action:
+    service: media_player.media_stop
+    entity_id: media_player.woonkamer, media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
