@@ -12,8 +12,18 @@ influxdb:
     entities:
       # Nuc performance
       - sensor.processor_use
+      - sensor.load_1m
+      - sensor.load_5m
+      - sensor.load_15m
       - sensor.memory_use_percent
       - sensor.disk_use_percent
+      # HA Counter sensors
+      - sensor.count_automations
+      - sensor.count_scripts
+      - sensor.count_sensors
+      - sensor.count_binary_sensors
+      - sensor.count_switches
+      - sensor.count_lights
       # Tuin temperatuur
       - sensor.0x00158d0002374fb2_temperature
       - sensor.0x00158d0002374fb2_humidity
