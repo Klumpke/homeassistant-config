@@ -8,9 +8,9 @@ sensor:
   - platform: systemmonitor
     resources:
       - type: processor_use
-      # - type: load_1m
-      # - type: load_5m
-      # - type: load_15m
+      - type: load_1m
+      - type: load_5m
+      - type: load_15m
       - type: memory_use_percent
       - type: disk_use_percent
         arg: /
