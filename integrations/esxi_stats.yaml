@@ -1,9 +1,0 @@
-# https://github.com/wxt9861/esxi_stats
-esxi_stats:
-  host: 192.168.230.199
-  username: root
-  password: wruKez5W
-  monitored_conditions:
-    - hosts
-    - vms
-    - datastores
