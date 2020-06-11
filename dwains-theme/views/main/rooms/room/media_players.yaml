@@ -14,6 +14,7 @@
           max-width: 1465px;
           padding-bottom: 50px;
           margin: 0 auto;
+          font-family: "Open Sans", sans-serif !important;
         }
       card:
         type: vertical-stack
@@ -27,6 +28,8 @@
           #Start for room media_players content page
           {% if room["media_player"].split('.')[0] == 'media_player' %}
           # this room has only 1 media_player
+          - type: media-control
+            entity: {{ room["media_player"] }}
           {% else %}
           # this room has group of media_players
           - type: custom:auto-entities
@@ -34,19 +37,14 @@
               include:
                 - group: {{ room["media_player"] }}
                   options:
-                    type: custom:button-card
-                    template: room_media_player
-                    tap_action:
-                      !include 
-                        - ../../../popups/more-info.yaml
-                        - entity: this.entity_id
+                    type: media-control
             sort:
               method: name
               ignore_case: true
             card:
               type: custom:dwains-flexbox-card
               padding: true
-              items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
+              items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
           {% endif %}
 {% endif %}
 {% endfor %}

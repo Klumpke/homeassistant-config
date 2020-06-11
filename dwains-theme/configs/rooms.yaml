@@ -39,7 +39,7 @@ rooms:
         data:
           entity: media_player.eetkamer
       - name: Olijfboom
-        icon: fas:leaf
+        icon: fal:leaf
         # icon: fal:spa
         path: 'dwains-theme/addons/rooms/eetkamer/plant/page.yaml'
         button_path: 'dwains-theme/addons/rooms/eetkamer/plant/button.yaml'
@@ -78,6 +78,7 @@ rooms:
     temperature: sensor.temp_kleine_kamer
     humidity: sensor.temp_kleine_kamer_humidity
     pressure: sensor.temp_kleine_kamer_pressure
+    window: binary_sensor.contact_kleine_kamerraam
     addons:
       - name: Printer
         icon: fal:print
@@ -98,6 +99,7 @@ rooms:
     temperature: sensor.temp_logeerkamer
     humidity: sensor.temp_logeerkamer_humidity
     pressure: sensor.temp_logeerkamer_pressure
+    window: binary_sensor.contact_logeerkamerraam
 
   - name: Badkamer
     icon: fal:bath
@@ -153,7 +155,7 @@ rooms:
         data:
           entity: media_player.tuin
       - name: Olijfboom
-        icon: fas:leaf
+        icon: fal:leaf
         # icon: fal:spa
         path: 'dwains-theme/addons/rooms/tuin/plant/page.yaml'
         button_path: 'dwains-theme/addons/rooms/tuin/plant/button.yaml'

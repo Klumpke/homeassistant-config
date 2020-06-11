@@ -13,16 +13,19 @@
           max-width: 1465px;
           padding-bottom: 50px;
           margin: 0 auto;
+          font-family: "Open Sans", sans-serif !important;
         }
       card:
         type: vertical-stack
         cards:
+          {% if addon["show_header"] != 'false' %}
           #Header
           - !include
             - ../../partials/header.yaml
             - title: {{ addon["name"] }}
               subtitle: {{ _d_t_trans.more_page.title }}
               navigation_path: more_page
+          {% endif %}
           #Start for a custom more_page page
           - type: custom:mod-card
             style: |

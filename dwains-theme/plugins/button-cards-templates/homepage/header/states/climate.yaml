@@ -6,8 +6,8 @@ header_states_climate:
   tap_action: 
     action: navigate
     navigation_path: devices_climates
-  name: {{ _d_t_trans.climate.title }}
-  icon: '{{ _d_t_icons.climate|default('fas:thermometer-three-quarters') }}'
+  name: {{ _d_t_trans.climate.title_plural }}
+  icon: "{{ _d_t_icons.climate|default('mdi:thermometer') }}"
   variables:
     status: >
       [[[
@@ -70,7 +70,8 @@ header_states_climate:
     label:
       - color: var(--dwains-theme-header-text)
       - justify-self: center
-      - font-size: 12px
+      - font-size: 11px
+      - line-height: 12px
     name:
       - color: var(--dwains-theme-header-text)
       - justify-self: center

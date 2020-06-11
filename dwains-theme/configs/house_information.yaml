@@ -1,18 +1,21 @@
 house_information:
   favorites:
     - entity: binary_sensor.deurbel_knop
-      icon_on: fas:bell
-      icon_off: fas:bell
+      icon_on: fal:bell-on
+      icon_off: fal:bell
     - entity: binary_sensor.contact_garagedeur
-      icon_on: fas:door-open
-      icon_off: fas:door-closed
+      icon_on: fal:door-open
+      icon_off: fal:door-closed
     - entity: binary_sensor.contact_achterdeur
-      icon_on: fas:door-open
-      icon_off: fas:door-closed
-    - entity: input_select.washing_machine_status
-    - entity: input_select.dryer_status
-    - entity: input_select.dishwasher_status
+      icon_on: fal:door-open
+      icon_off: fal:door-closed
   calendar:
     - calendar.jeroen
     - calendar.joyce
     - calendar.gezamenlijk
+  addons:
+    - path: 'dwains-theme/addons/house_information/calendar/page.yaml'
+    # - path: 'dwains-theme/addons/house_information/statistics/page.yaml'
+    #   data:
+    #     some_data: 'This is some data parsed.'
+    #     some_other_data: 'and some other data.'

@@ -5,3 +5,4 @@ global:
   outside_humidity: sensor.dark_sky_humidity
   #alarm: alarm_control_panel.alarm_system
   inside_temperature: sensor.temp_woonkamer
+  favorites_homepage: 'true'

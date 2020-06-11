@@ -8,33 +8,33 @@ icons:
 #   menu_more_page: 'fas:question'
 
 #   #Global icons
-#   light_on: 'fas:question'
-#   light_off: 'fal:smile-wink'
+  light_on: 'fal:lightbulb-on'
+  light_off: 'fal:lightbulb'
 
-#   climate: 'fas:question'
+  climate: 'fal:thermometer-three-quarters'
 #   climate_heating: 'fas:question'
 #   climate_auto: 'fas:question'
 #   climate_off: 'fas:question'
 #   climate_heat: 'fas:question'
 
-#   window_open: 'fas:question'
-#   window_closed: 'fas:question'
+  window_open: 'fal:window-frame-open'
+  window_closed: 'fal:window-frame'
 
-#   door_open: 'fas:question'
-#   door_closed: 'fas:question'
+  door_open: 'fal:door-open'
+  door_closed: 'fal:door-closed'
 
 #   motion_on: 'fas:question'
 #   motion_off: 'fas:question'
 
-#   cover: 'fas:question'
+  cover: 'fal:blinds'
 
-#   device: 'fas:question'
+  device: 'fal:plug'
 
-#   media_player: 'fas:question'
-  
-#   vacuum: 'fas:question'
+  media_player: 'fal:play'
 
-#   plant: 'fas:question'
+  vacuum: 'fal:vacuum-robot'
+
+  plant: 'fal:leaf'
 
 #   alarm_disarmed: 'fas:question'
 #   alarm_pending: 'fas:question'
@@ -47,5 +47,5 @@ icons:
   more_page_settings: 'fal:cogs'
 #   more_page_list_chevron: 'fas:question'
 
-#   lock_locked: 'fas:question'
-#   lock_unlocked: 'fas:question'
+  lock_locked: 'fal:lock'
+  lock_unlocked: 'fal:unlock'

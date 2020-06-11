@@ -14,6 +14,7 @@
           max-width: 1465px;
           padding-bottom: 50px;
           margin: 0 auto;
+          font-family: "Open Sans", sans-serif !important;
         }
       card:
         type: vertical-stack
@@ -32,8 +33,7 @@
                 padding-right: 11px;
               }
             card:
-              type: custom:layout-card
-              column_width: 540px
+              type: vertical-stack
               cards:
                 - type: vertical-stack
                   cards:
@@ -46,13 +46,7 @@
                           border-radius: 0;
                         }
                       card:
-                        type: custom:layout-card
-                        min_columns: 5
-                        max_columns: 5
-                        layout: horizontal
-                        justify_content: start
-                        column_width: [55, 55, 55, 55, 55]
-                        #column_width: 55px
+                        type: custom:dwains-flexbox-card
                         cards:
                           #First card is start
                           - type: custom:button-card
@@ -118,11 +112,7 @@
                           border-radius: 0;
                         }
                       card:
-                        type: custom:layout-card
-                        min_columns: 3
-                        max_columns: 3
-                        layout: horizontal
-                        justify_content: start
+                        type: custom:dwains-flexbox-card
                         cards:
                           #First card is state
                           - type: custom:button-card
@@ -143,7 +133,9 @@
                                 - font-weight: normal
                             label: >
                               [[[
-                                return entity.attributes.fan_speed + `<ha-icon style="height: 20px" icon="mdi:fan"></ha-icon>`;
+                                if(entity){
+                                  return entity.attributes.fan_speed + `<ha-icon style="height: 20px" icon="mdi:fan"></ha-icon>`;
+                                }
                               ]]]
                           #Third card is battery percentage
                           - type: custom:button-card
@@ -155,11 +147,8 @@
                                 - justify-self: right
                             label: >
                               [[[
-                                if (entity.state != 'unknown' && entity.attributes.battery_level != 100) {
-                                  var battery = Math.round(states[`this.entity_id`].state / 10) * 10
-                                  return  entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="mdi:battery-' + battery + '"></ha-icon>';
-                                } else {
-                                  return  entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="mdi:battery"></ha-icon>';
+                                if(entity){
+                                  return entity.attributes.battery_level + '%<ha-icon style="height: 20px" icon="' + entity.attributes.battery_icon + '"></ha-icon>';
                                 }
                               ]]]
                     {% if room["vacuum"]["camera"] %}

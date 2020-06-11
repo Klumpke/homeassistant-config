@@ -1,9 +1,8 @@
 # dwains_theme
 
-#House all devices
-
-- title: {{ _d_t_trans.device.title_plural }}
-  path: devices_devices
+#House all doors
+- title: {{ _d_t_trans.door.title_plural }}
+  path: devices_doors
   panel: true
   cards:    
     - type: custom:mod-card
@@ -20,24 +19,24 @@
           #Header
           - !include
             - ../../partials/header.yaml
-            - title: {{ _d_t_trans.device.title_plural }}
+            - title: {{ _d_t_trans.door.title_plural }}
               subtitle: {{ _d_t_trans.home.title }}
               navigation_path: home#devices
-          #Start for room devices content page
+          #Start for room doors content page
           - type: custom:dwains-flexbox-card
             padding: true
             items_classes: 'col-xs-12 col-sm-6 col-md-3 col-lg-3'
             cards:
               {% for room in _d_t_config.rooms %}
-              {% if room["device"] %}
+              {% if room["door"] %}
               - type: vertical-stack
                 cards:
                   #Heading
                   - !include
                     - ../../partials/heading.yaml
                     - title: {{ room["name"] }}
-                  {% if room["device"].split('.')[0] != 'group' %}
-                  # this room has only 1 device
+                  {% if room["door"].split('.')[0] != 'group' %}
+                  # this room has only 1 door
                   - type: custom:mod-card
                     style: |
                       ha-card {
@@ -47,21 +46,19 @@
                       type: horizontal-stack
                       cards:
                         - type: custom:button-card
-                          template: room_device
-                          entity: {{ room["device"] }}
+                          template: room_door
+                          entity: {{ room["door"] }}
                           tap_action:
-                            !include 
-                              - ../../popups/more-info.yaml
-                              - entity: this.entity_id
+                            action: more-info
                   {% else %}
-                  # this room has group of devices
+                  # this room has group of doors
                   - type: custom:auto-entities
                     filter:
                       include:
-                        - group: {{ room["device"] }}
+                        - group: {{ room["door"] }}
                           options:
                             type: custom:button-card
-                            template: room_device
+                            template: room_door
                             tap_action:
                               !include 
                                 - ../../popups/more-info.yaml

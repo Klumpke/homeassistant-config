@@ -12,6 +12,7 @@
           max-width: 1465px;
           padding-bottom: 50px;
           margin: 0 auto;
+          font-family: "Open Sans", sans-serif !important;
         }
       card:
         type: vertical-stack
@@ -49,7 +50,7 @@
                         entity: {{ room["lock"] }}
                         tap_action:
                           !include 
-                            - ../../popups/more-info.yaml
+                            - ../../popups/lock.yaml
                             - entity: {{ room["lock"] }}
                   {% else %}
                   # this room has group of locks
@@ -62,7 +63,7 @@
                             template: room_lock
                             tap_action:
                               !include 
-                                - ../../popups/more-info.yaml
+                                - ../../popups/lock.yaml
                                 - entity: this.entity_id
                     sort:
                       method: name

@@ -9,7 +9,7 @@ import {
     css
   } from "https://unpkg.com/lit-element@2.0.1/lit-element.js?module";
 
-const VERSION = '0.0.1';
+const VERSION = '0.0.2';
 
 const windDirections = [
   "N",
@@ -67,15 +67,6 @@ function hasConfigOrEntityChanged(element, changedProps) {
     return true;
   }
 
-  const oldHass = changedProps.get("hass");
-  if (oldHass) {
-    return (
-      oldHass.states[element._config.entity] !==
-        element.hass.states[element._config.entity] ||
-      oldHass.states["sun.sun"] !== element.hass.states["sun.sun"]
-    );
-  }
-
   return true;
 }
 
@@ -104,8 +95,12 @@ class DwainsWeatherCard extends LitElement {
 
   renderMain(stateObj){
     const icon = weatherIcons[stateObj.state];
-    const state = this.hass.localize('state.weather.'+stateObj.state);
-    const temperature = stateObj.attributes.temperature;
+    const state = this.hass.localize('component.weather.state._.'+stateObj.state);
+    var temperature = stateObj.attributes.temperature;
+
+    if(this._config.tempsensor_entity && this.hass.states[this._config.tempsensor_entity]){
+      var temperature = (Math.round(this.hass.states[this._config.tempsensor_entity].state * 10) / 10);
+    }
 
     return html`
       <div class="icon_state">
