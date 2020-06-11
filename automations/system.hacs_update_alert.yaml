@@ -14,7 +14,7 @@
         title: "HACS update"
         message: >-
           {% for repo in state_attr(trigger.entity_id, 'repositories') %}
-          - {{ repo.display_name }} ({{ repo["available version"] }})
+          - {{ repo.display_name }} ({{ repo["available_version"] }})
 
           {% endfor %}
         data:
@@ -26,6 +26,6 @@
     #     title: "HACS update"
     #     message: >-
     #       {% for repo in state_attr(trigger.entity_id, 'repositories') %}
-    #       - {{ repo.display_name }} ({{ repo["available version"] }})
+    #       - {{ repo.display_name }} ({{ repo["available_version"] }})
           
     #       {% endfor %}
