@@ -173,7 +173,7 @@ recorder:
 
       # Weather
       - sensor.yr_symbol
-      # MiFlora Olijfbomen
+      # MiFlora plantsensoren
       - plant.olijfboom
       - sensor.olijfboom_battery_level
       - sensor.olijfboom_illuminance
