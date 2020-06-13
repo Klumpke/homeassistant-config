@@ -14,6 +14,14 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/woonkamer/sonos/button.yaml'
         data:
           entity: media_player.woonkamer
+      - name: Drakenbloed
+        icon: fal:leaf
+        # icon: fal:spa
+        path: 'dwains-theme/addons/rooms/woonkamer/plant/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/woonkamer/plant/button.yaml'
+        data:
+          plant: plant.drakenbloed
+          plant_species: dracaena marginata
 
   - name: Eetkamer
     icon: fal:utensils
@@ -38,14 +46,6 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/eetkamer/sonos/button.yaml'
         data:
           entity: media_player.eetkamer
-      - name: Olijfboom
-        icon: fal:leaf
-        # icon: fal:spa
-        path: 'dwains-theme/addons/rooms/eetkamer/plant/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/eetkamer/plant/button.yaml'
-        data:
-          plant: plant.olijfboom_links
-          plant_species: olea europaea
 
   - name: Keuken
     icon: fal:refrigerator
@@ -160,7 +160,7 @@ rooms:
         path: 'dwains-theme/addons/rooms/tuin/plant/page.yaml'
         button_path: 'dwains-theme/addons/rooms/tuin/plant/button.yaml'
         data:
-          plant: plant.olijfboom_rechts
+          plant: plant.olijfboom
           plant_species: olea europaea
           # plant2: plant.olijfboom_links
           # plant2_species: olea europaea

@@ -174,18 +174,18 @@ recorder:
       # Weather
       - sensor.yr_symbol
       # MiFlora Olijfbomen
-      - plant.olijfboom_links
-      - sensor.olijfboom_links_battery_level
-      - sensor.olijfboom_links_illuminance
-      - sensor.olijfboom_links_moisture
-      - sensor.olijfboom_links_soil_conductivity
-      - sensor.olijfboom_links_temperature
-      - plant.olijfboom_rechts
-      - sensor.olijfboom_rechts_battery_level
-      - sensor.olijfboom_rechts_illuminance
-      - sensor.olijfboom_rechts_moisture
-      - sensor.olijfboom_rechts_soil_conductivity
-      - sensor.olijfboom_rechts_temperature
+      - plant.olijfboom
+      - sensor.olijfboom_battery_level
+      - sensor.olijfboom_illuminance
+      - sensor.olijfboom_moisture
+      - sensor.olijfboom_soil_conductivity
+      - sensor.olijfboom_temperature
+      - plant.drakenbloed
+      - sensor.drakenbloed_battery_level
+      - sensor.drakenbloed_illuminance
+      - sensor.drakenbloed_moisture
+      - sensor.drakenbloed_soil_conductivity
+      - sensor.drakenbloed_temperature
 
       # AdGuard
       - sensor.adguard_dns_queries

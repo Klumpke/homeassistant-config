@@ -1,0 +1,53 @@
+substitutions:
+  # used internally
+  device_name: 'blegw_eetkamer'
+  # displayed in HA
+  friendly_name: 'Bluetooth gateway Eetkamer'
+
+esphome:
+  name: ${device_name}
+  platform: ESP32
+  board: esp32doit-devkit-v1
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: ${friendly_name}
+    password: !secret wifi_pass
+
+captive_portal:
+
+# Enable Web
+web_server:
+  port: 80
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret api_pass
+
+ota:
+  password: !secret ota_pass
+
+# BLE tracker
+esp32_ble_tracker:
+
+# Sensors
+sensor:
+  - platform: xiaomi_hhccjcy01
+    mac_address: 'C4:7C:8D:6B:1A:C6'
+    temperature:
+      name: "Olijfboom Temperature"
+    moisture:
+      name: "Olijfboom Moisture"
+    illuminance:
+      name: "Olijfboom Illuminance"
+    conductivity:
+      name: "Olijfboom Soil Conductivity"
+#    battery_level:
+#      name: "Olijfboom Battery Level"

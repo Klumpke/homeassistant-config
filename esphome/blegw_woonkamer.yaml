@@ -1,8 +1,8 @@
 substitutions:
   # used internally
-  device_name: 'miflora'
+  device_name: 'blegw_woonkamer'
   # displayed in HA
-  friendly_name: 'MiFlora'
+  friendly_name: 'Bluetooth gateway Woonkamer'
 
 esphome:
   name: ${device_name}
@@ -40,27 +40,14 @@ esp32_ble_tracker:
 # Sensors
 sensor:
   - platform: xiaomi_hhccjcy01
-    mac_address: 'C4:7C:8D:6B:1A:C6'
-    temperature:
-      name: "Olijfboom Rechts Temperature"
-    moisture:
-      name: "Olijfboom Rechts Moisture"
-    illuminance:
-      name: "Olijfboom Rechts Illuminance"
-    conductivity:
-      name: "Olijfboom Rechts Soil Conductivity"
-#    battery_level:
-#      name: "Olijfboom Rechts Battery Level"
-
-  - platform: xiaomi_hhccjcy01
     mac_address: 'C4:7C:8D:6B:12:74'
     temperature:
-      name: "Olijfboom Links Temperature"
+      name: "Drakenbloed Temperature"
     moisture:
-      name: "Olijfboom Links Moisture"
+      name: "Drakenbloed Moisture"
     illuminance:
-      name: "Olijfboom Links Illuminance"
+      name: "Drakenbloed Illuminance"
     conductivity:
-      name: "Olijfboom Links Soil Conductivity"
+      name: "Drakenbloed Soil Conductivity"
 #    battery_level:
-#      name: "Olijfboom Links Battery Level"
+#      name: "Drakenbloed Battery Level"
