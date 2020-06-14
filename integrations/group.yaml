@@ -100,61 +100,15 @@ group:
       - automation.kerstverlichting_weekend_uit_om_01_00u_of_afwezigheid
 
 # Licht en apparaat groepen
-  woonkamer_rgb_lights:
-    entities:
-      - light.combikast
-  woonkamer_other_lights:
-    entities:
-      - light.fib_fgd212_woonkamer_spots
-
-  eetkamer_other_lights:
-    entities:
-      - light.dressoir
-      - light.fib_fgd212_eetkamer
-      - light.broodkast
-
-  slaapkamer_rgb_lights:
-    entities:
-      - light.nachtkast_l
-      - light.nachtkast_r
-      - light.ledstrip_slaapkamer
-
-  keuken_other_lights:
-    entities:
-      - light.fib_fgd212_keuken_plafond
-      - light.keuken_leds
-      - light.fib_fgd212_keuken_nis
-
-  garage_other_lights:
-    entities:
-      - light.garage
-      - light.bijkeuken_leds
-
-  hal_other_lights:
-    entities:
-      - light.hal
-  hal_rgb_lights:
-    entities:
-      - light.gateway_light_7811dcdae475
-
-  buiten_other_lights:
-    entities:
-      - light.tuin
-      - light.terras
-      - light.tuinhuis
-      - switch.fib_fgs223_voordeur
-      - switch.fib_fgs223_achterdeur
-      - switch.fib_fgs223_carport
-
-
   woonkamer_lights:
     entities:
       - light.fib_fgd212_woonkamer_spots
       - light.combikast
   woonkamer_mediaplayers:
     entities:
-      - media_player.woonkamer
+      # - media_player.woonkamer
       - media_player.tv_woonkamer
+      - media_player.ziggo_mediabox
   keuken_lights:
     entities:
       - light.fib_fgd212_keuken_plafond
