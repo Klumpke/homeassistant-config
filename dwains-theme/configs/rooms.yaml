@@ -6,7 +6,7 @@ rooms:
     humidity: sensor.temp_woonkamer_humidity
     pressure: sensor.temp_woonkamer_pressure
     motion: binary_sensor.motion_woonkamer
-    media_player: media_player.tv_woonkamer
+    media_player: group.woonkamer_mediaplayers
     addons:
       - name: Sonos
         icon: fal:speaker
@@ -39,7 +39,32 @@ rooms:
         path: 'dwains-theme/addons/rooms/eetkamer/vacuum/page.yaml'
         button_path: 'dwains-theme/addons/rooms/eetkamer/vacuum/button.yaml'
         data:
-          entity: vacuum.rockrobo
+          vacuum: vacuum.rockrobo
+          map: camera.rockrobo_map
+          rooms:
+            - room: Woonkamer
+              icon: fal:couch
+            - room: Keuken
+              icon: fal:refrigerator
+            - room: Eetkamer
+              icon: fal:coffee
+            - room: Hal
+              icon: fal:key-skeleton
+            - room: Garage
+              icon: fal:warehouse
+          sensors:
+            - name: Hoofdborstel
+              sensor: sensor.vacuum_main_brush_left
+              icon: mdi:broom
+            - name: Zijborstel
+              sensor: sensor.vacuum_side_brush_left
+              icon: mdi:broom
+            - name: Filter
+              sensor: sensor.vacuum_filter_left
+              icon: mdi:broom
+            - name: Sensoren
+              sensor: sensor.vacuum_sensor_dirty_left
+              icon: mdi:air-filter
       - name: Sonos
         icon: fal:speaker
         path: 'dwains-theme/addons/rooms/eetkamer/sonos/page.yaml'

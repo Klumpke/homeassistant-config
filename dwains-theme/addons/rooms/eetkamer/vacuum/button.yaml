@@ -4,10 +4,10 @@
 ## Version: 1.0.1
 
 type: custom:button-card
-entity: {{ (data | fromjson)['entity'] }}
+entity: {{ (data | fromjson)['vacuum'] }}
 template: rooms_child
 name: {{ name }}
-icon: {{ icon|default('fas:puzzle-piece') }}
+icon: {{ icon|default('mdi:puzzle') }}
 tap_action:
   action: navigate
   navigation_path: {{ navigation_path }}
@@ -15,7 +15,7 @@ tap_action:
 #   action: call-service
 #   service: [[[ if (entity.state === 'docked') return "vacuum.start"; else return "vacuum.return_to_base"; ]]]
 #   service_data:
-#     entity_id: {{ (data | fromjson)['entity'] }}
+#     entity_id: {{ (data | fromjson)['vacuum'] }}
 label: >
   [[[
     if(entity){
