@@ -30,8 +30,9 @@ rooms:
     temperature: sensor.woonkamer_temperature
     humidity: sensor.woonkamer_humidity
     # vacuum:
+    #   advanced_view: 'true'
     #   entity: vacuum.xiaomi_vacuum_cleaner
-    #   camera: '/local/images/xiaomi-map.png'
+    #   camera: camera.rockrobo_map
     # plant: plant.olijfboom_links
     addons:
       - name: Stofzuiger
