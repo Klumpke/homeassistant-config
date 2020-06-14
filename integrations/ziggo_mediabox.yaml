@@ -3,4 +3,4 @@
 media_player:
   - platform: ziggo_mediabox_xl
     name: Ziggo Mediabox
-    host: 192.168.178.36
+    host: 192.168.178.46
