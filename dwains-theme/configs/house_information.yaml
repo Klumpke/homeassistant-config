@@ -9,13 +9,12 @@ house_information:
     - entity: binary_sensor.contact_achterdeur
       icon_on: fal:door-open
       icon_off: fal:door-closed
-  calendar:
-    - calendar.jeroen
-    - calendar.joyce
-    - calendar.gezamenlijk
   addons:
-    - path: 'dwains-theme/addons/house_information/calendar/page.yaml'
-    # - path: 'dwains-theme/addons/house_information/statistics/page.yaml'
-    #   data:
-    #     some_data: 'This is some data parsed.'
-    #     some_other_data: 'and some other data.'
+    - name: Kalender
+      icon: fal:calendar-alt
+      path: 'dwains-theme/addons/house_information/calendar/page.yaml'
+      data:
+        calendars:
+          - calendar.jeroen
+          - calendar.joyce
+          - calendar.gezamenlijk
