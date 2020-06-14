@@ -8,9 +8,10 @@
   padding: true
   cards:
     {% for camera in _d_t_config.cameras %}
-    - type: picture-glance
-      entities: []
+    - type: picture-entity
+      entity: {{ camera["entity"] }}
       camera_image: {{ camera["entity"] }}
+      show_state: false
       # tab_action:
     {% else %}
     - type: markdown
