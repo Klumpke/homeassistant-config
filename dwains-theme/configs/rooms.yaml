@@ -40,6 +40,7 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/eetkamer/vacuum/button.yaml'
         data:
           vacuum: vacuum.rockrobo
+          # vacuum: vacuum.xiaomi_vacuum_cleaner
           map: camera.rockrobo_map
           rooms:
             - room: Woonkamer
