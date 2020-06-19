@@ -10,10 +10,44 @@ rooms:
     addons:
       - name: Sonos
         icon: fal:speaker
-        path: 'dwains-theme/addons/rooms/woonkamer/sonos/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/woonkamer/sonos/button.yaml'
+        path: 'dwains-theme/addons/rooms/common/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/common/sonos/button.yaml'
         data:
-          entity: media_player.woonkamer
+          platform: sonos
+          speakers:
+            - entity: media_player.woonkamer
+              name: Woonkamer
+            - entity: media_player.eetkamer
+              name: Eetkamer
+            - entity: media_player.boven
+              name: Boven
+            - entity: media_player.zolder
+              name: Zolder
+            - entity: media_player.tuin
+              name: Tuin
+          buttons:
+            - name: Radio 538
+              type: source
+              id: Radio 538
+            - name: 100% NL
+              type: source
+              id: 100% NL
+            - name: Qmusic
+              type: source
+              id: Qmusic
+            - name: SLAM!
+              type: source
+              id: SLAM!
+            - name: L1 Radio
+              type: source
+              id: L1 Radio
+            - name: Omroep Brabant
+              type: source
+              id: Omroep Brabant
+            - name: TV
+              icon: mdi:television
+              type: source
+              id: TV
       - name: Drakenbloed
         icon: fal:leaf
         # icon: fal:spa
@@ -69,10 +103,40 @@ rooms:
               icon: mdi:air-filter
       - name: Sonos
         icon: fal:speaker
-        path: 'dwains-theme/addons/rooms/eetkamer/sonos/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/eetkamer/sonos/button.yaml'
+        path: 'dwains-theme/addons/rooms/common/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/common/sonos/button.yaml'
         data:
-          entity: media_player.eetkamer
+          platform: sonos
+          speakers:
+            - entity: media_player.eetkamer
+              name: Eetkamer
+            - entity: media_player.woonkamer
+              name: Woonkamer
+            - entity: media_player.boven
+              name: Boven
+            - entity: media_player.zolder
+              name: Zolder
+            - entity: media_player.tuin
+              name: Tuin
+          buttons:
+            - name: Radio 538
+              type: source
+              id: Radio 538
+            - name: 100% NL
+              type: source
+              id: 100% NL
+            - name: Qmusic
+              type: source
+              id: Qmusic
+            - name: SLAM!
+              type: source
+              id: SLAM!
+            - name: L1 Radio
+              type: source
+              id: L1 Radio
+            - name: Omroep Brabant
+              type: source
+              id: Omroep Brabant
 
   - name: Keuken
     icon: fal:refrigerator
@@ -115,10 +179,40 @@ rooms:
           entity: sensor.hp_m281fdw_status
       - name: Sonos
         icon: fal:speaker
-        path: 'dwains-theme/addons/rooms/kleine_kamer/sonos/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/kleine_kamer/sonos/button.yaml'
+        path: 'dwains-theme/addons/rooms/common/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/common/sonos/button.yaml'
         data:
-          entity: media_player.boven
+          platform: sonos
+          speakers:
+            - entity: media_player.boven
+              name: Boven
+            - entity: media_player.woonkamer
+              name: Woonkamer
+            - entity: media_player.eetkamer
+              name: Eetkamer
+            - entity: media_player.zolder
+              name: Zolder
+            - entity: media_player.tuin
+              name: Tuin
+          buttons:
+            - name: Radio 538
+              type: source
+              id: Radio 538
+            - name: 100% NL
+              type: source
+              id: 100% NL
+            - name: Qmusic
+              type: source
+              id: Qmusic
+            - name: SLAM!
+              type: source
+              id: SLAM!
+            - name: L1 Radio
+              type: source
+              id: L1 Radio
+            - name: Omroep Brabant
+              type: source
+              id: Omroep Brabant
 
   - name: Logeerkamer
     icon: fal:bed
@@ -177,10 +271,40 @@ rooms:
     addons:
       - name: Sonos
         icon: fal:speaker
-        path: 'dwains-theme/addons/rooms/tuin/sonos/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/tuin/sonos/button.yaml'
+        path: 'dwains-theme/addons/rooms/common/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/common/sonos/button.yaml'
         data:
-          entity: media_player.tuin
+          platform: sonos
+          speakers:
+            - entity: media_player.tuin
+              name: Tuin
+            - entity: media_player.woonkamer
+              name: Woonkamer
+            - entity: media_player.eetkamer
+              name: Eetkamer
+            - entity: media_player.boven
+              name: Boven
+            - entity: media_player.zolder
+              name: Zolder
+          buttons:
+            - name: Radio 538
+              type: source
+              id: Radio 538
+            - name: 100% NL
+              type: source
+              id: 100% NL
+            - name: Qmusic
+              type: source
+              id: Qmusic
+            - name: SLAM!
+              type: source
+              id: SLAM!
+            - name: L1 Radio
+              type: source
+              id: L1 Radio
+            - name: Omroep Brabant
+              type: source
+              id: Omroep Brabant
       - name: Olijfboom
         icon: fal:leaf
         # icon: fal:spa
@@ -207,10 +331,40 @@ rooms:
     addons:
       - name: Sonos
         icon: fal:speaker
-        path: 'dwains-theme/addons/rooms/zolder/sonos/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/zolder/sonos/button.yaml'
+        path: 'dwains-theme/addons/rooms/common/sonos/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/common/sonos/button.yaml'
         data:
-          entity: media_player.zolder
+          platform: sonos
+          speakers:
+            - entity: media_player.zolder
+              name: Zolder
+            - entity: media_player.woonkamer
+              name: Woonkamer
+            - entity: media_player.eetkamer
+              name: Eetkamer
+            - entity: media_player.boven
+              name: Boven
+            - entity: media_player.tuin
+              name: Tuin
+          buttons:
+            - name: Radio 538
+              type: source
+              id: Radio 538
+            - name: 100% NL
+              type: source
+              id: 100% NL
+            - name: Qmusic
+              type: source
+              id: Qmusic
+            - name: SLAM!
+              type: source
+              id: SLAM!
+            - name: L1 Radio
+              type: source
+              id: L1 Radio
+            - name: Omroep Brabant
+              type: source
+              id: Omroep Brabant
       - name: Wasmachine
         icon: fal:washer
         path: 'dwains-theme/addons/rooms/zolder/washingmachine/page.yaml'
