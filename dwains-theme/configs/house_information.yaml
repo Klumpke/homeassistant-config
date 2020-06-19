@@ -10,6 +10,23 @@ house_information:
       icon_on: fal:door-open
       icon_off: fal:door-closed
   addons:
+    - name: Statistieken
+      icon: fal:desktop-alt
+      path: 'dwains-theme/addons/house_information/statistics/page.yaml'
+      data:
+        stats:
+          - entity: sensor.processor_use
+            name: CPU
+            icon: mdi:chip
+          - entity: sensor.memory_use_percent
+            name: RAM
+            icon: mdi:memory
+          - entity: sensor.cpu_temp
+            name: Temp
+            icon: mdi:thermometer
+          - entity: sensor.disk_use_percent
+            name: Disk
+            icon: mdi:harddisk
     - name: Kalender
       icon: fal:calendar-alt
       path: 'dwains-theme/addons/house_information/calendar/page.yaml'

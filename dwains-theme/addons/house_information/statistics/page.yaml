@@ -1,14 +1,44 @@
 # dwains_theme
+## Created by Jeroen Klompen
+## House-information add-on: Statistics
+## Version: 1.0.0
+
 - !include
   - ../../../views/partials/heading.yaml
-  - title: "Statistieken"
-- type: markdown
+  - title: {{ name }}
+- type: custom:bar-card
   style: |
     ha-card {
       border-radius: 5px;
       background-color: var(--dwains-theme-primary);
     }
-  content: >
-    This is an house information addon. It can also parse some data from the global house information config.
-    Don't believe it? Here it is: {{ (data | fromjson)['some_data'] }}<br>
-    {{ (data | fromjson)['some_other_data'] }}
+    bar-card-backgroundbar, bar-card-currentbar {
+      border-radius: 5px;
+    }
+    bar-card-value {
+      font-weight: bold;
+    }
+    bar-card-iconbar {
+      height: 20px;
+    }
+  height: 25px
+  columns: 2
+  entities:
+  {% for stats in (data | fromjson)['stats'] %}
+    - entity: {{ stats.entity }}
+      name: {{ stats.name }}
+      icon: {{ stats.icon }}
+  {% endfor %}
+  severity:
+    - from: 0
+      to: 60
+      color: green
+    - from: 61
+      to: 80
+      color: orange
+    - from: 81
+      to: 100
+      color: red
+  positions:
+    indicator: 'off'
+    name: 'off'
