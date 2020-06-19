@@ -84,6 +84,13 @@ group:
     entities:
       - automation.notificatie_beweging_woonkamer_wanneer_niemand_thuis
 
+  deurbel_notifications:
+    name: Deurbel notificaties
+    entities:
+      - automation.notificatie_deurbel
+      - automation.notificatie_deurbel_audio
+      - automation.notificatie_deurbel_stream
+
   vakantie_modus:
     name: Vakantie modus
     entities:
