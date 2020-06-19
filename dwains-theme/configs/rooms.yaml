@@ -51,11 +51,12 @@ rooms:
       - name: Drakenbloed
         icon: fal:leaf
         # icon: fal:spa
-        path: 'dwains-theme/addons/rooms/woonkamer/plant/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/woonkamer/plant/button.yaml'
+        path: 'dwains-theme/addons/rooms/common/plant/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/common/plant/button.yaml'
         data:
-          plant: plant.drakenbloed
-          plant_species: dracaena marginata
+          plants:
+            - entity: plant.drakenbloed
+              species: dracaena marginata
 
   - name: Eetkamer
     icon: fal:utensils
@@ -308,13 +309,12 @@ rooms:
       - name: Olijfboom
         icon: fal:leaf
         # icon: fal:spa
-        path: 'dwains-theme/addons/rooms/tuin/plant/page.yaml'
-        button_path: 'dwains-theme/addons/rooms/tuin/plant/button.yaml'
+        path: 'dwains-theme/addons/rooms/common/plant/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/common/plant/button.yaml'
         data:
-          plant: plant.olijfboom
-          plant_species: olea europaea
-          # plant2: plant.olijfboom_links
-          # plant2_species: olea europaea
+          plants:
+            - entity: plant.olijfboom
+              species: olea europaea
       - name: Camera
         path: 'dwains-theme/addons/rooms/tuin/camera/page.yaml'
         button_path: 'dwains-theme/addons/rooms/tuin/camera/button.yaml'
