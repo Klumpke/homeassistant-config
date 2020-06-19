@@ -100,7 +100,21 @@
         grid:
           - grid-template-areas: '"i n""i s"'
 
-
+    - type: custom:button-card
+      template: scene
+      entity: group.deurbel_notifications
+      icon: 'mdi:bell-ring-outline'
+      show_state: true
+      tap_action:
+        haptic: light
+        action: toggle
+      styles:
+        img_cell:
+          - background: 'var(--dwains-theme-header-background)'
+        icon:
+          - color: 'var(--dwains-theme-header-text)'
+        grid:
+          - grid-template-areas: '"i n""i s"'
 
 
 # - entity: group.beweging_notifications
