@@ -12,7 +12,6 @@
       entity: {{ camera["entity"] }}
       camera_image: {{ camera["entity"] }}
       show_state: false
-      # tab_action:
     {% else %}
     - type: markdown
       content: {{ _d_t_trans.cameras.not_defined }}
