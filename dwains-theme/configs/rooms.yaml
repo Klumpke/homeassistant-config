@@ -50,7 +50,6 @@ rooms:
               id: TV
       - name: Drakenbloed
         icon: fal:leaf
-        # icon: fal:spa
         path: 'dwains-theme/addons/rooms/common/plant/page.yaml'
         button_path: 'dwains-theme/addons/rooms/common/plant/button.yaml'
         data:
@@ -177,7 +176,26 @@ rooms:
         path: 'dwains-theme/addons/rooms/kleine_kamer/printer/page.yaml'
         button_path: 'dwains-theme/addons/rooms/kleine_kamer/printer/button.yaml'
         data:
-          entity: sensor.hp_m281fdw_status
+          printer:
+            - entity: sensor.hp_m281fdw_status
+              name: Status
+            - entity: sensor.hp_m281fdw_printer
+              name: Totaal aantal pagina's afgedrukt
+            - entity: sensor.hp_m281fdw_scanner
+              name: Totaal aantal pagina's gescand
+          cardridges:
+            - entity: sensor.hp_m281fdw_toner_black
+              name: Zwart
+              color: Black
+            - entity: sensor.hp_m281fdw_toner_cyan
+              name: Cyaan
+              color: MediumTurquoise
+            - entity: sensor.hp_m281fdw_toner_magenta
+              name: Magenta
+              color: MediumOrchid
+            - entity: sensor.hp_m281fdw_toner_yellow
+              name: Geel
+              color: Gold
       - name: Sonos
         icon: fal:speaker
         path: 'dwains-theme/addons/rooms/common/sonos/page.yaml'
