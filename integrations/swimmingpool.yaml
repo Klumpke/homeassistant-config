@@ -49,7 +49,7 @@ sensor:
   - platform: template
     sensors:
       pool_pump_status:
-        value_template: '{% if is_state("switch.pool_pump", "on") %}Running{% else %}Stopped{% endif %}'
+        value_template: '{% if is_state("switch.zwembadpomp", "on") %}Running{% else %}Stopped{% endif %}'
         friendly_name: 'Zwembadpomp status'
 
       pool_pump_time_on:
