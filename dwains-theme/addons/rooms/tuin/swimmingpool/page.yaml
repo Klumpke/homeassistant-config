@@ -13,6 +13,8 @@
       entities:
         - entity: input_boolean.swimming_season
         - entity: input_select.pool_pump
+        - entity: sensor.zwembadpomp_power
+          name: Verbruik
         - entity: sensor.temp_garage
           name: Temperatuur in
         - entity: sensor.temp_badkamer
