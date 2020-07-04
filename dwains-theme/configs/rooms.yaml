@@ -56,6 +56,11 @@ rooms:
           plants:
             - entity: plant.drakenbloed
               species: dracaena marginata
+    page_entities:
+      columns: 1 #optional
+      show_title: 'false' #optional
+      entities:
+        - entity: sensor.lux_woonkamer
 
   - name: Eetkamer
     icon: fal:utensils
@@ -88,6 +93,19 @@ rooms:
               icon: fal:key-skeleton
             - room: Garage
               icon: fal:warehouse
+          controls:
+            - name: Start
+              service: vacuum.start
+              icon: mdi:play
+            - name: Pauze
+              service: vacuum.pause
+              icon: mdi:pause
+            - name: Basisstation
+              service: vacuum.return_to_base
+              icon: mdi:ev-station
+            - name: Locatie
+              service: vacuum.locate
+              icon: mdi:map-marker-circle
           sensors:
             - name: Hoofdborstel
               sensor: sensor.vacuum_main_brush_left
@@ -137,6 +155,11 @@ rooms:
             - name: Omroep Brabant
               type: source
               id: Omroep Brabant
+    page_entities:
+      columns: 1 #optional
+      show_title: 'false' #optional
+      entities:
+        - entity: sensor.lux_eetkamer
 
   - name: Keuken
     icon: fal:refrigerator
@@ -262,6 +285,11 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/common/camera/button.yaml'
         data:
           entity: camera.carport
+    page_entities:
+      columns: 1 #optional
+      show_title: 'false' #optional
+      entities:
+        - entity: sensor.lux_garage
 
   - name: Hal
     icon: fal:key-skeleton
@@ -333,6 +361,17 @@ rooms:
           plants:
             - entity: plant.olijfboom
               species: olea europaea
+      - name: Zwembad
+        icon: fal:swimming-pool
+        path: 'dwains-theme/addons/rooms/tuin/swimmingpool/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/tuin/swimmingpool/button.yaml'
+        data:
+          pump:
+            - entity: switch.zwembadpomp
+              power: sensor.zwembadpomp_consumption
+          temperature:
+            - entity: sensor.temp_garage
+            - entity: sensor.temp_badkamer
       - name: Camera
         path: 'dwains-theme/addons/rooms/common/camera/page.yaml'
         button_path: 'dwains-theme/addons/rooms/common/camera/button.yaml'
