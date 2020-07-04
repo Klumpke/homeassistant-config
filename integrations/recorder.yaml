@@ -115,6 +115,11 @@ recorder:
       - binary_sensor.motion_garage
       - binary_sensor.motion_slaapkamer
 
+      # Lux sensoren
+      - sensor.lux_woonkamer
+      - sensor.lux_eetkamer
+      - sensor.lux_garage
+
       # DSMR Reader
       - sensor.power_consumption_watt
       - sensor.dsmr_reading_electricity_currently_delivered
@@ -140,6 +145,12 @@ recorder:
       # Vaatwasser
       - sensor.vaatwasser_power
       - input_select.dishwasher_status
+
+      # Zwembadpomp
+      - sensor.zwembadpomp_power
+      - sensor.zwembadpomp_consumption
+      - sensor.pool_pump_status
+      - sensor.pool_pump_time_on
 
       # Thermostat
       - climate.woonkamer
