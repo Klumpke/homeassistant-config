@@ -76,28 +76,50 @@
     - condition: state
       entity_id: input_boolean.swimming_season
       state: 'on'
+    - condition: state
+      entity_id: switch.zwembadpomp
+      state: 'off'
   action:
-    service: homeassistant.turn_on
-    entity_id: switch.zwembadpomp
+    - service: homeassistant.turn_on
+      entity_id: switch.zwembadpomp
+
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "Zwembad"
+        message: "Zwembadpomp is ingeschakeld"
+        data:
+          push:
+            sound: default
 
 - alias: "Zwembadpomp: Check pomp buiten seizoen"
   trigger:
-      - platform: time_pattern
-        minutes: '/6'
-        seconds: 00
+    - platform: time_pattern
+      minutes: '/6'
+      seconds: 00
   condition:
-        - condition: time
-          after: '08:00:00'
-          before: '11:55:00'
-        - condition: state
-          entity_id: input_select.pool_pump
-          state: Auto
-        - condition: state
-          entity_id: input_boolean.swimming_season
-          state: 'off'
-  action:
-      service: homeassistant.turn_on
+    - condition: time
+      after: '08:00:00'
+      before: '11:55:00'
+    - condition: state
+      entity_id: input_select.pool_pump
+      state: Auto
+    - condition: state
+      entity_id: input_boolean.swimming_season
+      state: 'off'
+    - condition: state
       entity_id: switch.zwembadpomp
+      state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.zwembadpomp
+
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "Zwembad"
+        message: "Zwembadpomp is ingeschakeld"
+        data:
+          push:
+            sound: default
 
 - alias: "Zwembadpomp: Pomp uit om 17.00u"
   trigger:
@@ -110,9 +132,20 @@
     - condition: state
       entity_id: input_select.pool_pump
       state: Auto
+    - condition: state
+      entity_id: switch.zwembadpomp
+      state: 'on'
   action:
-    service: homeassistant.turn_off
-    entity_id: switch.zwembadpomp
+    - service: homeassistant.turn_off
+      entity_id: switch.zwembadpomp
+
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "Zwembad"
+        message: "Zwembadpomp is uitgeschakeld"
+        data:
+          push:
+            sound: default
 
 - alias: "Zwembadpomp: Pomp uit om 12.00u"
   trigger:
@@ -125,6 +158,17 @@
     - condition: state
       entity_id: input_select.pool_pump
       state: Auto
+    - condition: state
+      entity_id: switch.zwembadpomp
+      state: 'on'
   action:
-    service: homeassistant.turn_off
-    entity_id: switch.zwembadpomp
+    - service: homeassistant.turn_off
+      entity_id: switch.zwembadpomp
+
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "Zwembad"
+        message: "Zwembadpomp is uitgeschakeld"
+        data:
+          push:
+            sound: default
