@@ -80,18 +80,23 @@ rooms:
         button_path: 'dwains-theme/addons/rooms/eetkamer/vacuum/button.yaml'
         data:
           vacuum: vacuum.rockrobo
-          # vacuum: vacuum.xiaomi_vacuum_cleaner
           map: camera.rockrobo_map
+          platform: valetudo
           rooms:
             - room: Woonkamer
+              zone: Woonkamer
               icon: fal:couch
             - room: Keuken
+              zone: Keuken
               icon: fal:refrigerator
             - room: Eetkamer
+              zone: Eetkamer
               icon: fal:coffee
             - room: Hal
+              zone: Hal
               icon: fal:key-skeleton
             - room: Garage
+              zone: Garage
               icon: fal:warehouse
           controls:
             - name: Start
@@ -368,10 +373,14 @@ rooms:
         data:
           pump:
             - entity: switch.zwembadpomp
+              name: Zwembadpomp
               power: sensor.zwembadpomp_consumption
+            - entity: switch.zwembadpomp
+              name: Pomp2
           temperature:
-            - entity: sensor.temp_garage
-            - entity: sensor.temp_badkamer
+            - entity: sensor.zwembad_temperatuur
+              name: Zwembad temperatuur
+            - entity: sensor.zwembad_in_temperatuur
       - name: Camera
         path: 'dwains-theme/addons/rooms/common/camera/page.yaml'
         button_path: 'dwains-theme/addons/rooms/common/camera/button.yaml'
