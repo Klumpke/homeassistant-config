@@ -45,8 +45,8 @@ history:
       - cover.slaapkamer
 
       # Brandmelder
-      - binary_sensor.fib_fgsd002_overloop_brandmelder
-      - sensor.fibaro_system_fgsd002_smoke_sensor_smoke
+      - binary_sensor.overloop_brandmelder
+      - sensor.overloop_brandmelder_smoke
 
       # Nighttime sensor
       - input_number.nighttime
@@ -141,6 +141,8 @@ history:
       # Zwembadpomp
       - sensor.zwembadpomp_power
       - sensor.zwembadpomp_consumption
+      - sensor.zwembad_temperatuur
+      - sensor.zwembad_in_temperatuur
       - sensor.pool_pump_status
       - sensor.pool_pump_time_on
 

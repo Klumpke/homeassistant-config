@@ -15,9 +15,9 @@
         - entity: input_select.pool_pump
         - entity: sensor.zwembadpomp_power
           name: Verbruik
-        - entity: sensor.temp_garage
+        - entity: sensor.zwembad_temperatuur
+          name: Temperatuur
+        - entity: sensor.zwembad_in_temperatuur
           name: Temperatuur in
-        - entity: sensor.temp_badkamer
-          name: Temperatuur uit
         - entity: sensor.pool_pump_status
         - entity: sensor.pool_pump_time_on
