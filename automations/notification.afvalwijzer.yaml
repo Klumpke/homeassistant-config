@@ -10,7 +10,6 @@
     data:
       title: "Afvalwijzer"
       message: ' Afvaltype(n): {{ states.sensor.blink_morgen.state }} wordt morgen opgehaald!'
-      #message: ' Afvaltype(n): {{ states.sensor.blink_morgen.state }} wordt opgehaald op: {{ (as_timestamp(now()) + (24*3600)) | timestamp_custom("%d-%m-%Y", True) }}!'
 
 - alias: "Notificatie Dwains Theme: Afvalwijzer morgen"
   description: 'This automation creates a notification in Dwains theme'
@@ -37,7 +36,7 @@
   action:
   - service: dwains_theme.notification_create
     data:
-      message: "{{ states.sensor.blink_morgen.state }} wordt vandaag opgehaald."
+      message: "{{ states.sensor.blink_vandaag.state }} wordt vandaag opgehaald."
       notification_id: garbage
 
 - alias: "Notificatie Dwains Theme: Afvalwijzer verwijder melding"
