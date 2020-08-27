@@ -1,0 +1,15 @@
+- alias: "Notificatie: 3D Printer is klaar"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.octoprint_printing
+      from: "on"
+      to: "off"
+  # condition:
+  #   - condition: time
+  #     before: "23:00:00"
+  #     after: "5:00:00"
+  action:
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "3D Printer"
+        message: "Je 3D print is klaar"
