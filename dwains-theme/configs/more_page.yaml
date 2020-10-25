@@ -26,6 +26,9 @@ more_page:
       - name: Statistieken
         icon: fal:chart-area
         path: 'dwains-theme/addons/more_page/statistics/page.yaml'
+      - name: Ender 3 v2
+        icon: fal:cube
+        path: 'dwains-theme/addons/more_page/3d_printer/page.yaml'
       - name: P2000
         icon: fal:ambulance
         path: 'dwains-theme/addons/more_page/p2000/page.yaml'
@@ -61,3 +64,6 @@ more_page:
       - name: DeepStack
         icon: fal:brain
         path: 'dwains-theme/addons/more_page/deepstack/page.yaml'
+      - name: Docker
+        icon: 'mdi:docker'
+        path: 'dwains-theme/addons/more_page/docker_monitor/page.yaml'

@@ -157,6 +157,7 @@
               aggregate_func: last
               lower_bound: 0
               upper_bound: ~200
+              decimals: 1
               show:
                 name: true
                 state: true
@@ -188,6 +189,7 @@
               aggregate_func: last
               lower_bound: 0
               upper_bound: ~50
+              decimals: 1
               show:
                 name: true
                 state: true

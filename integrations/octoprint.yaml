@@ -1,0 +1,17 @@
+# OctoPrint is a web interface for your 3D printer.
+# This is the main integration to integrate OctoPrint sensors.
+# https://www.home-assistant.io/integrations/octoprint
+
+# octoprint:
+#   host: !secret octoprint_host
+#   api_key: !secret octoprint_api_key
+
+camera:
+  - platform: mjpeg
+    name: OctoPrint
+    still_image_url: http://192.168.178.80/webcam/?action=snapshot
+    mjpeg_url: http://192.168.178.80/webcam/?action=stream
+
+shell_command:
+  octoprint_light_off: !secret octoprint_light_off
+  octoprint_light_on: !secret octoprint_light_on

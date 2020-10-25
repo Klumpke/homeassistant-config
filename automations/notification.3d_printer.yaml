@@ -4,12 +4,31 @@
       entity_id: binary_sensor.octoprint_printing
       from: "on"
       to: "off"
-  # condition:
-  #   - condition: time
-  #     before: "23:00:00"
-  #     after: "5:00:00"
   action:
     - service: notify.mobile_app_iklumpke
       data:
         title: "3D Printer"
         message: "Je 3D print is klaar"
+
+
+- alias: "Power on LEDs when print is started."
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.octoprint_printing
+      to: "on"
+  action:
+    - service: shell_command.octoprint_light_on
+
+
+- alias: "Power off 3D printer when finished."
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.octoprint_printing
+      to: "off"
+      for:
+        minutes: 15
+  action:
+    - service: switch.turn_off
+      entity_id: switch.3d_printer
+
+    - service: shell_command.octoprint_light_off

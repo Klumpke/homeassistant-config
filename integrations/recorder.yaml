@@ -114,6 +114,9 @@ recorder:
       - binary_sensor.motion_woonkamer
       - binary_sensor.motion_garage
       - binary_sensor.motion_slaapkamer
+      - binary_sensor.motion_carport
+      - binary_sensor.motion_tuin
+      - binary_sensor.motion_voordeur
 
       # Lux sensoren
       - sensor.lux_woonkamer
@@ -145,6 +148,16 @@ recorder:
       # Vaatwasser
       - sensor.vaatwasser_power
       - input_select.dishwasher_status
+
+      # 3D printer
+      - switch.3d_printer
+      - sensor.3d_printer_consumption
+      - sensor.3d_printer_power
+      - sensor.octoprint_tool_0_target
+      - sensor.octoprint_tool_0_temperature
+      - sensor.octoprint_bed_target
+      - sensor.octoprint_bed_temperature
+      - sensor.octoprint_print_status
 
       # Zwembadpomp
       - sensor.zwembadpomp_power
