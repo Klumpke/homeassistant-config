@@ -5,6 +5,7 @@ room_light:
   show_icon: true
   show_state: false
   show_label: true
+  icon: "{{ _d_t_icons.light_off|default('mdi:lightbulb-outline') }}"
   color: 'auto'
   label: >
     [[[ 
@@ -32,10 +33,16 @@ room_light:
       }
     ]]]
   state:
+    - value: 'on'
+      icon: "{{ _d_t_icons.light_on|default('mdi:lightbulb') }}"
     - value: 'off'
       styles:
         icon:
-          - color: var(--dwains-theme-grey)
+          - color: var(--dwains-theme-off)
+    - value: 'unavailable'
+      styles:
+        icon:
+          - color: var(--dwains-theme-unavailable)
   styles:
     grid:
       - grid-template-areas: '"i n""i l"'
@@ -48,7 +55,8 @@ room_light:
       - padding-top: 14px
       - padding-bottom: 14px
     icon:
-      - width: 55%
+      - width: 25px
+      - height: 25px
     img_cell:
       - width: 45px
       - height: 45px
