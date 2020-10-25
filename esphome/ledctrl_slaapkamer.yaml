@@ -42,6 +42,7 @@ light:
     blue: pwm_b
     white: pwm_w
     #default_transition_length: 2s
+    color_interlock: true
     effects:
       - random:
       - strobe:

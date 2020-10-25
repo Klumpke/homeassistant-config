@@ -42,8 +42,5 @@ dallas:
 # Sensors
 sensor:
   - platform: dallas
-    address: 0x0A00000C22E75C28
-    name: "Zwembad Temperatuur"
-  - platform: dallas
     address: 0xB900000C23572928
-    name: "Zwembad In Temperatuur"
+    name: "Zwembad Temperatuur"
