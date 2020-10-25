@@ -41,3 +41,17 @@
       data:
         push:
           sound: default
+
+
+- alias: "Sound: Garagedeur open"
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.contact_garagedeur
+    to: 'on'
+  action:
+  - service: script.sonos_play
+    data:
+      sonos_entity: media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
+      volume: 0.2
+      media_content: !secret http_audio_doordong
+      delay: '00:00:01'
