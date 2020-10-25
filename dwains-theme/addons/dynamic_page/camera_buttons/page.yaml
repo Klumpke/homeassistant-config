@@ -1,0 +1,22 @@
+# dwains_theme
+## Dynamic-page add-on: Camera overview with buttons
+## Created by Jeroen Klompen
+## Version: 1.0.0
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
+  padding: true
+  cards:
+    {% for camera in _d_t_config.cameras %}
+    - type: picture-glance
+      camera_image: {{ camera["entity"] }}
+      camera_view: live
+      entities:
+        # - switch.ir_active_{{ camera["entity"]|replace("camera.", "") }}
+        # - switch.record_motion_{{ camera["entity"]|replace("camera.", "") }}
+        # - switch.record_always_{{ camera["entity"]|replace("camera.", "") }}
+        - binary_sensor.motion_{{ camera["entity"]|replace("camera.", "") }}
+    {% else %}
+    - type: markdown
+      content: {{ _d_t_trans.cameras.not_defined }}
+    {% endfor %}

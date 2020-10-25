@@ -5,7 +5,7 @@
   initial_state: true
   trigger:
   - platform: state
-    entity_id: binary_sensor.deurbel_knop
+    entity_id: binary_sensor.voordeur_ding
     from: 'off'
     to: 'on'
   # condition:
@@ -38,13 +38,13 @@
   initial_state: true
   trigger:
   - platform: state
-    entity_id: binary_sensor.deurbel_knop
+    entity_id: binary_sensor.voordeur_ding
     from: 'off'
     to: 'on'
   action:
   - service: script.sonos_play
     data:
-      sonos_entity: media_player.woonkamer, media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
+      sonos_entity: media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
       volume: 0.4
       media_content: !secret http_audio_deurbel
       delay: '00:00:03'
@@ -53,35 +53,15 @@
   initial_state: true
   trigger:
   - platform: state
-    entity_id: binary_sensor.deurbel_knop
+    entity_id: binary_sensor.voordeur_ding
     from: 'off'
     to: 'on'
   action:
   - service: camera.play_stream
     data:
-      entity_id: camera.voordeur_2
+      entity_id: camera.voordeur
       media_player: media_player.hub_keuken
   - delay: "00:02:00"
   - service: media_player.turn_off
     data:
       entity_id: media_player.hub_keuken
-
-
-# Deurbel aan na 8.00u
-# Deurbel uit na 22.00u
-#
-- alias: "Deurbel AAN na 07.30u"
-  trigger:
-    platform: time
-    at: "07:30:00"
-  action:
-    service: switch.turn_on
-    entity_id: switch.deurbel_bel_actief
-
-- alias: "Deurbel UIT na 22.00u"
-  trigger:
-    platform: time
-    at: "22:00:00"
-  action:
-    service: switch.turn_off
-    entity_id: switch.deurbel_bel_actief

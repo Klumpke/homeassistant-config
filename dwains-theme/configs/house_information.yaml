@@ -1,8 +1,5 @@
 house_information:
   favorites:
-    - entity: binary_sensor.deurbel_knop
-      icon_on: fal:bell-on
-      icon_off: fal:bell
     - entity: binary_sensor.contact_garagedeur
       icon_on: fal:door-open
       icon_off: fal:door-closed

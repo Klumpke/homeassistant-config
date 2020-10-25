@@ -68,7 +68,7 @@
               name: HACS
               tap_action:
                 action: navigate
-                navigation_path: /hacs/installed
+                navigation_path: /hacs
               style: |
                 :host {
                   {% if states(config.entity) != '0' %}

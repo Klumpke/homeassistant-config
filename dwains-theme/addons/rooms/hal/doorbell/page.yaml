@@ -1,0 +1,23 @@
+- type: custom:dwains-flexbox-card
+  padding: true
+  items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+  cards:
+    - type: entities
+      title: Ring Deurbel
+      entities:
+        # - sensor.voordeur_battery
+        - binary_sensor.voordeur_ding
+        - binary_sensor.voordeur_motion
+        - sensor.voordeur_last_ding
+        - sensor.voordeur_last_motion
+        - sensor.voordeur_last_activity
+        - sensor.voordeur_wifi_signal_strength
+        # - camera.ring_voordeur
+
+    # - type: picture-glance
+    #   title: Voordeur
+    #   entities:
+    #     - binary_sensor.voordeur_ding
+    #     - binary_sensor.voordeur_motion
+    #   camera_image: camera.ring_voordeur
+

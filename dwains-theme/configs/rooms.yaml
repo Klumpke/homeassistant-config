@@ -299,8 +299,13 @@ rooms:
   - name: Hal
     icon: fal:key-skeleton
     light: group.other_lights
-    device: switch.deurbel_bel_actief
     addons:
+      - name: Deurbel
+        icon: fal:bell
+        path: 'dwains-theme/addons/rooms/hal/doorbell/page.yaml'
+        button_path: 'dwains-theme/addons/rooms/hal/doorbell/button.yaml'
+        data:
+          entity: binary_sensor.voordeur_ding
       - name: Camera
         path: 'dwains-theme/addons/rooms/common/camera/page.yaml'
         button_path: 'dwains-theme/addons/rooms/common/camera/button.yaml'

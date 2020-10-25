@@ -45,7 +45,7 @@
       entity_id: input_select.pool_pump
       to: 'Aan'
   action:
-    service: homeassistant.turn_on
+    service: switch.turn_on
     entity_id: switch.zwembadpomp
 
 - alias: "Zwembadpomp: zet uit"
@@ -54,7 +54,7 @@
       entity_id: input_select.pool_pump
       to: 'Uit'
   action:
-    service: homeassistant.turn_off
+    service: switch.turn_off
     entity_id: switch.zwembadpomp
 
 ## Checks pool pump status every few minutes defined by minutes: '/6' (6 minutes in this case)
@@ -80,7 +80,7 @@
       entity_id: switch.zwembadpomp
       state: 'off'
   action:
-    - service: homeassistant.turn_on
+    - service: switch.turn_on
       entity_id: switch.zwembadpomp
 
     - service: notify.mobile_app_iklumpke
@@ -110,7 +110,7 @@
       entity_id: switch.zwembadpomp
       state: 'off'
   action:
-    - service: homeassistant.turn_on
+    - service: switch.turn_on
       entity_id: switch.zwembadpomp
 
     - service: notify.mobile_app_iklumpke
@@ -136,7 +136,7 @@
       entity_id: switch.zwembadpomp
       state: 'on'
   action:
-    - service: homeassistant.turn_off
+    - service: switch.turn_off
       entity_id: switch.zwembadpomp
 
     - service: notify.mobile_app_iklumpke
@@ -162,7 +162,7 @@
       entity_id: switch.zwembadpomp
       state: 'on'
   action:
-    - service: homeassistant.turn_off
+    - service: switch.turn_off
       entity_id: switch.zwembadpomp
 
     - service: notify.mobile_app_iklumpke

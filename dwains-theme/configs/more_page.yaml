@@ -64,6 +64,3 @@ more_page:
       - name: DeepStack
         icon: fal:brain
         path: 'dwains-theme/addons/more_page/deepstack/page.yaml'
-      - name: Docker
-        icon: 'mdi:docker'
-        path: 'dwains-theme/addons/more_page/docker_monitor/page.yaml'

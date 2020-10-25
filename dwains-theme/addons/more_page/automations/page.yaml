@@ -38,6 +38,23 @@
 
     - type: custom:button-card
       template: scene
+      entity: automation.sound_garagedeur_open
+      name: Garagedeur geluid
+      icon: 'mdi:door'
+      show_state: true
+      tap_action:
+        haptic: light
+        action: toggle
+      styles:
+        img_cell:
+          - background: 'var(--dwains-theme-header-background)'
+        icon:
+          - color: 'var(--dwains-theme-header-text)'
+        grid:
+          - grid-template-areas: '"i n""i s"'
+
+    - type: custom:button-card
+      template: scene
       entity: group.deur_notifications
       icon: 'mdi:door'
       show_state: true

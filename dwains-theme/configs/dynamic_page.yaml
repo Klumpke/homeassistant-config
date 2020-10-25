@@ -2,4 +2,4 @@ dynamic_page:
   addon:
     name: Camera's
     icon: mdi:cctv
-    path: 'dwains-theme/addons/dynamic_page/camera_hide-state/page.yaml'
+    path: 'dwains-theme/addons/dynamic_page/camera_buttons/page.yaml'

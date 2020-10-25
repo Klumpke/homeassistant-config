@@ -12,13 +12,13 @@ weather:
     api_key: !secret darksky_api_key
     mode: daily
 
-# Air Visual
-# https://www.home-assistant.io/integrations/airvisual/
-airvisual:
-  api_key: !secret airvisual_api
-  geographies:
-    latitude: !secret zone_home_latitude
-    longitude: !secret zone_home_longitude
+# # Air Visual
+# # https://www.home-assistant.io/integrations/airvisual/
+# airvisual:
+#   api_key: !secret airvisual_api
+#   geographies:
+#     latitude: !secret zone_home_latitude
+#     longitude: !secret zone_home_longitude
 
 sensor:
   # DarkSky
@@ -31,16 +31,6 @@ sensor:
       - humidity
       - wind_speed
     language: nl
-
-  # Weather prediction
-  # https://www.home-assistant.io/integrations/yr/
-  - platform: yr
-    monitored_conditions:
-      - symbol
-      - temperature
-      - humidity
-      - windSpeed
-      - precipitation
 
   # Buienrader
   # https://www.home-assistant.io/integrations/sensor.buienradar/

@@ -1,0 +1,9 @@
+---
+logger:
+  default: error
+  # logs:
+  #   homeassistant.components.rest.notify: debug
+    # homeassistant.components.vacuum: debug
+    # homeassistant.components.deconz: debug
+    # pydeconz.websocket: debug
+    # pydeconz: debug

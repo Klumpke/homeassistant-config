@@ -17,7 +17,5 @@
           name: Verbruik
         - entity: sensor.zwembad_temperatuur
           name: Temperatuur
-        - entity: sensor.zwembad_in_temperatuur
-          name: Temperatuur in
         - entity: sensor.pool_pump_status
         - entity: sensor.pool_pump_time_on

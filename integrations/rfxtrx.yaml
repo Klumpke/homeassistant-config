@@ -1,21 +1,23 @@
 ---
 # The rfxtrx component supports RFXtrx devices by RFXCOM
-# which communicate in the frequency range of 433.92 MHz. 
+# which communicate in the frequency range of 433.92 MHz.
 # https://www.home-assistant.io/components/rfxtrx/
 rfxtrx:
   device: "/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A12ISMUH-if00-port0"
   debug: false
+  automatic_add: false
+  devices:
+    # Cover Slaapkamer ID 01:22:11 Unit Code 1
+    071a000001221101:
+    # Pool Temperature sensor
+    # Sniffing codes:
+    #  ARC:43888CB4030454C003D8
+    #  0D03014143888CB4030454C003D8
+    # 43888CB4030454C003D8:
+    # 0D03014143888CB4030454C003D8:
 
 # https://www.home-assistant.io/components/cover.rfxtrx/
 cover:
-  - platform: rfxtrx
-    automatic_add: false
-    #signal_repetitions: 1
-    devices:
-      # Slaapkamer ID 01:22:11 Unit Code 1
-      071a000001221101: # RFY
-        name: RFY Cover Slaapkamer
-
   - platform: mqtt
     name: "Slaapkamer"
     command_topic: 'hass/room/cover/1/in'
@@ -23,31 +25,3 @@ cover:
     position_topic: 'hass/room/cover/1/state'
     retain: false
     optimistic: false
-
-#  - platform: template
-#    covers:
-#      slaapkamer:
-#        friendly_name: "Slaapkamer"
-#        value_template: "{{ states('input_select.cover_slaapkamer', 'open') }}"
-#        open_cover:
-#          service: script.cover_slaapkamer_open
-#        close_cover:
-#          service: script.cover_slaapkamer_close
-#        stop_cover:
-#          service: script.cover_slaapkamer_stop
-#        icon_template: >-
-#          {% if is_state('cover.slaapkamer', 'open') %}
-#            mdi:window-open
-#          {% else %}
-#            mdi:window-closed
-#          {% endif %}
-#        optimistic: true
-
-#input_select:
-#  cover_slaapkamer:
-#    name: Rolluik Slaapkamer Status
-#    options:
-#      - open
-#      - close
-#      - stop
-#    initial: open
