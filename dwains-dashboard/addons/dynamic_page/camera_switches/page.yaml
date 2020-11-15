@@ -1,0 +1,22 @@
+# dwains_theme
+## Dynamic-page add-on: Camera's (add switches)
+## Created by Jeroen Klompen
+## Version: 1.0.0
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
+  padding: true
+  cards:
+    {% for camera in _dd_config.cameras %}
+    - type: picture-glance
+      camera_image: {{ camera["entity"] }}
+      aspect_ratio: 0%
+      entities:
+        - switch.{{ camera["entity"]|replace("camera.", "") }}_night_mode
+        - switch.{{ camera["entity"]|replace("camera.", "") }}_night_mode_auto
+        - switch.{{ camera["entity"]|replace("camera.", "") }}_ir_led
+        - switch.{{ camera["entity"]|replace("camera.", "") }}_h264_rtsp_server
+    {% else %}
+    - type: markdown
+      content: {{ _dd_trans.cameras.not_defined }}
+    {% endfor %}

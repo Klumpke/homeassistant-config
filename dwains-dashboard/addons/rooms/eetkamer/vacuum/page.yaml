@@ -1,0 +1,106 @@
+# dwains_theme
+## Room add-on: Vacuum
+## Created by Jeroen Klompen
+## Version: 1.0.5
+
+- type: custom:dwains-flexbox-card
+  items_classes: 'col-xs-12 col-sm-6 col-sm-6'
+  cards:
+  {% if (data | fromjson)['map'] %}
+    - type: custom:dwains-flexbox-card
+      padding: true
+      cards:
+        - type: custom:dwains-heading-card
+          title: Map
+        - type: vertical-stack
+          items_classes: 'col-sm-12'
+          cards:
+            - type: picture-entity
+              entity: {{ (data | fromjson)['map'] }}
+              show_name: false
+              show_state: false
+              tap_action: none
+              hold_action: none
+  {% endif %}
+
+  {% if (data | fromjson)['rooms'] %}
+    - type: custom:dwains-flexbox-card
+      padding: true
+      cards:
+        - type: custom:dwains-heading-card
+          title: Presets
+
+      {% for rooms in (data | fromjson)['rooms'] %}
+        - type: custom:button-card
+          item_classes: 'col-xs-6'
+          template: room_climate_info
+          entity: input_boolean.dummy1
+          name: {{ rooms.room }}
+          icon: {{ rooms.icon }}
+          show_state: false
+          show_last_changed: false
+          tap_action:
+            action: call-service
+            service: vacuum.send_command
+            {% if (data | fromjson)['platform'] == "valetudo" %}
+            service_data:
+              entity_id: {{ (data | fromjson)['vacuum'] }}
+              command: zoned_cleanup
+              params:
+                'zone_ids': ['{{ rooms.zone }}']
+            {% else %}
+            service_data:
+              entity_id: {{ (data | fromjson)['vacuum'] }}
+              command: app_zoned_clean
+              params: ['{{ rooms.zone }}']
+            {% endif %}
+          styles:
+            grid:
+              - grid-template-areas: '"i n"'
+            icon:
+              - width: 25px
+              - height: 25px
+      {% endfor %}
+  {% endif %}
+
+  {% if (data | fromjson)['controls'] %}
+        - type: custom:dwains-heading-card
+          title: Beheer
+        - type: glance
+          item_classes: 'col-xs-12'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          show_state: false
+          entities:
+          {% for controls in (data | fromjson)['controls'] %}
+            - entity: input_boolean.dummy1
+              name: {{ controls.name }}
+              icon: {{ controls.icon }}
+              tap_action:
+                action: call-service
+                service: {{ controls.service }}
+                service_data:
+                  entity_id: {{ (data | fromjson)['vacuum'] }}
+          {% endfor %}
+  {% endif %}
+
+  {% if (data | fromjson)['sensors'] %}
+        - type: custom:dwains-heading-card
+          title: Informatie
+        - type: glance
+          item_classes: 'col-xs-12'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
+          entities:
+          {% for sensors in (data | fromjson)['sensors'] %}
+            - entity: {{ sensors.sensor }}
+              name: {{ sensors.name }}
+              icon: {{ sensors.icon }}
+          {% endfor %}
+  {% endif %}

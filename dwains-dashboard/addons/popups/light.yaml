@@ -1,0 +1,13 @@
+# dwains_dashboard
+
+type: vertical-stack
+cards:
+  - type: entities
+    style: |
+      ha-card {
+        box-shadow: none;
+      }
+    entities:
+      - {{ entity }}
+  - type: markdown
+    content: Custom for {{ entity }}

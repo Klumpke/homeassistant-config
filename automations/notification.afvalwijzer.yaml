@@ -11,7 +11,7 @@
       title: "Afvalwijzer"
       message: ' Afvaltype(n): {{ states.sensor.blink_morgen.state }} wordt morgen opgehaald!'
 
-- alias: "Notificatie Dwains Theme: Afvalwijzer morgen"
+- alias: "Notificatie Dwains Dashboard: Afvalwijzer morgen"
   description: 'This automation creates a notification in Dwains theme'
   trigger:
   - at: '00:01'
@@ -20,12 +20,12 @@
     - condition: template
       value_template: "{{ states('sensor.blink_morgen') != 'Geen' }}"
   action:
-  - service: dwains_theme.notification_create
+  - service: dwains_dashboard.notification_create
     data:
       message: "{{ states.sensor.blink_morgen.state }} wordt morgen opgehaald."
       notification_id: garbage
 
-- alias: "Notificatie Dwains Theme: Afvalwijzer vandaag"
+- alias: "Notificatie Dwains Dashboard: Afvalwijzer vandaag"
   description: 'This automation edits the previous notification in Dwains theme'
   trigger:
   - at: '00:01'
@@ -34,12 +34,12 @@
     - condition: template
       value_template: "{{ states('sensor.blink_vandaag') != 'Geen' }}"
   action:
-  - service: dwains_theme.notification_create
+  - service: dwains_dashboard.notification_create
     data:
       message: "{{ states.sensor.blink_vandaag.state }} wordt vandaag opgehaald."
       notification_id: garbage
 
-- alias: "Notificatie Dwains Theme: Afvalwijzer verwijder melding"
+- alias: "Notificatie Dwains Dashboard: Afvalwijzer verwijder melding"
   description: 'This automation dismisses the garbage notification in Dwains theme'
   trigger:
   - at: '23:59'
@@ -48,6 +48,6 @@
     - condition: template
       value_template: "{{ states('sensor.blink_vandaag') != 'Geen' }}"
   action:
-  - service: dwains_theme.notification_dismiss
+  - service: dwains_dashboard.notification_dismiss
     data:
       notification_id: garbage

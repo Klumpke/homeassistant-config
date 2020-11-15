@@ -1,0 +1,51 @@
+icons:
+#   #Menu icons
+#   menu_back: 'fas:question'
+  menu_home: 'fal:home'
+  menu_lights: 'fal:lamp'
+  menu_scenes: 'fal:play-circle'
+#   menu_cameras: 'fal:cctv'
+  menu_more_page: 'fal:ellipsis-h-alt'
+
+#   #Global icons
+  light_on: 'fal:lightbulb-on'
+  light_off: 'fal:lightbulb'
+
+  climate: 'fal:thermometer-three-quarters'
+#   climate_heating: 'fas:question'
+#   climate_auto: 'fas:question'
+#   climate_off: 'fas:question'
+#   climate_heat: 'fas:question'
+
+  window_open: 'fal:window-frame-open'
+  window_closed: 'fal:window-frame'
+
+  door_open: 'fal:door-open'
+  door_closed: 'fal:door-closed'
+
+#   motion_on: 'fas:question'
+#   motion_off: 'fas:question'
+
+  cover: 'fal:blinds'
+
+  device: 'fal:plug'
+
+  media_player: 'fal:play'
+
+  vacuum: 'fal:vacuum-robot'
+
+  plant: 'fal:leaf'
+
+#   alarm_disarmed: 'fas:question'
+#   alarm_pending: 'fas:question'
+#   alarm_armed_away: 'fas:question'
+#   armed_home: 'fas:question'
+
+#   #More page icons
+  more_page_house_information: 'fal:home'
+  more_page_house_data: 'fal:clinic-medical'
+  more_page_settings: 'fal:cogs'
+#   more_page_list_chevron: 'fas:question'
+
+  lock_locked: 'fal:lock'
+  lock_unlocked: 'fal:unlock'

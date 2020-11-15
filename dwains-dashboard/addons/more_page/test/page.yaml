@@ -1,0 +1,25 @@
+## Made by Greetoz
+- type: custom:vertical-stack-in-card
+  cards:
+    - type: markdown
+      content: "## Update Status"
+    - type: entities
+      show_header_toggle: false
+      entities:
+        - entity: sensor.hacs
+          name: HACS
+        - entity: sensor.potential_breaking_changes
+    - type: conditional
+      conditions:
+        - entity: sensor.potential_breaking_changes
+          state_not: "0"
+      card:
+        type: custom:list-card
+        entity: sensor.potential_breaking_changes
+        columns:
+          - title: Component
+            add_link: doclink
+            field: component
+          - title: Description
+            add_link: prlink
+            field: description

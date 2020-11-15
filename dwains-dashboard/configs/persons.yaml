@@ -1,0 +1,34 @@
+persons:
+  - name: Joyce
+    track: person.joyce
+    # show_map: 'false'
+    # addons:
+    #   - name: Map
+    #     path: 'dwains-theme/addons/persons/map-joyce/page.yaml'
+    page_entities:
+      columns: 4
+      entities:
+        - entity: sensor.joyce_battery_level
+        - entity: sensor.joyce_battery_state
+        - entity: sensor.joyce_distance
+        - entity: sensor.joyce_steps
+  - name: Jeroen
+    track: person.jeroen
+    # show_map: 'false'
+    # addons:
+    #   - name: Map
+    #     path: 'dwains-theme/addons/persons/map-jeroen/page.yaml'
+    page_entities:
+      columns: 4
+      entities:
+        - entity: sensor.iklumpke_battery_level
+        - entity: sensor.iklumpke_battery_state
+        - entity: sensor.iklumpke_distance
+        - entity: sensor.iklumpke_steps
+    more_entities:
+      columns: 1
+      entities:
+        - entity: sensor.iklumpke_battery_level
+        - entity: sensor.iklumpke_battery_state
+        - entity: sensor.iklumpke_distance
+        - entity: sensor.iklumpke_steps
