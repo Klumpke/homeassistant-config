@@ -108,12 +108,14 @@ recorder:
       - binary_sensor.contact_slaapkamerraam
       - binary_sensor.contact_kleine_kamerraam
       - binary_sensor.contact_logeerkamerraam
+      - binary_sensor.contact_tuinhuisdeur
       - binary_sensor.contact_zolderraam
 
       # Motion sensoren
       - binary_sensor.motion_woonkamer
       - binary_sensor.motion_garage
       - binary_sensor.motion_slaapkamer
+      - binary_sensor.motion_tuinhuis
       - binary_sensor.motion_carport
       - binary_sensor.motion_tuin
       - binary_sensor.motion_voordeur

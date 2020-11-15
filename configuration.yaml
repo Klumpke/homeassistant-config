@@ -12,7 +12,7 @@ homeassistant:
   time_zone: Europe/Amsterdam
   # Customization file
   customize: !include customize.yaml
-# Contains the URL that Home Assistant is available on the internet.
+  # Contains the URL that Home Assistant is available on the internet.
   internal_url: !secret ha_internal_url
   external_url: !secret ha_external_url
   # List of folders that can be used as sources for sending files.
@@ -25,11 +25,7 @@ homeassistant:
 # Discover some devices automatically
 #discovery:
 
-# Customizer Component
-# https://github.com/andrey-git/home-assistant-customizer
-# customizer:
-#   custom_ui: local
-
+# Load scripts
 script: !include scripts.yaml
 
 # Load Scenes
@@ -39,54 +35,5 @@ scene: !include scenes.yaml
 # Lovelace Mode
 lovelace:
   mode: yaml
-  resources: !include_dir_merge_list dwains-theme/resources/
-  dashboards:
-    dwains-theme:
-      mode: yaml
-      title: Dwains Theme
-      icon: mdi:alpha-d-box
-      show_in_sidebar: true
-      filename: dwains-theme-lovelace.yaml
-
-# Frontend and HTTP
-frontend:
-  themes: !include_dir_merge_named themes
-
-# Load Browser Mod
-# https://github.com/thomasloven/hass-browser_mod
-browser_mod:
-
-#Dwains theme definitions (this is for doing all the jinja2 inside YAML files)
-dwains_theme:
-  global:
-    version: '1.4.1'
-  styles:
-    padding-left: '10px'
-  translations:
-    !include_dir_merge_named dwains-theme/translations/
-  configuration:
-    !include_dir_merge_named dwains-theme/configs/
-  icons:
-    !include dwains-theme/configs/icons.yaml
-
-#Sensor for latest version
-sensor:
-  - platform: scrape
-    resource: https://dwains-theme.dwainscheeren.nl/version?v=1.4.1
-    name: Dwains Theme Version
-    select: ".current-version h1"
-    value_template: '{{ value.split(":")[1] }}'
-    scan_interval: 3600
-
-#Input select
-input_select:
-  #Theme selector
-  theme_selector:
-    name: Theme Selector 
-    options:
-      - Auto Mode (Dark/Light)
-      - Dark Mode
-      - Light Mode
-      - Auto Mode (Black/White)
-      - Black Mode
-      - White Mode
+  # Include external resource
+  resources: !include dwains-dashboard/resources/custom_resources.yaml
