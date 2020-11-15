@@ -6,7 +6,7 @@
 
 ---
 
-### Status of: 2020.11.01
+### Status of: 2020.11.15
 Partial Home Assistant configuration with themes, templates and views.
 
 ### System Architecture
@@ -68,6 +68,7 @@ On top of that there's **Docker**.
 - Ikea [Trådfri E27 LED 806lm][ikea_e27_806lm]
 - Ikea [Trådfri E27 LED 1000lm][ikea_e27_1000lm]
 - Ikea [Trådfri E27 LED Filament 250lm][ikea_e27_250lm]
+- Ikea [Trådfri Wireless control outlet][ikea_outlet]
 - Ikea [Trådfri Driver 10W][ikea_driver_10w]
 - Ikea [Trådfri Driver 30W][ikea_driver_30w]
 - Innr [Smart Plug SP120][innr_sp120]
@@ -82,6 +83,7 @@ On top of that there's **Docker**.
 - Xiaomi [Motion Sensors][xiaomi_motion]
 - BlitzWolf [BW-SHP2][bw-shp2]
 - BlitzWolf [BW-SHP6][bw-shp6]
+- BlitzWolf [BW-SHP13][bw-shp13]
 - LSC [Smart Connect RGBW ledstrip][lsc_rgbw_ledstrip]
 - MagicHome [LED-controller][magichome_rgbw_led]
 - Xiaomi [MiFlora][miflora]
@@ -123,15 +125,16 @@ The below screenshots show some mobile examples.<br>
 [hue_e14_white_color_ambiance]: https://www2.meethue.com/nl-nl/p/hue-white-and-color-ambiance-losse-kaarslamp-e14/8718696695166
 [hue_dimmer_switch]: https://www2.meethue.com/nl-nl/p/hue-dimmer-switch/8718696743157
 [icasa_pulse]: https://www.icasa.io/wandschakelaars
-[ikea_remote]: https://www.ikea.com/nl/nl/p/tradfri-afstandsbediening-30443124/
-[ikea_dimmer]: https://www.ikea.com/nl/nl/p/tradfri-draadloze-dimmer-wit-70408595/
-[ikea_motion]: https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/
-[ikea_e14_400lm]: https://www.ikea.com/nl/nl/p/tradfri-led-lamp-e14-400-lumen-draadloos-dimbaar-warm-wit-kaarslamp-opaalwit-60365271/
-[ikea_e27_806lm]: https://www.ikea.com/nl/nl/p/tradfri-set-met-dimmer-10435926/
-[ikea_e27_1000lm]: http://www.ikea.com/nl/nl/catalog/products/80349888/
-[ikea_e27_250lm]: https://www.ikea.com/nl/nl/p/tradfri-led-lamp-e27-250-lumen-draadloos-dimbaar-warm-schijnsel-globe-bruin-helder-glas-70455676/
-[ikea_driver_10w]: https://www.ikea.com/nl/nl/p/tradfri-driver-voor-draadloze-besturing-grijs-50356187/
-[ikea_driver_30w]: https://www.ikea.com/nl/nl/p/tradfri-driver-voor-draadloze-besturing-grijs-60342656/
+[ikea_remote]: https://www.ikea.com/nl/en/p/tradfri-afstandsbediening-30443124/
+[ikea_dimmer]: https://www.ikea.com/nl/en/p/tradfri-draadloze-dimmer-wit-70408595/
+[ikea_motion]: https://www.ikea.com/nl/en/p/tradfri-draadloze-bewegingssensor-wit-70429913/
+[ikea_e14_400lm]: https://www.ikea.com/nl/en/p/tradfri-led-lamp-e14-400-lumen-draadloos-dimbaar-warm-wit-kaarslamp-opaalwit-60365271/
+[ikea_e27_806lm]: https://www.ikea.com/nl/en/p/tradfri-set-met-dimmer-10435926/
+[ikea_e27_1000lm]: http://www.ikea.com/nl/en/catalog/products/80349888/
+[ikea_e27_250lm]: https://www.ikea.com/nl/en/p/tradfri-led-lamp-e27-250-lumen-draadloos-dimbaar-warm-schijnsel-globe-bruin-helder-glas-70455676/
+[ikea_outlet]: https://www.ikea.com/nl/en/p/tradfri-wireless-control-outlet-90356166/
+[ikea_driver_10w]: https://www.ikea.com/nl/en/p/tradfri-driver-voor-draadloze-besturing-grijs-50356187/
+[ikea_driver_30w]: https://www.ikea.com/nl/en/p/tradfri-driver-voor-draadloze-besturing-grijs-60342656/
 [innr_sp120]: https://shop.innrlighting.com/nl/shop/134/smart-plug-
 [fibaro_dimmer2]: https://www.fibaro.com/en/products/dimmer-2/
 [fibaro_switch2]: https://www.fibaro.com/en/products/switches/
@@ -144,6 +147,7 @@ The below screenshots show some mobile examples.<br>
 [xiaomi_motion]: https://www.banggood.com/Original-Aqara-Zig_Bee-Wireless-Human-Body-PIR-Sensor-Smart-Home-Kit-From-Xiaomi-Eco-System-p-1177007.html?rmmds=myorder&cur_warehouse=CN
 [bw-shp2]: https://www.banggood.com/BlitzWolf-BW-SHP2-16A-Smart-WIFI-Socket-220V-EU-Plug-Work-with-Amazon-Alexa-Google-Assistant-Compatible-with-BlitzWolf-Tuya-APP-p-1292899.html?rmmds=search&ID=47184&cur_warehouse=CN
 [bw-shp6]: https://www.banggood.com/BlitzWolf-BW-SHP6-EU-Plug-Metering-Version-WIFI-Smart-Socket-220V-240V-10A-Work-with-Amazon-Alexa-p-1356981.html?rmmds=search&cur_warehouse=CN
+[bw-shp13]: https://www.banggood.com/BlitzWolf-BW-SHP13-Zigbee-3_0-Smart-WIFI-Socket-16A-EU-Plug-Electricity-Metering-APP-Remote-Controller-Timer-Work-with-Amazon-Alexa-Google-Home-p-1679992.html?rmmds=search&cur_warehouse=CN
 [lsc_rgbw_ledstrip]: https://www.action.com/nl-nl/p/lsc-smart-connect-slimme-multicolor-ledstrip-/
 [magichome_rgbw_led]: https://nl.aliexpress.com/item/32865919702.html?spm=a2g0s.9042311.0.0.7cb14c4dYuSrC3
 [miflora]: https://nl.aliexpress.com/item/4000131669924.html?spm=a2g0o.productlist.0.0.34781762uvPDL1&algo_pvid=0336ca00-a1b2-47a1-9443-6d3c943b7fbf&algo_expid=0336ca00-a1b2-47a1-9443-6d3c943b7fbf-0&btsid=ca12ffb4-4507-4ee6-8af1-ece8150436a3&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_55
@@ -156,6 +160,3 @@ The below screenshots show some mobile examples.<br>
 [xiaomi_curtains_track]: https://nl.aliexpress.com/item/3-5-M-Xiaomi-Super-Stille-Elektrische-Gordijn-Track-voor-Mijia-Aqara-Motor-Automatische-Gordijn-Rails/32922713008.html?spm=a2g0s.9042311.0.0.1cf94c4d06j07R
 [xiaomi_curtains_motor]: https://nl.aliexpress.com/item/Xiaomi-Aqara-Smart-Gordijn-Motor-Intelligente-Zigbee-Wifi-Voor-xiaomi-Smart-Home-Apparaat-Draadloze-Afstandsbediening-Via/32872671734.html?spm=a2g0s.9042311.0.0.1cf94c4d06j07R
 [BW-LT11]: https://www.banggood.com/BlitzWolf-BW-LT11-2M5M-Smart-APP-Control-RGBW-LED-Light-Strip-Kit-Work-With-Amazon-Alexa-Google-Assistant-p-1390470.html?rmmds=search
-
-[tv]: https://student-techlife.com/2019/06/02/my-tv-is-out-of-own-control/
-[household]: https://student-techlife.com/2019/07/09/what-task-do-we-do-today/
