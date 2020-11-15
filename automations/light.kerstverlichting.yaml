@@ -88,7 +88,7 @@
     event: sunset
     offset: '-00:30:00'
   action:
-    service: homeassistant.turn_on
+    service: light.turn_on
     entity_id: light.kerstolijf
 
 # WOONHUIS BUITENVERLICHTING UIT NA MIDDERNACHT
@@ -98,5 +98,5 @@
     platform: time
     at: '01:00:00'
   action:
-    service: homeassistant.turn_off
+    service: light.turn_off
     entity_id: light.kerstolijf

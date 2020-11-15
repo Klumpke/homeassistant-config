@@ -62,3 +62,11 @@ light:
   - platform: switch
     name: Kerstolijf
     entity_id: switch.kerstolijf
+
+  - platform: switch
+    name: Kerstboom
+    entity_id: switch.kerstboom
+
+  - platform: switch
+    name: Kerstverlichting
+    entity_id: switch.kerstverlichting
