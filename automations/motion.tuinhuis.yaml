@@ -1,0 +1,29 @@
+- alias: "Motion: Tuinhuis verlichting aan"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_tuinhuis
+      to: 'on'
+  # condition:
+  #   - condition: numeric_state
+  #     entity_id: sensor.lux_garage
+  #     below: 30
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.tuinhuis
+        brightness: 100
+        # transition: 15
+
+
+- alias: "Motion: Tuinhuis verlichting uit"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_tuinhuis
+      to: 'off'
+      for:
+        minutes: 1
+  action:
+    - service: light.turn_off
+      entity_id: light.tuinhuis
+      #data:
+      #  transition: 160

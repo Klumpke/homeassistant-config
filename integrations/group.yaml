@@ -26,8 +26,8 @@ group:
   kerstverlichting:
     name: Kerstverlichting
     entities:
-      - switch.kerstboom
-      - switch.kerstverlichting
+      - light.kerstboom
+      - light.kerstverlichting
 
   eetkamer:
     name: Eetkamer
@@ -158,6 +158,10 @@ group:
   buiten_plants:
     entities:
       - plant.olijfboom_rechts
+  tuin_contact:
+    entities:
+      - binary_sensor.contact_achterdeur
+      - binary_sensor.contact_tuinhuisdeur
   zolder_devices:
     entities:
       - input_select.washing_machine_status
