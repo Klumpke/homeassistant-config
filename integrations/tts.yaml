@@ -29,3 +29,16 @@ tts:
     # Define the service name.
     # Default value: The service name default set to _say.
     service_name: google_say
+
+
+  # The microsoft text-to-speech platform uses the TTS engine of the
+  # Microsoft Speech Service to read a text with natural sounding voices.
+  #
+  # https://www.home-assistant.io/integrations/microsoft/
+  #
+  # - platform: microsoft
+  #   api_key: <Mijn API Key>
+  #   language: nl-nl
+  #   gender: Female
+  #   type: ColetteNeural
+  #   region: westeurope

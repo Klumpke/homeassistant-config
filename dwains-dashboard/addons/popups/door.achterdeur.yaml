@@ -1,0 +1,20 @@
+# dwains_dashboard
+
+type: vertical-stack
+cards:
+  - type: "custom:logbook-card"
+    style: |
+      ha-card {
+        box-shadow: none;
+      }
+    entity: {{ entity }}
+    title: " "
+    max_items: 6
+    state_map:
+      - label: Open
+        value: on
+      - label: Closed
+        value: off
+    show:
+      end_date: false
+      start_date: true

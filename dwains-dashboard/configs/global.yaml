@@ -6,7 +6,7 @@ global:
   #alarm: alarm_control_panel.alarm_system
   inside_temperature: sensor.temp_woonkamer
   favorites_homepage: 'true'
-
+  show_covers: closed
   # custom_popups:
   #   - domain: light
   #     path: 'dwains-dashboard/addons/popups/light.yaml'

@@ -38,6 +38,13 @@ sensor.iklumpke_distance:
 sensor.iklumpke_steps:
   friendly_name: Stappen
 
+binary_sensor.contact_garagedeur:
+  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/door.garagedeur.yaml'
+  dwains_dashboard_popup_title: Garagedeur
+
+binary_sensor.contact_achterdeur:
+  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/door.achterdeur.yaml'
+  dwains_dashboard_popup_title: Achterdeur
 
 light.fib_fgd212_woonkamer_spots:
   dwains_dashboard_popup: 'dwains-dashboard/addons/popups/light.woonkamer_spot.yaml'
@@ -45,6 +52,7 @@ light.fib_fgd212_woonkamer_spots:
   dwains_dashboard_popup_data:
     some_data: 'This is some data parsed.'
     some_other_data: 'and some other data.'
+
 
 
 # Lights

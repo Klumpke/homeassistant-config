@@ -40,7 +40,9 @@
 - url: /hacsfiles/stack-in-card/stack-in-card.js
   type: module
 
-
+# Popup card addon
+- type: module
+  url: /hacsfiles/logbook-card/logbook-card.js
 
 # DD 2.0
 - type: module

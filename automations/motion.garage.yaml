@@ -3,6 +3,12 @@
     - platform: state
       entity_id: binary_sensor.motion_garage
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.contact_garagedeur
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.contact_achterdeur
+      to: 'on'
   condition:
     - condition: numeric_state
       entity_id: sensor.lux_garage
@@ -18,6 +24,12 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.motion_garage
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.contact_garagedeur
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.contact_achterdeur
       to: 'on'
   condition:
     - condition: numeric_state

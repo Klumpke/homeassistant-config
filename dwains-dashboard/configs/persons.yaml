@@ -2,6 +2,7 @@ persons:
   - name: Joyce
     track: person.joyce
     # show_map: 'false'
+    map_hours_to_show: 12
     # addons:
     #   - name: Map
     #     path: 'dwains-theme/addons/persons/map-joyce/page.yaml'
@@ -15,6 +16,7 @@ persons:
   - name: Jeroen
     track: person.jeroen
     # show_map: 'false'
+    map_hours_to_show: 12
     # addons:
     #   - name: Map
     #     path: 'dwains-theme/addons/persons/map-jeroen/page.yaml'
