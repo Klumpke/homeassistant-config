@@ -1,7 +1,7 @@
 # dwains_theme
 ## Room add-on custom button: Vacuum
 ## Created by Jeroen Klompen
-## Version: 1.0.5
+## Version: 1.1.1
 
 type: custom:button-card
 entity: {{ (data | fromjson)['vacuum'] }}
