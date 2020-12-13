@@ -143,25 +143,12 @@
     - platform: state
       entity_id: input_select.dishwasher_status
       to: Clean
-#    - platform: state
-#      entity_id: person.jeroen
-#      to: 'home'
-#      for:
-#        minutes: 3
-#    - platform: state
-#      entity_id: person.joyce
-#      to: 'home'
-#      for:
-#        minutes: 3
   condition:
     condition: and
     conditions:
       - condition: time
         before: '01:30:00'
         after: '08:00:00'
-#      - condition: state
-#        entity_id: group.device_status
-#        state: 'home'
       - condition: state
         entity_id: input_select.dishwasher_status
         state: Clean
@@ -176,14 +163,6 @@
 #          {% endif %}
   action:
     - service: notify.ios_notifier
-  #  - service_template: >
-  #      {% if (is_state('person.jeroen', 'home')) and (is_state('person.joyce', 'home'))  %}
-  #        notify.ios_notifier
-  #      {% elif is_state('person.jeroen', 'home') %}
-  #        notify.mobile_app_iphone_jeroen
-  #      {% elif is_state('person.joyce', 'home') %}
-  #        notify.mobile_app_iphone_joyce
-  #      {% endif %}
       data:
         message: 'De vaatwasser heeft zijn programma voltooid en kan leeggemaakt worden.'
         title: 'Vaatwasser'
