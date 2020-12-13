@@ -1,4 +1,4 @@
-- alias: "Notificatie: 3D Printer is klaar"
+- alias: "3D Printer: Notify, 3D print is ready"
   trigger:
     - platform: state
       entity_id: binary_sensor.octoprint_printing
@@ -9,9 +9,24 @@
       data:
         title: "3D Printer"
         message: "Je 3D print is klaar"
+        data:
+          attachment:
+            url: !secret http_camera_3dprinter
+            content-type: jpeg
+            hide-thumbnail: false
 
+- alias: "3D Printer: Take screenshot at 100%"
+  trigger:
+    - platform: state
+      entity_id: sensor.octoprint_print_progress
+      to: '100'
+  action:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.octoprint
+        filename: "/config/www/images/snapshots/cam_3dprinter.jpg"
 
-- alias: "Power on LEDs when print is started."
+- alias: "3D Printer: Power on LEDs when print is started."
   trigger:
     - platform: state
       entity_id: binary_sensor.octoprint_printing
@@ -20,7 +35,7 @@
     - service: shell_command.octoprint_light_on
 
 
-- alias: "Power off 3D printer when finished."
+- alias: "3D Printer: Power off 3D printer when finished."
   trigger:
     - platform: state
       entity_id: binary_sensor.octoprint_printing
