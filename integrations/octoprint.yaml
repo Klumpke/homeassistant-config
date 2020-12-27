@@ -9,9 +9,37 @@
 camera:
   - platform: mjpeg
     name: OctoPrint
-    still_image_url: http://192.168.178.80/webcam/?action=snapshot
-    mjpeg_url: http://192.168.178.80/webcam/?action=stream
+    still_image_url: !secret octoprint_cam_snap
+    mjpeg_url: !secret octoprint_cam_stream
+
+  - platform: generic
+    name: octoprint_preview
+    still_image_url: >
+      {% if is_state('sensor.octoprint_filename_convert','unknown') %}
+        https://hass.klompen.net/local/images/octoprint-placeholder.png
+      {% else %}
+        {{ states('sensor.octoprint_filename_convert') }}
+      {% endif %}
+    scan_interval: 5
+    content_type: image/png
 
 shell_command:
   octoprint_light_off: !secret octoprint_light_off
   octoprint_light_on: !secret octoprint_light_on
+
+notify:
+  - platform: rest
+    name: "octoprint"
+    resource: !secret octoprint_api_connection
+    method: "POST_JSON"
+    headers:
+      X-Api-Key: !secret octoprint_api_key
+    data:
+      command: "connect"
+
+sensor:
+  - platform: mqtt
+    state_topic: "octoPrint/progress/printing"
+    value_template: "http://192.168.178.80/plugin/UltimakerFormatPackage/thumbnail/{{(value_json.path)|regex_replace(find='gcode', replace='png', ignorecase=True)}}"
+    force_update: true
+    name: 'octoprint_filename_convert'

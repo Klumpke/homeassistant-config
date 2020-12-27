@@ -30,6 +30,10 @@
 - url: /hacsfiles/atomic-calendar-revive/atomic-calendar-revive.js
   type: module
 
+# 3D printer addon
+- url: /hacsfiles/restriction-card/restriction-card.js
+  type: module
+
 
 # TEST 2
 - url: /hacsfiles/list-card/list-card.js
@@ -38,6 +42,10 @@
   type: module
 
 - url: /hacsfiles/stack-in-card/stack-in-card.js
+  type: module
+
+  
+- url: /hacsfiles/light-popup-card/light-popup-card.js
   type: module
 
 # Popup card addon

@@ -18,25 +18,38 @@
             }
           show_header_toggle: false
           entities:
-            - switch.3d_printer
-        - type: custom:mini-graph-card
-          style: |
-              ha-card {
-                background-color: var(--dwains-theme-primary);
-              }
-          entities:
-            - sensor.3d_printer_power
-          name: VERBRUIK
-          line_color: 'var(--dwains-theme-accent)'
-          hours_to_show: 1
-          #hour24: true
-          height: 75
-          points_per_hour: 60
-          decimals: 0
-          show:
-            graph: line
-            extrema: false
-
+            - type: "custom:restriction-card"
+              row: true
+              condition:
+                entity: binary_sensor.octoprint_printing
+                value: "on"
+              card:
+                entity: switch.3d_printer
+        - type: horizontal-stack
+          cards:
+            - type: custom:mini-graph-card
+              style: |
+                  ha-card {
+                    background-color: var(--dwains-theme-primary);
+                  }
+              entities:
+                - sensor.3d_printer_power
+              name: VERBRUIK
+              line_color: 'var(--dwains-theme-accent)'
+              hours_to_show: 1
+              #hour24: true
+              height: 75
+              points_per_hour: 60
+              decimals: 0
+              show:
+                graph: line
+                extrema: false
+            - type: picture-entity
+              entity: camera.octoprint_preview
+              camera_view: live
+              aspect_ratio: 16x9
+              show_state: false
+              show_name: false
 
         - type: custom:dwains-flexbox-card
           items_classes: 'col-xs-12'
