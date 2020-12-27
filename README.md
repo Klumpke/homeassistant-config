@@ -6,7 +6,7 @@
 
 ---
 
-### Status of: 2020.11.15
+### Status of: 2020.12.27
 Partial Home Assistant configuration with themes, templates and views.
 
 ### System Architecture
@@ -16,42 +16,41 @@ The specs are:
 - CPU: Intel Core i3-8109U
 - RAM: 16GB DDR4 SODIMM
 - SSD: Samsung PM961 MZVLW512HMJP - 512GB
-- HDD: Western Digital WD10SPZX-08Z - 1TB
 
-This machine runs the latest version of **Ubuntu Server LTS.**
+This machine runs the latest version of *Home Assistant OS.**
 
 ### Software
-As already stated the OS of this little machine is **Ubuntu Server LTS.**<br>
-On top of that there's **Docker**.
+As already stated the OS of this little machine is **Home Assistant OS.**<br>
+It's a minimalistic OS that works with **Docker**.
 #### Docker Containers
 - **Home Assistant**
 *(homeassistant/qemux86-64-homeassistant)*
-- **Mosquitto** 
+- **Mosquitto**
 *(homeassistant/amd64-addon-mosquitto)*
-- **deCONZ** 
+- **deCONZ**
 *(homeassistant/amd64-addon-deconz)*
-- **MariaDB** 
+- **MariaDB**
 *(homeassistant/amd64-addon-mariadb)*
-- **ESPhome** 
+- **ESPhome**
 *(esphome/esphome-hassio-amd64)*
-- **Grafana** 
+- **Grafana**
 *(hassioaddons/grafana-amd64)*
-- **InfluxDB** 
+- **InfluxDB**
 *(hassioaddons/influxdb-amd64)*
-- **NginxProxyManager** 
+- **NginxProxyManager**
 *(hassioaddons/nginxproxymanager-amd64)*
-- **NodeRED** 
+- **NodeRED**
 *(hassioaddons/node-red-amd64)*
-- **Portainer** 
+- **Portainer**
 *(hassioaddons/portainer-amd64)*
-- **UniFi** 
+- **UniFi**
 *(hassioaddons/unifi-amd64)*
-- **UniFi Video** 
-*(pducharme/unifi-video-controller)*
-- **DSMR** 
+- **DSMR**
 *(ualex73/dsmr-reader-docker)*
-- **S0PCM** 
+- **S0PCM**
 *(ualex73/s0pcm-reader)*
+- **DeepStack**
+*(deepquestai/deepstack)*
 
 **And I use the following hardware in my house:**
 - Phoscon [Conbee II stick][phoscon_conbee]

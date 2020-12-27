@@ -151,6 +151,13 @@ recorder:
       - sensor.vaatwasser_power
       - input_select.dishwasher_status
 
+      # Koelkast
+      - sensor.koelkast_power
+      # Vriezer
+      - sensor.vriezer_power
+      # Accu lader
+      - sensor.accu_lader_power
+
       # 3D printer
       - switch.3d_printer
       - sensor.3d_printer_consumption
