@@ -1,16 +1,17 @@
 # dwains_theme
-## More-page add-on: Camera overview (still image)
+## Dynamic-page add-on: Camera's (hide state)
 ## Created by Jeroen Klompen
-## Version: 1.0.1
+## Version: 1.0.0
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
   padding: true
   cards:
     {% for camera in (data | fromjson)["cameras"]["entities"] %}
-    - type: picture-glance
-      entities: []
-      camera_image: {{ camera }}
+    - type: picture-entity
+      entity: {{ camera }}
+      camera_view: live
+      show_state: false
     {% else %}
     - type: markdown
       content: {{ _dd_trans.cameras.not_defined }}
