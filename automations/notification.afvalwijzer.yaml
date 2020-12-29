@@ -10,6 +10,8 @@
     data:
       title: "Afvalwijzer"
       message: ' Afvaltype(n): {{ states.sensor.blink_morgen.state }} wordt morgen opgehaald!'
+      data:
+        url: /dwains-dashboard/more_page_addon_afvalwijzer
 
 - alias: "Notificatie Dwains Dashboard: Afvalwijzer morgen"
   description: 'This automation creates a notification in Dwains theme'

@@ -11,3 +11,5 @@
           {%- else -%}
             Aantal Corona besmettingen in Nederland gedaald naar {{states('sensor.netherlands_coronavirus_current')}}
           {%- endif -%}
+        data:
+          url: /dwains-dashboard/more_page_addon_coronavirus
