@@ -24,9 +24,8 @@ camera:
     content_type: image/png
 
 shell_command:
-  octoprint_light_off: !secret octoprint_light_off
-  octoprint_light_on: !secret octoprint_light_on
-
+  octoprint_light_on: "curl -s http://192.168.178.80/api/printer/command -d '{\"command\":\"@WS_LIGHTSON\"}' -H 'Content-Type: application/json' -H 'X-Api-Key: {{ octo_api }}'"
+  octoprint_light_off: "curl -s http://192.168.178.80/api/printer/command -d '{\"command\":\"@WS_LIGHTSOFF\"}' -H 'Content-Type: application/json' -H 'X-Api-Key: {{ octo_api }}'"
 notify:
   - platform: rest
     name: "octoprint"
@@ -43,3 +42,9 @@ sensor:
     value_template: "http://192.168.178.80/plugin/UltimakerFormatPackage/thumbnail/{{(value_json.path)|regex_replace(find='gcode', replace='png', ignorecase=True)}}"
     force_update: true
     name: 'octoprint_filename_convert'
+
+  - platform: template
+    sensors:
+      octoprint_eta:
+        friendly_name: 'Octoprint Print ETA'
+        value_template: "{{ ((as_timestamp(now())| int) + (states(('sensor.octoprint_print_time_left')) | int)) | timestamp_local }}"
