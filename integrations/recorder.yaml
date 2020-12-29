@@ -253,3 +253,4 @@ recorder:
       # Deepstack
       - image_processing.deepstack_person_detector_carport
       - image_processing.deepstack_person_detector_voordeur
+      - image_processing.deepstack_person_detector_tuin

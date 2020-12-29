@@ -14,6 +14,8 @@ image_processing:
         name: deepstack_person_detector_carport
       - entity_id: camera.voordeur
         name: deepstack_person_detector_voordeur
+      - entity_id: camera.tuin
+        name: deepstack_person_detector_tuin
 
 
 camera:
@@ -23,4 +25,6 @@ camera:
   - platform: local_file
     file_path: /config/www/images/snapshots/deepstack/deepstack_person_detector_voordeur_latest.jpg
     name: deepstack_voordeur_latest
-
+  - platform: local_file
+    file_path: /config/www/images/snapshots/deepstack/deepstack_person_detector_tuin_latest.jpg
+    name: deepstack_tuin_latest
