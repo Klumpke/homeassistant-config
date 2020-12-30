@@ -4,6 +4,10 @@
       entity_id: sensor.octoprint_print_status
       from: 'Finishing'
       to: 'Operational'
+    - platform: state
+      entity_id: sensor.octoprint_print_status
+      from: 'Printing'
+      to: 'Operational'
   action:
     - service: notify.mobile_app_iklumpke
       data:
