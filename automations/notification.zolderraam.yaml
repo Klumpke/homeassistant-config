@@ -23,5 +23,5 @@
   action:
   - service: notify.ios_notifier
     data:
-      title: "Zolderraam open"
+      title: "🪟 Zolderraam open"
       message: "Het regent en het zolderraam staat nog open!"

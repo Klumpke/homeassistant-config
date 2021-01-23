@@ -30,5 +30,5 @@
   action:
   - service: notify.ios_notifier
     data:
-      title: "Stroomuitval"
+      title: "⚡ Stroomuitval"
       message: "Er is waarschijnlijk stroomuitval in de tuin!"

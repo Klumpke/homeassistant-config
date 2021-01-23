@@ -11,7 +11,7 @@
   action:
     - service: notify.mobile_app_iklumpke
       data_template:
-        title: "HACS update"
+        title: "🚧 HACS update"
         message: >-
           {% for repo in state_attr(trigger.entity_id, 'repositories') %}
           - {{ repo.display_name }} ({{ repo["available_version"] }})

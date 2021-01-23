@@ -26,8 +26,8 @@
   action:
   - service: notify.mobile_app_iklumpke
     data:
-      title: Sonos
-      message: Let op, speakers staan nog aan
+      title: "🔊 Sonos"
+      message: "Let op, speakers staan nog aan"
       data:
         push:
           category: "sonos_alert"

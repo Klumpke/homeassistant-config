@@ -8,8 +8,8 @@
   action:
   - service: notify.ios_notifier
     data:
-      title: "Afvalwijzer"
-      message: ' Afvaltype(n): {{ states.sensor.blink_morgen.state }} wordt morgen opgehaald!'
+      title: "♻️ Afvalwijzer"
+      message: 'Afvaltype(n): {{ states.sensor.blink_morgen.state }} wordt morgen opgehaald!'
       data:
         url: /dwains-dashboard/more_page_addon_afvalwijzer
 

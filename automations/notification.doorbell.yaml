@@ -28,11 +28,33 @@
   #         hide-thumbnail: false
   - service: notify.pushover
     data:
-      title: "Deurbel"
+      title: "🔔 Deurbel"
       message: "Er is aangebeld!"
       data:
         sound: pushover
         attachment: "/config/www/images/snapshots/cam_voordeur.jpg"
+  - service: notify.tv_woonkamer
+    data:
+      title: "🔔  Deurbel"
+      message: "Er is aangebeld!"
+      data:
+        fontsize: small
+        position: top-right
+        duration: 10
+        interrupt: true
+        file:
+          path: "/config/www/images/snapshots/cam_voordeur.jpg"
+  - service: notify.tv_slaapkamer
+    data:
+      title: "🔔  Deurbel"
+      message: "Er is aangebeld!"
+      data:
+        fontsize: small
+        position: top-right
+        duration: 10
+        interrupt: true
+        file:
+          path: "/config/www/images/snapshots/cam_voordeur.jpg"
 
 - alias: "Notificatie: Deurbel audio"
   initial_state: true

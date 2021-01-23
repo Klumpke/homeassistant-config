@@ -193,8 +193,8 @@
   #        notify.ios_ios_joyce
   #      {% endif %}
       data:
+        title: "🧺 Wasmachine"
         message: 'De wasmachine heeft zijn programma voltooid en kan leeggemaakt worden.'
-        title: 'Wasmachine'
         data:
           push:
             badge: 0

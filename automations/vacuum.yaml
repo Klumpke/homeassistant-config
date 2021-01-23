@@ -56,7 +56,7 @@
   action:
     - service: notify.ios_notifier
       data:
-        title: 'Stofzuiger Henry'
+        title: '🤖 Stofzuiger Henry'
         message: 'Gestart met stofzuigen, vroooom...!'
 
 - id: stofzuiger_stop_stofzuigen
@@ -70,7 +70,7 @@
   action:
     - service: notify.ios_notifier
       data:
-        title: 'Stofzuiger Henry'
+        title: '🤖 Stofzuiger Henry'
         message: 'Klaar met stofzuigen. Ik heb er {{states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time}} minuten over gedaan.'
     - service: input_boolean.turn_on
       data:

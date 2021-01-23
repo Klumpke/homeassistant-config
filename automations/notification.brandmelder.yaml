@@ -8,7 +8,7 @@
     #- service: notify.mobile_app_iklumpke
     - service: notify.ios_notifier
       data:
-        title: "Brandmelder"
+        title: "🚨 Brandmelder"
         message: "Er is BRAND op de overloop!"
         data:
           push:
@@ -29,7 +29,7 @@
     #- service: notify.mobile_app_iklumpke
     - service: notify.ios_notifier
       data:
-        title: "Brandmelder"
+        title: "🚨 Brandmelder"
         message: "Dit is een TEST melding. (Overloop)"
         data:
           push:

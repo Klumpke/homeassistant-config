@@ -14,7 +14,7 @@
           notify.ios_ios_joyce
         {% endif %}
     data:
-      title: "Garagedeur"
+      title: "🚪 Garagedeur"
       message: "De Garagedeur is zojuist geopend!"
       data:
         push:
@@ -36,7 +36,7 @@
           notify.ios_ios_joyce
         {% endif %}
     data:
-      title: "Garagedeur"
+      title: "🚪 Garagedeur"
       message: "De Garagedeur is zojuist gesloten!"
       data:
         push:
@@ -52,6 +52,24 @@
   - service: script.sonos_play
     data:
       sonos_entity: media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
-      volume: 0.2
+      volume: 0.1
       media_content: !secret http_audio_doordong
       delay: '00:00:01'
+  - service: notify.tv_woonkamer
+    data:
+      title: " "
+      message: "🚪  Garagedeur geopend"
+      data:
+        fontsize: small
+        position: top-right
+        duration: 5
+        interrupt: true
+  - service: notify.tv_slaapkamer
+    data:
+      title: " "
+      message: "🚪  Garagedeur geopend"
+      data:
+        fontsize: small
+        position: top-right
+        duration: 5
+        interrupt: true

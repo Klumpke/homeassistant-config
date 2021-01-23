@@ -164,8 +164,8 @@
   action:
     - service: notify.ios_notifier
       data:
+        title: "🍽️ Vaatwasser"
         message: 'De vaatwasser heeft zijn programma voltooid en kan leeggemaakt worden.'
-        title: 'Vaatwasser'
         data:
           push:
             badge: 0

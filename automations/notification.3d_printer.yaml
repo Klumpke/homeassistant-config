@@ -11,7 +11,7 @@
   action:
     - service: notify.mobile_app_iklumpke
       data:
-        title: "3D Printer"
+        title: "🖨️ 3D Printer"
         message: "Je 3D print is klaar"
         data:
           url: /dwains-dashboard/more_page_addon_ender_3_v2
@@ -46,7 +46,7 @@
         filename: "/config/www/images/snapshots/cam_3dprinter.jpg"
     - service: notify.mobile_app_iklumpke
       data:
-        title: "3D Printer"
+        title: "🖨️ 3D Printer"
         message: "Je 3D print is op {{(states('sensor.octoprint_print_progress')) | round(0) }}%"
         data:
           url: /dwains-dashboard/more_page_addon_ender_3_v2

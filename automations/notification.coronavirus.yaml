@@ -7,9 +7,9 @@
     data_template:
         message: >
           {%- if trigger.from_state.state | int < trigger.to_state.state | int -%}
-            Aantal corona besmettingen in Nederland gestegen naar {{states('sensor.netherlands_coronavirus_current')}}
+          😷 Aantal corona besmettingen in Nederland gestegen naar {{states('sensor.netherlands_coronavirus_current')}}
           {%- else -%}
-            Aantal Corona besmettingen in Nederland gedaald naar {{states('sensor.netherlands_coronavirus_current')}}
+          😷 Aantal Corona besmettingen in Nederland gedaald naar {{states('sensor.netherlands_coronavirus_current')}}
           {%- endif -%}
         data:
           url: /dwains-dashboard/more_page_addon_coronavirus

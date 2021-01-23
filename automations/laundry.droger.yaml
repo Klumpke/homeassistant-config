@@ -179,10 +179,10 @@
   #        notify.ios_ios_joyce
   #      {% endif %}
       data:
+        title: "🧺 Droger"
         message: 'De droger heeft zijn programma voltooid en kan leeggemaakt worden.'
-        title: 'Droger'
         data:
           push:
             badge: 0
             sound: default
-            category: "droger_alert" 
+            category: "droger_alert"
