@@ -19,7 +19,7 @@
           show_header_toggle: false
           entities:
             - entity: image_processing.deepstack_person_detector_carport
-              name: Persoon detectie Carport
+              name: Detectie Carport
 
     - type: custom:dwains-flexbox-card
       items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
@@ -38,7 +38,7 @@
           show_header_toggle: false
           entities:
             - entity: image_processing.deepstack_person_detector_voordeur
-              name: Persoon detectie Voordeur
+              name: Detectie Voordeur
 
     - type: custom:dwains-flexbox-card
       items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
@@ -57,4 +57,4 @@
           show_header_toggle: false
           entities:
             - entity: image_processing.deepstack_person_detector_tuin
-              name: Persoon detectie Tuin
+              name: Detectie Tuin
