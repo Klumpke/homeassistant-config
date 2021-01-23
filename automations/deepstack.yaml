@@ -4,7 +4,7 @@
       entity_id: binary_sensor.motion_voordeur
       to: 'on'
   action:
-    - delay: "00:00:01"
+    # - delay: "00:00:01"
     - service: image_processing.scan
       entity_id: image_processing.deepstack_person_detector_voordeur
 

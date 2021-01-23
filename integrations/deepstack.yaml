@@ -2,13 +2,17 @@ image_processing:
   - platform: deepstack_object
     ip_address: !secret deepstack_host
     port: 5000
-    #api_key: !secret deepstack_api_key
+    # api_key: !secret deepstack_api_key
     scan_interval: 30 # Optional, in seconds
     save_file_folder: /config/www/images/snapshots/deepstack/
-    #save_timestamped_file: True
+    # save_timestamped_file: True
+    always_save_latest_jpg: True
     targets:
-      - person
-#      - car
+      - target: person
+    #   - target: vehicle
+    #     confidence: 60
+    #   - target: car
+    #     confidence: 40
     source:
       - entity_id: camera.carport
         name: deepstack_person_detector_carport
