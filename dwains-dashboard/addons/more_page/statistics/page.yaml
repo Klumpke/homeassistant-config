@@ -42,7 +42,7 @@
                   name: Huidige
               style: |
                 :host {
-                  {% if states('sensor.version_current').split('.')[1] != states(config.entity).split('.')[1] %}
+                  {% if states('sensor.version_current').split('.')[2] != states(config.entity).split('.')[2] %}
                     color: rgb(255, 165, 0);
                     --paper-item-icon-color: rgb(255, 165, 0);
                   {% endif %};

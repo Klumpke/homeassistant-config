@@ -1,7 +1,7 @@
 sensor:
   - platform: rdw
-    name: "Opel Insignia"
-    plate: 27XHK8
+    name: "Seat Leon"
+    plate: H240SV
     sensors:
       - expdate
       - insured
