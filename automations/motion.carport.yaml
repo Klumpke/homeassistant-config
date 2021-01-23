@@ -1,0 +1,18 @@
+- alias: "Motion: Carport stream to Google Hub"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_carport
+      to: 'on'
+  action:
+    - service: media_player.volume_mute
+      data:
+        entity_id: media_player.hub_keuken
+        is_volume_muted: true
+    - service: camera.play_stream
+      data:
+        entity_id: camera.carport
+        media_player: media_player.hub_keuken
+    - delay: "00:03:00"
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.hub_keuken
