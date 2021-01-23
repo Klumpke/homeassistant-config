@@ -17,3 +17,15 @@ media_player:
     mac: !secret philips_tv_mac2
     username: !secret philips_tv_user2
     password: !secret philips_tv_pass2
+
+
+#  https://www.home-assistant.io/integrations/nfandroidtv/
+#  https://play.google.com/store/apps/details?id=de.cyberdream.androidtv.notifications.google
+notify:
+  - platform: nfandroidtv
+    name: TV Woonkamer
+    host: !secret philips_tv_ip
+
+  - platform: nfandroidtv
+    name: TV Slaapkamer
+    host: !secret philips_tv_ip2
