@@ -1,0 +1,22 @@
+input_number:
+  wled_love_letters_speed:
+    name: WLED Love letters Speed
+    icon: mdi:speedometer
+    # initial: 30
+    min: 0
+    max: 255
+    step: 1
+  wled_love_letters_intensity:
+    name: WLED Love letters Intensity
+    icon: mdi:fire
+    # initial: 30
+    min: 0
+    max: 255
+    step: 1
+  wled_love_letters_brightness:
+    name: WLED Love letters Brightness
+    icon: mdi:weather-sunny
+    # initial: 30
+    min: 0
+    max: 100
+    step: 1

@@ -46,12 +46,16 @@ binary_sensor.contact_achterdeur:
   dwains_dashboard_popup: 'dwains-dashboard/addons/popups/door.achterdeur.yaml'
   dwains_dashboard_popup_title: Achterdeur
 
-light.fib_fgd212_woonkamer_spots:
-  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/light.woonkamer_spot.yaml'
-  dwains_dashboard_popup_title: Test
-  dwains_dashboard_popup_data:
-    some_data: 'This is some data parsed.'
-    some_other_data: 'and some other data.'
+light.wled_love_letters:
+  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/light.eetkamer_wled_love_letters.yaml'
+  dwains_dashboard_popup_title: Love letters
+
+# light.dressoir:
+#   dwains_dashboard_popup: 'dwains-dashboard/addons/popups/light.eetkamer_dressoir.yaml'
+#   dwains_dashboard_popup_title: Test
+#   dwains_dashboard_popup_data:
+#     some_data: 'This is some data parsed.'
+#     some_other_data: 'and some other data.'
 
 
 
@@ -74,10 +78,10 @@ light.fib_fgd212_eetkamer:
     icon: mdi:vanity-light
   friendly_name: Hanglamp
 
-light.dressoir:
-  templates:
-    icon: mdi:floor-lamp
-  friendly_name: Dressoir
+# light.dressoir:
+#   templates:
+#     icon: mdi:floor-lamp
+#   friendly_name: Dressoir
 
 light.broodkast:
   templates:

@@ -1,0 +1,84 @@
+- alias: WLED Love letters - Set Intensity
+  description: ''
+  trigger:
+    - platform: state
+      entity_id: input_number.wled_love_letters_intensity
+      for: '00:00:00'
+  condition: []
+  action:
+    - service: wled.effect
+      data:
+        intensity: '{{ states("input_number.wled_love_letters_intensity") }}'
+      entity_id: light.wled_love_letters
+  mode: single
+  max: 10
+
+- alias: WLED Love letters - Set intensity to slider
+  description: ''
+  trigger:
+    - platform: state
+      entity_id: light.wled_love_letters
+      attribute: intensity
+  condition: []
+  action:
+    - service: input_number.set_value
+      entity_id: input_number.wled_love_letters_intensity
+      data:
+        value: '{{ state_attr("light.wled_love_letters", "intensity") }}'
+  mode: single
+
+
+- alias: WLED Love letters - Set Speed
+  description: ''
+  trigger:
+    - platform: state
+      entity_id: input_number.wled_love_letters_speed
+      for: '00:00:00'
+  condition: []
+  action:
+    - service: wled.effect
+      data:
+        speed: '{{ states("input_number.wled_love_letters_speed") }}'
+      entity_id: light.wled_love_letters
+  mode: single
+
+- alias: WLED Love letters - Set speed to slider
+  description: ''
+  trigger:
+    - platform: state
+      entity_id: light.wled_love_letters
+      attribute: speed
+  condition: []
+  action:
+    - service: input_number.set_value
+      data:
+        value: '{{ state_attr("light.wled_love_letters", "speed") }}'
+      entity_id: input_number.wled_love_letters_speed
+  mode: single
+
+
+- alias: WLED Love letters - Set Brightness
+  description: ''
+  trigger:
+    - platform: state
+      entity_id: input_number.wled_love_letters_brightness
+  condition: []
+  action:
+    - service: light.turn_on
+      data:
+        brightness: '{{ states("input_number.wled_love_letters_brightness") }}'
+      entity_id: light.wled_love_letters
+  mode: single
+
+- alias: WLED Love letters - Set brightness to slider
+  description: ''
+  trigger:
+    - platform: state
+      entity_id: light.wled_love_letters
+  condition: []
+  action:
+    - service: input_number.set_value
+      data:
+        value: '{{ state_attr("light.wled_love_letters", "brightness") }}'
+      entity_id: input_number.wled_love_letters_brightness
+  mode: single
