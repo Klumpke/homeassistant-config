@@ -122,7 +122,7 @@
                       name: 'Verstreken'
                     - entity: sensor.octoprint_print_time_left
                       name: 'Resterend'
-                - entity: sensor.octoprint_print_file
+                - entity: sensor.octoprint_print_file_with_spaces
                   name: Bestand
                   icon: mdi:file-outline
 

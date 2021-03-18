@@ -19,9 +19,9 @@
           {% endfor %}
         data:
           url: /hacs
-          attachment:
-            content-type: png
-            url: https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color/700/012_refresh-512.png
+          # attachment:
+          #   content-type: png
+          #   url: https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color/700/012_refresh-512.png
     # - service: persistent_notification.create
     #   data_template:
     #     title: "HACS update"

@@ -20,6 +20,9 @@
 - url: /hacsfiles/vacuum-card/vacuum-card.js
   type: module
 
+- url: /hacsfiles/lovelace-xiaomi-vacuum-map-card/xiaomi-vacuum-map-card.js
+  type: module
+
 # Statistics addon
 - url: /hacsfiles/secondaryinfo-entity-row/secondaryinfo-entity-row.js
   type: module
@@ -34,6 +37,15 @@
 - url: /hacsfiles/restriction-card/restriction-card.js
   type: module
 
+# Popup card addon
+- url: /hacsfiles/logbook-card/logbook-card.js
+  type: module
+
+# DD 2.0
+- url: /hacsfiles/lovelace-card-mod/card-mod.js
+  type: module
+- url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+  type: module
 
 # TEST 2
 - url: /hacsfiles/list-card/list-card.js
@@ -44,16 +56,12 @@
 - url: /hacsfiles/stack-in-card/stack-in-card.js
   type: module
 
-  
 - url: /hacsfiles/light-popup-card/light-popup-card.js
   type: module
 
-# Popup card addon
-- type: module
-  url: /hacsfiles/logbook-card/logbook-card.js
+- url: /hacsfiles/lovelace-more-info-card/more-info-card.js
+  type: module
 
-# DD 2.0
-- type: module
-  url: /hacsfiles/lovelace-card-mod/card-mod.js
-- type: module
-  url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+
+- url: /hacsfiles/home-assistant-neerslag-card/neerslag-card.js
+  type: module

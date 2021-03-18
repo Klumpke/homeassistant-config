@@ -23,3 +23,14 @@
           - title: Description
             add_link: prlink
             field: description
+- type: entities
+  show_header_toggle: false
+  entities:
+    - entity: sensor.tpl_sunlightstrength
+
+- type: entities
+  show_header_toggle: false
+  entities:
+    - entity: input_boolean.motion_light_ledstrip_slaapkamer
+    - entity: input_boolean.motion_light_garage
+    - entity: input_boolean.motion_light_tuinhuis

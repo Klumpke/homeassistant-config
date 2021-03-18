@@ -1,4 +1,4 @@
-## Room add-on: Statistics
+## More-page add-on: Statistics
 ## Created by Jeroen Klompen
 ## Version: 1.0.0
 
@@ -81,7 +81,7 @@
               name: HA log grootte
               tap_action:
                 action: url
-                url_path: /developer-tools/logs
+                url_path: /config/logs
               style: |
                 :host {
                   {% if states(config.entity) >= '0.5' %}

@@ -6,7 +6,7 @@ image_processing:
     scan_interval: 30 # Optional, in seconds
     save_file_folder: /config/www/images/snapshots/deepstack/
     # save_timestamped_file: True
-    always_save_latest_jpg: True
+    # always_save_latest_file: True
     targets:
       - target: person
     #   - target: vehicle
