@@ -22,6 +22,7 @@ group:
       - light.combikast
       - light.fib_fgd212_keuken_nis
       - light.tuin
+      - light.wled_love_letters
 
   kerstverlichting:
     name: Kerstverlichting
@@ -130,6 +131,7 @@ group:
       - light.fib_fgd212_eetkamer
       - light.dressoir
       - light.broodkast
+      - light.wled_love_letters
   eetkamer_plants:
     entities:
       - plant.olijfboom_links
