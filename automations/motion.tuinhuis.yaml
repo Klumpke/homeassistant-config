@@ -7,7 +7,13 @@
   #   - condition: numeric_state
   #     entity_id: sensor.lux_garage
   #     below: 30
+  condition:
+    - condition: state
+      entity_id: light.tuinhuis
+      state: 'off'
   action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.motion_light_tuinhuis
     - service: light.turn_on
       data:
         entity_id: light.tuinhuis
@@ -22,8 +28,24 @@
       to: 'off'
       for:
         minutes: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.motion_light_tuinhuis
+      state: 'on'
   action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.motion_light_tuinhuis
     - service: light.turn_off
       entity_id: light.tuinhuis
       #data:
       #  transition: 160
+
+
+- alias: Tuinhuis verlichting uit
+  trigger:
+    - platform: state
+      entity_id: light.tuinhuis
+      to: 'off'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.motion_light_tuinhuis
