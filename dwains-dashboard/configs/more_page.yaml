@@ -59,9 +59,6 @@ more_page:
       - name: ISP
         icon: fal:tachometer-alt
         path: 'dwains-dashboard/addons/more_page/unifi/page.yaml'
-      - name: Zwave
-        icon: fal:wifi
-        path: 'dwains-dashboard/addons/more_page/zwave/page.yaml'
       - name: Coronavirus
         icon: fal:disease
         path: 'dwains-dashboard/addons/more_page/coronavirus/page.yaml'
@@ -71,6 +68,36 @@ more_page:
       - name: DeepStack
         icon: fal:brain
         path: 'dwains-dashboard/addons/more_page/deepstack/page.yaml'
+      - name: Sonos
+        icon: fal:speaker
+        path: 'dwains-dashboard/addons/more_page/sonos/page.yaml'
+        data:
+          platform: sonos
+          speakers:
+            - entity: media_player.eetkamer
+              name: Eetkamer
+            - entity: media_player.woonkamer
+              name: Woonkamer
+            - entity: media_player.boven
+              name: Boven
+            - entity: media_player.zolder
+              name: Zolder
+            - entity: media_player.tuin
+              name: Tuin
+          buttons:
+            - name: Radio 538
+              type: source
+              id: Radio 538
+            - name: 100% NL
+              type: source
+              id: 100% NL
+            - name: Qmusic
+              type: source
+              id: Qmusic
+            - name: TV
+              icon: mdi:television
+              type: source
+              id: TV
       - name: TEST
         icon: fal:chart-area
         path: 'dwains-dashboard/addons/more_page/test/page.yaml'
