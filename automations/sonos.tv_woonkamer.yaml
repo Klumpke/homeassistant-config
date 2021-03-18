@@ -1,0 +1,15 @@
+- alias: "Sonos: Select TV source when TV Livingroom is on"
+  trigger:
+    - entity_id: media_player.tv_woonkamer
+      platform: state
+      to: "on"
+  action:
+    - service: sonos.unjoin
+      data:
+        entity_id: media_player.woonkamer
+    - service: media_player.select_source
+      entity_id: media_player.woonkamer
+      data:
+        source: TV
+    - service: media_player.media_pause
+      entity_id: media_player.eetkamer
