@@ -7,6 +7,6 @@ global:
   inside_temperature: sensor.temp_woonkamer
   favorites_homepage: 'true'
   show_covers: closed
-  # custom_popups:
-  #   - domain: light
-  #     path: 'dwains-dashboard/addons/popups/light.yaml'
+  custom_popups:
+    - domain: light
+      path: 'dwains-dashboard/addons/popups/light.yaml'

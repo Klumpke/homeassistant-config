@@ -1,13 +1,60 @@
 # dwains_dashboard
+## Popup add-on: Light
+## Created by Jeroen Klompen
+## Version: 1.0.0
 
 type: vertical-stack
 cards:
-  - type: entities
+  # light card #
+  - type: 'custom:light-entity-card'
     style: |
       ha-card {
         box-shadow: none;
       }
-    entities:
-      - {{ entity }}
-  - type: markdown
-    content: Custom for {{ entity }}
+    entity: {{ entity }}
+    shorten_cards: false
+    consolidate_entities: true
+    color_wheel: true
+    persist_features: true
+    brightness: true
+    color_temp: false
+    white_value: true
+    color_picker: true
+    smooth_color_wheel: false
+    header: " "
+    hide_header: false
+    child_card: false
+    show_slider_percent: true
+    full_width_sliders: false
+    brightness_icon: weather-sunny
+    white_icon: file-word-box
+    temperature_icon: thermometer
+    effects_list: false
+
+  # logbook card #
+  - type: "custom:logbook-card"
+    style: |
+      ha-card {
+        box-shadow: none;
+      }
+    entity: {{ entity }}
+    title: " "
+    max_items: 4
+    hiddenState:
+      - ''
+    state_map:
+      - value: 'on'
+        icon: 'fal:lightbulb-on'
+      - value: 'off'
+        icon: 'fal:lightbulb'
+      - value: 'unavailable'
+        icon: 'fal:lightbulb-slash'
+    show:
+      end_date: false
+      start_date: true
+      duration: false
+      icon: true
+      separator: true
+    separator_style:
+      color: var(--divider-color)
+      style: dashed

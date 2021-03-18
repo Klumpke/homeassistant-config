@@ -70,3 +70,16 @@ light:
   - platform: switch
     name: Kerstverlichting
     entity_id: switch.kerstverlichting
+
+
+# Motion lighs control
+input_boolean:
+  motion_light_ledstrip_slaapkamer:
+    name: "Bewegings bediening slaapkamer ledstrip"
+    icon: fal:lightbulb
+  motion_light_tuinhuis:
+    name: "Bewegings bediening tuinhuis lamp"
+    icon: fal:lightbulb
+  motion_light_garage:
+    name: "Bewegings bediening garage lamp"
+    icon: fal:lightbulb

@@ -1,4 +1,7 @@
 # dwains_dashboard
+## Popup add-on: Door
+## Created by Jeroen Klompen
+## Version: 1.0.0
 
 type: vertical-stack
 cards:
@@ -11,10 +14,15 @@ cards:
     title: " "
     max_items: 6
     state_map:
-      - label: Open
-        value: on
-      - label: Closed
-        value: off
+      - value: 'on'
+        icon: 'fal:door-open'
+      - value: 'off'
+        icon: 'fal:door-closed'
+      - value: 'unavailable'
+        icon: 'fal:times-square'
     show:
       end_date: false
       start_date: true
+    separator_style:
+      color: black
+      style: dashed
