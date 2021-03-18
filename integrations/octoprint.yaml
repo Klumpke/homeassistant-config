@@ -46,6 +46,12 @@ sensor:
 
   - platform: template
     sensors:
+      octoprint_print_file_with_spaces:
+        friendly_name: "Bestandsnaam"
+        value_template: "{{ states.sensor.octoprint_print_file.state |replace('CE3_','')|replace('_',' ')|replace('.gcode','') }}"
+
+  - platform: template
+    sensors:
       octoprint_eta:
         friendly_name: 'Octoprint Print ETA'
         value_template: "{{ ((as_timestamp(now())| int) + (states(('sensor.octoprint_print_time_left')) | int)) | timestamp_local }}"
