@@ -41,3 +41,46 @@ sensor:
       - windspeed
       - precipitation
       - irradiance
+
+  # Buienalarm Regenvoorspelling
+  - platform: command_line
+    command: python3 -c "import requests; import json; import random; dataRequest = requests.get('https://cdn-secure.buienalarm.nl/api/3.4/forecast.php?lat=51.358&lon=5.728&region=nl&unit=mm%2Fu&c='+str(random.randint(0,999999999999999)) ).text; dataRequest = dataRequest.replace('\r\n',' '); data = '{\"data\":'+dataRequest+'}';    print(data);"
+    name: Buienalarm_Regen_Data
+    json_attributes:
+      - data
+    value_template: 'last_changed: {{states.sensor.buienalarm_regen_data.last_changed}}'
+    scan_interval: 60
+
+  # Buienrader Regenvoorspelling
+  - platform: command_line
+    command: python3 -c "import requests; import json; import random; dataRequest = requests.get('https://gpsgadget.buienradar.nl/data/raintext?lat=51.35&lon=5.72&c='+str(random.randint(0,999999999999999)) ).text; dataRequest = dataRequest.replace('\r\n',' '); data = '{\"data\":\"'+dataRequest+'\"}';    print(data);"
+    name: Buienradar_Regen_Data
+    json_attributes:
+      - data
+    value_template: 'last_changed: {{states.sensor.buienradar_regen_data.last_changed}}'
+    scan_interval: 240
+
+
+  # Lichtsterkte
+  - platform: template
+    sensors:
+      tpl_sunlightstrength:
+        entity_id:
+          - sun.sun
+          - sensor.weatherbit_cloud_coverage
+        value_template: >-
+          {%- set elevation = state_attr('sun.sun','elevation') | float %}
+          {%- set cloud_coverage = states('sensor.sensor.weatherbit_cloud_coverage') | float %}
+          {%- set cloud_factor = (1 - (0.75 * ( cloud_coverage / 100) ** 3 )) %}
+          {%- set min_elevation = -6 %}
+          {%- set max_elevation = 90 %}
+          {%- set adjusted_elevation = elevation - min_elevation %}
+          {%- set adjusted_elevation = [adjusted_elevation,0] | max %}
+          {%- set adjusted_elevation = [adjusted_elevation,max_elevation - min_elevation] | min %}
+          {%- set adjusted_elevation = adjusted_elevation / (max_elevation - min_elevation) %}
+          {%- set adjusted_elevation = adjusted_elevation %}
+          {%- set adjusted_elevation = adjusted_elevation * 100 %}
+          {%- set brightness = adjusted_elevation * cloud_factor %}
+          {{ brightness | round }}
+        unit_of_measurement: '%'
+        device_class: 'illuminance'
