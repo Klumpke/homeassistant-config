@@ -30,6 +30,8 @@ history:
       # Server
       - sensor.server_power
       - sensor.server_energy
+      - sensor.server_unraid_power
+      - sensor.server_unraid_consumption
       # Backup
       - sensor.auto_backup
 
@@ -117,6 +119,40 @@ history:
       - sensor.lux_eetkamer
       - sensor.lux_garage
 
+      # Sensoren batterij
+      - sensor.temp_kleine_kamer_battery
+      - sensor.temp_logeerkamer_battery
+      - sensor.temp_slaapkamer_battery
+      - sensor.temp_badkamer_battery
+      - sensor.temp_zolder_battery
+      - sensor.temp_woonkamer_battery
+      - sensor.temp_garage_battery
+      - sensor.temp_tuin_battery
+      - sensor.temp_test_battery
+      - sensor.contact_garagedeur_battery
+      - sensor.contact_achterdeur_battery
+      - sensor.contact_slaapkamerraam_battery
+      - sensor.contact_kleine_kamerraam_battery
+      - sensor.contact_logeerkamerraam_battery
+      - sensor.contact_tuinhuisdeur_battery
+      - sensor.contact_zolderraam_battery
+      - sensor.motion_woonkamer_battery
+      - sensor.motion_garage_battery
+      - sensor.motion_slaapkamer_battery
+      - sensor.motion_tuinhuis_battery
+      - sensor.lux_woonkamer_battery
+      - sensor.lux_eetkamer_battery
+      - sensor.lux_garage_battery
+      - sensor.ab_bijkeuken_battery
+      - sensor.ab_terras_battery
+      - sensor.ab_slaapkamer_a_battery
+      - sensor.ab_slaapkamer_b_battery
+      - sensor.ab_logeerkamer_battery_level
+      - sensor.vacuum_battery
+      - sensor.iklumpke_battery_level
+      - sensor.joyce_battery_level
+      - sensor.ipad_jeroen_battery_level
+
       # DSMR Reader
       - sensor.power_consumption_watt
       - sensor.dsmr_reading_electricity_currently_delivered
@@ -200,6 +236,7 @@ history:
 
       # Weather
       - sensor.yr_symbol
+      - sensor.tpl_sunlightstrength
       # MiFlora plantsensoren
       - plant.olijfboom
       - sensor.olijfboom_battery_level
