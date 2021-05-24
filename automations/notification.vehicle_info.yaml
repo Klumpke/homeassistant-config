@@ -1,0 +1,118 @@
+- alias: "Notificatie: G3 Instant Stock Update"
+  id: 'g3_instant_stock_update'
+  trigger:
+  - platform: state
+    entity_id: sensor.g3_instant_title
+  condition: []
+  action:
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "🚨 Ubiquiti Webshop"
+        message: "De G3 Instant Camera is weer op voorraad"
+        data:
+          url: https://eu.store.ui.com/collections/unifi-protect/products/unifi-protect-g3-instant-camera
+
+- alias: "Notificatie: Afvalwijzer"
+  trigger:
+    platform: time
+    at: '20:00:00'
+  condition:
+    - condition: template
+      value_template: "{{ states('sensor.blink_morgen') != 'Geen' }}"
+  action:
+  - service: notify.ios_notifier
+    data:
+      title: "🚗 Afvalwijzer"
+      message: 'Afvaltype(n): {{ states.sensor.blink_morgen.state }} wordt morgen opgehaald!'
+      data:
+        url: /dwains-dashboard/more_page_addon_afvalwijzer
+
+  - alias: Recall notification
+    initial_state: False
+    trigger:
+      - platform: state
+        entities:
+          - sensor.volkswagen_polo_recall
+          - sensor.seat_leon_recall
+        to: 'True'
+    action:
+      - service: notify.mobile_app_iklumpke
+        data_template:
+          title: "🚗 Auto"
+          message: Er is een terugroepactie uitgevaardigd voor de auto. Maak een afspraak bij de garage om het probleem te verhelpen.
+
+- alias: APK date expiration notification Peugeot
+  initial_state: 'true'
+  trigger:
+    - platform: template
+      value_template: "{{ ((as_timestamp(strptime(states('sensor.peugeot_207_expdate'), '%d %b %Y')) / 86400) | int) == ((as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) / 86400) | int) + 21 }} }}"
+  action:
+    - service: notify.mobile_app_sm_n976b
+      data_template:
+        title: 'APK Peugeot 207 SW'
+        message: De APK op uw Peugeot 207 SW met kenteken 21-XX-DL verloopt op {{ states.sensor.peugeot_207_expdate.state }}. Plan een keuring bij uw garage.
+        data:
+          push:
+            sound: default
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.apkjimz
+
+- alias: APK date expiration notification Citroen
+  initial_state: 'true'
+  trigger:
+    - platform: template
+      value_template: "{{ ((as_timestamp(strptime(states('sensor.citroen_c1_expdate'), '%d %b %Y')) / 86400) | int) == ((as_timestamp(strptime(states('sensor.date'), '%Y-%m-%d')) / 86400) | int) + 21 }} }}"
+  action:
+    - service: notify.mobile_app_iphone_stephanie
+      data_template:
+        title: 'APK Citroën C1'
+        message: De APK op uw Citroën C1 met kenteken 55-GFF-3 verloopt op {{ states.sensor.citroen_c1_expdate.state }}. Plan een keuring bij uw garage.
+        data:
+          push:
+            sound: default
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.apksteph
+
+
+- alias: "Notificatie Dwains Dashboard: Afvalwijzer morgen"
+  description: 'This automation creates a notification in Dwains theme'
+  trigger:
+  - at: '00:01'
+    platform: time
+  condition:
+    - condition: template
+      value_template: "{{ states('sensor.blink_morgen') != 'Geen' }}"
+  action:
+  - service: dwains_dashboard.notification_create
+    data:
+      message: "{{ states.sensor.blink_morgen.state }} wordt morgen opgehaald."
+      notification_id: garbage
+
+- alias: "Notificatie Dwains Dashboard: Afvalwijzer vandaag"
+  description: 'This automation edits the previous notification in Dwains theme'
+  trigger:
+  - at: '00:01'
+    platform: time
+  condition:
+    - condition: template
+      value_template: "{{ states('sensor.blink_vandaag') != 'Geen' }}"
+  action:
+  - service: dwains_dashboard.notification_create
+    data:
+      message: "{{ states.sensor.blink_vandaag.state }} wordt vandaag opgehaald."
+      notification_id: garbage
+
+- alias: "Notificatie Dwains Dashboard: Afvalwijzer verwijder melding"
+  description: 'This automation dismisses the garbage notification in Dwains theme'
+  trigger:
+  - at: '23:59'
+    platform: time
+  condition:
+    - condition: template
+      value_template: "{{ states('sensor.blink_vandaag') != 'Geen' }}"
+  action:
+  - service: dwains_dashboard.notification_dismiss
+    data:
+      notification_id: garbage

@@ -1,13 +1,24 @@
-sensor:
-  - platform: rdw
+rdw:
+  - plate: H240SV
     name: "Seat Leon"
-    plate: H240SV
+    dateformat: '%d-%m-%Y'
+    binary_sensors:
+      - insured
     sensors:
       - expdate
-      - insured
-  - platform: rdw
+      - recall
+  - plate: XT249K
     name: "Volkswagen Polo"
-    plate: XT249K
+    dateformat: '%d-%m-%Y'
+    binary_sensors:
+      - insured
     sensors:
       - expdate
+      - recall
+  - plate: MSPX82
+    name: "Yamaha R6"
+    dateformat: '%d-%m-%Y'
+    binary_sensors:
       - insured
+    sensors:
+      - recall
