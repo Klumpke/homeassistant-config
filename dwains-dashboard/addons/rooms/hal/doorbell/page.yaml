@@ -2,22 +2,49 @@
   padding: true
   items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
   cards:
-    - type: entities
-      title: Ring Deurbel
+    - type: picture-glance
+      title: Voordeur
       entities:
-        # - sensor.voordeur_battery
-        - binary_sensor.voordeur_ding
-        - binary_sensor.voordeur_motion
-        - sensor.voordeur_last_ding
-        - sensor.voordeur_last_motion
-        - sensor.voordeur_last_activity
-        - sensor.voordeur_wifi_signal_strength
-        # - camera.ring_voordeur
+        - binary_sensor.doorbell_voordeur
+        - binary_sensor.motion_voordeur
+      camera_image: camera.voordeur
+      aspect_ratio: 4x3
 
-    # - type: picture-glance
-    #   title: Voordeur
-    #   entities:
-    #     - binary_sensor.voordeur_ding
-    #     - binary_sensor.voordeur_motion
-    #   camera_image: camera.ring_voordeur
+    - type: vertical-stack
+      cards:
+        - type: entities
+          title: G4 Deurbel
+          show_header_toggle: false
+          entities:
+            - binary_sensor.doorbell_voordeur
+            - binary_sensor.motion_voordeur
+            - sensor.motion_recording_voordeur
+            - switch.hdr_mode_voordeur
+            - switch.high_fps_voordeur
+            - switch.ir_active_voordeur
+            - switch.status_light_on_voordeur
+            # - switch.record_always_voordeur
+            # - switch.record_motion_voordeur
+            # - switch.record_smart_voordeur
 
+        - type: "custom:logbook-card"
+          style: |
+            ha-card {
+              box-shadow: none;
+            }
+          entity: binary_sensor.doorbell_voordeur
+          title: " "
+          max_items: 6
+          hiddenState:
+            - 'off'
+            -  'unavailable'
+          state_map:
+            - value: 'on'
+              label: Aangebeld
+              icon: 'fapro:fal_bell-on'
+          show:
+            end_date: false
+            start_date: true
+          separator_style:
+            color: black
+            style: dashed

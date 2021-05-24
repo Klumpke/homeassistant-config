@@ -4,7 +4,10 @@
 sensor:
   - platform: unifigateway
     host: !secret device_tracker_unifi_host
+    port: 8443
+    version: v5
     site_id: !secret device_tracker_unifi_siteid
+    verify_ssl: false
     username: !secret device_tracker_unifi_user
     password: !secret device_tracker_unifi_pass
     monitored_conditions:
@@ -41,3 +44,10 @@ sensor:
       unifi_gateway_wlan_num_guest:
         friendly_name: 'Guests WLAN'
         value_template: '{{ states.sensor.unifi_gateway_wlan.attributes.num_guest }}'
+
+  # # Webshop scrape sensor G3 Instant camera
+  # - platform: scrape
+  #   name: "G3 instant title"
+  #   resource: https://eu.store.ui.com/collections/unifi-protect/products/unifi-protect-g3-instant-camera
+  #   select: ".comProduct__title--wrapper"
+  #   scan_interval: 60

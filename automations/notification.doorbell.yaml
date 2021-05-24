@@ -5,7 +5,7 @@
   initial_state: true
   trigger:
   - platform: state
-    entity_id: binary_sensor.voordeur_ding
+    entity_id: binary_sensor.doorbell_voordeur
     from: 'off'
     to: 'on'
   # condition:
@@ -26,6 +26,13 @@
   #         url: !secret http_camera_voordeur
   #         content-type: jpeg
   #         hide-thumbnail: false
+  #       actions:
+  #         - action: URI
+  #           title: View in HA
+  #           uri: dwains-dashboard/more_page_addon_camera_s
+  #         - action: URI
+  #           title: View in Protect
+  #           uri: 'app://com.ubnt.unifi.protect'
   - service: notify.pushover
     data:
       title: "🔔 Deurbel"
@@ -60,7 +67,7 @@
   initial_state: true
   trigger:
   - platform: state
-    entity_id: binary_sensor.voordeur_ding
+    entity_id: binary_sensor.doorbell_voordeur
     from: 'off'
     to: 'on'
   action:
@@ -75,10 +82,14 @@
   initial_state: true
   trigger:
   - platform: state
-    entity_id: binary_sensor.voordeur_ding
+    entity_id: binary_sensor.doorbell_voordeur
     from: 'off'
     to: 'on'
   action:
+  - service: media_player.volume_mute
+    data:
+      entity_id: media_player.hub_keuken
+      is_volume_muted: true
   - service: camera.play_stream
     data:
       entity_id: camera.voordeur
