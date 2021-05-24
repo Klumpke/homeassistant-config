@@ -4,3 +4,9 @@ media_player:
   - platform: ziggo_mediabox_xl
     name: Ziggo Mediabox
     host: 192.168.178.46
+
+
+# ziggonext:
+#   username: !secret ziggo_user
+#   password: !secret ziggo_pass
+#   country_code: nl
