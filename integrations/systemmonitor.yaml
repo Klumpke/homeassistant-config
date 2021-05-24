@@ -74,6 +74,16 @@ sensor:
         column: 'value'
         unit_of_measurement: MB
 
+      - name: Home Assistant DB events
+        query: "SELECT count(*) number_events, max(created) max_time, min(created) min_time FROM events;"
+        column: number_events
+        unit_of_measurement: rows
+
+      - name: Home Assistant DB states
+        query: "SELECT count(*) number_states, max(created) max_time, min(created) min_time FROM states;"
+        column: number_states
+        unit_of_measurement: rows
+
   - platform: template
     sensors:
       # NUC last boot date and time

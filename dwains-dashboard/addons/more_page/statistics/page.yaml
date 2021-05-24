@@ -96,6 +96,18 @@
               tap_action:
                 action: none
 
+            - entity: sensor.home_assistant_db_events
+              name: HA DB events
+              icon: mdi:database
+              tap_action:
+                action: none
+
+            - entity: sensor.home_assistant_db_states
+              name: HA DB states
+              icon: mdi:database
+              tap_action:
+                action: none
+
             - type: custom:secondaryinfo-entity-row
               entity: sensor.nuc_model
               secondary_info: "Logicbord: [[ sensor.nuc_board_name ]]"
