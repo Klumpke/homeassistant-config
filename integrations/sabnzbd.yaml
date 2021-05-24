@@ -1,5 +1,5 @@
 ---
-# The sabnzbd component will allow you to monitor and control your downloads 
+# The sabnzbd component will allow you to monitor and control your downloads
 # with SABnzbd from within Home Assistant and setup automations based on the information.
 sabnzbd:
   api_key: !secret sabnzbd_api_key

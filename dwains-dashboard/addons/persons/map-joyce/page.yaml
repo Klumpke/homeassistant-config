@@ -1,4 +1,4 @@
 - type: map
-  hours_to_show: 48
+  hours_to_show: 12
   entities:
     - person.joyce

@@ -45,7 +45,7 @@ input_boolean:
   dummy1:
     initial: off
   dummy2:
-    initial: off
+    initial: on
   tado_woonkamer:
     initial: off
 # Notification input_booleans

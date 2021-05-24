@@ -1,36 +1,121 @@
-## Made by Greetoz
-- type: custom:vertical-stack-in-card
-  cards:
-    - type: markdown
-      content: "## Update Status"
-    - type: entities
-      show_header_toggle: false
-      entities:
-        - entity: sensor.hacs
-          name: HACS
-        - entity: sensor.potential_breaking_changes
-    - type: conditional
-      conditions:
-        - entity: sensor.potential_breaking_changes
-          state_not: "0"
-      card:
-        type: custom:list-card
-        entity: sensor.potential_breaking_changes
-        columns:
-          - title: Component
-            add_link: doclink
-            field: component
-          - title: Description
-            add_link: prlink
-            field: description
-- type: entities
-  show_header_toggle: false
-  entities:
-    - entity: sensor.tpl_sunlightstrength
+- name: 'Test pagina'
+  styles:
+    card:
+      - padding: '2% 0px'
+      - text-transform: uppercase
+      - color: 'var(--dwains-theme-accent)'
+      - font-size: 125%
+      - border-radius: 0%
+      - font-weight: 100
+      - letter-spacing: 10px
+      - --mdc-ripple-press-opacity: 0
+      - cursor: initial
+    name:
+      - font-weight: 900
+  type: 'custom:button-card'
 
-- type: entities
-  show_header_toggle: false
-  entities:
-    - entity: input_boolean.motion_light_ledstrip_slaapkamer
-    - entity: input_boolean.motion_light_garage
-    - entity: input_boolean.motion_light_tuinhuis
+
+- type: custom:dwains-flexbox-card
+  # padding: true
+  items_classes: 'col-xs-12 col-sm-6 col-sm-6 col-md-4'
+  cards:
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
+      cards:
+        - name: 'Update status'
+          styles:
+            card:
+              - padding: '2% 0px'
+              - text-transform: uppercase
+              - color: 'var(--dwains-theme-accent)'
+              - font-size: 125%
+              - border-radius: 0%
+              - font-weight: 100
+              - letter-spacing: 10px
+              - --mdc-ripple-press-opacity: 0
+              - cursor: initial
+            name:
+              - font-weight: 900
+          type: 'custom:button-card'
+
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          cards:
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - entity: sensor.hacs
+                  name: HACS
+                - entity: sensor.potential_breaking_changes
+            - type: conditional
+              conditions:
+                - entity: sensor.potential_breaking_changes
+                  state_not: "0"
+              card:
+                type: custom:list-card
+                entity: sensor.potential_breaking_changes
+                columns:
+                  - title: Component
+                    add_link: doclink
+                    field: component
+                  - title: Description
+                    add_link: prlink
+                    field: description
+
+
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
+      cards:
+        - name: 'Sunlight'
+          styles:
+            card:
+              - padding: '2% 0px'
+              - text-transform: uppercase
+              - color: 'var(--dwains-theme-accent)'
+              - font-size: 125%
+              - border-radius: 0%
+              - font-weight: 100
+              - letter-spacing: 10px
+              - --mdc-ripple-press-opacity: 0
+              - cursor: initial
+            name:
+              - font-weight: 900
+          type: 'custom:button-card'
+
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          cards:
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - entity: sensor.tpl_sunlightstrength
+
+
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
+      cards:
+        - name: 'Motion Boolean'
+          styles:
+            card:
+              - padding: '2% 0px'
+              - text-transform: uppercase
+              - color: 'var(--dwains-theme-accent)'
+              - font-size: 125%
+              - border-radius: 0%
+              - font-weight: 100
+              - letter-spacing: 10px
+              - --mdc-ripple-press-opacity: 0
+              - cursor: initial
+            name:
+              - font-weight: 900
+          type: 'custom:button-card'
+
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          cards:
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - entity: input_boolean.motion_light_ledstrip_slaapkamer
+                - entity: input_boolean.motion_light_garage
+                - entity: input_boolean.motion_light_tuinhuis

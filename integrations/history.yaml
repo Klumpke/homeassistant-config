@@ -36,7 +36,7 @@ history:
       - sensor.auto_backup
 
       # Deurbel
-      - binary_sensor.deurbel_knop
+      - binary_sensor.doorbell_voordeur
 
       # Verlichting SWITCH
       - switch.fib_fgs223_achterdeur
@@ -149,9 +149,25 @@ history:
       - sensor.ab_slaapkamer_b_battery
       - sensor.ab_logeerkamer_battery_level
       - sensor.vacuum_battery
+
+      # Mobile devices
+      - device_tracker.iklumpke
       - sensor.iklumpke_battery_level
+      - sensor.iklumpke_battery_state
+      - sensor.iklumpke_ssid
+      - sensor.iklumpke_steps
+      - sensor.iklumpke_distance
+      - sensor.iklumpke_geocoded_location
+      - device_tracker.joyce
       - sensor.joyce_battery_level
+      - sensor.joyce_battery_state
+      - sensor.joyce_ssid
+      - sensor.joyce_steps
+      - sensor.joyce_distance
+      - sensor.joyce_geocoded_location
       - sensor.ipad_jeroen_battery_level
+      - sensor.ipad_jeroen_battery_state
+      - sensor.ipad_jeroen_ssid
 
       # DSMR Reader
       - sensor.power_consumption_watt
@@ -237,6 +253,15 @@ history:
       # Weather
       - sensor.yr_symbol
       - sensor.tpl_sunlightstrength
+
+      # Ambee pollen
+      - sensor.pollen_grass_risk
+      - sensor.pollen_tree_risk
+      - sensor.pollen_weed_risk
+      - sensor.pollen_grass_count
+      - sensor.pollen_tree_count
+      - sensor.pollen_weed_count
+
       # MiFlora plantsensoren
       - plant.olijfboom
       - sensor.olijfboom_battery_level
@@ -279,10 +304,30 @@ history:
       - sensor.nextcloud_activeusers_last24hours
       - sensor.nextcloud_activeusers_last5minutes
 
-      # Deepstack
-      - image_processing.deepstack_person_detector_carport
-      - image_processing.deepstack_person_detector_voordeur
-      - image_processing.deepstack_person_detector_tuin
+      # Frigate
+      - binary_sensor.voordeur_person_motion
+      - binary_sensor.carport_person_motion
+      - binary_sensor.tuin_person_motion
+      - sensor.voordeur_person
+      - sensor.carport_person
+      - sensor.tuin_person
+      - sensor.voordeur_car
+      - sensor.carport_car
+      - sensor.tuin_car
+      - sensor.voordeur_process_fps
+      - sensor.carport_process_fps
+      - sensor.tuin_process_fps
+
+      # SABnzbd
+      - sensor.sabnzbd_disk
+      - sensor.sabnzbd_disk_free
+      - sensor.sabnzbd_left
+      - sensor.sabnzbd_queue
+      - sensor.sabnzbd_queue_count
+      - sensor.sabnzbd_speed
+      - sensor.sabnzbd_status
+      - sensor.sabnzbd_total
+
 #  exclude:
 #    domains:
 #      - automation

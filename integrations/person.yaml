@@ -10,11 +10,11 @@ person:
     user_id: !secret userid1
     device_trackers:
       - device_tracker.iklumpke
-      - device_tracker.iphone_jeroen
+      # - device_tracker.iphone_jeroen
 
   - name: Joyce
     id: !secret personid2
     user_id: !secret userid2
     device_trackers:
       - device_tracker.joyce
-      - device_tracker.iphone_joyce
+      # - device_tracker.iphone_joyce
