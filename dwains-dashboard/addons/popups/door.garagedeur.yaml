@@ -15,11 +15,11 @@ cards:
     max_items: 6
     state_map:
       - value: 'on'
-        icon: 'fal:door-open'
+        icon: 'fapro:fal_door-open'
       - value: 'off'
-        icon: 'fal:door-closed'
+        icon: 'fapro:fal_door-closed'
       - value: 'unavailable'
-        icon: 'fal:times-square'
+        icon: 'fapro:fal_times-square'
     show:
       end_date: false
       start_date: true

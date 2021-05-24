@@ -1,14 +1,14 @@
 house_information:
   favorites:
     - entity: binary_sensor.contact_garagedeur
-      icon_on: fal:door-open
-      icon_off: fal:door-closed
+      icon_on: fapro:fal_door-open
+      icon_off: fapro:fal_door-closed
     - entity: binary_sensor.contact_achterdeur
-      icon_on: fal:door-open
-      icon_off: fal:door-closed
+      icon_on: fapro:fal_door-open
+      icon_off: fapro:fal_door-closed
   addons:
     - name: Statistieken
-      icon: fal:desktop-alt
+      icon: fapro:fal_desktop-alt
       path: 'dwains-dashboard/addons/house_information/statistics/page.yaml'
       data:
         stats:
@@ -24,8 +24,13 @@ house_information:
           - entity: sensor.disk_use_percent
             name: Disk
             icon: mdi:harddisk
+    - name: Afvalwijzer
+      icon: fapro:fal_calendar-alt
+      path: 'dwains-dashboard/addons/house_information/afvalwijzer/page.yaml'
+      data:
+        wastecollector: blink
     - name: Kalender
-      icon: fal:calendar-alt
+      icon: fapro:fal_calendar-alt
       path: 'dwains-dashboard/addons/house_information/calendar/page.yaml'
       data:
         calendars:

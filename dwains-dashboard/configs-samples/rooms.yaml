@@ -35,7 +35,7 @@
 #           some_other_data: 'and some other data.'
 #           entity: vacuum.roborock
 #   - name: Bedroom
-#     icon: fal:bed
+#     icon: fapro:fal_bed
 #     more_entities:
 #       columns: 2 #optional
 #       entities:

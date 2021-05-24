@@ -1,40 +1,40 @@
 icons:
 #   #Menu icons
 #   menu_back: 'fas:question'
-  menu_home: 'fal:home'
-  menu_lights: 'fal:lamp'
-  menu_scenes: 'fal:play-circle'
-#   menu_cameras: 'fal:cctv'
-  menu_more_page: 'fal:ellipsis-h-alt'
+  menu_home: 'fapro:fal_home'
+  menu_lights: 'fapro:fal_lamp'
+  menu_scenes: 'fapro:fal_play-circle'
+#   menu_cameras: 'fapro:fal_cctv'
+  menu_more_page: 'fapro:fal_ellipsis-h-alt'
 
 #   #Global icons
-  light_on: 'fal:lightbulb-on'
-  light_off: 'fal:lightbulb'
+  light_on: 'fapro:fal_lightbulb-on'
+  light_off: 'fapro:fal_lightbulb'
 
-  climate: 'fal:thermometer-three-quarters'
+  climate: 'fapro:fal_thermometer-three-quarters'
 #   climate_heating: 'fas:question'
 #   climate_auto: 'fas:question'
 #   climate_off: 'fas:question'
 #   climate_heat: 'fas:question'
 
-  window_open: 'fal:window-frame-open'
-  window_closed: 'fal:window-frame'
+  window_open: 'fapro:fal_window-frame-open'
+  window_closed: 'fapro:fal_window-frame'
 
-  door_open: 'fal:door-open'
-  door_closed: 'fal:door-closed'
+  door_open: 'fapro:fal_door-open'
+  door_closed: 'fapro:fal_door-closed'
 
 #   motion_on: 'fas:question'
 #   motion_off: 'fas:question'
 
-  cover: 'fal:blinds'
+  cover: 'fapro:fal_blinds'
 
-  device: 'fal:plug'
+  device: 'fapro:fal_plug'
 
-  media_player: 'fal:play'
+  media_player: 'fapro:fal_play'
 
-  vacuum: 'fal:vacuum-robot'
+  vacuum: 'fapro:fal_vacuum-robot'
 
-  plant: 'fal:leaf'
+  plant: 'fapro:fal_leaf'
 
 #   alarm_disarmed: 'fas:question'
 #   alarm_pending: 'fas:question'
@@ -42,10 +42,10 @@ icons:
 #   armed_home: 'fas:question'
 
 #   #More page icons
-  more_page_house_information: 'fal:home'
-  more_page_house_data: 'fal:clinic-medical'
-  more_page_settings: 'fal:cogs'
+  more_page_house_information: 'fapro:fal_home'
+  more_page_house_data: 'fapro:fal_clinic-medical'
+  more_page_settings: 'fapro:fal_cogs'
 #   more_page_list_chevron: 'fas:question'
 
-  lock_locked: 'fal:lock'
-  lock_unlocked: 'fal:unlock'
+  lock_locked: 'fapro:fal_lock'
+  lock_unlocked: 'fapro:fal_unlock'

@@ -44,11 +44,11 @@ cards:
       - ''
     state_map:
       - value: 'on'
-        icon: 'fal:lightbulb-on'
+        icon: 'fapro:fal_lightbulb-on'
       - value: 'off'
-        icon: 'fal:lightbulb'
+        icon: 'fapro:fal_lightbulb'
       - value: 'unavailable'
-        icon: 'fal:lightbulb-slash'
+        icon: 'fapro:fal_lightbulb-slash'
     show:
       end_date: false
       start_date: true

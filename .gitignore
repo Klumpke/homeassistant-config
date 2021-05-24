@@ -39,6 +39,7 @@ zwscene.xml
 .cloud
 .storage
 appdaemon
+custom_icons
 deps
 glances
 node-red

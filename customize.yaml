@@ -65,7 +65,7 @@ light.wled_love_letters:
 #     icon: mdi:wall-sconce-flat
 #     # icon: >
 #     #   if (state === 'on') return 'fas:light-ceiling';
-#     #   return 'fal:light-ceiling';
+#     #   return 'fapro:fal_light-ceiling';
 #   friendly_name: Spotjes
 
 light.combikast:

@@ -12,7 +12,7 @@
 
 #   #Global icons
 #   light_on: 'mdi:help'
-#   light_off: 'fal:smile-wink'
+#   light_off: 'fapro:fal_smile-wink'
 
 #   room_header_more_entities: 'mdi:help'
 #   person_header_more_entities: 'mdi:help'

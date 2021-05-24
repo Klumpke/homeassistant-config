@@ -1,6 +1,6 @@
 rooms:
   - name: Woonkamer
-    icon: fal:couch
+    icon: fapro:fal_couch
     light: group.woonkamer_lights
     temperature: sensor.temp_woonkamer
     humidity: sensor.temp_woonkamer_humidity
@@ -9,7 +9,7 @@ rooms:
     media_player: group.woonkamer_mediaplayers
     addons:
       - name: Sonos
-        icon: fal:speaker
+        icon: fapro:fal_speaker
         path: 'dwains-dashboard/addons/rooms/common/sonos/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/common/sonos/button.yaml'
         data:
@@ -49,7 +49,7 @@ rooms:
               type: source
               id: TV
       - name: Drakenbloed
-        icon: fal:leaf
+        icon: fapro:fal_leaf
         path: 'dwains-dashboard/addons/rooms/common/plant/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/common/plant/button.yaml'
         data:
@@ -63,7 +63,7 @@ rooms:
         - entity: sensor.lux_woonkamer
 
   - name: Eetkamer
-    icon: fal:utensils
+    icon: fapro:fal_utensils
     light: group.eetkamer_lights
     climate: climate.woonkamer
     temperature: sensor.woonkamer_temperature
@@ -75,7 +75,7 @@ rooms:
     # plant: plant.olijfboom_links
     addons:
       - name: Stofzuiger
-        icon: fal:vacuum-robot
+        icon: fapro:fal_vacuum-robot
         path: 'dwains-dashboard/addons/rooms/eetkamer/vacuum/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/eetkamer/vacuum/button.yaml'
         data:
@@ -85,19 +85,19 @@ rooms:
           rooms:
             - room: Woonkamer
               zone: Woonkamer
-              icon: fal:couch
+              icon: fapro:fal_couch
             - room: Keuken
               zone: Keuken
-              icon: fal:refrigerator
+              icon: fapro:fal_refrigerator
             - room: Eetkamer
               zone: Eetkamer
-              icon: fal:coffee
+              icon: fapro:fal_coffee
             - room: Hal
               zone: Hal
-              icon: fal:key-skeleton
+              icon: fapro:fal_key-skeleton
             - room: Garage
               zone: Garage
-              icon: fal:warehouse
+              icon: fapro:fal_warehouse
           controls:
             - name: Start
               service: vacuum.start
@@ -125,7 +125,7 @@ rooms:
               sensor: sensor.vacuum_sensor_dirty_left
               icon: mdi:air-filter
       - name: Sonos
-        icon: fal:speaker
+        icon: fapro:fal_speaker
         path: 'dwains-dashboard/addons/rooms/common/sonos/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/common/sonos/button.yaml'
         data:
@@ -167,13 +167,13 @@ rooms:
         - entity: sensor.lux_eetkamer
 
   - name: Keuken
-    icon: fal:refrigerator
+    icon: fapro:fal_refrigerator
     light: group.keuken_lights
     media_player: media_player.hub_keuken
     device: group.keuken_devices
     addons:
       - name: Vaatwasser
-        icon: fal:dryer
+        icon: fapro:fal_dryer
         path: 'dwains-dashboard/addons/rooms/keuken/dishwasher/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/keuken/dishwasher/button.yaml'
         data:
@@ -181,7 +181,7 @@ rooms:
         #  navigation_path: /lovelace/keuken_addon_vaatwasser
 
   - name: Slaapkamer
-    icon: fal:bed-alt
+    icon: fapro:fal_bed-alt
     light: group.slaapkamer_lights
     temperature: sensor.temp_slaapkamer
     humidity: sensor.temp_slaapkamer_humidity
@@ -192,7 +192,7 @@ rooms:
     media_player: media_player.tv_slaapkamer
 
   - name: Kleine kamer
-    icon: fal:briefcase
+    icon: fapro:fal_briefcase
     light: light.kleine_kamer
     temperature: sensor.temp_kleine_kamer
     humidity: sensor.temp_kleine_kamer_humidity
@@ -200,7 +200,7 @@ rooms:
     window: binary_sensor.contact_kleine_kamerraam
     addons:
       - name: Printer
-        icon: fal:print
+        icon: fapro:fal_print
         path: 'dwains-dashboard/addons/rooms/kleine_kamer/printer/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/kleine_kamer/printer/button.yaml'
         data:
@@ -225,7 +225,7 @@ rooms:
               name: Geel
               color: Gold
       - name: Sonos
-        icon: fal:speaker
+        icon: fapro:fal_speaker
         path: 'dwains-dashboard/addons/rooms/common/sonos/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/common/sonos/button.yaml'
         data:
@@ -262,7 +262,7 @@ rooms:
               id: Omroep Brabant
 
   - name: Logeerkamer
-    icon: fal:bed
+    icon: fapro:fal_bed
     light: light.logeerkamer
     temperature: sensor.temp_logeerkamer
     humidity: sensor.temp_logeerkamer_humidity
@@ -270,13 +270,13 @@ rooms:
     window: binary_sensor.contact_logeerkamerraam
 
   - name: Badkamer
-    icon: fal:bath
+    icon: fapro:fal_bath
     temperature: sensor.temp_badkamer
     humidity: sensor.temp_badkamer_humidity
     pressure: sensor.temp_badkamer_pressure
 
   - name: Garage
-    icon: fal:warehouse
+    icon: fapro:fal_warehouse
     light: group.garage_lights
     temperature: sensor.temp_garage
     humidity: sensor.temp_garage_humidity
@@ -297,15 +297,15 @@ rooms:
         - entity: sensor.lux_garage
 
   - name: Hal
-    icon: fal:key-skeleton
+    icon: fapro:fal_key-skeleton
     light: group.other_lights
     addons:
       - name: Deurbel
-        icon: fal:bell
+        icon: fapro:fal_bell
         path: 'dwains-dashboard/addons/rooms/hal/doorbell/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/hal/doorbell/button.yaml'
         data:
-          entity: binary_sensor.voordeur_ding
+          entity: binary_sensor.doorbell_voordeur
       - name: Camera
         path: 'dwains-dashboard/addons/rooms/common/camera/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/common/camera/button.yaml'
@@ -318,7 +318,7 @@ rooms:
     #     - entity: switch.deurbel_bel_actief
 
   - name: Tuin
-    icon: fal:tree-alt
+    icon: fapro:fal_tree-alt
     light: group.buiten_lights
     temperature: sensor.temp_tuin
     humidity: sensor.temp_tuin_humidity
@@ -328,7 +328,7 @@ rooms:
     # plant: plant.olijfboom_rechts
     addons:
       - name: Sonos
-        icon: fal:speaker
+        icon: fapro:fal_speaker
         path: 'dwains-dashboard/addons/rooms/common/sonos/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/common/sonos/button.yaml'
         data:
@@ -364,8 +364,8 @@ rooms:
               type: source
               id: Omroep Brabant
       - name: Olijfboom
-        icon: fal:leaf
-        # icon: fal:spa
+        icon: fapro:fal_leaf
+        # icon: fapro:fal_spa
         path: 'dwains-dashboard/addons/rooms/common/plant/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/common/plant/button.yaml'
         data:
@@ -373,7 +373,7 @@ rooms:
             - entity: plant.olijfboom
               species: olea europaea
       - name: Zwembad
-        icon: fal:swimming-pool
+        icon: fapro:fal_swimming-pool
         path: 'dwains-dashboard/addons/rooms/tuin/swimmingpool/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/tuin/swimmingpool/button.yaml'
         data:
@@ -394,7 +394,7 @@ rooms:
           entity: camera.tuin
 
   - name: Zolder
-    icon: fal:box-full
+    icon: fapro:fal_box-full
     temperature: sensor.temp_zolder
     humidity: sensor.temp_zolder_humidity
     pressure: sensor.temp_zolder_pressure
@@ -402,7 +402,7 @@ rooms:
     #device: group.zolder_devices
     addons:
       - name: Sonos
-        icon: fal:speaker
+        icon: fapro:fal_speaker
         path: 'dwains-dashboard/addons/rooms/common/sonos/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/common/sonos/button.yaml'
         data:
@@ -438,13 +438,13 @@ rooms:
               type: source
               id: Omroep Brabant
       - name: Wasmachine
-        icon: fal:washer
+        icon: fapro:fal_washer
         path: 'dwains-dashboard/addons/rooms/zolder/washingmachine/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/zolder/washingmachine/button.yaml'
         data:
           entity: input_select.washing_machine_status
       - name: Droger
-        icon: fal:dryer-alt
+        icon: fapro:fal_dryer-alt
         path: 'dwains-dashboard/addons/rooms/zolder/dryer/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/zolder/dryer/button.yaml'
         data:
