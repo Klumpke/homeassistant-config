@@ -52,3 +52,10 @@ zone:
     longitude: !secret zone_ouders_joyce_longitude
     radius: 75
     icon: mdi:home
+
+  # Roy & Danique
+  - name: Roy & Danique
+    latitude: !secret zone_roy_danique_latitude
+    longitude: !secret zone_roy_danique_longitude
+    radius: 75
+    icon: mdi:home
