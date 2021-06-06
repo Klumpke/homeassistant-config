@@ -43,6 +43,9 @@ more_page:
       - name: SABnzbd
         icon: fapro:fal_download
         path: 'dwains-dashboard/addons/more_page/sabnzbd/page.yaml'
+      - name: Formula 1
+        icon: mdi:keyboard-f1
+        path: 'dwains-dashboard/addons/more_page/formule_one/page.yaml'
       - name: P2000
         icon: fapro:fal_ambulance
         path: 'dwains-dashboard/addons/more_page/p2000/page.yaml'
@@ -65,11 +68,6 @@ more_page:
         path: 'dwains-dashboard/addons/more_page/vehicle_info/page.yaml'
         data:
           vehicles:
-            - name: Seat Leon 1.8T FR
-              image: /local/images/seat-leon.jpg
-              expdate: sensor.seat_leon_expdate
-              insured: binary_sensor.seat_leon_insured
-              recall:  sensor.seat_leon_recall
             - name: Volkswagen Polo 1.0T R-Line
               image: /local/images/vw-polo.jpg
               expdate: sensor.volkswagen_polo_expdate

@@ -1,12 +1,4 @@
 rdw:
-  - plate: H240SV
-    name: "Seat Leon"
-    dateformat: '%d-%m-%Y'
-    binary_sensors:
-      - insured
-    sensors:
-      - expdate
-      - recall
   - plate: XT249K
     name: "Volkswagen Polo"
     dateformat: '%d-%m-%Y'

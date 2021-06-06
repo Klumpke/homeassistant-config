@@ -8,7 +8,7 @@ notify:
     platform: group
     services:
       - service: mobile_app_iklumpke
-      - service: mobile_app_joyce
+      # - service: mobile_app_joyce
 
 # Pushover
   - name: pushover

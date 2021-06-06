@@ -20,42 +20,9 @@ zone:
     radius: 125
     icon: mdi:briefcase
 
-  # Work Zones Joyce
-  - name: Dolfijn (Toff)
-    latitude: !secret zone_work_joyce_latitude
-    longitude: !secret zone_work_joyce_longitude
-    radius: 100
-    icon: mdi:baby
-
-  - name: Dolfijn (Luchen)
-    latitude: !secret zone_work2_joyce_latitude
-    longitude: !secret zone_work2_joyce_longitude
-    radius: 100
-    icon: mdi:baby
-
-  - name: Dolfijn ('t Schrijverke)
-    latitude: !secret zone_work3_joyce_latitude
-    longitude: !secret zone_work3_joyce_longitude
-    radius: 100
-    icon: mdi:school
-
   # Ouders Jeroen
-  - name: Ouders Jeroen
+  - name: Ouders
     latitude: !secret zone_ouders_jeroen_latitude
     longitude: !secret zone_ouders_jeroen_longitude
-    radius: 75
-    icon: mdi:home
-
-  # Ouders Joyce
-  - name: Ouders Joyce
-    latitude: !secret zone_ouders_joyce_latitude
-    longitude: !secret zone_ouders_joyce_longitude
-    radius: 75
-    icon: mdi:home
-
-  # Roy & Danique
-  - name: Roy & Danique
-    latitude: !secret zone_roy_danique_latitude
-    longitude: !secret zone_roy_danique_longitude
     radius: 75
     icon: mdi:home

@@ -1,22 +1,8 @@
 persons:
-  - name: Joyce
-    track: person.joyce
-    show_map: 'false'
-    # map_hours_to_show: 12
-    # addons:
-    #   - name: Map
-    #     path: 'dwains-dashboard/addons/persons/map-joyce/page.yaml'
-    page_entities:
-      columns: 4
-      entities:
-        - entity: sensor.joyce_battery_level
-        - entity: sensor.joyce_battery_state
-        - entity: sensor.joyce_distance
-        - entity: sensor.joyce_steps
   - name: Jeroen
     track: person.jeroen
     show_map: 'false'
-    # map_hours_to_show: 12
+    map_hours_to_show: 24
     # addons:
     #   - name: Map
     #     path: 'dwains-dashboard/addons/persons/map-jeroen/page.yaml'
