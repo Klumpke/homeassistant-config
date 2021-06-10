@@ -1,0 +1,19 @@
+- alias: Check for Vaccine Appointment
+  description: 'Stuurt een notificatie als het geboortejaar in aanmerking komt voor een vaccinatieafspraak'
+  trigger:
+    - platform: state
+      entity_id: sensor.vaccinatie
+      to: 'True'
+  condition: []
+  action:
+    - service: notify.mobile_app_iklumpke
+      data:
+        message: 'Je mag een vaccinatieafspraak maken!'
+        title: Priktime!
+        data:
+          actions:
+            - action: URI
+              title: Maak die afspraak
+              uri: >-
+                https://coronatest.nl/ik-wil-me-laten-vaccineren/heeft-u-een-uitnodiging-gehad-wegens-medische-indicatie
+  mode: single
