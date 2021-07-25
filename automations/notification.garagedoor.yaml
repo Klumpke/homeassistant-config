@@ -1,75 +1,98 @@
 - alias: "Notificatie: Garagedeur open"
   initial_state: 'false'
   trigger:
-  - platform: state
-    entity_id: binary_sensor.contact_garagedeur
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.contact_garagedeur
+      to: 'on'
   action:
-  - service_template: >
-        {% if (is_state('person.jeroen', 'home')) and (is_state('person.joyce', 'home'))  %}
-          notify.ios_notifier
-        {% elif is_state('person.jeroen', 'home') %}
-          notify.mobile_app_iklumpke
-        {% elif is_state('person.joyce', 'home') %}
-          notify.ios_ios_joyce
-        {% endif %}
-    data:
-      title: "🚪 Garagedeur"
-      message: "De Garagedeur is zojuist geopend!"
+    - service_template: >
+          {% if (is_state('person.jeroen', 'home')) and (is_state('person.joyce', 'home'))  %}
+            notify.ios_notifier
+          {% elif is_state('person.jeroen', 'home') %}
+            notify.mobile_app_iklumpke
+          {% elif is_state('person.joyce', 'home') %}
+            notify.ios_ios_joyce
+          {% endif %}
       data:
-        push:
-          sound: default
+        title: "🚪 Garagedeur"
+        message: "De Garagedeur is zojuist geopend!"
+        data:
+          push:
+            sound: default
 
 - alias: "Notificatie: Garagedeur dicht"
   initial_state: 'false'
   trigger:
-  - platform: state
-    entity_id: binary_sensor.contact_garagedeur
-    to: 'off'
+    - platform: state
+      entity_id: binary_sensor.contact_garagedeur
+      to: 'off'
   action:
-  - service_template: >
-        {% if (is_state('person.jeroen', 'home')) and (is_state('person.joyce', 'home'))  %}
-          notify.ios_notifier
-        {% elif is_state('person.jeroen', 'home') %}
-          notify.mobile_app_iklumpke
-        {% elif is_state('person.joyce', 'home') %}
-          notify.ios_ios_joyce
-        {% endif %}
-    data:
-      title: "🚪 Garagedeur"
-      message: "De Garagedeur is zojuist gesloten!"
+    - service_template: >
+          {% if (is_state('person.jeroen', 'home')) and (is_state('person.joyce', 'home'))  %}
+            notify.ios_notifier
+          {% elif is_state('person.jeroen', 'home') %}
+            notify.mobile_app_iklumpke
+          {% elif is_state('person.joyce', 'home') %}
+            notify.ios_ios_joyce
+          {% endif %}
       data:
-        push:
-          sound: default
+        title: "🚪 Garagedeur"
+        message: "De Garagedeur is zojuist gesloten!"
+        data:
+          push:
+            sound: default
 
 
 - alias: "Sound: Garagedeur open"
   trigger:
-  - platform: state
-    entity_id: binary_sensor.contact_garagedeur
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.contact_garagedeur
+      to: 'on'
   action:
-  - service: script.sonos_play
-    data:
-      sonos_entity: media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
-      volume: 0.1
-      media_content: !secret http_audio_doordong
-      delay: '00:00:01'
-  - service: notify.tv_woonkamer
-    data:
-      title: " "
-      message: "🚪  Garagedeur geopend"
+    - service: script.sonos_play
       data:
-        fontsize: small
-        position: top-right
-        duration: 5
-        interrupt: true
-  - service: notify.tv_slaapkamer
-    data:
-      title: " "
-      message: "🚪  Garagedeur geopend"
+        sonos_entity: media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
+        volume: 0.1
+        media_content: !secret http_audio_doordong
+        delay: '00:00:01'
+
+
+- alias: "Notificatie: Garagedeur op tv woonkamer"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.contact_garagedeur
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: media_player.tv_woonkamer
+      state: 'on'
+  action:
+    - service: notify.tv_woonkamer
       data:
-        fontsize: small
-        position: top-right
-        duration: 5
-        interrupt: true
+        title: " "
+        message: "🚪  Garagedeur geopend"
+        data:
+          fontsize: small
+          position: top-right
+          duration: 5
+          interrupt: true
+
+- alias: "Notificatie: Garagedeur op tv slaapkamer"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.contact_garagedeur
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: media_player.tv_slaapkamer
+      state: 'on'
+  action:
+    - service: notify.tv_slaapkamer
+      data:
+        title: " "
+        message: "🚪  Garagedeur geopend"
+        data:
+          fontsize: small
+          position: top-right
+          duration: 5
+          interrupt: true

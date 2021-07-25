@@ -7,8 +7,11 @@ house_information:
       icon_on: fapro:fal_door-open
       icon_off: fapro:fal_door-closed
   addons:
+    # - name: Doorbell image
+    #   path: 'dwains-dashboard/addons/house_information/doorbell-image/page.yaml'
+    #   data:
+    #     camera: camera.voordeur
     - name: Statistieken
-      icon: fapro:fal_desktop-alt
       path: 'dwains-dashboard/addons/house_information/statistics/page.yaml'
       data:
         stats:
@@ -25,12 +28,10 @@ house_information:
             name: Disk
             icon: mdi:harddisk
     - name: Afvalwijzer
-      icon: fapro:fal_calendar-alt
       path: 'dwains-dashboard/addons/house_information/afvalwijzer/page.yaml'
       data:
         wastecollector: blink
     - name: Kalender
-      icon: fapro:fal_calendar-alt
       path: 'dwains-dashboard/addons/house_information/calendar/page.yaml'
       data:
         calendars:

@@ -53,8 +53,11 @@ sensor:
         friendly_name: 'Zwembadpomp status'
 
       pool_pump_time_on:
-        value_template: '{{ states.sensor.pool_pump_running_today.attributes.value }}'
+        # value_template: '{{ states.sensor.pool_pump_running_today.attributes.value }}'
+        value_template: '{{ states.sensor.pool_pump_running_today.state }}'
         friendly_name: 'Zwembadpomp uren'
+        unit_of_measurement: "h"
+        # device_class: timestamp
 
   - platform: history_stats
     name: Pool Pump running today

@@ -44,14 +44,14 @@ sensor:
             {% endif %}
           {% endif %}
       vacuum_total_cleaned_area:
-        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.total_cleaned_area }}'
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleanedarea }}'
         friendly_name: 'Roborock Total Cleaned Area'
         unit_of_measurement: 'm²'
       vacuum_cleaning_count:
-        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_count }}'
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleancount }}'
         friendly_name: 'Roborock Cleaning Count'
       vacuum_total_cleaning_time:
-        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.total_cleaning_time }}'
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleantime }}'
         friendly_name: 'Roborock Total Cleaning Time'
         unit_of_measurement: 'minuten'
       vacuum_cleaner_error_sensor:
@@ -68,18 +68,18 @@ sensor:
           {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.status }}
 
       vacuum_main_brush_left:
-        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.main_brush_left }}'
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.mainBrush | round(0) }}'
         friendly_name: 'Roborock Main Brush Left'
         unit_of_measurement: 'uren'
       vacuum_side_brush_left:
-        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.side_brush_left }}'
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.sideBrush | round(0) }}'
         friendly_name: 'Roborock Side Brush Left'
         unit_of_measurement: 'uren'
       vacuum_filter_left:
-        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.filter_left }}'
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.filter | round(0) }}'
         friendly_name: 'Roborock Filter Left'
         unit_of_measurement: 'uren'
       vacuum_sensor_dirty_left:
-        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.sensor_dirty_left }}'
+        value_template: '{{ states.vacuum.xiaomi_vacuum_cleaner.attributes.sensor | round(0) }}'
         friendly_name: 'Roborock Sensor Dirty Left'
         unit_of_measurement: 'uren'

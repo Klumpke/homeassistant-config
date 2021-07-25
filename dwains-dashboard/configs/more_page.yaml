@@ -119,9 +119,6 @@ more_page:
               icon: mdi:television
               type: source
               id: TV
-      - name: TrueNAS
-        icon: fapro:fal_chart-area
-        path: 'dwains-dashboard/addons/more_page/truenas/page.yaml'
       - name: TEST
         icon: fapro:fal_chart-area
         path: 'dwains-dashboard/addons/more_page/test/page.yaml'

@@ -79,7 +79,7 @@ rooms:
         path: 'dwains-dashboard/addons/rooms/eetkamer/vacuum/page.yaml'
         button_path: 'dwains-dashboard/addons/rooms/eetkamer/vacuum/button.yaml'
         data:
-          vacuum: vacuum.rockrobo
+          vacuum: vacuum.xiaomi_vacuum_cleaner
           map: camera.rockrobo_map
           platform: valetudo
           rooms:

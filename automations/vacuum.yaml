@@ -71,7 +71,7 @@
     - service: notify.ios_notifier
       data:
         title: '🤖 Stofzuiger Henry'
-        message: 'Klaar met stofzuigen. Ik heb er {{states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time}} minuten over gedaan.'
+        message: 'Klaar met stofzuigen. Ik heb er {{states.vacuum.xiaomi_vacuum_cleaner.attributes.currentCleanTime | round(0)}} minuten over gedaan.'
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.cleaned_today

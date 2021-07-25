@@ -42,13 +42,21 @@
           show_last_changed: false
           tap_action:
             action: call-service
+            {% if (data | fromjson)['platform'] == "xiaomi_miio" %}
+            service: xiaomi_miio.vacuum_clean_segment
+            {% else %}
             service: vacuum.send_command
+            {% endif %}
             {% if (data | fromjson)['platform'] == "valetudo" %}
             service_data:
               entity_id: {{ (data | fromjson)['vacuum'] }}
               command: zoned_cleanup
               params:
                 'zone_ids': ['{{ rooms.zone }}']
+            {% elif (data | fromjson)['platform'] == "xiaomi_miio" %}
+            service_data:
+              entity_id: {{ (data | fromjson)['vacuum'] }}
+              segments: ['{{ rooms.zone }}']
             {% else %}
             service_data:
               entity_id: {{ (data | fromjson)['vacuum'] }}

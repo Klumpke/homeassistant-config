@@ -1,5 +1,5 @@
 - type: custom:dwains-flexbox-card
-  items_classes: 'col-lg-4 col-md-4 col-sm-12 col-xs-12'
+  items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
   padding: true
   cards:
     - type: custom:dwains-flexbox-card
@@ -14,104 +14,49 @@
               show_name: false
               show_state: false
             - type: picture-entity
-              entity: camera.voordeur_car
-              show_name: false
-              show_state: false
-        - type: entities
-          style: |
-            ha-card {
-              border-radius: 5px;
-              background-color: var(--dwains-theme-primary);
-            }
-          show_header_toggle: false
-          entities:
-            - entity: binary_sensor.voordeur_person_motion
-              name: Beweging
-            - entity: sensor.voordeur_person
-              name: Persoon detectie
-            - entity: sensor.voordeur_car
-              name: Auto detectie
-            - entity: sensor.voordeur_camera_fps
-              name: Camera FPS
-            - entity: sensor.voordeur_process_fps
-              name: Process FPS
-            - entity: switch.voordeur_snapshots
-              name: Snapshots
-            - entity: switch.voordeur_clips
-              name: Clips
-
-    - type: custom:dwains-flexbox-card
-      items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
-
-      cards:
-        - type: custom:dwains-flexbox-card
-          items_classes: 'col-lg-6 col-md-6 col-sm-6 col-xs-6'
-          cards:
-            - type: picture-entity
               entity: camera.carport_person
               show_name: false
               show_state: false
-            - type: picture-entity
-              entity: camera.carport_car
-              show_name: false
-              show_state: false
-        - type: entities
-          style: |
-            ha-card {
-              border-radius: 5px;
-              background-color: var(--dwains-theme-primary);
-            }
-          show_header_toggle: false
-          entities:
-            - entity: binary_sensor.carport_person_motion
-              name: Beweging
-            - entity: sensor.carport_person
-              name: Persoon detectie
-            - entity: sensor.carport_car
-              name: Auto detectie
-            - entity: sensor.carport_camera_fps
-              name: Camera FPS
-            - entity: sensor.carport_process_fps
-              name: Process FPS
-            - entity: switch.carport_snapshots
-              name: Snapshots
-            - entity: switch.carport_clips
-              name: Clips
-
-    - type: custom:dwains-flexbox-card
-      items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
-
-      cards:
         - type: custom:dwains-flexbox-card
           items_classes: 'col-lg-6 col-md-6 col-sm-6 col-xs-6'
           cards:
-            - type: picture-entity
-              entity: camera.tuin_person
-              show_name: false
-              show_state: false
-            - type: picture-entity
-              entity: camera.tuin_car
-              show_name: false
-              show_state: false
-        - type: entities
-          style: |
-            ha-card {
-              border-radius: 5px;
-              background-color: var(--dwains-theme-primary);
-            }
-          show_header_toggle: false
-          entities:
-            - entity: binary_sensor.tuin_person_motion
-              name: Beweging
-            - entity: sensor.tuin_person
-              name: Persoon detectie
-            - entity: sensor.tuin_car
-              name: Auto detectie
-            - entity: sensor.tuin_camera_fps
-              name: Camera FPS
-            - entity: sensor.tuin_process_fps
-              name: Process FPS
-            - entity: switch.tuin_snapshots
-              name: Snapshots
-            - entity: switch.tuin_clips
-              name: Clips
+            - type: entities
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
+              show_header_toggle: false
+              entities:
+                - entity: binary_sensor.voordeur_person_motion
+                  name: Beweging
+                - entity: sensor.voordeur_person
+                  name: Persoon detectie
+                - entity: sensor.voordeur_camera_fps
+                  name: Camera FPS
+                - entity: sensor.voordeur_process_fps
+                  name: Process FPS
+                - entity: switch.voordeur_snapshots
+                  name: Snapshots
+                - entity: switch.voordeur_clips
+                  name: Clips
+            - type: entities
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
+              show_header_toggle: false
+              entities:
+                - entity: binary_sensor.carport_person_motion
+                  name: Beweging
+                - entity: sensor.carport_person
+                  name: Persoon detectie
+                - entity: sensor.carport_camera_fps
+                  name: Camera FPS
+                - entity: sensor.carport_process_fps
+                  name: Process FPS
+                - entity: switch.carport_snapshots
+                  name: Snapshots
+                - entity: switch.carport_clips
+                  name: Clips

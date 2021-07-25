@@ -1,0 +1,110 @@
+esphome:
+  name: rfbridge
+  platform: ESP8266
+  board: esp01_1m
+  includes:
+    - wh2_rx.h
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Rfbridge Fallback Hotspot"
+    password: "52ZJqELsMgnT"
+
+captive_portal:
+
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret api_pass
+
+ota:
+  password: !secret ota_pass
+
+web_server:
+  port: 80
+  
+sensor:
+  - platform: wifi_signal
+    name: RF Bridge Wifi Signal
+    update_interval: 10s
+  - platform: uptime
+    name: Sonoff RF Bridge Uptime
+
+  # - platform: remote_receiver
+  #   name: "RF Bridge Temperature"
+  #   # internal: true
+  #   rc_switch_raw:
+  #     code: '000000000'
+  #     protocol: 2
+
+
+  - platform: custom
+    lambda: |-
+      auto my_sensor = new MyCustomSensor();
+      App.register_component(my_sensor);
+      return {my_sensor->sensor1, my_sensor->sensor2,my_sensor->sensor3,my_sensor->sensor4};
+    sensors:   
+    - name: "storage room temp"
+      unit_of_measurement: "°C"
+      icon: "mdi:thermometer"
+      accuracy_decimals: 1
+  
+    - name: "storage room humidity"
+      unit_of_measurement: "%"
+      icon: "mdi:water-percent"
+      accuracy_decimals: 0      
+  
+    - name: "inside temp"
+      unit_of_measurement: "°C"
+      icon: "mdi:thermometer"
+      accuracy_decimals: 1
+  
+    - name: "inside humidity"
+      unit_of_measurement: "%"
+      icon: "mdi:water-percent"
+      accuracy_decimals: 0
+    
+text_sensor:
+  - platform: custom
+    lambda: |-
+      auto last_sensor_data = new Last_sensor_data();
+      App.register_component(last_sensor_data);
+      return {last_sensor_data};
+    text_sensors:
+      name: "last_sensor_data"  
+
+binary_sensor:
+  - platform: status
+    name: RF Bridge Status
+
+  # - platform: remote_receiver
+  #   name: Temperature sensor
+  #   # device_class: motion
+  #   rc_switch_raw:
+  #     code: '000000000'
+  #     protocol: 2
+
+
+# remote_receiver:
+#   pin: 4
+#   dump: rc_switch
+#   # dump: raw
+#   tolerance: 50
+#   filter: 4us
+#   idle: 4ms
+
+# remote_transmitter:
+#   pin: 5
+#   carrier_duty_percent: 100%
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: yes
