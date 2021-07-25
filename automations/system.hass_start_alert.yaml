@@ -1,0 +1,27 @@
+- alias: "Systeem: Hass start notificatie"
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "⚠️ Home Assistant"
+        message: "Home Assistant is herstart..."
+    # - service: notify.email
+    #   data:
+    #     title: "Warning"
+    #     message: "Hass restarted"
+
+- alias: "Systeem: Hass stop notificatie"
+  trigger:
+    - platform: homeassistant
+      event: shutdown
+  action:
+    - service: notify.mobile_app_iklumpke
+      data:
+        title: "⚠️ Home Assistant"
+        message: "Home Assistant wordt afgesloten..."
+    # - service: notify.email
+    #   data:
+    #     title: "Warning"
+    #     message: "Hass shutdown"
