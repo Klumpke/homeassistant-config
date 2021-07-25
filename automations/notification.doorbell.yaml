@@ -63,6 +63,7 @@
         file:
           path: "/config/www/images/snapshots/cam_voordeur.jpg"
 
+
 - alias: "Notificatie: Deurbel audio"
   initial_state: true
   trigger:
@@ -77,6 +78,7 @@
       volume: 0.4
       media_content: !secret http_audio_deurbel
       delay: '00:00:03'
+
 
 - alias: "Notificatie: Deurbel stream"
   initial_state: true
@@ -98,3 +100,81 @@
   - service: media_player.turn_off
     data:
       entity_id: media_player.hub_keuken
+
+
+- alias: "Deurbel: Bericht op display"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_voordeur
+      to: person
+      attribute: event_object
+    - platform: template
+      value_template: "{{ as_timestamp(now()) - as_timestamp(state_attr('binary_sensor.motion_voordeur', 'last_tripped_time')) < 10 }}"
+    - platform: state
+      entity_id: binary_sensor.doorbell_voordeur
+      from: "off"
+      to: "on"
+    - platform: template
+      value_template: "{{ as_timestamp(now()) - as_timestamp(state_attr('binary_sensor.doorbell_voordeur', 'last_tripped_time')) < 10 }}"
+  action:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: binary_sensor.doorbell_voordeur
+              state: "on"
+            - condition: template
+              value_template: "{{ as_timestamp(now()) - as_timestamp(state_attr('binary_sensor.doorbell_voordeur', 'last_tripped_time')) < 10 }}"
+            - condition: state
+              entity_id: group.device_status
+              state: "home"
+            # - condition: state
+            #   entity_id: binary_sensor.voordeur
+            #   state: "off"
+          sequence:
+            - service: unifiprotect.set_doorbell_lcd_message
+              data:
+                entity_id: camera.voordeur
+                message: "MOMENTJE..."
+                duration: 6
+        - conditions:
+            - condition: time
+              after: "06:00:00"
+              before: "12:00:00"
+          sequence:
+            - service: unifiprotect.set_doorbell_lcd_message
+              data:
+                entity_id: camera.voordeur
+                message: "GOEDEMORGEN"
+#                duration: 5
+        - conditions:
+            - condition: time
+              after: "12:00:00"
+              before: "17:30:00"
+          sequence:
+            - service: unifiprotect.set_doorbell_lcd_message
+              data:
+                entity_id: camera.voordeur
+                message: "GOEDEMIDDAG"
+        - conditions:
+            - condition: time
+              after: "17:30:00"
+              before: "23:59:00"
+          sequence:
+            - service: unifiprotect.set_doorbell_lcd_message
+              data:
+                entity_id: camera.voordeur
+                message: "GOEDENAVOND"
+        - conditions:
+            - condition: time
+              after: "00:00:00"
+              before: "06:00:00"
+          sequence:
+            - service: unifiprotect.set_doorbell_lcd_message
+              data:
+                entity_id: camera.voordeur
+                message: "GOEDENACHT"
+      default:
+        - service: unifiprotect.set_doorbell_lcd_message
+          data:
+            entity_id: camera.voordeur
+            message: "WELKOM"
