@@ -29,7 +29,7 @@ history:
       - sensor.count_lights
       # Server
       - sensor.server_power
-      - sensor.server_energy
+      - sensor.server_consumption
       - sensor.server_unraid_power
       - sensor.server_unraid_consumption
       # Backup
@@ -165,9 +165,9 @@ history:
       - sensor.joyce_steps
       - sensor.joyce_distance
       - sensor.joyce_geocoded_location
-      - sensor.ipad_jeroen_battery_level
-      - sensor.ipad_jeroen_battery_state
-      - sensor.ipad_jeroen_ssid
+      - sensor.ipad_battery_level
+      - sensor.ipad_battery_state
+      - sensor.ipad_ssid
 
       # DSMR Reader
       - sensor.power_consumption_watt
@@ -192,6 +192,7 @@ history:
       - input_select.dryer_status
 
       # Vaatwasser
+      - sensor.vaatwasser_consumption
       - sensor.vaatwasser_power
       - input_select.dishwasher_status
 
@@ -201,6 +202,22 @@ history:
       - sensor.vriezer_power
       # Accu lader
       - sensor.accu_lader_power
+
+      # Afzuigkap
+      - sensor.afzuigkap_consumption
+      - sensor.afzuigkap_power
+
+      # Zonnebank
+      - sensor.zonnebank_consumption
+      - sensor.zonnebank_power
+
+      # Printer
+      - sensor.printer_consumption
+      - sensor.printer_power
+
+      # NAS
+      - sensor.nas_consumption
+      - sensor.nas_power
 
       # 3D printer
       - switch.3d_printer
@@ -247,6 +264,7 @@ history:
 
       # P2000
       - sensor.p2000_someren
+      - sensor.p2000_someren_melding
       - sensor.p2000_limburg_noord
       - sensor.p2000_brabant_zuid_oost
 
@@ -327,6 +345,22 @@ history:
       - sensor.sabnzbd_speed
       - sensor.sabnzbd_status
       - sensor.sabnzbd_total
+
+      # Crypto
+      - sensor.bitvavo_wallet
+      - sensor.bitvavo_ark
+      - sensor.bitvavo_xlm
+      - sensor.bitvavo_xrp
+      - sensor.bitvavo_xvg
+      - sensor.coinbase_cgld_wallet
+      - sensor.coinbase_comp_wallet
+      - sensor.coinbase_dai_portemonnee
+      - sensor.coinbase_dnt_wallet
+      - sensor.coinbase_grt_wallet
+      - sensor.coinbase_nu_wallet
+      - sensor.coinbase_oxt_wallet
+      - sensor.coinbase_xlm_wallet
+      - sensor.coinbase_zrx_wallet
 
 #  exclude:
 #    domains:

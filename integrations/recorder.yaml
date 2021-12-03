@@ -37,9 +37,11 @@ recorder:
       - sensor.count_lights
       # Server
       - sensor.server_power
-      - sensor.server_energy
+      - sensor.server_consumption
       - sensor.server_unraid_power
       - sensor.server_unraid_consumption
+      - sensor.modem_power
+      - sensor.modem_consumption
       # Backup
       - sensor.auto_backup
 
@@ -173,9 +175,9 @@ recorder:
       - sensor.joyce_steps
       - sensor.joyce_distance
       - sensor.joyce_geocoded_location
-      - sensor.ipad_jeroen_battery_level
-      - sensor.ipad_jeroen_battery_state
-      - sensor.ipad_jeroen_ssid
+      - sensor.ipad_battery_level
+      - sensor.ipad_battery_state
+      - sensor.ipad_ssid
 
       # DSMR Reader
       - sensor.power_consumption_watt
@@ -186,6 +188,11 @@ recorder:
       - sensor.dsmr_reading_phase_voltage_l1
       - sensor.dsmr_consumption_gas_currently_delivered
       - sensor.dsmr_day_consumption_gas
+      - sensor.dsmr_consumption_gas_delivered
+      - sensor.dsmr_reading_electricity_delivered_2
+      - sensor.dsmr_reading_electricity_delivered_2_cost
+      - sensor.dsmr_reading_electricity_delivered_1
+      - sensor.dsmr_reading_electricity_delivered_1_cost
 
       # S0PCM
       - sensor.s0pcm_vandaag
@@ -193,22 +200,44 @@ recorder:
 
       # Wasmachine
       - sensor.fib_fgwpf102_wasmachine_power
+      - sensor.fib_fgwpf102_wasmachine_energy
       - input_select.washing_machine_status
 
       # Droger
       - sensor.fib_fgwpf102_droger_power
+      - sensor.fib_fgwpf102_droger_energy
       - input_select.dryer_status
 
       # Vaatwasser
+      - sensor.vaatwasser_consumption
       - sensor.vaatwasser_power
       - input_select.dishwasher_status
 
       # Koelkast
       - sensor.koelkast_power
+      - sensor.koelkast_consumption
       # Vriezer
       - sensor.vriezer_power
+      - sensor.vriezer_consumption
       # Accu lader
       - sensor.accu_lader_power
+      - sensor.accu_lader_consumption
+
+      # Afzuigkap
+      - sensor.afzuigkap_consumption
+      - sensor.afzuigkap_power
+
+      # Zonnebank
+      - sensor.zonnebank_consumption
+      - sensor.zonnebank_power
+
+      # Printer
+      - sensor.printer_consumption
+      - sensor.printer_power
+
+      # NAS
+      - sensor.nas_consumption
+      - sensor.nas_power
 
       # 3D printer
       - switch.3d_printer
@@ -255,6 +284,7 @@ recorder:
 
       # P2000
       - sensor.p2000_someren
+      - sensor.p2000_someren_melding
       - sensor.p2000_limburg_noord
       - sensor.p2000_brabant_zuid_oost
 
@@ -335,3 +365,19 @@ recorder:
       - sensor.sabnzbd_speed
       - sensor.sabnzbd_status
       - sensor.sabnzbd_total
+
+      # Crypto
+      - sensor.bitvavo_wallet
+      - sensor.bitvavo_ark
+      - sensor.bitvavo_xlm
+      - sensor.bitvavo_xrp
+      - sensor.bitvavo_xvg
+      - sensor.coinbase_cgld_wallet
+      - sensor.coinbase_comp_wallet
+      - sensor.coinbase_dai_portemonnee
+      - sensor.coinbase_dnt_wallet
+      - sensor.coinbase_grt_wallet
+      - sensor.coinbase_nu_wallet
+      - sensor.coinbase_oxt_wallet
+      - sensor.coinbase_xlm_wallet
+      - sensor.coinbase_zrx_wallet

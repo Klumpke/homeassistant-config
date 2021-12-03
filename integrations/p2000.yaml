@@ -1,27 +1,31 @@
 # https://github.com/cyberjunky/home-assistant-p2000
+# https://github.com/leeuwte/home-assistant-p2000
 sensor:
   - platform: p2000
     name: P2000 Someren
-    regios: 22
-    # disciplines: 1,2,3
-    radius: 5000
-    scan_interval: 30
-    latitude: !secret zone_home_latitude
-    longitude: !secret zone_home_longitude
-    # nolocation: true
+    gemeenten:
+      - someren
+    # capcodes:
+    #   - 1234567
 
-  - platform: p2000
-    name: P2000 Brabant Zuid Oost
-    regios: 22
-    # disciplines: 1,2,3
-    radius: 15000
-    scan_interval: 30
-    # nolocation: true
+  # - platform: p2000
+  #   name: P2000 Brabant Zuid Oost
+  #   gemeenten:
+  #     - brabant-zuidoost
 
-  - platform: p2000
-    name: P2000 Limburg Noord
-    regios: 23
-    # disciplines: 1,2,3
-    radius: 20000
-    scan_interval: 30
-    # nolocation: true
+  # - platform: p2000
+  #   name: P2000 Limburg Noord
+  #   gemeenten:
+  #     - limburg-noord
+
+  - platform: template
+    sensors:
+      p2000_someren_melding:
+        friendly_name: "P2000 Someren Melding"
+        value_template: "{{ state_attr('sensor.p2000_someren', 'melding') }}"
+      # p2000_brabant_zuidoost_melding:
+      #   friendly_name: "P2000 Brabant Zuid Oost Melding"
+      #   value_template: "{{ state_attr('sensor.p2000_brabant_zuid_oost', 'melding') }}"
+      # p2000_limburg_noord_melding:
+      #   friendly_name: "P2000 Limburg Noord Melding"
+      #   value_template: "{{ state_attr('sensor.p2000_limburg_noord', 'melding') }}"
