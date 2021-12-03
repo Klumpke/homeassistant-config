@@ -29,6 +29,7 @@
 ._*
 aircast.xml
 home-assistant.log
+home-assistant.log.fault
 options.xml
 OZW_Log.txt
 pyozw.sqlite
