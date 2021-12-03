@@ -1,0 +1,25 @@
+---
+# This alerts me on my iPhone when a new release
+# of Home Assistant OS is released.
+#
+- alias: "Systeem: Hass OS update notificatie"
+  trigger:
+    platform: state
+    entity_id: sensor.home_assistant_operating_system_newest_version
+  condition:
+    - condition: template
+      value_template: >-
+        {{
+          states('sensor.home_assistant_operating_system_newest_version')
+          !=
+          states('sensor.home_assistant_operating_system_version')
+        }}
+  action:
+    - service: notify.mobile_app_iklumpke
+      data_template:
+        title: "🚧 Home Assistant OS update"
+        message: >-
+          Er is een Home Assistant OS update beschikbaar.
+          Versie: {{ states('sensor.home_assistant_operating_system_newest_version') }} .
+        data:
+          url: /hassio
