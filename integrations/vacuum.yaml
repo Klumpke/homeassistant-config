@@ -1,9 +1,4 @@
 # Vacuum (Roborock S55)
-vacuum:
-  - platform: xiaomi_miio
-    host: 192.168.178.90
-    token: !secret vacuum_token
-
 input_select:
   xiaomi_vacuum:
     name: Xiaomi Vacuum
