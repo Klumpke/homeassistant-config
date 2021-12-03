@@ -24,7 +24,7 @@
     - service: light.turn_on
       data:
         entity_id: light.garage
-        brightness: 50
+        brightness_pct: 50
         # transition: 15
 
 - alias: "Motion: Garage verlichting aan - Donker"
@@ -53,7 +53,7 @@
     - service: light.turn_on
       data:
         entity_id: light.garage
-        brightness: 100
+        brightness_pct: 100
         # transition: 15
 
 
