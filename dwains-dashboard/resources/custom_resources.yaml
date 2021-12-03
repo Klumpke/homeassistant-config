@@ -38,6 +38,8 @@
   type: module
 
 # Popup card addon
+# - url: /hacsfiles/light-entity-card/light-entity-card.js
+#   type: module
 - url: /hacsfiles/logbook-card/logbook-card.js
   type: module
 
@@ -56,11 +58,6 @@
 - url: /hacsfiles/stack-in-card/stack-in-card.js
   type: module
 
-- url: /hacsfiles/light-popup-card/light-popup-card.js
-  type: module
-
-- url: /hacsfiles/lovelace-more-info-card/more-info-card.js
-  type: module
 
 
 - url: /hacsfiles/home-assistant-neerslag-card/neerslag-card.js
