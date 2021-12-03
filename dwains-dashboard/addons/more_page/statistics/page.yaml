@@ -33,8 +33,26 @@
                 action: none
 
             - type: custom:multiple-entity-row
+              entity: sensor.home_assistant_operating_system_newest_version
+              name: HA OS
+              icon: mdi:home-assistant
+              state_header: Laatste
+              entities:
+                - entity: sensor.home_assistant_operating_system_version
+                  name: Huidige
+              style: |
+                :host {
+                  {% if states('sensor.home_assistant_operating_system_version').split('.')[1] != states(config.entity).split('.')[1] %}
+                    color: rgb(255, 165, 0);
+                    --paper-item-icon-color: rgb(255, 165, 0);
+                  {% endif %};
+                }
+              tap_action:
+                action: none
+
+            - type: custom:multiple-entity-row
               entity: sensor.version_available
-              name: HA versie
+              name: HA Core
               icon: mdi:home-assistant
               state_header: Laatste
               entities:
