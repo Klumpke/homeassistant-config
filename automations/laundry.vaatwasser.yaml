@@ -82,13 +82,13 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.vaatwasser_power
-      below: 0.8
+      below: 0.5
   condition:
     condition: and
     conditions:
       - condition: numeric_state
         entity_id: sensor.vaatwasser_power
-        below: 0.8
+        below: 0.5
       - condition: or
         conditions:
         - condition: state
