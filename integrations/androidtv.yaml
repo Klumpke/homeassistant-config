@@ -26,6 +26,6 @@ notify:
     name: TV Woonkamer
     host: !secret philips_tv_ip
 
-  - platform: nfandroidtv
-    name: TV Slaapkamer
-    host: !secret philips_tv_ip2
+  # - platform: nfandroidtv
+  #   name: TV Slaapkamer
+  #   host: !secret philips_tv_ip2
