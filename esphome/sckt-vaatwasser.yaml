@@ -1,0 +1,160 @@
+substitutions:
+  # used internally
+  device_name: "sckt-vaatwasser"
+  # displayed in HA
+  friendly_name: "Vaatwasser"
+  # Higher value gives lower watt readout
+  current_res: "0.00221"
+  # Lower value gives lower voltage readout
+  voltage_div: "955"
+  # Max Power is 3450W for 16A and 2300W for 10A
+  max_power: "3450"
+
+esphome:
+  name: "${device_name}"
+  platform: ESP8266
+  board: esp8285
+  on_boot:
+    then:
+      - switch.turn_on: relay
+      - script.execute: led_power_on
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+  manual_ip:
+    static_ip: 192.168.178.49
+    gateway: 192.168.178.254
+    subnet: 255.255.255.0
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: ${friendly_name}
+    password: !secret wifi_pass
+
+captive_portal:
+
+web_server:
+  port: 80
+
+logger:
+
+api:
+  password: !secret api_pass
+ota:
+  password: !secret ota_pass
+
+# Button configuration
+binary_sensor:
+  - platform: gpio
+    id: button
+    pin:
+      number: GPIO03
+      inverted: True
+    on_press:
+      - switch.toggle: relay
+
+# Setup of LED's used in displaying Switch status
+output:
+# Output GPIOs for blue led
+- platform: esp8266_pwm # Blue
+  id: ${friendly_name}_blue_output
+  pin:
+    number: GPIO01
+    inverted: True
+
+# Config for switch
+switch:
+  - platform: gpio
+    pin: GPIO14
+    restore_mode: RESTORE_DEFAULT_ON
+    #RESTORE_DEFAULT_OFF (Default) - Attempt to restore state and default to OFF if not possible to restore. Uses flash write cycles.
+    #RESTORE_DEFAULT_ON - Attempt to restore state and default to ON. Uses flash write cycles.
+    #ALWAYS_OFF - Always initialize the pin as OFF on bootup. Does not use flash write cycles.
+    #ALWAYS_ON - Always initialize the pin as ON on bootup. Does not use flash write cycles.
+    id: relay
+    name: "${friendly_name}"
+    on_turn_on:
+      - script.execute: led_power_on
+    on_turn_off:
+      - script.execute: led_relay_off
+
+# Status LED for connection
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+# Sensors for Voltage (V), Current (A), Power (W), Consumption (kWh)
+sensor:
+  - platform: hlw8012
+    sel_pin:
+      number: GPIO12
+      inverted: true
+    cf_pin: GPIO04
+    cf1_pin: GPIO05
+    current_resistor: ${current_res}
+    voltage_divider: ${voltage_div}
+    current:
+      name: "${friendly_name} Current"
+      unit_of_measurement: "A"
+      accuracy_decimals: 3
+    voltage:
+      name: "${friendly_name} Voltage"
+      unit_of_measurement: "V"
+    power:
+      name: "${friendly_name} Power"
+      unit_of_measurement: "W"
+      id: power
+      on_value_range:
+        - above: ${max_power}
+          then:
+            - script.execute: led_relay_off
+            - switch.turn_off: relay
+            - homeassistant.service:
+                service: persistent_notification.create
+                data:
+                  title: Message from ${friendly_name}
+                data_template:
+                  message: Switch turned off because power exceeded ${max_power}W
+    change_mode_every: 4
+    update_interval: 10s
+    energy:
+      name: "${friendly_name} Consumption"
+      unit_of_measurement: "kWh"
+      filters:
+        - multiply: 0.001
+
+
+# RGB light
+light:
+- platform: monochromatic
+  output: ${friendly_name}_blue_output
+  id: ${friendly_name}_blue_led
+
+# Blink the blue light if we aren't connected to WiFi. Could use https://esphome.io/components/status_led.html instead but then we couldn't use the blue light for other things as well.
+# Only if not connected after 30s
+interval:
+  - interval: 2000ms
+    then:
+      - if:
+          condition:
+            for:
+              time: 30s
+              condition:
+                not:
+                  wifi.connected:
+          then:
+            - light.turn_on:
+                id: ${friendly_name}_blue_led
+                brightness: 100%
+
+script:
+  - id: led_relay_off # Normal operation when relay is off
+    then:
+      - light.turn_off:
+          id: ${friendly_name}_blue_led
+  - id: led_power_on # Normal operation when relay is on
+    then:
+      - light.turn_on:
+          id: ${friendly_name}_blue_led
+          brightness: 80%

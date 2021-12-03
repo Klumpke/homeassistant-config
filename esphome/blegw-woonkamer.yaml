@@ -1,8 +1,8 @@
 substitutions:
   # used internally
-  device_name: 'blegw_eetkamer'
+  device_name: 'blegw-woonkamer'
   # displayed in HA
-  friendly_name: 'Bluetooth gateway Eetkamer'
+  friendly_name: 'Bluetooth gateway Woonkamer'
 
 esphome:
   name: ${device_name}
@@ -12,7 +12,10 @@ esphome:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_pass
-
+  manual_ip:
+    static_ip: 192.168.178.97
+    gateway: 192.168.178.254
+    subnet: 255.255.255.0
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: ${friendly_name}
@@ -40,14 +43,14 @@ esp32_ble_tracker:
 # Sensors
 sensor:
   - platform: xiaomi_hhccjcy01
-    mac_address: 'C4:7C:8D:6B:1A:C6'
+    mac_address: 'C4:7C:8D:6B:12:74'
     temperature:
-      name: "Olijfboom Temperature"
+      name: "Drakenbloed Temperature"
     moisture:
-      name: "Olijfboom Moisture"
+      name: "Drakenbloed Moisture"
     illuminance:
-      name: "Olijfboom Illuminance"
+      name: "Drakenbloed Illuminance"
     conductivity:
-      name: "Olijfboom Soil Conductivity"
+      name: "Drakenbloed Soil Conductivity"
 #    battery_level:
-#      name: "Olijfboom Battery Level"
+#      name: "Drakenbloed Battery Level"

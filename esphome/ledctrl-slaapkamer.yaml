@@ -1,6 +1,6 @@
 substitutions:
   # used internally
-  device_name: 'ledctrl_slaapkamer'
+  device_name: 'ledctrl-slaapkamer'
   # displayed in HA
   friendly_name: 'Ledstrip Slaapkamer'
 
@@ -12,7 +12,10 @@ esphome:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_pass
-
+  manual_ip:
+    static_ip: 192.168.178.13
+    gateway: 192.168.178.254
+    subnet: 255.255.255.0
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: ${friendly_name}
