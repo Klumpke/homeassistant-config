@@ -1,7 +1,7 @@
 # dwains_dashboard
 ## House-information add-on: Afvalwijzer
 ## Created by Jeroen Klompen
-## Version: 1.0.0
+## Version: 1.0.1
 
 - type: custom:dwains-heading-card
   title: {{ name }}
@@ -23,6 +23,6 @@
   show_header_toggle: false
   options:
   sort:
-    attribute: {{ (data | fromjson)['sort_attribute']|default('Sort-date') }}
+    attribute: {{ (data | fromjson)['sort_attribute']|default('Sort_date') }}
     method: attribute
     numeric: true
