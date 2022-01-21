@@ -1,5 +1,4 @@
-- alias: 'Systeem: Snapshot wekelijks'
-  initial_state: 'on'
+- alias: 'Systeem: Backup wekelijks'
   trigger:
     platform: time
     at: '03:00:00'
@@ -8,22 +7,23 @@
     weekday:
       - sun
   action:
-    - service: auto_backup.snapshot_full
-      data_template:
+    - service: auto_backup.backup_full
+      data:
         name: Home Assistant weekly {{now().strftime('%Y-%m-%d')}}
-        keep_days: 90
+        keep_days: 30
         exclude:
           # addons:
           #   - Portainer
           folders:
             - share
+            - media
 
-- alias: "Notificatie: Snapshot mislukt"
+- alias: "Notificatie: Backup mislukt"
   trigger:
     platform: event
-    event_type: auto_backup.snapshot_failed
+    event_type: auto_backup.backup_failed
   action:
     - service: notify.mobile_app_iklumpke
-      data_template:
-        title: "🚧 Snapshot mislukt"
+      data:
+        title: "🚧 Backup mislukt"
         message: "Naam: {{ trigger.event.data.name }}\nFout: {{ trigger.event.data.error }}"

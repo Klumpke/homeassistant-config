@@ -22,4 +22,4 @@
           Er is een Home Assistant OS update beschikbaar.
           Versie: {{ states('sensor.home_assistant_operating_system_newest_version') }} .
         data:
-          url: /hassio
+          url: /config/dashboard

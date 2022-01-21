@@ -49,50 +49,65 @@
       entity_id: binary_sensor.contact_garagedeur
       to: 'on'
   action:
-    - service: script.sonos_play
+    # - service: script.sonos_play
+    #   data:
+    #     sonos_entity:
+    #       - media_player.eetkamer
+    #       - media_player.boven
+    #       - media_player.zolder
+    #       - media_player.tuin
+    #     volume: 0.1
+    #     media_content: !secret http_audio_doordong
+    #     delay: '00:00:01'
+    - service: media_player.play_media
       data:
-        sonos_entity: media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
-        volume: 0.1
-        media_content: !secret http_audio_doordong
-        delay: '00:00:01'
+        entity_id:
+          - media_player.woonkamer_sonos_cloud
+          - media_player.eetkamer_sonos_cloud
+          - media_player.boven_sonos_cloud
+          - media_player.zolder_sonos_cloud
+          - media_player.tuin_sonos_cloud
+        media_content_id: !secret http_audio_doordong
+        media_content_type: music
+        extra:
+          volume: 15
 
+# - alias: "Notificatie: Garagedeur op tv woonkamer"
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.contact_garagedeur
+#       to: 'on'
+#   condition:
+#     - condition: state
+#       entity_id: media_player.tv_woonkamer
+#       state: 'on'
+#   action:
+#     - service: notify.tv_woonkamer
+#       data:
+#         title: " "
+#         message: "🚪  Garagedeur geopend"
+#         data:
+#           fontsize: small
+#           position: top-right
+#           duration: 5
+#           interrupt: true
 
-- alias: "Notificatie: Garagedeur op tv woonkamer"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.contact_garagedeur
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: media_player.tv_woonkamer
-      state: 'on'
-  action:
-    - service: notify.tv_woonkamer
-      data:
-        title: " "
-        message: "🚪  Garagedeur geopend"
-        data:
-          fontsize: small
-          position: top-right
-          duration: 5
-          interrupt: true
-
-- alias: "Notificatie: Garagedeur op tv slaapkamer"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.contact_garagedeur
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: media_player.tv_slaapkamer
-      state: 'on'
-  action:
-    - service: notify.tv_slaapkamer
-      data:
-        title: " "
-        message: "🚪  Garagedeur geopend"
-        data:
-          fontsize: small
-          position: top-right
-          duration: 5
-          interrupt: true
+# - alias: "Notificatie: Garagedeur op tv slaapkamer"
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.contact_garagedeur
+#       to: 'on'
+#   condition:
+#     - condition: state
+#       entity_id: media_player.tv_slaapkamer
+#       state: 'on'
+#   action:
+#     - service: notify.tv_slaapkamer
+#       data:
+#         title: " "
+#         message: "🚪  Garagedeur geopend"
+#         data:
+#           fontsize: small
+#           position: top-right
+#           duration: 5
+#           interrupt: true

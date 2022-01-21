@@ -41,10 +41,22 @@ sensor.iklumpke_steps:
 binary_sensor.contact_garagedeur:
   dwains_dashboard_popup: 'dwains-dashboard/addons/popups/door.garagedeur.yaml'
   dwains_dashboard_popup_title: Garagedeur
-
 binary_sensor.contact_achterdeur:
   dwains_dashboard_popup: 'dwains-dashboard/addons/popups/door.achterdeur.yaml'
   dwains_dashboard_popup_title: Achterdeur
+
+binary_sensor.contact_slaapkamerraam:
+  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/window.yaml'
+  dwains_dashboard_popup_title: Slaapkamerraam
+binary_sensor.contact_kleine_kamerraam:
+  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/window.yaml'
+  dwains_dashboard_popup_title: Kleine kamerraam
+binary_sensor.contact_logeerkamerraam:
+  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/window.yaml'
+  dwains_dashboard_popup_title: Logeerkamerraam
+binary_sensor.contact_zolderraam:
+  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/window.yaml'
+  dwains_dashboard_popup_title: Zolderraam
 
 light.wled_love_letters:
   dwains_dashboard_popup: 'dwains-dashboard/addons/popups/light.eetkamer_wled_love_letters.yaml'

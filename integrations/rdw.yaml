@@ -1,12 +1,4 @@
 rdw:
-  - plate: XT249K
-    name: "Volkswagen Polo"
-    dateformat: '%d-%m-%Y'
-    binary_sensors:
-      - insured
-    sensors:
-      - expdate
-      - recall
   - plate: MSPX82
     name: "Yamaha R6"
     dateformat: '%d-%m-%Y'

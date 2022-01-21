@@ -1,7 +1,7 @@
 persons:
   - name: Jeroen
     track: person.jeroen
-    show_map: 'false'
+    show_map: 'true'
     map_hours_to_show: 24
     # addons:
     #   - name: Map
@@ -13,8 +13,8 @@ persons:
         - entity: sensor.iklumpke_battery_state
         - entity: sensor.iklumpke_distance
         - entity: sensor.iklumpke_steps
-        - entity: sensor.mail_jeroen
-        - entity: sensor.mail_jeroen_werk
+        - entity: sensor.reistijd_jeroen
+        - entity: sensor.reistijd_jeroen_e_quest_sd33
     more_entities:
       columns: 1
       entities:

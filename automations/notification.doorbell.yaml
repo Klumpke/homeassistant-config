@@ -40,28 +40,28 @@
       data:
         sound: pushover
         attachment: "/config/www/images/snapshots/cam_voordeur.jpg"
-  - service: notify.tv_woonkamer
-    data:
-      title: "🔔  Deurbel"
-      message: "Er is aangebeld!"
-      data:
-        fontsize: small
-        position: top-right
-        duration: 10
-        interrupt: true
-        file:
-          path: "/config/www/images/snapshots/cam_voordeur.jpg"
-  - service: notify.tv_slaapkamer
-    data:
-      title: "🔔  Deurbel"
-      message: "Er is aangebeld!"
-      data:
-        fontsize: small
-        position: top-right
-        duration: 10
-        interrupt: true
-        file:
-          path: "/config/www/images/snapshots/cam_voordeur.jpg"
+  # - service: notify.tv_woonkamer
+  #   data:
+  #     title: "🔔  Deurbel"
+  #     message: "Er is aangebeld!"
+  #     data:
+  #       fontsize: small
+  #       position: top-right
+  #       duration: 10
+  #       interrupt: true
+  #       file:
+  #         path: "/config/www/images/snapshots/cam_voordeur.jpg"
+  # - service: notify.tv_slaapkamer
+  #   data:
+  #     title: "🔔  Deurbel"
+  #     message: "Er is aangebeld!"
+  #     data:
+  #       fontsize: small
+  #       position: top-right
+  #       duration: 10
+  #       interrupt: true
+  #       file:
+  #         path: "/config/www/images/snapshots/cam_voordeur.jpg"
 
 
 - alias: "Notificatie: Deurbel audio"
@@ -72,12 +72,28 @@
     from: 'off'
     to: 'on'
   action:
-  - service: script.sonos_play
+  # - service: script.sonos_play
+  #   data:
+  #     sonos_entity:
+  #       - media_player.eetkamer
+  #       - media_player.boven
+  #       - media_player.zolder
+  #       - media_player.tuin
+  #     volume: 0.4
+  #     media_content: !secret http_audio_deurbel
+  #     delay: '00:00:03'
+  - service: media_player.play_media
     data:
-      sonos_entity: media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
-      volume: 0.4
-      media_content: !secret http_audio_deurbel
-      delay: '00:00:03'
+      entity_id:
+        - media_player.woonkamer_sonos_cloud
+        - media_player.eetkamer_sonos_cloud
+        - media_player.boven_sonos_cloud
+        - media_player.zolder_sonos_cloud
+        - media_player.tuin_sonos_cloud
+      media_content_id: !secret http_audio_deurbel
+      media_content_type: music
+      extra:
+        volume: 20
 
 
 - alias: "Notificatie: Deurbel stream"
@@ -131,9 +147,9 @@
             #   entity_id: binary_sensor.voordeur
             #   state: "off"
           sequence:
-            - service: unifiprotect.set_doorbell_lcd_message
+            - service: unifiprotect.set_doorbell_message
               data:
-                entity_id: camera.voordeur
+                entity_id: select.doorbell_text_voordeur
                 message: "MOMENTJE..."
                 duration: 6
         - conditions:
@@ -141,9 +157,9 @@
               after: "06:00:00"
               before: "12:00:00"
           sequence:
-            - service: unifiprotect.set_doorbell_lcd_message
+            - service: unifiprotect.set_doorbell_message
               data:
-                entity_id: camera.voordeur
+                entity_id: select.doorbell_text_voordeur
                 message: "GOEDEMORGEN"
 #                duration: 5
         - conditions:
@@ -151,30 +167,30 @@
               after: "12:00:00"
               before: "17:30:00"
           sequence:
-            - service: unifiprotect.set_doorbell_lcd_message
+            - service: unifiprotect.set_doorbell_message
               data:
-                entity_id: camera.voordeur
+                entity_id: select.doorbell_text_voordeur
                 message: "GOEDEMIDDAG"
         - conditions:
             - condition: time
               after: "17:30:00"
               before: "23:59:00"
           sequence:
-            - service: unifiprotect.set_doorbell_lcd_message
+            - service: unifiprotect.set_doorbell_message
               data:
-                entity_id: camera.voordeur
+                entity_id: select.doorbell_text_voordeur
                 message: "GOEDENAVOND"
         - conditions:
             - condition: time
               after: "00:00:00"
               before: "06:00:00"
           sequence:
-            - service: unifiprotect.set_doorbell_lcd_message
+            - service: unifiprotect.set_doorbell_message
               data:
-                entity_id: camera.voordeur
+                entity_id: select.doorbell_text_voordeur
                 message: "GOEDENACHT"
       default:
-        - service: unifiprotect.set_doorbell_lcd_message
+        - service: unifiprotect.set_doorbell_message
           data:
-            entity_id: camera.voordeur
+            entity_id: select.doorbell_text_voordeur
             message: "WELKOM"

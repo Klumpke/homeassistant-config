@@ -13,10 +13,17 @@ zone:
     passive: false
     icon: mdi:home
 
-  # Work Zone Jeroen
-  - name: Alfion
-    latitude: !secret zone_work_jeroen_latitude
-    longitude: !secret zone_work_jeroen_longitude
+  # Work Zone Jeroen SD26
+  - name: e-Quest SD26
+    latitude: !secret zone_work_sd26_jeroen_latitude
+    longitude: !secret zone_work_sd26_jeroen_longitude
+    radius: 125
+    icon: mdi:briefcase
+
+  # Work Zone Jeroen SD33
+  - name: e-Quest SD33
+    latitude: !secret zone_work_sd33_jeroen_latitude
+    longitude: !secret zone_work_sd33_jeroen_longitude
     radius: 125
     icon: mdi:briefcase
 

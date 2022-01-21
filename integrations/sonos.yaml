@@ -10,6 +10,10 @@ sonos:
       - 192.168.178.53
       - 192.168.178.54
 
+sonos_cloud:
+  client_id: !secret sonos_dev_key
+  client_secret: !secret sonos_dev_secret
+
 sensor:
   - platform: template
     sensors:

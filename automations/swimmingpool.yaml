@@ -67,6 +67,8 @@
       minutes: '/6'
       seconds: 00
   condition:
+    - condition: template  # Only between May and August.
+      value_template: '{{ now().month in [5,6,7,8] }}'
     - condition: time
       after: '08:00:00'
       before: '16:55:00'
@@ -97,6 +99,8 @@
       minutes: '/6'
       seconds: 00
   condition:
+    - condition: template  # Only between May and August.
+      value_template: '{{ now().month in [5,6,7,8] }}'
     - condition: time
       after: '08:00:00'
       before: '11:55:00'
@@ -126,6 +130,8 @@
     platform: time
     at: '17:00:00'
   condition:
+    - condition: template  # Only between May and August.
+      value_template: '{{ now().month in [5,6,7,8] }}'
     - condition: state
       entity_id: input_boolean.swimming_season
       state: 'on'
@@ -152,6 +158,8 @@
     platform: time
     at: '12:00:00'
   condition:
+    - condition: template  # Only between May and August.
+      value_template: '{{ now().month in [5,6,7,8] }}'
     - condition: state
       entity_id: input_boolean.swimming_season
       state: 'off'

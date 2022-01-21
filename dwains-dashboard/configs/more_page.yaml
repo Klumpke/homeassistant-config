@@ -29,7 +29,7 @@ more_page:
         path: 'dwains-dashboard/addons/more_page/afvalwijzer/page.yaml'
         data:
           wastecollector: blink
-          # sort_attribute: Sort-date
+          # sort_attribute: Sort_date
           # language: nl
       - name: Automations
         icon: fapro:fal_flux-capacitor
@@ -68,11 +68,11 @@ more_page:
         path: 'dwains-dashboard/addons/more_page/vehicle_info/page.yaml'
         data:
           vehicles:
-            - name: Volkswagen Polo 1.0T R-Line
-              image: /local/images/vw-polo.jpg
-              expdate: sensor.volkswagen_polo_expdate
-              insured: binary_sensor.volkswagen_polo_insured
-              recall: sensor.volkswagen_polo_recall
+            # - name: Volkswagen Polo 1.0T R-Line
+            #   image: /local/images/vw-polo.jpg
+            #   expdate: sensor.volkswagen_polo_expdate
+            #   insured: binary_sensor.volkswagen_polo_insured
+            #   recall: sensor.volkswagen_polo_recall
             - name: Yamaha YZF-R6
               image: /local/images/yamaha-r6.jpg
               insured: binary_sensor.yamaha_r6_insured

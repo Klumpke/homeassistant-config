@@ -6,7 +6,7 @@
     - service: notify.mobile_app_iklumpke
       data:
         title: "⚠️ Home Assistant"
-        message: "Home Assistant is herstart..."
+        message: "Home Assistant is gestart..."
     # - service: notify.email
     #   data:
     #     title: "Warning"

@@ -9,9 +9,15 @@ sensor:
     region: EU
 
   - platform: waze_travel_time
-    name: Reistijd Jeroen Alfion
+    name: Reistijd Jeroen e-Quest SD26
     origin: person.jeroen
-    destination: zone.alfion
+    destination: zone.e_quest_sd26
+    region: EU
+
+  - platform: waze_travel_time
+    name: Reistijd Jeroen e-Quest SD33
+    origin: person.jeroen
+    destination: zone.e_quest_sd33
     region: EU
 
   - platform: waze_travel_time

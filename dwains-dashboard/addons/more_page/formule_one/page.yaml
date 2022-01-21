@@ -8,6 +8,11 @@
           items_classes: 'col-xs-12 col-md-12'
           cards:
             - type: markdown
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
               content: >
                 ![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/1280px-F1.svg.png)
 
@@ -15,6 +20,11 @@
           items_classes: 'col-xs-12 col-md-12'
           cards:
             - type: 'custom:button-card'
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
               name: Location
               styles:
                 card:
@@ -54,6 +64,11 @@
                   [[[ return `${states['sensor.formula_1'].attributes.race_track}` ]]]
 
             - type: 'custom:button-card'
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
               name: Race
               styles:
                 card:

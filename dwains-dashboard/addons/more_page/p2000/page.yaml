@@ -13,6 +13,11 @@
           # item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
           title: P2000 Someren
         - type: markdown
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
           content: >
             Datum : {{ state_attr('sensor.p2000_someren', 'datum' ) }}   Tijd: {{state_attr('sensor.p2000_someren', 'tijd') }}
 
@@ -56,6 +61,11 @@
           # item_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
           title: 24uur logboek
         - type: "custom:logbook-card"
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
           entity: sensor.p2000_someren_melding
           title: " "
           hiddenState:

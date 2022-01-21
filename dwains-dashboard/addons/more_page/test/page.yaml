@@ -13,7 +13,11 @@
     name:
       - font-weight: 900
   type: 'custom:button-card'
-
+  style: |
+    ha-card {
+      border-radius: 5px;
+      background-color: var(--dwains-theme-primary);
+    }
 
 - type: custom:dwains-flexbox-card
   # padding: true
@@ -37,11 +41,21 @@
             name:
               - font-weight: 900
           type: 'custom:button-card'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
 
         - type: custom:dwains-flexbox-card
           items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
           cards:
             - type: entities
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
               show_header_toggle: false
               entities:
                 - entity: sensor.hacs
@@ -81,11 +95,21 @@
             name:
               - font-weight: 900
           type: 'custom:button-card'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
 
         - type: custom:dwains-flexbox-card
           items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
           cards:
             - type: entities
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
               show_header_toggle: false
               entities:
                 - entity: sensor.tpl_sunlightstrength
@@ -109,11 +133,21 @@
             name:
               - font-weight: 900
           type: 'custom:button-card'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
 
         - type: custom:dwains-flexbox-card
           items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
           cards:
             - type: entities
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background-color: var(--dwains-theme-primary);
+                }
               show_header_toggle: false
               entities:
                 - entity: input_boolean.motion_light_ledstrip_slaapkamer

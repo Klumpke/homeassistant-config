@@ -73,7 +73,7 @@
               icon: mdi:home-assistant
               tap_action:
                 action: navigate
-                navigation_path: /hassio/dashboard
+                navigation_path: /config/dashboard
               style: |
                 :host {
                   {% if states(config.entity) != '0' %}
@@ -326,13 +326,13 @@
                 graph: line
               #   extrema: false
         - type: 'custom:auto-entities'
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--dwains-theme-primary);
+            }
           card:
             type: glance
-            style: |
-              ha-card {
-                border-radius: 5px;
-                background-color: var(--dwains-theme-primary);
-              }
             columns: 6
           filter:
             # exclude:

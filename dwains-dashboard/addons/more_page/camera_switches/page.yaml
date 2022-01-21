@@ -1,7 +1,7 @@
 # dwains_dashboard
 ## More-page add-on: Camera's (add switches)
 ## Created by Jeroen Klompen
-## Version: 1.0.1
+## Version: 1.0.2
 
 - type: custom:dwains-flexbox-card
   items_classes: 'col-xs-12 col-sm-6 col-md-6 col-lg-6'
@@ -9,6 +9,11 @@
   cards:
     {% for camera in (data | fromjson)["cameras"]["entities"] %}
     - type: picture-glance
+      style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+        }
       camera_image: {{ camera }}
       aspect_ratio: 0%
       entities:
