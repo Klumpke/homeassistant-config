@@ -3,6 +3,10 @@
   trigger:
     platform: state
     entity_id: sensor.hacs
+    not_from:
+      - "None"
+      - "unavailable"
+      - "unknown"
   condition:
     - condition: template
       value_template: "{{ states(trigger.entity_id) != 'unknown'}}"
