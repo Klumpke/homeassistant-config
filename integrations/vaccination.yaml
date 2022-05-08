@@ -1,6 +1,0 @@
-sensor:
-  - platform: rest
-    name: Vaccinatie
-    resource: https://user-api.coronatest.nl/vaccinatie/programma/bepaalbaar/1991/NEE/NEE
-    scan_interval: 300
-    value_template: "{{ value_json.success }}"

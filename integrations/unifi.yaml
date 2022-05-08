@@ -51,3 +51,30 @@ sensor:
   #   resource: https://eu.store.ui.com/collections/unifi-protect/products/unifi-protect-g3-instant-camera
   #   select: ".comProduct__title--wrapper"
   #   scan_interval: 60
+
+
+
+  # - platform: ubi_sensor
+  #   host: !secret device_tracker_unifi_host
+  #   username: !secret device_tracker_unifi_user
+  #   password: !secret device_tracker_unifi_pass
+  #   version: 'v5' ## the base version of the controller API [v4|v5|unifiOS|UDMP-unifiOS] If you have a cloudkey is the version UDMP-unifiOS ## ## this would be for the version of the controller you are running ##
+  #   site_id: !secret device_tracker_unifi_siteid
+  #   port: '8443'
+  #   verify_ssl: False
+  #   switch: True #indien sprake is van AP anders False zonder ''
+  #   ap: False #indien sprake is van AP anders False zonder ''
+  #   name_switch: 'SW Meterkast'
+  #   target_mac: 'f0:9f:c2:68:6b:56'
+  # - platform: ubi_sensor
+  #   host: !secret device_tracker_unifi_host
+  #   username: !secret device_tracker_unifi_user
+  #   password: !secret device_tracker_unifi_pass
+  #   version: 'v5' ## the base version of the controller API [v4|v5|unifiOS|UDMP-unifiOS] If you have a cloudkey is the version UDMP-unifiOS ## ## this would be for the version of the controller you are running ##
+  #   site_id: !secret device_tracker_unifi_siteid
+  #   port: '8443'
+  #   verify_ssl: False
+  #   switch: False #indien sprake is van AP anders False zonder ''
+  #   ap: True #indien sprake is van AP anders False zonder ''
+  #   name_ap: 'AP Woonkamer'
+  #   target_mac: 'f0:9f:c2:d6:8d:02'

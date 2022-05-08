@@ -9,7 +9,7 @@ binary_sensor:
   # https://www.home-assistant.io/components/binary_sensor.workday/
   #
   - platform: workday
-    country: NLD
+    country: NL
     workdays: [mon, tue, wed, thu, fri]
     excludes: [sat, sun, holiday]
     # add_holidays:

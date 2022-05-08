@@ -95,7 +95,7 @@
                   {% endif %};
                 }
 
-            - entity: sensor.home_assistant_log
+            - entity: sensor.home_assistant_log_size
               name: HA log grootte
               tap_action:
                 action: url

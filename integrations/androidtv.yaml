@@ -21,10 +21,10 @@ media_player:
 
 #  https://www.home-assistant.io/integrations/nfandroidtv/
 #  https://play.google.com/store/apps/details?id=de.cyberdream.androidtv.notifications.google
-notify:
-  - platform: nfandroidtv
-    name: TV Woonkamer
-    host: !secret philips_tv_ip
+# notify:
+#   - platform: nfandroidtv
+#     name: TV Woonkamer
+#     host: !secret philips_tv_ip
 
   # - platform: nfandroidtv
   #   name: TV Slaapkamer

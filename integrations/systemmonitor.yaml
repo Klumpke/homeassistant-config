@@ -44,19 +44,20 @@ sensor:
     name: NUC model
     command: "cat /sys/class/dmi/id/product_name"
 
-  # Home Assistant version available
-  # https://www.home-assistant.io/components/sensor.version/
-  - platform: version
-    name: version_available
-    # name: Latest Available Version
-    beta: false
-    source: hassio
-    image: qemux86-64
-  # Home Assistant version installed
-  - platform: version
-    name: version_current
-    # name: Installed Version
-    source: local
+  # ## Moved to UI Integrations ##
+  # # Home Assistant version available
+  # # https://www.home-assistant.io/components/sensor.version/
+  # - platform: version
+  #   name: version_available
+  #   # name: Latest Available Version
+  #   beta: false
+  #   source: hassio
+  #   image: qemux86-64
+  # # Home Assistant version installed
+  # - platform: version
+  #   name: version_current
+  #   # name: Installed Version
+  #   source: local
 
   # Uptime sensor platform displays the time since the last Home Assistant restart
   # https://www.home-assistant.io/integrations/uptime/

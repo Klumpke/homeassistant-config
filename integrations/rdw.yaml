@@ -1,8 +1,0 @@
-rdw:
-  - plate: MSPX82
-    name: "Yamaha R6"
-    dateformat: '%d-%m-%Y'
-    binary_sensors:
-      - insured
-    sensors:
-      - recall

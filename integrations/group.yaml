@@ -20,7 +20,7 @@ group:
       - light.combikast
       - light.fib_fgd212_keuken_nis
       - light.tuin
-      - light.wled_love_letters
+      # - light.wled_love_letters
 
   kerstverlichting:
     name: Kerstverlichting
