@@ -29,17 +29,20 @@
       title: "🔊 Sonos"
       message: "Let op, speakers staan nog aan"
       data:
-        push:
-          category: "sonos_alert"
+        actions:
+          - action: "SONOS_UITSCHAKELEN"
+            title: "Uitschakelen"
+          - action: 'SONOS_ANNULEREN'
+            title: 'Annuleren'
+            destructive: true
 
 
 - alias: "iOS Actionable Notificatie: Sonos uitschakelen"
-  initial_state: true
   trigger:
     platform: event
-    event_type: ios.notification_action_fired
+    event_type: mobile_app_notification_action
     event_data:
-      actionName: SONOS_UITSCHAKELEN
+      action: "SONOS_UITSCHAKELEN"
   action:
     service: media_player.media_stop
     entity_id: media_player.woonkamer, media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
