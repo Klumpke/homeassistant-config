@@ -6,7 +6,7 @@
 
 ---
 
-### Status of: 2022.01.21
+### Status of: 2022.05.08
 Partial Home Assistant configuration with themes, templates and views.
 
 ### System Architecture
@@ -89,6 +89,7 @@ It's a minimalistic OS that works with **Docker**.
 - Tado [Smart Thermostat v3][tado_smart_thermostat]
 - Roborock [S55][roborock_s55]
 - Ubiquiti [G4 Camera][ubnt_g4]
+- Ubiquiti [G4 Doorbell][ubnt_g4_doorbell]
 - Google [Next Hub][google_hub]
 
 ### How does it look like?
@@ -152,7 +153,8 @@ The below screenshots show some mobile examples.<br>
 [miflora]: https://nl.aliexpress.com/item/4000131669924.html?spm=a2g0o.productlist.0.0.34781762uvPDL1&algo_pvid=0336ca00-a1b2-47a1-9443-6d3c943b7fbf&algo_expid=0336ca00-a1b2-47a1-9443-6d3c943b7fbf-0&btsid=ca12ffb4-4507-4ee6-8af1-ece8150436a3&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_55
 [tado_smart_thermostat]: https://www.tado.com/nl/producten/starterskit-slimme-thermostaat
 [roborock_s55]: https://nl.aliexpress.com/item/32852322829.html?spm=a2g0s.9042311.0.0.563e4c4dl4qQt1
-[ubnt_g4]: https://www.ui.com/unifi-video/unifi-video-camera-g4/
+[ubnt_g4]: https://store.ui.com/collections/unifi-protect-cameras/products/unifi-protect-g4-bullet-camera
+[ubnt_g4_doorbell]: https://store.ui.com/collections/unifi-protect/products/uvc-g4-doorbell
 [google_hub]: https://store.google.com/nl/product/google_nest_hub
 
 
