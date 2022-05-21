@@ -1,12 +1,7 @@
 person.jeroen:
   entity_picture: "/local/images/persons/jeroen.png"
-person.joyce:
-  entity_picture: "/local/images/persons/joyce.png"
-
 device_tracker.iklumpke:
   entity_picture: /local/images/persons/jeroen_person.png
-device_tracker.joyce:
-  entity_picture: /local/images/persons/joyce_person.png
 
 sensor.blink_gft:
   entity_picture: /local/images/afval_gft_small.png
@@ -21,14 +16,6 @@ sensor.blink_pmd:
   entity_picture: /local/images/afval_pmd_small.png
   friendly_name: PMD
 
-sensor.joyce_battery_level:
-  friendly_name: Batterij
-sensor.joyce_battery_state:
-  friendly_name: Batterij
-sensor.joyce_distance:
-  friendly_name: Afstand
-sensor.joyce_steps:
-  friendly_name: Stappen
 sensor.iklumpke_battery_level:
   friendly_name: Batterij
 sensor.iklumpke_battery_state:
@@ -38,29 +25,6 @@ sensor.iklumpke_distance:
 sensor.iklumpke_steps:
   friendly_name: Stappen
 
-binary_sensor.contact_garagedeur:
-  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/door.garagedeur.yaml'
-  dwains_dashboard_popup_title: Garagedeur
-binary_sensor.contact_achterdeur:
-  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/door.achterdeur.yaml'
-  dwains_dashboard_popup_title: Achterdeur
-
-binary_sensor.contact_slaapkamerraam:
-  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/window.yaml'
-  dwains_dashboard_popup_title: Slaapkamerraam
-binary_sensor.contact_kleine_kamerraam:
-  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/window.yaml'
-  dwains_dashboard_popup_title: Kleine kamerraam
-binary_sensor.contact_logeerkamerraam:
-  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/window.yaml'
-  dwains_dashboard_popup_title: Logeerkamerraam
-binary_sensor.contact_zolderraam:
-  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/window.yaml'
-  dwains_dashboard_popup_title: Zolderraam
-
-light.wled_love_letters:
-  dwains_dashboard_popup: 'dwains-dashboard/addons/popups/light.eetkamer_wled_love_letters.yaml'
-  dwains_dashboard_popup_title: Love letters
 
 # light.dressoir:
 #   dwains_dashboard_popup: 'dwains-dashboard/addons/popups/light.eetkamer_dressoir.yaml'

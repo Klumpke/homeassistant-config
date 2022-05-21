@@ -8,6 +8,7 @@ card:
       style: dashed
     show:
       end_date: false
+      separator: true
       start_date: true
     state_map:
     - icon: fapro:fal_window-frame-open
