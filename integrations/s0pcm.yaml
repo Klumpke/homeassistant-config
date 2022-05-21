@@ -11,6 +11,15 @@ sensor:
     unit_of_measurement: "l"
 
   - platform: mqtt
+    state_topic: "s0pcmreader/1/total"
+    name: "Water Totaal"
+    unique_id: "water_totaal"
+    value_template: "{{ value_json | float / 1000 }}"
+    unit_of_measurement: m³
+    icon: mdi:water-pump
+    state_class: total_increasing
+
+  - platform: mqtt
     name: "S0pcm vandaag"
     icon: "mdi:counter"
     state_topic: "s0pcmreader/1/today"

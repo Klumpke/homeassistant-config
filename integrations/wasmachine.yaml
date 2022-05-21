@@ -39,12 +39,16 @@ sensor:
       washing_machine_status:
         value_template: '{{ states.input_select.washing_machine_status.state}}'
         friendly_name: 'Wasmachine Status'
+        unique_id: 74b7e122-ce98-4282-8518-b1e28ae33482
       dishwasher_status:
         value_template: '{{ states.input_select.dishwasher_status.state}}'
         friendly_name: 'Vaatwasser Status'
+        unique_id: ac05d513-193d-48b2-a937-b379009aa0ba
       dryer_status:
         value_template: '{{ states.input_select.dryer_status.state}}'
         friendly_name: 'Droger Status'
+        unique_id: 70891148-7efa-43d4-b3aa-3cb1fd7dfa43
       afzuigkap_status:
         value_template: '{{ states.input_select.afzuigkap_status.state}}'
         friendly_name: 'Afzuigkap Status'
+        unique_id: e6ef9e03-58eb-4696-b969-fb9eb98db852

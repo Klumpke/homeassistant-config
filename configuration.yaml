@@ -36,8 +36,9 @@ frontend:
   extra_module_url:
     - /hacsfiles/lovelace-card-mod/card-mod.js
 
+  themes: !include_dir_merge_named themes/
 # Lovelace Mode
 lovelace:
   mode: yaml
   # Include external resource
-  resources: !include dwains-dashboard/resources/custom_resources.yaml
+  resources: !include custom_resources.yaml

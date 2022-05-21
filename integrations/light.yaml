@@ -8,30 +8,35 @@ light:
 
   - platform: group
     name: Combikast
+    unique_id:  6a34a6b8-fadd-41e6-982f-744f0fd15598
     entities:
       - light.combikast_r
       - light.combikast_l
 
   - platform: group
     name: Nachtlampjes
+    unique_id: fef321b4-2eae-4672-a9bc-cae5e5ccd2ad
     entities:
       - light.nachtkast_r
       - light.nachtkast_l
 
   - platform: group
     name: Dressoir
+    unique_id: c7c39c70-a829-4c12-9d42-0a5f24652d51
     entities:
       - light.dressoir_r
       - light.dressoir_l
 
   - platform: group
     name: Garage
+    unique_id: c48a85cd-1c23-4374-811a-2d61dbd225eb
     entities:
       - light.garage_a
       - light.garage_b
 
   - platform: group
     name: Tuin
+    unique_id: a864a202-ec95-4799-9c0c-b266f2f50862
     entities:
       - light.tuin_a
       - light.tuin_b
@@ -39,6 +44,7 @@ light:
 
   - platform: group
     name: Terras
+    unique_id: 65c4452c-4fdc-4414-9d6a-b7acaddbedad
     entities:
       - light.terras_a
       - light.terras_b

@@ -38,3 +38,6 @@ sensor:
               {{ state_attr('calendar.formula_1_calendar_race', 'location') }}
           race_name: >
               {{ state_attr('calendar.formula_1_calendar_race', 'message') | replace ('Race: 2021 ','') }}
+
+
+  - platform: formulaone_api

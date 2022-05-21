@@ -20,6 +20,7 @@ rfxtrx:
 cover:
   - platform: mqtt
     name: "Slaapkamer"
+    unique_id: b6ca49e8-3144-4f06-aa22-295881c24b51
     command_topic: 'hass/room/cover/1/in'
     set_position_topic: 'hass/room/cover/1/position'
     position_topic: 'hass/room/cover/1/state'

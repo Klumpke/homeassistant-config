@@ -195,6 +195,7 @@ recorder:
       - sensor.dsmr_reading_electricity_delivered_1_cost
 
       # S0PCM
+      - sensor.water_totaal
       - sensor.s0pcm_vandaag
       - sensor.s0pcm_hourly
 
@@ -381,3 +382,8 @@ recorder:
       - sensor.coinbase_oxt_wallet
       - sensor.coinbase_xlm_wallet
       - sensor.coinbase_zrx_wallet
+
+      # ESPresence
+      - sensor.jeroen_apple_watch
+      - sensor.jeroen_apple_iphone
+      - sensor.jeroen_apple_ipad

@@ -108,7 +108,7 @@ light.nachtkast_l:
 light.nachtkast_r:
   templates:
     icon: mdi:lamp
-  friendly_name: Joyce
+  friendly_name: Lamp R
 
 light.ledstrip_slaapkamer:
   templates:
