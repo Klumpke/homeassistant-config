@@ -1,0 +1,277 @@
+blueprint:
+  description: An Energy overview blueprint page by Jeroen Klompen
+  name: Energy page Blueprint
+  type: card
+  version: '1.0'
+card:
+  cards:
+  - cards:
+    - decimals: 0
+      entities:
+      - entity: sensor.power_consumption_watt
+      hour24: true
+      hours_to_show: 24
+      line_color: var(--dwains-theme-accent)
+      name: STROOM VERBRUIK
+      points_per_hour: 2
+      show:
+        average: true
+        extrema: true
+        graph: bar
+      style: "ha-card {\n  border-radius: 5px;\n  background-color: var(--secondary-background-color);\n\
+        }\n"
+      type: custom:mini-graph-card
+    - cards:
+      - entity: sensor.dsmr_day_consumption_electricity_merged
+        name: Totaal vandaag
+        show_icon: true
+        show_state: true
+        styles:
+          card:
+          - background-color: var(--secondary-background-color)
+          - border-radius: 5px
+          - margin-bottom: 10px
+          - padding: 15px 0
+          grid:
+          - grid-template-areas: '"i n""i s"'
+          - grid-template-columns: 25% 75%
+          - grid-template-rows: min-content min-content
+          icon:
+          - color: var(--dwains-theme-accent)
+          label:
+          - padding-top: 0px
+          - padding-bottom: 0px
+          - font-size: 12px
+          - color: var(--dwains-theme-grey)
+          - justify-self: start
+          name:
+          - font-size: 15px
+          - font-weight: bold
+          - color: var(--dwains-theme-names)
+          - justify-self: start
+          state:
+          - justify-self: start
+          - font-size: 13px
+          - color: var(--dwains-theme-names)
+        tap_action:
+          action: none
+        type: custom:button-card
+      - entity: sensor.dsmr_day_consumption_electricity_cost_merged
+        name: Kosten vandaag
+        show_icon: true
+        show_state: true
+        styles:
+          card:
+          - background-color: var(--secondary-background-color)
+          - border-radius: 5px
+          - margin-bottom: 10px
+          - padding: 15px 0
+          grid:
+          - grid-template-areas: '"i n""i s"'
+          - grid-template-columns: 25% 75%
+          - grid-template-rows: min-content min-content
+          icon:
+          - color: var(--dwains-theme-accent)
+          label:
+          - padding-top: 0px
+          - padding-bottom: 0px
+          - font-size: 12px
+          - color: var(--dwains-theme-grey)
+          - justify-self: start
+          name:
+          - font-size: 15px
+          - font-weight: bold
+          - color: var(--dwains-theme-names)
+          - justify-self: start
+          state:
+          - justify-self: start
+          - font-size: 13px
+          - color: var(--dwains-theme-names)
+        tap_action:
+          action: none
+        type: custom:button-card
+      items_classes: col-xs-6 col-sm-6 col-md-6 col-lg-6
+      type: custom:dwains-flexbox-card
+    items_classes: col-lg-12 col-md-12 col-sm-12 col-xs-12
+    type: custom:dwains-flexbox-card
+  - cards:
+    - decimals: 3
+      entities:
+      - entity: sensor.dsmr_consumption_gas_currently_delivered
+      hour24: true
+      hours_to_show: 24
+      line_color: var(--dwains-theme-accent)
+      name: GAS VERBRUIK
+      points_per_hour: 2
+      show:
+        average: true
+        extrema: true
+        graph: bar
+      style: "ha-card {\n  border-radius: 5px;\n  background-color: var(--secondary-background-color);\n\
+        }\n"
+      type: custom:mini-graph-card
+    - cards:
+      - entity: sensor.dsmr_day_consumption_gas
+        name: Totaal vandaag
+        show_icon: true
+        show_state: true
+        styles:
+          card:
+          - background-color: var(--secondary-background-color)
+          - border-radius: 5px
+          - margin-bottom: 10px
+          - padding: 15px 0
+          grid:
+          - grid-template-areas: '"i n""i s"'
+          - grid-template-columns: 25% 75%
+          - grid-template-rows: min-content min-content
+          icon:
+          - color: var(--dwains-theme-accent)
+          label:
+          - padding-top: 0px
+          - padding-bottom: 0px
+          - font-size: 12px
+          - color: var(--dwains-theme-grey)
+          - justify-self: start
+          name:
+          - font-size: 15px
+          - font-weight: bold
+          - color: var(--dwains-theme-names)
+          - justify-self: start
+          state:
+          - justify-self: start
+          - font-size: 13px
+          - color: var(--dwains-theme-names)
+        tap_action:
+          action: none
+        type: custom:button-card
+      - entity: sensor.dsmr_day_consumption_gas_cost
+        name: Kosten vandaag
+        show_icon: true
+        show_state: true
+        styles:
+          card:
+          - background-color: var(--secondary-background-color)
+          - border-radius: 5px
+          - margin-bottom: 10px
+          - padding: 15px 0
+          grid:
+          - grid-template-areas: '"i n""i s"'
+          - grid-template-columns: 25% 75%
+          - grid-template-rows: min-content min-content
+          icon:
+          - color: var(--dwains-theme-accent)
+          label:
+          - padding-top: 0px
+          - padding-bottom: 0px
+          - font-size: 12px
+          - color: var(--dwains-theme-grey)
+          - justify-self: start
+          name:
+          - font-size: 15px
+          - font-weight: bold
+          - color: var(--dwains-theme-names)
+          - justify-self: start
+          state:
+          - justify-self: start
+          - font-size: 13px
+          - color: var(--dwains-theme-names)
+        tap_action:
+          action: none
+        type: custom:button-card
+      items_classes: col-xs-6 col-sm-6 col-md-6 col-lg-6
+      type: custom:dwains-flexbox-card
+    items_classes: col-lg-12 col-md-12 col-sm-12 col-xs-12
+    type: custom:dwains-flexbox-card
+  - cards:
+    - decimals: 0
+      entities:
+      - entity: sensor.s0pcm_hourly
+      hour24: true
+      hours_to_show: 24
+      line_color: var(--dwains-theme-accent)
+      name: WATER VERBRUIK
+      points_per_hour: 2
+      show:
+        average: true
+        extrema: true
+        graph: bar
+      style: "ha-card {\n  border-radius: 5px;\n  background-color: var(--secondary-background-color);\n\
+        }\n"
+      type: custom:mini-graph-card
+    - cards:
+      - entity: sensor.s0pcm_vandaag
+        name: Totaal vandaag
+        show_icon: true
+        show_state: true
+        styles:
+          card:
+          - background-color: var(--secondary-background-color)
+          - border-radius: 5px
+          - margin-bottom: 10px
+          - padding: 15px 0
+          grid:
+          - grid-template-areas: '"i n""i s"'
+          - grid-template-columns: 25% 75%
+          - grid-template-rows: min-content min-content
+          icon:
+          - color: var(--dwains-theme-accent)
+          label:
+          - padding-top: 0px
+          - padding-bottom: 0px
+          - font-size: 12px
+          - color: var(--dwains-theme-grey)
+          - justify-self: start
+          name:
+          - font-size: 15px
+          - font-weight: bold
+          - color: var(--dwains-theme-names)
+          - justify-self: start
+          state:
+          - justify-self: start
+          - font-size: 13px
+          - color: var(--dwains-theme-names)
+        tap_action:
+          action: none
+        type: custom:button-card
+      - entity: sensor.s0pcm_day_consumption_water_cost
+        name: Kosten vandaag
+        show_icon: true
+        show_state: true
+        styles:
+          card:
+          - background-color: var(--secondary-background-color)
+          - border-radius: 5px
+          - margin-bottom: 10px
+          - padding: 15px 0
+          grid:
+          - grid-template-areas: '"i n""i s"'
+          - grid-template-columns: 25% 75%
+          - grid-template-rows: min-content min-content
+          icon:
+          - color: var(--dwains-theme-accent)
+          label:
+          - padding-top: 0px
+          - padding-bottom: 0px
+          - font-size: 12px
+          - color: var(--dwains-theme-grey)
+          - justify-self: start
+          name:
+          - font-size: 15px
+          - font-weight: bold
+          - color: var(--dwains-theme-names)
+          - justify-self: start
+          state:
+          - justify-self: start
+          - font-size: 13px
+          - color: var(--dwains-theme-names)
+        tap_action:
+          action: none
+        type: custom:button-card
+      items_classes: col-xs-6 col-sm-6 col-md-6 col-lg-6
+      type: custom:dwains-flexbox-card
+    items_classes: col-lg-12 col-md-12 col-sm-12 col-xs-12
+    type: custom:dwains-flexbox-card
+  items_classes: col-lg-4 col-md-6 col-sm-12 col-xs-12
+  padding: true
+  type: custom:dwains-flexbox-card

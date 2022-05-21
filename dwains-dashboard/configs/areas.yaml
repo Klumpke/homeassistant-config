@@ -1,0 +1,66 @@
+badkamer:
+  floor: ''
+  icon: fapro:fal_bath
+  sort_order: 7
+boven:
+  disabled: true
+  floor: ''
+  icon: ''
+  sort_order: 12
+eetkamer:
+  floor: ''
+  icon: fapro:fal_utensils
+  sort_order: 2
+garage:
+  floor: ''
+  icon: fapro:fal_warehouse
+  sort_order: 8
+hal:
+  floor: ''
+  icon: fapro:fal_key-skeleton
+  sort_order: 9
+hot_water:
+  disabled: true
+  floor: ''
+  icon: ''
+kantoor:
+  disabled: false
+  floor: ''
+  icon: fapro:fal_briefcase
+  sort_order: 5
+keuken:
+  floor: ''
+  icon: fapro:fal_refrigerator
+  sort_order: 3
+kleine_kamer:
+  floor: ''
+  icon: fapro:fal_briefcase
+  sort_order: 5
+logeerkamer:
+  floor: ''
+  icon: fapro:fal_bed
+  sort_order: 6
+slaapkamer:
+  floor: ''
+  icon: fapro:fal_bed-alt
+  sort_order: 4
+sonos_roam:
+  disabled: true
+  floor: ''
+  icon: ''
+temp:
+  disabled: true
+  floor: ''
+  icon: ''
+tuin:
+  floor: ''
+  icon: fapro:fal_tree-alt
+  sort_order: 10
+woonkamer:
+  floor: ''
+  icon: fapro:fal_couch
+  sort_order: 1
+zolder:
+  floor: ''
+  icon: fapro:fal_box-full
+  sort_order: 11

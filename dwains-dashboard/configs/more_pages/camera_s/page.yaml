@@ -1,0 +1,37 @@
+blueprint: camera_page_blueprint.yaml
+card:
+  cards:
+  - camera_image: $sensor_camera_entity1$
+    camera_view: live
+    entities:
+    - $sensor_camera_button_entity1$
+    style: "ha-card {\n  border-radius: 5px;\n  background-color: var(--card-background-color);\n\
+      }\n"
+    type: picture-glance
+  - camera_image: $sensor_camera_entity2$
+    camera_view: live
+    entities:
+    - $sensor_camera_button_entity2$
+    style: "ha-card {\n  border-radius: 5px;\n  background-color: var(--card-background-color);\n\
+      }\n"
+    type: picture-glance
+  - camera_image: $sensor_camera_entity3$
+    camera_view: live
+    entities:
+    - $sensor_camera_button_entity3$
+    style: "ha-card {\n  border-radius: 5px;\n  background-color: var(--card-background-color);\n\
+      }\n"
+    type: picture-glance
+  items_classes: col-xs-12 col-sm-6 col-md-6 col-lg-6
+  padding: true
+  type: custom:dwains-flexbox-card
+data:
+  sensor_camera_button_entity: binary_sensor.motion_tuin
+  sensor_camera_button_entity1: binary_sensor.motion_voordeur
+  sensor_camera_button_entity2: binary_sensor.motion_carport
+  sensor_camera_button_entity3: binary_sensor.motion_tuin
+  sensor_camera_entity: camera.tuin
+  sensor_camera_entity1: camera.voordeur
+  sensor_camera_entity2: camera.carport
+  sensor_camera_entity3: camera.tuin
+type: custom:dwains-blueprint-card

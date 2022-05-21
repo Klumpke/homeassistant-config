@@ -1,0 +1,50 @@
+blueprint:
+  description: An Camera overview with buttons blueprint page by Jeroen Klompen
+  input:
+    sensor_camera_button_entity1:
+      description: This is the sensor camera button entity
+      name: Sensor camera button entity
+    sensor_camera_button_entity2:
+      description: This is the sensor camera button entity
+      name: Sensor camera button entity
+    sensor_camera_button_entity3:
+      description: This is the sensor camera button entity
+      name: Sensor camera button entity
+    sensor_camera_entity1:
+      description: This is the sensor camera entity
+      name: Sensor camera entity
+    sensor_camera_entity2:
+      description: This is the sensor camera entity
+      name: Sensor camera entity
+    sensor_camera_entity3:
+      description: This is the sensor camera entity
+      name: Sensor camera entity
+  name: Camera page Blueprint
+  type: card
+  version: '1.0'
+card:
+  cards:
+  - camera_image: $sensor_camera_entity1$
+    camera_view: live
+    entities:
+    - $sensor_camera_button_entity1$
+    style: "ha-card {\n  border-radius: 5px;\n  background-color: var(--card-background-color);\n\
+      }\n"
+    type: picture-glance
+  - camera_image: $sensor_camera_entity2$
+    camera_view: live
+    entities:
+    - $sensor_camera_button_entity2$
+    style: "ha-card {\n  border-radius: 5px;\n  background-color: var(--card-background-color);\n\
+      }\n"
+    type: picture-glance
+  - camera_image: $sensor_camera_entity3$
+    camera_view: live
+    entities:
+    - $sensor_camera_button_entity3$
+    style: "ha-card {\n  border-radius: 5px;\n  background-color: var(--card-background-color);\n\
+      }\n"
+    type: picture-glance
+  items_classes: col-xs-12 col-sm-6 col-md-6 col-lg-6
+  padding: true
+  type: custom:dwains-flexbox-card

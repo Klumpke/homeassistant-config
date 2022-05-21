@@ -1,0 +1,52 @@
+blueprint: fourinkprintercartridges.yaml
+card:
+  cards:
+  - direction: up
+    entities:
+    - color: $11_Cartridge_1_color$
+      entity: $12_Cartridge_1_entity$
+      name: $10_Cartridge_1_name$
+    - color: $21_Cartridge_2_color$
+      entity: $22_Cartridge_2_entity$
+      name: $20_Cartridge_2_name$
+    - color: $31_Cartridge_3_color$
+      entity: $32_Cartridge_3_entity$
+      name: $30_Cartridge_3_name$
+    - color: $41_Cartridge_4_color$
+      entity: $42_Cartridge_4_entity$
+      name: $40_Cartridge_4_name$
+    height: 200px
+    position: bottom
+    positions:
+      icon: inside
+      indicator: outside
+      name: outside
+      value: outside
+    stack: horizontal
+    target: 10
+    type: custom:bar-card
+    unit_of_measurement: '%'
+    width: 100%
+  items_classes: col-xs-12
+  type: custom:dwains-flexbox-card
+col_span: '2'
+col_span_lg: '1'
+col_span_xl: '1'
+data:
+  10_Cartridge_1_name: Zwart
+  11_Cartridge_1_color: Black
+  12_Cartridge_1_entity: sensor.hp_m281fdw_toner_black
+  20_Cartridge_2_name: Cyaan
+  21_Cartridge_2_color: Cyan
+  22_Cartridge_2_entity: sensor.hp_m281fdw_toner_cyan
+  30_Cartridge_3_name: Magenta
+  31_Cartridge_3_color: Magenta
+  32_Cartridge_3_entity: sensor.hp_m281fdw_toner_magenta
+  40_Cartridge_4_name: Geel
+  41_Cartridge_4_color: Yellow
+  42_Cartridge_4_entity: sensor.hp_m281fdw_toner_yellow
+position: bottom
+row_span: '1'
+row_span_lg: '1'
+row_span_xl: '1'
+type: custom:dwains-blueprint-card

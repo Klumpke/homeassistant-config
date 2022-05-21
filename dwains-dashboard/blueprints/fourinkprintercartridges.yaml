@@ -1,0 +1,86 @@
+blueprint:
+  custom_cards:
+  - button-card
+  description: Four Ink Printer Cartridges bleuprint by Michel Jourdain
+  input:
+    10_Cartridge_1_name:
+      description: Name of the first Cartridge
+      name: Name first Cartridge
+      type: text-field
+    11_Cartridge_1_color:
+      description: Color of the first Cartridge ---- IN ENGLISH ----
+      name: Color first Cartridge
+      type: text-field
+    12_Cartridge_1_entity:
+      description: Entity of the first Cartridge
+      name: Entity first Cartridge
+      type: entity-picker
+    20_Cartridge_2_name:
+      description: Name of the second Cartridge
+      name: Name second Cartridge
+      type: text-field
+    21_Cartridge_2_color:
+      description: Color of the second Cartridge ---- IN ENGLISH ----
+      name: Color second Cartridge
+      type: text-field
+    22_Cartridge_2_entity:
+      description: Entity of the second Cartridge
+      name: Entity second Cartridge
+      type: entity-picker
+    30_Cartridge_3_name:
+      description: Name of the third Cartridge
+      name: Name third Cartridge
+      type: text-field
+    31_Cartridge_3_color:
+      description: Color of the third Cartridge ---- IN ENGLISH ----
+      name: Color third Cartridge
+      type: text-field
+    32_Cartridge_3_entity:
+      description: Entity of the third Cartridge
+      name: Entity third Cartridge
+      type: entity-picker
+    40_Cartridge_4_name:
+      description: Name of the fourth Cartridge
+      name: Name fourth Cartridge
+      type: text-field
+    41_Cartridge_4_color:
+      description: Color of the fourth Cartridge ---- IN ENGLISH ----
+      name: Color fourth Cartridge
+      type: text-field
+    42_Cartridge_4_entity:
+      description: Entity of the fourth Cartridge
+      name: Entity fourth Cartridge
+      type: entity-picker
+  name: FourInkPrinterCartridges
+  type: card
+  version: '1.0'
+card:
+  cards:
+  - direction: up
+    entities:
+    - color: $11_Cartridge_1_color$
+      entity: $12_Cartridge_1_entity$
+      name: $10_Cartridge_1_name$
+    - color: $21_Cartridge_2_color$
+      entity: $22_Cartridge_2_entity$
+      name: $20_Cartridge_2_name$
+    - color: $31_Cartridge_3_color$
+      entity: $32_Cartridge_3_entity$
+      name: $30_Cartridge_3_name$
+    - color: $41_Cartridge_4_color$
+      entity: $42_Cartridge_4_entity$
+      name: $40_Cartridge_4_name$
+    height: 200px
+    position: bottom
+    positions:
+      icon: inside
+      indicator: outside
+      name: outside
+      value: outside
+    stack: horizontal
+    target: 10
+    type: custom:bar-card
+    unit_of_measurement: '%'
+    width: 100%
+  items_classes: col-xs-12
+  type: custom:dwains-flexbox-card

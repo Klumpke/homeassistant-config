@@ -1,0 +1,256 @@
+# dwains_theme
+## Room add-on: Fuel Prices
+## Created by Jeroen Klompen
+## Version: 1.0.0
+
+- type: custom:dwains-flexbox-card
+  padding: true
+  items_classes: 'col-lg-3 col-md-6 col-sm-6 col-xs-6'
+  cards:
+
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
+      cards:
+        - type: custom:mini-graph-card
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--card-background-color);
+            }
+          entities:
+            - entity: sensor.euro_advies
+          name: Euro (Advies)
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 720
+          points_per_hour: 0.25
+          smoothing: true
+          decimals: 3
+          show:
+            state: false
+            points: false
+            extrema: true
+            average: true
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          cards:
+            - type: custom:button-card
+              entity: sensor.euro_advies
+              name: "Prijs vandaag"
+              icon: "mdi:currency-eur"
+              show_icon: true
+              show_state: true
+              tap_action:
+                action: none
+              styles:
+                grid:
+                  - grid-template-areas: '"i n""i s"'
+                  - grid-template-columns: 25% 75%
+                  - grid-template-rows: min-content min-content
+                card:
+                  - background-color: var(--card-background-color)
+                  - border-radius: 5px
+                  - margin-bottom: 10px
+                  - padding: 15px 0
+                name:
+                  - font-size: 15px
+                  - font-weight: bold
+                  - color: var(--dwains-theme-names)
+                  - justify-self: start
+                state:
+                  - justify-self: start
+                  - font-size: 13px
+                  - color: var(--dwains-theme-names)
+                label:
+                  - padding-top: 0px
+                  - padding-bottom: 0px
+                  - font-size: 12px
+                  - color: var(--dwains-theme-grey)
+                  - justify-self: start
+                icon:
+                  - color: var(--dwains-theme-accent)
+
+
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
+      cards:
+        - type: custom:mini-graph-card
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--card-background-color);
+            }
+          entities:
+            - entity: sensor.diesel_advies
+          name: Diesel (Advies)
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 720
+          points_per_hour: 0.25
+          smoothing: true
+          decimals: 3
+          show:
+            state: false
+            points: false
+            extrema: true
+            average: true
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          cards:
+            - type: custom:button-card
+              entity: sensor.diesel_advies
+              name: "Prijs vandaag"
+              icon: "mdi:currency-eur"
+              show_icon: true
+              show_state: true
+              tap_action:
+                action: none
+              styles:
+                grid:
+                  - grid-template-areas: '"i n""i s"'
+                  - grid-template-columns: 25% 75%
+                  - grid-template-rows: min-content min-content
+                card:
+                  - background-color: var(--card-background-color)
+                  - border-radius: 5px
+                  - margin-bottom: 10px
+                  - padding: 15px 0
+                name:
+                  - font-size: 15px
+                  - font-weight: bold
+                  - color: var(--dwains-theme-names)
+                  - justify-self: start
+                state:
+                  - justify-self: start
+                  - font-size: 13px
+                  - color: var(--dwains-theme-names)
+                label:
+                  - padding-top: 0px
+                  - padding-bottom: 0px
+                  - font-size: 12px
+                  - color: var(--dwains-theme-grey)
+                  - justify-self: start
+                icon:
+                  - color: var(--dwains-theme-accent)
+
+
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
+      cards:
+        - type: custom:mini-graph-card
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--card-background-color);
+            }
+          entities:
+            - entity: sensor.euro_tango_someren
+          name: Someren (Tango)
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 720
+          points_per_hour: 0.25
+          smoothing: true
+          decimals: 3
+          show:
+            state: false
+            points: false
+            extrema: true
+            average: true
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          cards:
+            - type: custom:button-card
+              entity: sensor.euro_tango_someren
+              name: "Prijs vandaag"
+              icon: "mdi:currency-eur"
+              show_icon: true
+              show_state: true
+              tap_action:
+                action: none
+              styles:
+                grid:
+                  - grid-template-areas: '"i n""i s"'
+                  - grid-template-columns: 25% 75%
+                  - grid-template-rows: min-content min-content
+                card:
+                  - background-color: var(--card-background-color)
+                  - border-radius: 5px
+                  - margin-bottom: 10px
+                  - padding: 15px 0
+                name:
+                  - font-size: 15px
+                  - font-weight: bold
+                  - color: var(--dwains-theme-names)
+                  - justify-self: start
+                state:
+                  - justify-self: start
+                  - font-size: 13px
+                  - color: var(--dwains-theme-names)
+                label:
+                  - padding-top: 0px
+                  - padding-bottom: 0px
+                  - font-size: 12px
+                  - color: var(--dwains-theme-grey)
+                  - justify-self: start
+                icon:
+                  - color: var(--dwains-theme-accent)
+
+
+    - type: custom:dwains-flexbox-card
+      items_classes: 'col-lg-12 col-md-12 col-sm-12 col-xs-12'
+      cards:
+        - type: custom:mini-graph-card
+          style: |
+            ha-card {
+              border-radius: 5px;
+              background-color: var(--card-background-color);
+            }
+          entities:
+            - entity: sensor.euro_tinq_wessem
+          name: Wessem (Tinq)
+          line_color: 'var(--dwains-theme-accent)'
+          hours_to_show: 720
+          points_per_hour: 0.25
+          smoothing: true
+          decimals: 3
+          show:
+            state: false
+            points: false
+            extrema: true
+            average: true
+        - type: custom:dwains-flexbox-card
+          items_classes: 'col-xs-12 col-sm-12 col-md-12 col-lg-12'
+          cards:
+            - type: custom:button-card
+              entity: sensor.euro_tinq_wessem
+              name: "Prijs vandaag"
+              icon: "mdi:currency-eur"
+              show_icon: true
+              show_state: true
+              tap_action:
+                action: none
+              styles:
+                grid:
+                  - grid-template-areas: '"i n""i s"'
+                  - grid-template-columns: 25% 75%
+                  - grid-template-rows: min-content min-content
+                card:
+                  - background-color: var(--card-background-color)
+                  - border-radius: 5px
+                  - margin-bottom: 10px
+                  - padding: 15px 0
+                name:
+                  - font-size: 15px
+                  - font-weight: bold
+                  - color: var(--dwains-theme-names)
+                  - justify-self: start
+                state:
+                  - justify-self: start
+                  - font-size: 13px
+                  - color: var(--dwains-theme-names)
+                label:
+                  - padding-top: 0px
+                  - padding-bottom: 0px
+                  - font-size: 12px
+                  - color: var(--dwains-theme-grey)
+                  - justify-self: start
+                icon:
+                  - color: var(--dwains-theme-accent)

@@ -1,0 +1,237 @@
+# Unifi more_page.
+# Made by Ruben Dijk
+
+# Down/upload speed
+- type: horizontal-stack
+  cards:
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--card-background-color);
+          border-radius: 10px;
+          box-shadow: 10px;
+          font-weight: bold;
+          opacity: 0.8;
+        }
+      entities:
+        - sensor.speedtest_download
+      name: Download
+      icon: "mdi:progress-download"
+      line_color: 'var(--dwains-theme-accent)'
+      hours_to_show: 168
+      hour24: true
+      points_per_hour: 1
+      smoothing: false
+      show:
+        points: false
+        graph: line
+        extrema: true
+
+    - type: custom:mini-graph-card
+      style: |
+        ha-card {
+          background-color: var(--card-background-color);
+          border-radius: 10px;
+          box-shadow: 10px;
+          font-weight: bold;
+          opacity: 0.8;
+        }
+      entities:
+        - sensor.speedtest_upload
+      name: Upload
+      icon: "mdi:progress-upload"
+      line_color: 'var(--dwains-theme-accent)'
+      hours_to_show: 168
+      hour24: true
+      points_per_hour: 1
+      smoothing: false
+      show:
+        points: false
+        graph: line
+        extrema: true
+
+# device status first 2 cards
+- type: vertical-stack
+  cards:
+    - type: custom:dwains-flexbox-card
+      padding: true
+      items_classes: 'col-lg-6 col-md-6 col-sm-12 col-xs-12'
+      cards:
+        - type: horizontal-stack
+          cards:
+        # card 1 WWW
+            - type: custom:button-card
+              style: |
+                ha-card {
+                  background-color: var(--card-background-color);
+                  border-radius: 10px;
+                  box-shadow: 10px;
+                  font-weight: bold;
+                  opacity: 0.8;
+                }
+              aspect_ratio: 1/1.4
+              custom_fields:
+                graph:
+                  card:
+                    type: sensor
+                    entity: sensor.speedtest_ping
+                    name: Ping
+                    icon: "mdi:progress-clock"
+                    graph: line
+                    style: |
+                      ha-card {
+                        background-color: var(--card-background-color);
+                      }
+              styles:
+                custom_fields:
+                  graph:
+                    - overflow: unset
+                card:
+
+                grid:
+                  - grid-template-areas: '"i" "n" "graph"'
+                  - grid-template-columns: 1fr
+                  - grid-template-rows: 1fr min-content min-content
+
+              entity: sensor.unifi_gateway_www
+              name: WWW
+              state:
+                - value: 'OK'
+                  color: var(--dwains-theme-accent)
+                - value: 'ERROR'
+                  color: grey
+              hold_action:
+                action: more-info
+          # Card 2 WAN
+            - type: custom:button-card
+              style: |
+                ha-card {
+                  background-color: var(--card-background-color);
+                  border-radius: 10px;
+                  box-shadow: 10px;
+                  font-weight: bold;
+                  opacity: 0.8;
+                }
+              aspect_ratio: 1/1.4
+              custom_fields:
+                graph:
+                  card:
+                    type: sensor
+                    entity: sensor.unifi_gateway_wan_download
+                    name: Download
+                    graph: line
+                    style: |
+                      ha-card {
+                        background-color: var(--card-background-color);
+                      }
+              styles:
+                custom_fields:
+                  graph:
+                    - overflow: unset
+                card:
+
+                grid:
+                  - grid-template-areas: '"i" "n" "graph"'
+                  - grid-template-columns: 1fr
+                  - grid-template-rows: 1fr min-content min-content
+
+              entity: sensor.unifi_gateway_wan
+              name: WAN
+              state:
+                - value: 'OK'
+                  color: var(--dwains-theme-accent)
+                - value: 'ERROR'
+                  color: grey
+              hold_action:
+                action: more-info
+
+# device status second 2 cards
+        - type: horizontal-stack
+          cards: 
+        # Card 3 WLAN
+            - type: custom:button-card
+              style: |
+                ha-card {
+                  background-color: var(--card-background-color);
+                  border-radius: 10px;
+                  box-shadow: 10px;
+                  font-weight: bold;
+                  opacity: 0.8;
+                }
+              aspect_ratio: 1/1.4
+              custom_fields:
+                graph:
+                  card:
+                    type: sensor
+                    entity: sensor.unifi_gateway_lan_num_user
+                    name: Users
+                    graph: line
+                    style: |
+                      ha-card {
+                        background-color: var(--card-background-color);
+                      }
+              styles:
+                custom_fields:
+                  graph:
+                    - overflow: unset
+                card:
+
+                grid:
+                  - grid-template-areas: '"i" "n" "graph"'
+                  - grid-template-columns: 1fr
+                  - grid-template-rows: 1fr min-content min-content
+
+              entity: sensor.unifi_gateway_lan
+              name: LAN
+              state:
+                - value: 'OK'
+                  color: var(--dwains-theme-accent)
+                - value: 'ERROR'
+                  color: grey
+              hold_action:
+                action: more-info
+
+        # Card 4 WLAN
+            - type: custom:button-card
+              style: |
+                ha-card {
+                  background-color: var(--card-background-color);
+                  border-radius: 10px;
+                  box-shadow: 10px;
+                  font-weight: bold;
+                  opacity: 0.8;
+                }
+              aspect_ratio: 1/1.4
+              custom_fields:
+                graph:
+                  card:
+                    type: sensor
+                    entity: sensor.unifi_gateway_wlan_num_user
+                    name: Users
+                    # entity: unifi_gateway_wlan_num_guest
+                    # name: Guests
+                    graph: line
+                    style: |
+                      ha-card {
+                        background-color: var(--card-background-color);
+                      }
+              styles:
+                custom_fields:
+                  graph:
+                    - overflow: unset
+                card:
+
+                grid:
+                  - grid-template-areas: '"i" "n" "graph"'
+                  - grid-template-columns: 1fr
+                  - grid-template-rows: 1fr min-content min-content
+
+              entity: sensor.unifi_gateway_wlan
+              name: WLAN
+              state:
+                - value: 'OK'
+                  color: var(--dwains-theme-accent)
+                - value: 'ERROR'
+                  color: grey
+              hold_action:
+                action: more-info
