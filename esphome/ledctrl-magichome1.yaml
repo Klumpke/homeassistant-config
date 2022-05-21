@@ -1,8 +1,8 @@
 substitutions:
   # used internally
-  device_name: 'ledctrl_magichome2'
+  device_name: 'ledctrl-magichome1'
   # displayed in HA
-  friendly_name: 'Ledctrl Magichome2'
+  friendly_name: 'Ledctrl Magichome1'
 
 esphome:
   name: ${device_name}
@@ -12,7 +12,10 @@ esphome:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_pass
-
+  manual_ip:
+    static_ip: 192.168.178.96
+    gateway: 192.168.178.254
+    subnet: 255.255.255.0
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: ${friendly_name}
