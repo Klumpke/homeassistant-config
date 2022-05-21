@@ -24,7 +24,7 @@
   action:
   - service: dwains_dashboard.notification_create
     data:
-      message: "{{ states.sensor.blink_morgen.state }} wordt morgen opgehaald."
+      message: "♻️ {{ states.sensor.blink_morgen.state }} wordt morgen opgehaald."
       notification_id: garbage
 
 - alias: "Notificatie Dwains Dashboard: Afvalwijzer vandaag"
@@ -38,7 +38,7 @@
   action:
   - service: dwains_dashboard.notification_create
     data:
-      message: "{{ states.sensor.blink_vandaag.state }} wordt vandaag opgehaald."
+      message: "♻️ {{ states.sensor.blink_vandaag.state }} wordt vandaag opgehaald."
       notification_id: garbage
 
 - alias: "Notificatie Dwains Dashboard: Afvalwijzer verwijder melding"
