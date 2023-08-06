@@ -8,6 +8,10 @@ homeassistant:
   elevation: !secret zone_home_elevation
   # metric for Metric, imperial for Imperial
   unit_system: metric
+  # Currency
+  currency: EUR
+  # Country
+  country: NL
   # Timezone
   time_zone: Europe/Amsterdam
   # Customization file
@@ -15,6 +19,9 @@ homeassistant:
   # Contains the URL that Home Assistant is available on the internet.
   internal_url: !secret ha_internal_url
   external_url: !secret ha_external_url
+  # Multi-factor authentication
+  auth_mfa_modules:
+    - type: totp
   # List of folders that can be used as sources for sending files.
   allowlist_external_dirs:
     - /config
@@ -42,3 +49,9 @@ lovelace:
   mode: yaml
   # Include external resource
   resources: !include custom_resources.yaml
+  dashboards:
+    lovelace-klompen:
+      mode: yaml
+      title: Klompen
+      show_in_sidebar: true
+      filename: ui-klompen.yaml
