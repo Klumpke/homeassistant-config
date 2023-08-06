@@ -1,5 +1,0 @@
-alarm_entity: ''
-disable_clock: false
-disable_welcome_message: false
-v2_mode: true
-weather_entity: weather.dark_sky
