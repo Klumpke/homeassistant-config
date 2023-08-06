@@ -1,0 +1,21 @@
+- id: '1655641238048'
+  alias: 'Notificatie: Batterij bijna leeg'
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      threshold: 20
+      time: '18:00:00'
+      exclude:
+        entity_id:
+        - sensor.iklumpke_battery_level
+        - sensor.overloop_brandmelder_battery_level
+        - binary_sensor.overloop_brandmelder_low_battery_level
+        - binary_sensor.overloop_brandmelder_power_management_replace_battery_soon
+      actions:
+      - service: notify.mobile_app_iklumpke
+        data:
+          title: "🔋 Batterij"
+          message: 'De volgende batterijen zijn bijna leeg:
+
+          {{ sensors | replace(", ", "\n") }}'

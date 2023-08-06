@@ -1,0 +1,11 @@
+- id: '1678735205609'
+  alias: AB Kantoor
+  description: ''
+  use_blueprint:
+    path: apollo1220/philips_zigbee_dial.yaml
+    input:
+      remote: a21170e9d70cefa01c0d84e0bb074764
+      first_light:
+        entity_id: light.kantoor
+      second_light:
+        entity_id: light.ledctrl_bureau

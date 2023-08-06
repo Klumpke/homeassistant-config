@@ -1,5 +1,5 @@
-- id: stofzuiger_stofzuigen_wanneer_niemand_thuis_is
-  alias: "Stofzuiger: Stofzuigen wanneer niemand thuis is"
+- alias: "Vacuum: Vraag om te stofzuigen indien niemand thuis is"
+  id: 9846492b-010b-44eb-bffc-bab0f1f40ee8
   initial_state: 'on'
   trigger:
     - platform: time
@@ -27,11 +27,70 @@
         entity_id: input_boolean.cleaned_today
         state: 'off'
   action:
-    - service: vacuum.start
-      entity_id: vacuum.xiaomi_vacuum_cleaner
+    - alias: 'Vraag of Rocky een ronde moet doen'
+      service: notify.ios_notifier
+      data:
+        title: '🤖 Rocky'
+        message: 'Ik wil mijn ronde gaan maken. Mag dat? 🧹'
+        data:
+          tag: vacuum
+          channel: vacuum
+          actions:
+            - action: "vacuum_start_yes"
+              title: "🧹 Ja, graag!"
+            - action: "vacuum_start_no"
+              title: "Nee, dankje"
+          ttl: 0
+          priority: high
+          notification_icon: mdi:robot-vacuum
+    - alias: 'Wacht op antwoord...'
+      wait_for_trigger:
+        - platform: event
+          event_type: mobile_app_notification_action
+          event_data:
+            action: "vacuum_start_yes"
+      timeout: "01:00:00"
+      continue_on_timeout: false
+    - alias: "Start Rocky na bevestiging"
+      service: vacuum.start
+      target:
+        entity_id: vacuum.valetudo_rockrobo
 
-- id: stofzuiger_reset_gestofzuigd_vandaag_teller
-  alias: "Stofzuiger: Reset gestofzuigd vandaag teller"
+
+- alias: "Vacuum: Start stofzuigen"
+  id: 752d6443-de3e-4c07-b803-5dcdf77044c2
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: vacuum.valetudo_rockrobo
+      from: 'docked'
+      to: 'cleaning'
+    - platform: state
+      entity_id: vacuum.valetudo_rockrobo
+      from: 'idle'
+      to: 'cleaning'
+  action:
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Rocky'
+        message: 'Ik doe mijn ronde, vroooom...!'
+
+
+- alias: "Vacuum: Start Rocky stop cleaning event"
+  id: a9f65f7e-eb12-4921-bc6b-09f928524ae8
+  initial_state: "on"
+  trigger:
+    - platform: state
+      entity_id: vacuum.valetudo_rockrobo
+      from: "returning"
+      to: "docked"
+  action:
+    - alias: "Cleaning done - fire an event we listen to in other automations"
+      event: vacuum_cleaning_ended
+
+
+- alias: "Vacuum: Reset cleaned today boolean"
+  id: 9168428b-6e3c-4d14-aa3a-259eb98ccb36
   initial_state: 'on'
   trigger:
     platform: time
@@ -41,40 +100,34 @@
       data:
         entity_id: input_boolean.cleaned_today
 
-- id: stofzuiger_start_stofzuigen
-  alias: "Stofzuiger: Start stofzuigen"
-  initial_state: 'on'
-  trigger:
-    - platform: state
-      entity_id: vacuum.xiaomi_vacuum_cleaner
-      from: 'docked'
-      to: 'cleaning'
-    - platform: state
-      entity_id: vacuum.mi_robot_vacuum
-      from: 'idle'
-      to: 'cleaning'
-  action:
-    - service: notify.ios_notifier
-      data:
-        title: '🤖 Stofzuiger Henry'
-        message: 'Gestart met stofzuigen, vroooom...!'
 
-- id: stofzuiger_stop_stofzuigen
-  alias: "Stofzuiger: Stop stofzuigen"
+- alias: "Vacuum: Stop stofzuigen"
+  id: 97c92129-090b-4cc0-b389-ea6f4b6a084b
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: vacuum.xiaomi_vacuum_cleaner
-    from: 'returning'
-    to: 'docked'
+    - platform: event
+      event_type: vacuum_cleaning_ended
   action:
-    - service: notify.ios_notifier
-      data:
-        title: '🤖 Stofzuiger Henry'
-        message: 'Klaar met stofzuigen. Ik heb er {{states.vacuum.xiaomi_vacuum_cleaner.attributes.currentCleanTime | round(0)}} minuten over gedaan.'
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.cleaned_today
+    - alias: "Checking if this is the 7rd time cleaning..."
+      choose:
+        - conditions: "{{ (states('sensor.xiaomi_vacuum_cleaner_total_clean_count') | int(default=0)) % 7 == 0 }}"
+          sequence:
+            - service: notify.ios_notifier
+              data:
+                title: '🤖 Rocky'
+                message: "Ik moet geleegd worden en heb er {{((states('sensor.xiaomi_vacuum_cleaner_current_clean_duration') | int(default=0)) / 60) | round(0) }} minuten over gedaan."
+            - service: input_boolean.turn_on
+              data:
+                entity_id: input_boolean.cleaned_today
+      default:
+        - service: notify.ios_notifier
+          data:
+            title: '🤖 Rocky'
+            message: "Klaar met mijn ronde. Ik heb er {{((states('sensor.xiaomi_vacuum_cleaner_current_clean_duration') | int(default=0)) / 60) | round(0) }} minuten over gedaan."
+        - service: input_boolean.turn_on
+          data:
+            entity_id: input_boolean.cleaned_today
+
 
 # - id: stofzuiger_foutmelding
 #   alias: "Stofzuiger: Foutmelding"
@@ -89,80 +142,258 @@
 #   action:
 #     - service: notify.ios_notifier
 #       data:
-#         title: 'Stofzuiger Henry'
-#         message: 'Het lijkt erop dat er iets mis is met Henry...'
+#         title: '🤖 Rocky'
+#         message: 'Het lijkt erop dat er iets mis is met Rocky...'
         # data:
         #   images:
         #     - /config/www/navmap.png
 
-- id: vacuum_fan_speed_balanced_when_docked
-  alias: "Stofzuiger: Fan Speed Balanced When Docked"
-  trigger:
-    - platform: state
-      entity_id: vacuum.xiaomi_vacuum_cleaner
-      to: 'docked'
-  action:
-   - service: input_select.select_option
-     data:
-       option: Balanced
-       entity_id: input_select.xiaomi_vacuum
 
-- id: vacuum_fan_speed_quiet
-  alias: "Stofzuiger: Fan Speed Quiet"
+##########################
+## Maintenance notifications
+##########################
+- alias: "Vacuum: Notify that Rocky's sensors need maintenance"
+  id: vacuum_notification_maintenance_sensors
+  initial_state: "on"
   trigger:
-    - platform: state
-      entity_id: input_select.xiaomi_vacuum
-      to: 'Quiet'
+    - platform: event
+      event_type: vacuum_cleaning_ended
+  condition:
+    - alias: "Check for sensor status"
+      condition: numeric_state
+      entity_id: sensor.valetudo_rockrobo_sensor_cleaning
+      below: 7200 # unit_of_measurement: seconds (equals 2hrs)
   action:
-   - service: vacuum.set_fan_speed
-     data:
-       entity_id: vacuum.xiaomi_vacuum_cleaner
-       fan_speed: 101
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Onderhoud Rocky'
+        message: "De sensoren van Rocky moeten schoongemaakt worden. Resterende tijd: {{((states('sensor.valetudo_rockrobo_sensor_cleaning') | int(default=0)) / 3600) | round(0) }} uur."
+        data:
+          tag: vacuum
+          channel: vacuum
+          actions:
+            - action: "vacuum_maintenance_sensors_done"
+              title: "Onderhoud uitgevoerd!"
+            - action: "vacuum_maintenance_sensors_later"
+              title: "Nee, doe ik later"
+          ttl: 0
+          priority: high
 
-- id: vacuum_fan_speed_balanced
-  alias: "Stofzuiger: Fan Speed Balanced"
+- alias: "Vacuum: Notify that Rocky's main brush needs maintenance"
+  id: vacuum_notification_maintenance_main_brush
+  initial_state: "on"
   trigger:
-    - platform: state
-      entity_id: input_select.xiaomi_vacuum
-      to: 'Balanced'
+    - platform: event
+      event_type: vacuum_cleaning_ended
+  condition:
+    - alias: "Check for main brush status"
+      condition: numeric_state
+      entity_id: sensor.valetudo_rockrobo_main_brush
+      below: 18000 # unit_of_measurement: seconds (equals 5hrs)
   action:
-   - service: vacuum.set_fan_speed
-     data:
-       entity_id: vacuum.xiaomi_vacuum_cleaner
-       fan_speed: 102
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Onderhoud Rocky'
+        message: "De hoofdborstel van Rocky moet bijna vervangen worden. Resterende tijd: {{((states('sensor.valetudo_rockrobo_main_brush') | int(default=0)) / 3600) | round(0) }} uur."
+        data:
+          tag: vacuum_maintenance
+          channel: vacuum
+          actions:
+            - action: "vacuum_maintenance_main_brush_done"
+              title: "Onderhoud uitgevoerd!"
+            - action: "vacuum_maintenance_main_brush_later"
+              title: "Nee, doe ik later"
+          ttl: 0
+          priority: high
 
-- id: vacuum_fan_speed_turbo
-  alias: "Stofzuiger: Fan Speed Turbo"
+- alias: "Vacuum: Notify that Rocky's side brush needs maintenance"
+  id: vacuum_notification_maintenance_side_brush
+  initial_state: "on"
   trigger:
-    - platform: state
-      entity_id: input_select.xiaomi_vacuum
-      to: 'Turbo'
+    - platform: event
+      event_type: vacuum_cleaning_ended
+  condition:
+    - alias: "Check for side brush status"
+      condition: numeric_state
+      entity_id: sensor.valetudo_rockrobo_right_brush
+      below: 18000 # unit_of_measurement: seconds (equals 5hrs)
   action:
-   - service: vacuum.set_fan_speed
-     data:
-       entity_id: vacuum.xiaomi_vacuum_cleaner
-       fan_speed: 103
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Onderhoud Rocky'
+        message: "De zijborstel van Rocky moet bijna vervangen worden. Resterende tijd: {{((states('sensor.valetudo_rockrobo_right_brush') | int(default=0)) / 3600) | round(0) }} uur."
+        data:
+          tag: vacuum_maintenance
+          channel: vacuum
+          actions:
+            - action: "vacuum_maintenance_side_brush_done"
+              title: "Onderhoud uitgevoerd!"
+            - action: "vacuum_maintenance_side_brush_later"
+              title: "Nee, doe ik later"
+          ttl: 0
+          priority: high
 
-- id: vacuum_fan_speed_max
-  alias: "Stofzuiger: Fan Speed Max"
+- alias: "Vacuum: Notify that Rocky's filter needs maintenance"
+  id: vacuum_notification_maintenance_filter
+  initial_state: "on"
   trigger:
-    - platform: state
-      entity_id: input_select.xiaomi_vacuum
-      to: 'Max'
+    - platform: event
+      event_type: vacuum_cleaning_ended
+  condition:
+    - alias: "Check for filter status"
+      condition: numeric_state
+      entity_id: sensor.valetudo_rockrobo_main_filter
+      below: 18000 # unit_of_measurement: seconds (equals 5hrs)
   action:
-   - service: vacuum.set_fan_speed
-     data:
-       entity_id: vacuum.xiaomi_vacuum_cleaner
-       fan_speed: 104
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Onderhoud Rocky'
+        message: "De filter van Rocky moet bijna vervangen worden. Resterende tijd: {{((states('sensor.valetudo_rockrobo_main_filter') | int(default=0)) / 3600) | round(0) }} uur."
+        data:
+          tag: vacuum_maintenance
+          channel: vacuum
+          actions:
+            - action: "vacuum_maintenance_filter_done"
+              title: "Onderhoud uitgevoerd!"
+            - action: "vacuum_maintenance_filter_later"
+              title: "Nee, doe ik later"
+          ttl: 0
+          priority: high
 
-- id: vacuum_fan_speed_mop
-  alias: "Stofzuiger: Fan Speed Mop"
+
+##########################
+## Maintenance actions
+##########################
+- alias: "Vacuum: Reset Rocky's sensors maintenance interval"
+  id: vacuum_reset_maintenance_sensors
+  initial_state: "on"
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "vacuum_maintenance_sensors_done"
+  action:
+    - service: vacuum.send_Command
+      alias: "Reset hours for sensor cleaning"
+      target:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      data:
+        command: reset_consumable
+        params: ['sensor_dirty_time']
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Onderhoud voltooid'
+        message: "De sensortijd is gereset. Resterende tijd: {{((states('sensor.valetudo_rockrobo_sensor_cleaning') | int(default=0)) / 3600) | round(0) }} uur."
+        data:
+          tag: vacuum_maintenance
+          channel: vacuum
+          ttl: 0
+          priority: high
+
+- alias: "Vacuum: Reset Rocky's main brush maintenance interval"
+  id: vacuum_reset_maintenance_main_brush
+  initial_state: "on"
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "vacuum_maintenance_main_brush_done"
+  action:
+    - service: vacuum.send_Command
+      alias: "Reset hours for main brush replacement"
+      target:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      data:
+        command: reset_consumable
+        params: ['main_brush_work_time']
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Onderhoud voltooid'
+        message: "De hoofdborstel van Rocky is vervangen. Resterende tijd: {{((states('sensor.valetudo_rockrobo_main_brush') | int(default=0)) / 3600) | round(0) }} uur."
+        data:
+          tag: vacuum_maintenance
+          channel: vacuum
+          ttl: 0
+          priority: high
+
+- alias: "Vacuum: Reset Rocky's side brush maintenance interval"
+  id: vacuum_reset_maintenance_side_brush
+  initial_state: "on"
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "vacuum_maintenance_side_brush_done"
+  action:
+    - service: vacuum.send_Command
+      alias: "Reset hours for side brush replacement"
+      target:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      data:
+        command: reset_consumable
+        params: ['side_brush_work_time']
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Onderhoud voltooid'
+        message: "De zijborstel van Rocky is vervangen. Resterende tijd: {{((states('sensor.valetudo_rockrobo_right_brush') | int(default=0)) / 3600) | round(0) }} uur."
+        data:
+          tag: vacuum_maintenance
+          channel: vacuum
+          ttl: 0
+          priority: high
+
+- alias: "Vacuum: Reset Rocky's filter maintenance interval"
+  id: vacuum_reset_maintenance_filter
+  initial_state: "on"
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: "vacuum_maintenance_filter_done"
+  action:
+    - service: vacuum.send_Command
+      alias: "Reset hours for filter replacement"
+      target:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+      data:
+        command: reset_consumable
+        params: ['filter_work_time']
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Onderhoud voltooid'
+        message: "De filter van Rocky is vervangen. Resterende tijd: {{((states('sensor.valetudo_rockrobo_main_filter') | int(default=0)) / 3600) | round(0) }} uur."
+        data:
+          tag: vacuum_maintenance
+          channel: vacuum
+          ttl: 0
+          priority: high
+
+
+##########################
+## Capture errors
+##########################
+- alias: "Vacuum: Rocky is in error mode"
+  id: feaaddf0-7276-44cb-af53-b102c8dfab35
+  initial_state: "on"
   trigger:
     - platform: state
-      entity_id: input_select.xiaomi_vacuum
-      to: 'Mop'
+      entity_id: sensor.vacuum_error
+  condition:
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: sensor.vacuum_error
+          state: "No error"
+        - condition: state
+          entity_id: sensor.vacuum_error
+          state: "unavailable"
   action:
-   - service: vacuum.set_fan_speed
-     data:
-       entity_id: vacuum.xiaomi_vacuum_cleaner
-       fan_speed: 105
+    - service: notify.ios_notifier
+      data:
+        title: '🤖 Rocky heeft een probleem'
+        message: "Foutmelding: {{states('sensor.vacuum_error')}}"
+        data:
+          tag: vacuum
+          channel: vacuum
+          ttl: 0
+          priority: high

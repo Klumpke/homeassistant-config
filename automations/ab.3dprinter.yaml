@@ -1,0 +1,47 @@
+# ZHA 3D Printer AAN
+- alias: 'AB 3D Printer AAN'
+  initial_state: 'on'
+  trigger:
+    - platform: event
+      event_type: zha_event
+      event_data:
+        device_ieee: 90:fd:9f:ff:fe:66:33:e3
+        unique_id: 90:fd:9f:ff:fe:66:33:e3:1:0x0006
+        device_id: 554ab3ce041e8a7a1e360aac03856aa4
+        endpoint_id: 1
+        cluster_id: 6
+        command: "on"
+        args: []
+        params: {}
+  action:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.3d_printer
+
+# ZHA 3D Printer UIT
+- alias: 'AB 3D Printer UIT'
+  initial_state: 'on'
+  trigger:
+    - platform: event
+      event_type: zha_event
+      event_data:
+        device_ieee: 90:fd:9f:ff:fe:66:33:e3
+        unique_id: 90:fd:9f:ff:fe:66:33:e3:1:0x0006
+        device_id: 554ab3ce041e8a7a1e360aac03856aa4
+        endpoint_id: 1
+        cluster_id: 6
+        command: "off"
+        args: []
+        params: {}
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: sensor.klipper_current_print_state
+        state: "printing"
+  action:
+    - service: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.3d_printer

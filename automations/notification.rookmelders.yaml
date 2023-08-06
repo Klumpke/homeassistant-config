@@ -1,0 +1,66 @@
+- alias: "Notificatie: Rookmelders"
+  id: 909471ed-73e6-431b-9952-680716805ad9
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.rookmelder_keuken_smoke
+      from: 'off'
+      to: 'on'
+      id: smoke-keuken-detected
+    - platform: state
+      entity_id: binary_sensor.rookmelder_overloop_smoke
+      from: 'off'
+      to: 'on'
+      id: smoke-overloop-detected
+    - platform: state
+      entity_id: binary_sensor.rookmelder_zolder_smoke
+      from: 'off'
+      to: 'on'
+      id: smoke-zolder-detected
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: smoke-keuken-detected
+      sequence:
+      - service: notify.ios_notifier
+        data:
+          title: "🚨 Rookmelder"
+          message: "Brand melding in de keuken!"
+          data:
+            push:
+              sound:
+                #name: default
+                name: "3rd_party_critical.caf"
+                critical: 1
+                volume: 1.0
+    - conditions:
+      - condition: trigger
+        id: smoke-overloop-detected
+      sequence:
+      - service: notify.ios_notifier
+        data:
+          title: "🚨 Rookmelder"
+          message: "Brand melding op de overloop!"
+          data:
+            push:
+              sound:
+                #name: default
+                name: "3rd_party_critical.caf"
+                critical: 1
+                volume: 1.0
+    - conditions:
+      - condition: trigger
+        id: smoke-zolder-detected
+      sequence:
+      - service: notify.ios_notifier
+        data:
+          title: "🚨 Rookmelder"
+          message: "Brand melding op de zolder!"
+          data:
+            push:
+              sound:
+                #name: default
+                name: "3rd_party_critical.caf"
+                critical: 1
+                volume: 1.0

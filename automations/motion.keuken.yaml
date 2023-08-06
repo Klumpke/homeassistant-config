@@ -1,20 +1,12 @@
-- alias: "Motion Garage: Hue Motion Sensor v2"
-  id: 6cb91398-af5f-486c-849c-bc69a1886701
+- alias: "Motion Keuken: Hue Motion Sensor v2"
+  id: 6da646ca-f4cc-424c-9644-44bfd6500c01
   trigger:
     - platform: state
-      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_2
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_4
       to: 'on'
       id: motion-detected
     - platform: state
-      entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_7
-      to: 'on'
-      id: motion-detected
-    - platform: state
-      entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_6
-      to: 'on'
-      id: motion-detected
-    - platform: state
-      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_2
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_4
       to: 'off'
       id: motion-stopped
       for:
@@ -23,7 +15,7 @@
         minutes: 2
         # seconds: 20
     - platform: state
-      entity_id: light.garage
+      entity_id: light.fib_fgd212_keuken_plafond
       to: 'off'
       id: motion-boolean-off
   condition: []
@@ -35,24 +27,24 @@
       sequence:
       - service: input_boolean.turn_on
         data:
-          entity_id: input_boolean.motion_light_garage
+          entity_id: input_boolean.motion_light_keuken
       - service: light.turn_on
         data:
-          entity_id: light.garage
+          entity_id: light.fib_fgd212_keuken_plafond
 
     - conditions:
       - condition: trigger
         id: motion-stopped
       - condition: state
-        entity_id: input_boolean.motion_light_garage
+        entity_id: input_boolean.motion_light_keuken
         state: 'on'
       sequence:
       - service: input_boolean.turn_off
         data:
-          entity_id: input_boolean.motion_light_garage
+          entity_id: input_boolean.motion_light_keuken
       - service: light.turn_off
         data:
-          entity_id: light.garage
+          entity_id: light.fib_fgd212_keuken_plafond
 
     - conditions:
       - condition: trigger
@@ -60,4 +52,4 @@
       sequence:
       - service: input_boolean.turn_off
         data:
-          entity_id: input_boolean.motion_light_garage
+          entity_id: input_boolean.motion_light_keuken

@@ -1,0 +1,136 @@
+- alias: "Motion Overloop: Hue Motion Sensor v2"
+  id: ef2df72a-dffe-4cb6-ae5b-cbdb99ca01f0
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_3
+      to: 'on'
+      id: motion-detected
+    # - platform: state
+    #   entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_3
+    #   to: 'off'
+    #   id: motion-stopped
+    #   for:
+    #     # hours: 0
+    #     # minutes: 0
+    #     minutes: 1
+    #     # seconds: 20
+    - platform: state
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_3
+      to: 'off'
+      id: motion-stopped-phase1
+      for:
+        # hours: 0
+        # minutes: 0
+        minutes: 1
+        # seconds: 20
+    - platform: state
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_3
+      to: 'off'
+      id: motion-stopped-phase2
+      for:
+        # hours: 0
+        # minutes: 0
+        minutes: 1
+        seconds: 10
+    - platform: state
+      entity_id: light.overloop
+      to: 'off'
+      id: motion-boolean-off
+  condition: []
+  action:
+  - choose:
+    # - conditions:
+    #   - condition: trigger
+    #     id: motion-detected
+    #   - condition: state
+    #     entity_id: sun.sun
+    #     state: 'below_horizon'
+    #   sequence:
+    #   - service: input_boolean.turn_on
+    #     data:
+    #       entity_id: input_boolean.motion_light_overloop
+    #   - service: light.turn_on
+    #     data:
+    #       entity_id: light.overloop
+
+    # - conditions:
+    #   - condition: trigger
+    #     id: motion-stopped
+    #   - condition: state
+    #     entity_id: input_boolean.motion_light_overloop
+    #     state: 'on'
+    #   sequence:
+    #   - service: input_boolean.turn_off
+    #     data:
+    #       entity_id: input_boolean.motion_light_overloop
+    #   - service: light.turn_off
+    #     data:
+    #       entity_id: light.overloop
+
+    - conditions:
+        - condition: trigger
+          id: motion-detected
+      sequence:
+        - if:
+            - condition: time
+              after: "08:00:00"
+              before: "20:00:00"
+          then:
+            - service: input_boolean.turn_on
+              data:
+                entity_id: input_boolean.motion_light_overloop
+            - service: light.turn_on
+              data:
+                transition: 1
+                brightness_pct: 75
+              target:
+                entity_id: light.overloop
+          else:
+            - service: input_boolean.turn_on
+              data:
+                entity_id: input_boolean.motion_light_overloop
+            - service: light.turn_on
+              data:
+                transition: 1
+                brightness_pct: 40
+              target:
+                entity_id: light.overloop
+
+    - conditions:
+        - condition: trigger
+          id: motion-stopped-phase1
+        - condition: state
+          entity_id: input_boolean.motion_light_overloop
+          state: 'on'
+      sequence:
+        - service: light.turn_on
+          data:
+            transition: 2
+            brightness_pct: 15
+          target:
+            entity_id: light.overloop
+    - conditions:
+        - condition: trigger
+          id: motion-stopped-phase2
+        - condition: state
+          entity_id: input_boolean.motion_light_overloop
+          state: 'on'
+      sequence:
+        - service: input_boolean.turn_off
+          data:
+            entity_id: input_boolean.motion_light_overloop
+        - service: light.turn_off
+          data:
+            transition: 2
+          target:
+            entity_id: light.overloop
+
+    - conditions:
+      - condition: trigger
+        id: motion-boolean-off
+      sequence:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.motion_light_overloop
+
+  mode: single

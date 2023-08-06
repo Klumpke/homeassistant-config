@@ -1,51 +1,54 @@
-- alias: "Motion: Tuinhuis verlichting aan"
+- alias: "Motion Tuinhuis: Xiaomi Aqara Human Motion Sensor"
+  id: 5e413526-915a-4d57-a56a-daa1dd295f29
   trigger:
     - platform: state
-      entity_id: binary_sensor.motion_tuinhuis
+      entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_occupancy_2
       to: 'on'
-  # condition:
-  #   - condition: numeric_state
-  #     entity_id: sensor.lux_garage
-  #     below: 30
-  condition:
-    - condition: state
-      entity_id: light.tuinhuis
-      state: 'off'
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.motion_light_tuinhuis
-    - service: light.turn_on
-      data:
-        entity_id: light.tuinhuis
-        brightness: 100
-        # transition: 15
-
-
-- alias: "Motion: Tuinhuis verlichting uit"
-  trigger:
+      id: motion-detected
     - platform: state
-      entity_id: binary_sensor.motion_tuinhuis
+      entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_occupancy_2
       to: 'off'
+      id: motion-stopped
       for:
-        minutes: 1
-  condition:
-    - condition: state
-      entity_id: input_boolean.motion_light_tuinhuis
-      state: 'on'
-  action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.motion_light_tuinhuis
-    - service: light.turn_off
-      entity_id: light.tuinhuis
-      #data:
-      #  transition: 160
-
-
-- alias: Tuinhuis verlichting uit
-  trigger:
+        hours: 0
+        minutes: 0
+        seconds: 20
     - platform: state
       entity_id: light.tuinhuis
       to: 'off'
+      id: motion-boolean-off
+  condition: []
   action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.motion_light_tuinhuis
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: motion-detected
+      sequence:
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.motion_light_tuinhuis
+      - service: light.turn_on
+        data:
+          entity_id: light.tuinhuis
+
+    - conditions:
+      - condition: trigger
+        id: motion-stopped
+      - condition: state
+        entity_id: input_boolean.motion_light_tuinhuis
+        state: 'on'
+      sequence:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.motion_light_tuinhuis
+      - service: light.turn_off
+        data:
+          entity_id: light.tuinhuis
+
+    - conditions:
+      - condition: trigger
+        id: motion-boolean-off
+      sequence:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.motion_light_tuinhuis

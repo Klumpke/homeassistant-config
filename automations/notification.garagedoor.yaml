@@ -2,7 +2,7 @@
   initial_state: 'false'
   trigger:
     - platform: state
-      entity_id: binary_sensor.contact_garagedeur
+      entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_7
       to: 'on'
   action:
     - service_template: >
@@ -24,7 +24,7 @@
   initial_state: 'false'
   trigger:
     - platform: state
-      entity_id: binary_sensor.contact_garagedeur
+      entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_7
       to: 'off'
   action:
     - service_template: >
@@ -46,7 +46,7 @@
 - alias: "Sound: Garagedeur open"
   trigger:
     - platform: state
-      entity_id: binary_sensor.contact_garagedeur
+      entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_7
       to: 'on'
   action:
     # - service: script.sonos_play
@@ -64,7 +64,7 @@
         entity_id:
           - media_player.woonkamer_sonos_cloud
           - media_player.eetkamer_sonos_cloud
-          - media_player.boven_sonos_cloud
+          - media_player.kantoor_sonos_cloud
           - media_player.zolder_sonos_cloud
           - media_player.tuin_sonos_cloud
         media_content_id: !secret http_audio_doordong
@@ -75,7 +75,7 @@
 # - alias: "Notificatie: Garagedeur op tv woonkamer"
 #   trigger:
 #     - platform: state
-#       entity_id: binary_sensor.contact_garagedeur
+#       entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_7
 #       to: 'on'
 #   condition:
 #     - condition: state
@@ -95,7 +95,7 @@
 # - alias: "Notificatie: Garagedeur op tv slaapkamer"
 #   trigger:
 #     - platform: state
-#       entity_id: binary_sensor.contact_garagedeur
+#       entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_7
 #       to: 'on'
 #   condition:
 #     - condition: state

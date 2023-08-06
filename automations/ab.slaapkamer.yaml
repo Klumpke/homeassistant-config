@@ -1,179 +1,186 @@
-## NACHTLAMPJES (Kruis toets)
-#
-- alias: "AB slaapkamer: Nachtlampjes AAN / UIT"
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: zwave.scene_activated
-    event_data:
-      entity_id: zwave.fibaro_system_fgkf601_keyfob
-      scene_id: 3
-      scene_data: 7680
-  action:
-    - service_template: >
-        {% if is_state('light.nachtlampjes', 'on') %}
-          homeassistant.turn_off
-        {% elif is_state('light.nachtlampjes', 'off') %}
-          homeassistant.turn_on
-        {% endif %}
-      entity_id: light.nachtlampjes
-
-## ROLLUIK (Driehoek toets)
-#
-- alias: "AB slaapkamer: Rolluik DICHT"
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: zwave.scene_activated
-    event_data:
-      entity_id: zwave.fibaro_system_fgkf601_keyfob
-      scene_id: 4
-      scene_data: 7680
-  action:
-    service: cover.close_cover
-    entity_id: cover.slaapkamer
-
-- alias: "AB slaapkamer: Rolluik STOP"
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: zwave.scene_activated
-    event_data:
-      entity_id: zwave.fibaro_system_fgkf601_keyfob
-      scene_id: 4
-      scene_data: 7860
-  action:
-    service: cover.stop_cover
-    entity_id: cover.slaapkamer
-
-- alias: "AB slaapkamer: Rolluik OPEN"
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: zwave.scene_activated
-    event_data:
-      entity_id: zwave.fibaro_system_fgkf601_keyfob
-      scene_id: 4
-      scene_data: 7920
-  action:
-    service: cover.open_cover
-    entity_id: cover.slaapkamer
-
-## NACHTLAMPJES (Kruis toets)
-#
-- alias: "AB Slaapkamer: Nachtlampjes AAN / UIT"
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: zwave.scene_activated
-    event_data:
-      entity_id: zwave.fibaro_system_fgkf601_keyfob
-      scene_id: 3
-      scene_data: 7680
-  action:
-    - service_template: >
-        {% if is_state('light.nachtlampjes', 'on') %}
-          homeassistant.turn_off
-        {% elif is_state('light.nachtlampjes', 'off') %}
-          homeassistant.turn_on
-        {% endif %}
-      entity_id: light.nachtlampjes
-
-
-# deCONZ Slaapkamer IKEA TRADFRI Remote
-- alias: 'AB Slaapkamer Midden'
-  initial_state: 'on'
+- alias: "AB Slaapkamer: Philips Hue Tap Dial"
+  id: 2581fb0f-2946-443c-8e18-d840ff9669bf
+  variables:
+    first_button: light.slaapkamer
+    second_button: light.nachtlampjes
+    third_button: cover.slaapkamer
+    forth_button: cover.slaapkamer
+    current_button: input_text.ab_slaapkamer_current_light
+    dim_scale: 1.0 ## Min 0.0, Max 5.0
   trigger:
     - platform: event
-      event_type: deconz_event
+      event_type: zha_event
       event_data:
-        id: ab_slaapkamer_a
-        event: 1002
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: ab_slaapkamer_b
-        event: 1002
+        device_id: fa5daa1dd7b06f39d9924fe17f86245a
   action:
-    - service: light.toggle
-      data:
-        entity_id: light.nachtlampjes
-        brightness: 16
-        color_temp: 400
-        # kelvin: 2700
+    - variables:
+        command: '{{ trigger.event.data.command }}'
+        args: '{{ trigger.event.data.args }}'
+        params: '{{ trigger.event.data.params }}'
+        scene: '{{ trigger.event.data.params.scene_id }}'
+        step_mode: '{{ trigger.event.data.params.step_mode }}'
+        step_size: '{{ trigger.event.data.params.step_size }}'
+    - choose:
+      ## FIRST BUTTON
+      - conditions:
+        - '{{ command == ''recall'' }}'
+        - '{{ scene == 1 }}'
+        sequence:
+        ## TOGGLE LIGHT
+        - service: light.toggle
+          target:
+            entity_id: '{{first_button}}'
+        ## SET CURRENT-BUTTON VALUE
+        - service: input_text.set_value
+          target:
+            entity_id: '{{current_button}}'
+          data:
+            value: '{{first_button}}'
+      ## SECOND BUTTON
+      - conditions:
+        - '{{ command == ''recall'' }}'
+        - '{{ scene == 0 }}'
+        sequence:
+        ## TOGGLE LIGHT
+        - service: homeassistant.toggle
+          target:
+            entity_id: '{{second_button}}'
+        ## SET CURRENT-BUTTON VALUE
+        - service: input_text.set_value
+          target:
+            entity_id: '{{current_button}}'
+          data:
+            value: '{{second_button}}'
+      ## BUTTON THREE
+      - conditions:
+        - '{{ command == ''recall'' }}'
+        - '{{ scene == 5 }}'
+        sequence:
+        ## CLOSE COVER
+        - choose:
+            - conditions:
+                - condition: template
+                  value_template: "{{ state_attr('cover.slaapkamer', 'current_position') < 17 }}"
+              sequence:
+                - service: cover.set_cover_position
+                  data:
+                    position: 17
+                  target:
+                    entity_id: cover.slaapkamer
+          default:
+            - service: cover.set_cover_position
+              data:
+                position: 0
+              target:
+                entity_id: cover.slaapkamer
+      ## BUTTON FOUR
+      - conditions:
+        - '{{ command == ''recall'' }}'
+        - '{{ scene == 4 }}'
+        sequence:
+        ## OPEN COVER
+        - choose:
+            - conditions:
+                - condition: template
+                  value_template: "{{ state_attr('cover.slaapkamer', 'current_position') > 17 }}"
+              sequence:
+                - service: cover.set_cover_position
+                  data:
+                    position: 17
+                  target:
+                    entity_id: cover.slaapkamer
+          default:
+            - service: cover.set_cover_position
+              data:
+                position: 100
+              target:
+                entity_id: cover.slaapkamer
+      ## DIM(+) LIGHTS
+      - conditions:
+        - '{{ command == ''step_with_on_off'' }}'
+        - '{{ step_mode == ''StepMode.Up'' }}'
+        sequence:
+        - service: light.turn_on
+          target:
+            entity_id: '{{ states(current_button) }}'
+          data:
+            brightness_step_pct: '{{ step_size * dim_scale }}'
+            transition: 1
+      ## DIM(-) LIGHTS
+      - conditions:
+        - '{{ command == ''step_with_on_off'' }}'
+        - '{{ step_mode == ''StepMode.Down'' }}'
+        sequence:
+        - service: light.turn_on
+          target:
+            entity_id: '{{ states(current_button) }}'
+          data:
+            brightness_step_pct: '{{ -step_size * dim_scale }}'
+            transition: 1
+  max_exceeded: silent
+  mode: restart
 
-- alias: 'AB Slaapkamer Links Joyce'
-  initial_state: 'on'
+
+- alias: "AB Slaapkamer: IKEA TRADFRI Remote"
+  id: 53b011da-1aee-4800-aa37-a6bb472196bd
   trigger:
     - platform: event
-      event_type: deconz_event
+      event_type: zha_event
       event_data:
-        id: ab_slaapkamer_a
-        event: 4002
+        device_id: 1bcd68e9be41455483e4c411abcd0bd1
     - platform: event
-      event_type: deconz_event
+      event_type: zha_event
       event_data:
-        id: ab_slaapkamer_b
-        event: 4002
+        device_id: b34d901fa8fa4e23a0941936b37c6d12
   action:
-    - service: light.toggle
-      data:
-        entity_id: light.nachtkast_r
-        brightness: 16
-        color_temp: 400
-        # kelvin: 2700
-
-- alias: 'AB Slaapkamer Rechts Jeroen'
-  initial_state: 'on'
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: ab_slaapkamer_a
-        event: 5002
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: ab_slaapkamer_b
-        event: 5002
-  action:
-    - service: light.toggle
-      data:
-        entity_id: light.nachtkast_l
-        brightness: 16
-        color_temp: 400
-        # kelvin: 2700
-
-- alias: 'AB Slaapkamer Omhoog'
-  initial_state: 'on'
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: ab_slaapkamer_a
-        event: 2002
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: ab_slaapkamer_b
-        event: 2002
-  action:
-    service: light.toggle
-    entity_id: light.ledstrip_slaapkamer
-
-# - alias: 'AB Slaapkamer Omlaag'
-#   initial_state: 'on'
-#   trigger:
-#     - platform: event
-#       event_type: deconz_event
-#       event_data:
-#         id: ab_slaapkamer_a
-#        event: 3002
-#     - platform: event
-#       event_type: deconz_event
-#       event_data:
-#         id: ab_slaapkamer_b
-#        event: 3002
-#   action:
-#     service: scene.turn_on
-#     entity_id: scene.wassen
+    - variables:
+        command: '{{ trigger.event.data.command }}'
+        param1: '{{ trigger.event.data.params.param1 }}'
+        step_mode: '{{ trigger.event.data.params.step_mode }}'
+    - choose:
+      ## LEFT BUTTON
+      - conditions:
+        - '{{ command == ''press'' }}'
+        - '{{ param1 == 257 }}'
+        sequence:
+        ## TOGGLE NACHTKAST L
+        - service: light.toggle
+          data:
+            entity_id: light.nachtkast_l
+            brightness: 16
+            color_temp: 400
+            # kelvin: 2700
+      ## RIGHT BUTTON
+      - conditions:
+        - '{{ command == ''press'' }}'
+        - '{{ param1 == 256 }}'
+        sequence:
+        ## TOGGLE NACHTKAST R
+        - service: light.toggle
+          data:
+            entity_id: light.nachtkast_r
+            brightness: 16
+            color_temp: 400
+            # kelvin: 2700
+      ## TOP BUTTON
+      - conditions:
+        - '{{ command == ''step_with_on_off'' }}'
+        - '{{ step_mode == ''StepMode.Up'' }}'
+        sequence:
+        ## TOGGLE LEDSTRIP
+        - service: light.toggle
+          data:
+            entity_id: light.ledstrip_slaapkamer
+      ## MIDDLE BUTTON
+      - conditions:
+        - '{{ command == ''toggle'' }}'
+        sequence:
+        ## TOGGLE LIGHT
+        - service: light.toggle
+          data:
+            entity_id: light.nachtlampjes
+            brightness: 16
+            color_temp: 400
+            # kelvin: 2700
+  max_exceeded: silent
+  mode: restart

@@ -1,59 +1,65 @@
-- alias: "Motion: Slaapkamer vloerled aan"
+- alias: "Motion Slaapkamer: Hue Motion Sensor v2"
+  id: 6156655f-7367-4d98-aec6-e481a3815199
   trigger:
     - platform: state
-      entity_id: binary_sensor.motion_slaapkamer
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy
       to: 'on'
-  # condition:
-  #   condition: time
-  #   after: '07:30'
-  #   before: '23:30'
-  condition:
-    condition: and
-    conditions:
+      id: motion-detected
+    - platform: state
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy
+      to: 'off'
+      id: motion-stopped
+      for:
+        hours: 0
+        minutes: 2
+        seconds: 0
+    - platform: state
+      entity_id: light.ledstrip_slaapkamer
+      to: 'off'
+      id: motion-boolean-off
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: motion-detected
       - entity_id: sun.sun
         condition: state
         state: 'below_horizon'
       - condition: state
         entity_id: light.ledstrip_slaapkamer
         state: 'off'
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.motion_light_ledstrip_slaapkamer
-    - service: light.turn_on
-      entity_id: light.ledstrip_slaapkamer
-      #data:
-      #  transition: 15
-      data:
-        brightness_pct: 21
-        #rgb_color: [255, 255, 255]
-        white_value: 100
+      sequence:
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.motion_light_ledstrip_slaapkamer
+      - service: light.turn_on
+        data:
+          entity_id: light.ledstrip_slaapkamer
+          brightness: 54
+          rgb_color: [255, 255, 255]
 
+    - conditions:
+      - condition: trigger
+        id: motion-stopped
+      - entity_id: sun.sun
+        condition: state
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.motion_light_ledstrip_slaapkamer
+        state: 'on'
+      sequence:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.motion_light_ledstrip_slaapkamer
+      - service: light.turn_off
+        data:
+          entity_id: light.ledstrip_slaapkamer
 
-- alias: "Motion: Slaapkamer vloerled uit"
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.motion_slaapkamer
-      to: 'off'
-      for:
-        minutes: 1
-  condition:
-    - condition: state
-      entity_id: input_boolean.motion_light_ledstrip_slaapkamer
-      state: 'on'
-  action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.motion_light_ledstrip_slaapkamer
-    - service: light.turn_off
-      entity_id: light.ledstrip_slaapkamer
-      #data:
-      #  transition: 160
-
-
-- alias: Slaapkamer vloerled uit
-  trigger:
-    - platform: state
-      entity_id: light.ledstrip_slaapkamer
-      to: 'off'
-  action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.motion_light_ledstrip_slaapkamer
+    - conditions:
+      - condition: trigger
+        id: motion-boolean-off
+      sequence:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.motion_light_ledstrip_slaapkamer

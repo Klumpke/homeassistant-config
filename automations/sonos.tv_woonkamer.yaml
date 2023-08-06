@@ -4,7 +4,7 @@
       platform: state
       to: "on"
   action:
-    - service: sonos.unjoin
+    - service: media_player.unjoin
       data:
         entity_id: media_player.woonkamer
     - service: media_player.select_source

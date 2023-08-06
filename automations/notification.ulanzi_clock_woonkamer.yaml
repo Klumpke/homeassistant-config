@@ -1,0 +1,143 @@
+- alias: "Ulanzi Clock Livingroom: Notifications"
+  id: 0fd58034-4101-471b-a38e-012bb06c9214
+  trigger:
+    # - platform: state
+    #   entity_id: sensor.envoy_122223030052_current_power_production
+    #   id: ulanzi-solarpanels
+    - platform: state
+      entity_id: sensor.klipper_progress
+      id: ulanzi-3dprinter
+    - platform: state
+      entity_id: binary_sensor.doorbell_voordeur
+      id: ulanzi-doorbell
+    - platform: state
+      entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_7
+      to: 'on'
+      id: ulanzi-garagedoor
+    - platform: state
+      entity_id: sensor.current_app
+      to: 'Time'
+      id: ulanzi-kantoor-customapps
+  condition: []
+  action:
+    - choose:
+      ## MELDING: ZONNEPANELEN
+      # - conditions:
+      #   - condition: trigger
+      #     id: ulanzi-solarpanels
+      #   sequence:
+      #   - service: mqtt.publish
+      #     data:
+      #       topic: ulanzi_woonkamer/notify
+      #       payload_template: >-
+      #         {
+      #           "name": "Solarpanels",
+      #           "force": false,
+      #           "icon": "44625",
+      #           "moveIcon": false,
+      #           "duration": "30",
+      #           "text": '{{states.sensor.envoy_122223030052_current_power_production.state}} W',
+      #           "color": [ 255, 255, 255 ]
+      #         }
+      ## MELDING: 3D PRINTER
+      - conditions:
+        - condition: trigger
+          id: ulanzi-3dprinter
+        sequence:
+        - service: mqtt.publish
+          data:
+            topic: ulanzi_woonkamer/notify
+            payload_template: >-
+              {
+                "name": "3D printer",
+                "force": false,
+                "icon": "51843",
+                "moveIcon": false,
+                "duration": "30",
+                "text": '{{states.sensor.klipper_progress.state}} %',
+                "color": [ 255, 255, 255 ]
+              }
+      ## MELDING: DEURBEL
+      - conditions:
+        - condition: trigger
+          id: ulanzi-doorbell
+        sequence:
+        - service: mqtt.publish
+          data:
+            topic: ulanzi_woonkamer/notify
+            payload_template: >-
+              {
+                "name": "Doorbell",
+                "force": true,
+                "icon": "51650",
+                "moveIcon": false,
+                "duration": "60",
+                "text": "Ding dong!",
+                "color": [ 255, 255, 255 ]
+              }
+      ## MELDING: GARAGE DOOR
+      - conditions:
+        - condition: trigger
+          id: ulanzi-garagedoor
+        sequence:
+        - service: mqtt.publish
+          data:
+            topic: ulanzi_woonkamer/notify
+            payload_template: >-
+              {
+                "name": "Garage door",
+                "force": true,
+                "icon": "42480",
+                "moveIcon": false,
+                "duration": "60",
+                "speed": "800",
+                "text": "Garagedeur open",
+                "color": [ 255, 255, 255 ]
+              }
+      - conditions:
+        - condition: trigger
+          id: ulanzi-kantoor-customapps
+        sequence:
+        ## APP: SOLAR PANELS
+        - service: mqtt.publish
+          data:
+            topic: ulanzi_woonkamer/custom/Solarpanels
+            payload_template: |-
+              {
+                "text": '{{states.sensor.envoy_122223030052_current_power_production.state | round(0) }} W',
+                "icon": "44625",
+                "pushIcon":0,
+                "repeat":0,
+                "textCase":2,
+                "textOffset":33,
+                "color": [ 255, 255, 255 ]
+              }
+        # ## APP: INTERNET DOWNLOAD
+        # - service: mqtt.publish
+        #   data:
+        #     topic: ulanzi_woonkamer/custom/DownloadSpeed
+        #     payload_template: |-
+        #       {
+        #         "text":"Download {{ states.sensor.speedtest_download.state}} Mbp/s",
+        #         "icon":"download",
+        #         "pushIcon":0,
+        #         "repeat":0,
+        #         "textCase":2,
+        #         "textOffset":33,
+        #         "color": [ 255, 255, 255 ]
+        #       }
+        # ## APP: INTERNET UPLOAD
+        # - service: mqtt.publish
+        #   data:
+        #     topic: ulanzi_woonkamer/custom/UploadSpeed
+        #     payload_template: |-
+        #       {
+        #         "text":"Upload {{ states.sensor.speedtest_upload.state}} Mbp/s",
+        #         "icon":"upload",
+        #         "pushIcon":0,
+        #         "repeat":0,
+        #         "textCase":2,
+        #         "textOffset":33,
+        #         "color": [ 255, 255, 255 ]
+        #       }
+  mode: single

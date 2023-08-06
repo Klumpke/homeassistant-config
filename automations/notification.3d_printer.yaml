@@ -1,20 +1,20 @@
 - alias: "3D Printer: Notify, 3D print is ready"
   trigger:
     - platform: state
-      entity_id: sensor.octoprint_print_status
+      entity_id: sensor.klipper_current_print_state
       from: 'Finishing'
       to: 'Operational'
     - platform: state
-      entity_id: sensor.octoprint_print_status
-      from: 'Printing'
-      to: 'Operational'
+      entity_id: sensor.klipper_current_print_state
+      from: 'printing'
+      to: 'complete'
   action:
     - service: notify.mobile_app_iklumpke
       data:
         title: "🖨️ 3D Printer"
         message: "Je 3D print is klaar"
         data:
-          url: /dwains-dashboard/more_page_addon_ender_3_v2
+          url: /lovelace-klompen/room_kantoor
           attachment:
             url: !secret http_camera_3dprinter
             content-type: jpeg
@@ -23,81 +23,118 @@
 - alias: "3D Printer: Take screenshot at 99%"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.octoprint_print_progress
+      entity_id: sensor.klipper_progress
       above: 98
   action:
     - service: camera.snapshot
       data:
-        entity_id: camera.octoprint
+        entity_id: camera.klipper_printer
         filename: "/config/www/images/snapshots/cam_3dprinter.jpg"
 
 - alias: "3D Printer: Notify, 3D print is above 50% and 75%"
   trigger:
     - platform: numeric_state
-      entity_id: sensor.octoprint_print_progress
+      entity_id: sensor.klipper_progress
       above: 49
     - platform: numeric_state
-      entity_id: sensor.octoprint_print_progress
+      entity_id: sensor.klipper_progress
       above: 74
   action:
     - service: camera.snapshot
       data:
-        entity_id: camera.octoprint
+        entity_id: camera.klipper_printer
         filename: "/config/www/images/snapshots/cam_3dprinter.jpg"
     - service: notify.mobile_app_iklumpke
       data:
         title: "🖨️ 3D Printer"
-        message: "Je 3D print is op {{(states('sensor.octoprint_print_progress')) | round(0) }}%"
+        message: "Je 3D print is op {{(states('sensor.klipper_progress')) | round(0) }}%"
         data:
-          url: /dwains-dashboard/more_page_addon_ender_3_v2
+          url: /lovelace-klompen/room_kantoor
           attachment:
             url: !secret http_camera_3dprinter
             content-type: jpeg
             hide-thumbnail: false
 
-- alias: "3D Printer: Reconnect octoprint on powerup"
-  description: ''
+# - alias: "3D Printer: Reconnect octoprint on powerup"
+#   description: ''
+#   trigger:
+#     - entity_id: switch.3d_printer
+#       from: 'off'
+#       platform: state
+#       to: 'on'
+#   action:
+#     - delay: 00:00:10
+#     - service: notify.octoprint
+#       data:
+#         message: dummy
+#     - delay: 00:00:04
+#     - service: shell_command.octoprint_light_on
+#       data:
+#         octo_api: !secret octoprint_api_key
+
+- alias: "3D Printer: Reconnect klipper on powerup"
+  description: ""
   trigger:
     - entity_id: switch.3d_printer
-      from: 'off'
+      from: "off"
       platform: state
-      to: 'on'
+      to: "on"
   action:
     - delay: 00:00:10
-    - service: notify.octoprint
-      data:
-        message: dummy
+    - service: rest_command.klipper_reconnect
+      data: {}
     - delay: 00:00:04
-    - service: shell_command.octoprint_light_on
+    - service: light.turn_on
+      entity_id: light.ledctrl_3dprinter
       data:
-        octo_api: !secret octoprint_api_key
+        brightness: 128
+        rgb_color:
+        - 255
+        - 255
+        - 255
+
+# - alias: "3D Printer: Power off 3D printer when finished."
+#   trigger:
+#     # - platform: state
+#     #   entity_id: binary_sensor.octoprint_printing
+#     #   to: "off"
+#     - platform: state
+#       entity_id: sensor.octoprint_print_status
+#       from: 'Finishing'
+#       to: 'Operational'
+#       for:
+#         minutes: 15
+#   action:
+#     - service: shell_command.octoprint_light_off
+#       data:
+#         octo_api: !secret octoprint_api_key
+#     - delay: 00:00:04
+#     - service: switch.turn_off
+#       entity_id: switch.3d_printer
 
 - alias: "3D Printer: Power off 3D printer when finished."
   trigger:
-    # - platform: state
-    #   entity_id: binary_sensor.octoprint_printing
-    #   to: "off"
     - platform: state
-      entity_id: sensor.octoprint_print_status
-      from: 'Finishing'
-      to: 'Operational'
+      entity_id: sensor.klipper_current_print_state
+      from: "printing"
+      to: "complete"
       for:
         minutes: 15
   action:
-    - service: shell_command.octoprint_light_off
-      data:
-        octo_api: !secret octoprint_api_key
+    - service: light.turn_off
+      entity_id: light.ledctrl_3dprinter
     - delay: 00:00:04
     - service: switch.turn_off
       entity_id: switch.3d_printer
 
+
+
 - alias: "3D Printer: Turn off light if printer is powered off"
   trigger:
-    - entity_id: switch.3d_printer
+    - platform: state
+      entity_id: switch.3d_printer
       from: 'on'
-      platform: state
       to: 'off'
   action:
-    - service: shell_command.octoprint_light_off
-      data:
-        octo_api: !secret octoprint_api_key
+    - service: switch.turn_off
+      entity_id: switch.3d_printer

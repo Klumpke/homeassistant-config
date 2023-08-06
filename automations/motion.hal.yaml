@@ -1,29 +1,21 @@
-- alias: "Motion Garage: Hue Motion Sensor v2"
-  id: 6cb91398-af5f-486c-849c-bc69a1886701
+- alias: "Motion Hal: Hue Motion Sensor v2"
+  id: 8a500afe-9b88-4a05-b22f-78653efa0d64
   trigger:
     - platform: state
-      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_2
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_3
       to: 'on'
       id: motion-detected
     - platform: state
-      entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_7
-      to: 'on'
-      id: motion-detected
-    - platform: state
-      entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_6
-      to: 'on'
-      id: motion-detected
-    - platform: state
-      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_2
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_3
       to: 'off'
       id: motion-stopped
       for:
         # hours: 0
         # minutes: 0
-        minutes: 2
+        minutes: 1
         # seconds: 20
     - platform: state
-      entity_id: light.garage
+      entity_id: light.hal
       to: 'off'
       id: motion-boolean-off
   condition: []
@@ -32,27 +24,30 @@
     - conditions:
       - condition: trigger
         id: motion-detected
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
       sequence:
       - service: input_boolean.turn_on
         data:
-          entity_id: input_boolean.motion_light_garage
+          entity_id: input_boolean.motion_light_hal
       - service: light.turn_on
         data:
-          entity_id: light.garage
+          entity_id: light.hal
 
     - conditions:
       - condition: trigger
         id: motion-stopped
       - condition: state
-        entity_id: input_boolean.motion_light_garage
+        entity_id: input_boolean.motion_light_hal
         state: 'on'
       sequence:
       - service: input_boolean.turn_off
         data:
-          entity_id: input_boolean.motion_light_garage
+          entity_id: input_boolean.motion_light_hal
       - service: light.turn_off
         data:
-          entity_id: light.garage
+          entity_id: light.hal
 
     - conditions:
       - condition: trigger
@@ -60,4 +55,4 @@
       sequence:
       - service: input_boolean.turn_off
         data:
-          entity_id: input_boolean.motion_light_garage
+          entity_id: input_boolean.motion_light_hal

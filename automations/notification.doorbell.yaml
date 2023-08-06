@@ -87,7 +87,7 @@
       entity_id:
         - media_player.woonkamer_sonos_cloud
         - media_player.eetkamer_sonos_cloud
-        - media_player.boven_sonos_cloud
+        - media_player.kantoor_sonos_cloud
         - media_player.zolder_sonos_cloud
         - media_player.tuin_sonos_cloud
       media_content_id: !secret http_audio_deurbel
@@ -147,50 +147,54 @@
             #   entity_id: binary_sensor.voordeur
             #   state: "off"
           sequence:
-            - service: unifiprotect.set_doorbell_message
+            - service: text.set_value
+              target:
+                entity_id: text.voordeur_doorbell
               data:
-                entity_id: select.doorbell_text_voordeur
-                message: "MOMENTJE..."
-                duration: 6
+                value: "MOMENTJE..."
         - conditions:
             - condition: time
               after: "06:00:00"
               before: "12:00:00"
           sequence:
-            - service: unifiprotect.set_doorbell_message
+            - service: text.set_value
+              target:
+                entity_id: text.voordeur_doorbell
               data:
-                entity_id: select.doorbell_text_voordeur
-                message: "GOEDEMORGEN"
-#                duration: 5
+                value: "GOEDEMORGEN"
         - conditions:
             - condition: time
               after: "12:00:00"
               before: "17:30:00"
           sequence:
-            - service: unifiprotect.set_doorbell_message
+            - service: text.set_value
+              target:
+                entity_id: text.voordeur_doorbell
               data:
-                entity_id: select.doorbell_text_voordeur
-                message: "GOEDEMIDDAG"
+                value: "GOEDEMIDDAG"
         - conditions:
             - condition: time
               after: "17:30:00"
               before: "23:59:00"
           sequence:
-            - service: unifiprotect.set_doorbell_message
+            - service: text.set_value
+              target:
+                entity_id: text.voordeur_doorbell
               data:
-                entity_id: select.doorbell_text_voordeur
-                message: "GOEDENAVOND"
+                value: "GOEDENAVOND"
         - conditions:
             - condition: time
               after: "00:00:00"
               before: "06:00:00"
           sequence:
-            - service: unifiprotect.set_doorbell_message
+            - service: text.set_value
+              target:
+                entity_id: text.voordeur_doorbell
               data:
-                entity_id: select.doorbell_text_voordeur
-                message: "GOEDENACHT"
+                value: "GOEDENACHT"
       default:
-        - service: unifiprotect.set_doorbell_message
-          data:
-            entity_id: select.doorbell_text_voordeur
-            message: "WELKOM"
+            - service: text.set_value
+              target:
+                entity_id: text.voordeur_doorbell
+              data:
+                value: "WELKOM"

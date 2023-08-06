@@ -15,7 +15,7 @@
   - condition: template # Only between December 1 and January 6.
     value_template: >
       {% set n = now() %}
-      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
+      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 10 )) }}
   - condition: and
     conditions:
       - condition: state
@@ -49,7 +49,7 @@
   - condition: template # Only between December 1 and January 6.
     value_template: >
       {% set n = now() %}
-      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
+      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 10 )) }}
     #condition: state
     #entity_id: binary_sensor.workday
     #state: 'on'
@@ -78,7 +78,7 @@
   - condition: template # Only between December 1 and January 6.
     value_template: >
       {% set n = now() %}
-      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
+      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 10 )) }}
     #condition: state
     #entity_id: binary_sensor.workday
     #state: 'off'
@@ -105,7 +105,7 @@
   - condition: template # Only between December 1 and January 6.
     value_template: >
       {% set n = now() %}
-      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
+      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 10 )) }}
   action:
     service: light.turn_on
     entity_id: light.kerstolijf
@@ -120,7 +120,7 @@
   - condition: template # Only between December 1 and January 6.
     value_template: >
       {% set n = now() %}
-      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 5 )) }}
+      {{ n.month == 12 or ( n.month == 1 and ( 1 <= n.day <= 10 )) }}
   action:
     service: light.turn_off
     entity_id: light.kerstolijf

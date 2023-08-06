@@ -15,7 +15,7 @@
       entity_id: 'media_player.eetkamer'
       state: 'playing'
     - condition: state
-      entity_id: 'media_player.boven'
+      entity_id: 'media_player.kantoor'
       state: 'playing'
     - condition: state
       entity_id: 'media_player.zolder'
@@ -45,4 +45,4 @@
       action: "SONOS_UITSCHAKELEN"
   action:
     service: media_player.media_stop
-    entity_id: media_player.woonkamer, media_player.eetkamer, media_player.boven, media_player.zolder, media_player.tuin
+    entity_id: media_player.woonkamer, media_player.eetkamer, media_player.kantoor, media_player.zolder, media_player.tuin

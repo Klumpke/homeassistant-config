@@ -19,25 +19,10 @@
       data_template:
         title: "🚧 Home Assistant update"
         message: >-
-          {% if is_state('sensor.potential_breaking_changes', '0') %}
           Er is een Home Assistant update beschikbaar.
           Versie: {{ states('sensor.version_available') }} .
-          {% else %}
-          Er is een Home Assistant update beschikbaar.
-          Versie: {{ states('sensor.version_available') }} .
-          
-          
-          LET OP: ER ZIJN {{ states('sensor.potential_breaking_changes') }} BREAKING CHANGES.
-          {% endif %}
         data:
           url: /config/dashboard
           # attachment:
           #   content-type: png
           #   url: https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color/700/012_refresh-512.png
-    # - service: persistent_notification.create
-    #   data_template:
-    #     title: "🚧 Home Assistant update"
-    #     message: >-
-    #       Er is een Home Assistant update voor Hass.io beschikbaar!
-    #       Versie: {{ states('sensor.version_available') }} .
-    #     notification_id: hassio_upgrade

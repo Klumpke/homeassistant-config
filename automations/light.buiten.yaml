@@ -6,8 +6,10 @@
     event: sunset
     offset: '-00:30:00'
   action:
-    service: switch.turn_on
-    entity_id: switch.fib_fgs223_voordeur, switch.fib_fgs223_carport, switch.fib_fgs223_achterdeur
+    - service: light.turn_on
+      entity_id: light.voortuin
+    - service: switch.turn_on
+      entity_id: switch.fib_fgs223_voordeur, switch.fib_fgs223_carport, switch.fib_fgs223_achterdeur
 
 # WOONHUIS BUITENVERLICHTING UIT NA MIDDERNACHT
 - alias: "Buiten verlichting uit na middernacht"
@@ -17,7 +19,21 @@
     at: '23:30:00'
   action:
     service: switch.turn_off
-    entity_id: switch.fib_fgs223_voordeur, switch.fib_fgs223_carport, switch.fib_fgs223_achterdeur
+    entity_id: switch.fib_fgs223_carport, switch.fib_fgs223_achterdeur
+
+# VOORTUINVERLICHTING UIT BIJ ZONSOPKOMST
+- alias: "Voortuinverlichting uit bij zonsopkomst"
+  initial_state: 'true'
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: '00:30:00'
+  action:
+    - service: light.turn_off
+      entity_id: light.voortuin
+    - service: switch.turn_off
+      entity_id: switch.fib_fgs223_voordeur
+
 
 # CARPORT VERLICHTING AAN BIJ AANKOMST
 - alias: "Verlichting: Carport aan bij thuiskomst"
