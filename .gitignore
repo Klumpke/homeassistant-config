@@ -39,6 +39,7 @@ zwscene.xml
 # Ignore folders.
 .cloud
 .storage
+ssh_keys
 appdaemon
 custom_icons
 deps
