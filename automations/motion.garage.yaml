@@ -13,15 +13,33 @@
       entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_6
       to: 'on'
       id: motion-detected
+    # - platform: state
+    #   entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_2
+    #   to: 'off'
+    #   id: motion-stopped
+    #   for:
+    #     # hours: 0
+    #     # minutes: 0
+    #     minutes: 2
+    #     # seconds: 20
     - platform: state
       entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_2
       to: 'off'
-      id: motion-stopped
+      id: motion-stopped-phase1
       for:
         # hours: 0
         # minutes: 0
         minutes: 2
         # seconds: 20
+    - platform: state
+      entity_id: binary_sensor.signify_netherlands_b_v_sml003_occupancy_2
+      to: 'off'
+      id: motion-stopped-phase2
+      for:
+        # hours: 0
+        # minutes: 0
+        minutes: 2
+        seconds: 10
     - platform: state
       entity_id: light.garage
       to: 'off'
@@ -29,30 +47,88 @@
   condition: []
   action:
   - choose:
-    - conditions:
-      - condition: trigger
-        id: motion-detected
-      sequence:
-      - service: input_boolean.turn_on
-        data:
-          entity_id: input_boolean.motion_light_garage
-      - service: light.turn_on
-        data:
-          entity_id: light.garage
+    # - conditions:
+    #   - condition: trigger
+    #     id: motion-detected
+    #   sequence:
+    #   - service: input_boolean.turn_on
+    #     data:
+    #       entity_id: input_boolean.motion_light_garage
+    #   - service: light.turn_on
+    #     data:
+    #       entity_id: light.garage
+
+    # - conditions:
+    #   - condition: trigger
+    #     id: motion-stopped
+    #   - condition: state
+    #     entity_id: input_boolean.motion_light_garage
+    #     state: 'on'
+    #   sequence:
+    #   - service: input_boolean.turn_off
+    #     data:
+    #       entity_id: input_boolean.motion_light_garage
+    #   - service: light.turn_off
+    #     data:
+    #       entity_id: light.garage
 
     - conditions:
-      - condition: trigger
-        id: motion-stopped
-      - condition: state
-        entity_id: input_boolean.motion_light_garage
-        state: 'on'
+        - condition: trigger
+          id: motion-detected
       sequence:
-      - service: input_boolean.turn_off
-        data:
+        - if:
+            - condition: time
+              after: "08:00:00"
+              before: "20:00:00"
+          then:
+            - service: input_boolean.turn_on
+              data:
+                entity_id: input_boolean.motion_light_garage
+            - service: light.turn_on
+              data:
+                transition: 1
+                brightness_pct: 60
+              target:
+                entity_id: light.garage
+          else:
+            - service: input_boolean.turn_on
+              data:
+                entity_id: input_boolean.motion_light_garage
+            - service: light.turn_on
+              data:
+                transition: 1
+                brightness_pct: 100
+              target:
+                entity_id: light.garage
+
+    - conditions:
+        - condition: trigger
+          id: motion-stopped-phase1
+        - condition: state
           entity_id: input_boolean.motion_light_garage
-      - service: light.turn_off
-        data:
-          entity_id: light.garage
+          state: 'on'
+      sequence:
+        - service: light.turn_on
+          data:
+            transition: 2
+            brightness_pct: 15
+          target:
+            entity_id: light.garage
+    - conditions:
+        - condition: trigger
+          id: motion-stopped-phase2
+        - condition: state
+          entity_id: input_boolean.motion_light_garage
+          state: 'on'
+      sequence:
+        - service: input_boolean.turn_off
+          data:
+            entity_id: input_boolean.motion_light_garage
+        - service: light.turn_off
+          data:
+            transition: 2
+          target:
+            entity_id: light.garage
 
     - conditions:
       - condition: trigger
@@ -61,3 +137,5 @@
       - service: input_boolean.turn_off
         data:
           entity_id: input_boolean.motion_light_garage
+
+  mode: single
