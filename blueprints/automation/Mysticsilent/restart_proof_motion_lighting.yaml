@@ -1,0 +1,194 @@
+blueprint:
+  name: Hotel motion lighting with lux sensor and timer (restart proof)
+  description: Turn on a light when motion is detected and illuminance is below a
+    set Lux level. After the timer is finished, the light will dim until off state.
+    There are two timers. One for daytime and one for nighttime. The automation will
+    survive a home assistant reboot.
+  domain: automation
+  input:
+    motion_entity:
+      name: Motion Sensor
+      selector:
+        entity:
+          domain:
+          - binary_sensor
+          multiple: false
+    lux_entity:
+      name: Illuminance Sensor
+      selector:
+        entity:
+          domain:
+          - sensor
+          device_class:
+          - illuminance
+          multiple: false
+    lux_level:
+      name: Illuminance level
+      description: If lux is below this value and motion is detected, the light will
+        turn on.
+      default: 100
+      selector:
+        number:
+          min: 0.0
+          max: 1000.0
+          step: 1.0
+          mode: slider
+    light_target:
+      name: Light
+      description: Select desired light area, device or entity to control
+      selector:
+        target:
+          entity:
+          - domain:
+            - light
+    light_brightness_day:
+      name: Light turn-on brightness day
+      default: 75
+      selector:
+        number:
+          min: 0.0
+          max: 100.0
+          unit_of_measurement: percent
+          step: 1.0
+          mode: slider
+    light_brightness_night:
+      name: Light turn-on brightness night
+      default: 30
+      selector:
+        number:
+          min: 0.0
+          max: 100.0
+          unit_of_measurement: percent
+          step: 1.0
+          mode: slider
+    waittime_day:
+      name: Wait time day
+      description: Time to leave the light on after last motion is detected during
+        the day.
+      default: 120
+      selector:
+        number:
+          min: 0.0
+          max: 600.0
+          unit_of_measurement: seconds
+          step: 1.0
+          mode: slider
+    waittime_night:
+      name: Wait time night
+      description: Time to leave the light on after last motion is detected during
+        the night.
+      default: 60
+      selector:
+        number:
+          min: 0.0
+          max: 600.0
+          unit_of_measurement: seconds
+          step: 1.0
+          mode: slider
+    dim_time:
+      name: Dim time until Turn-off
+      description: The light will start dim this many seconds before it is turned
+        off if no motion has been detected to signal that the light will soon turn
+        off.
+      default: 30
+      selector:
+        number:
+          min: 0.0
+          max: 120.0
+          unit_of_measurement: seconds
+          step: 1.0
+          mode: slider
+    input_helper_timer:
+      name: Timer-helper (Timer entity)
+      description: Select the input helper (timer) for this automation. Create an
+        input timer-helper. This object will keep track of the chosen wait time even
+        when HA reboots.
+      selector:
+        entity:
+          domain:
+          - timer
+          multiple: false
+    daytime_helper_night_start:
+      name: Day-time helper (Night start)
+      description: When should it be considered night time? Create an input date-time
+        helper and set when you want the night to start.
+      selector:
+        entity:
+          domain:
+          - input_datetime
+          multiple: false
+    daytime_helper_night_end:
+      name: Day-time helper (Night end)
+      description: When should it be considered night time? Create an input date-time
+        helper and set when you want the night to end.
+      selector:
+        entity:
+          domain:
+          - input_datetime
+          multiple: false
+  source_url: https://gist.github.com/Mysticsilent/5401d11a1c747860df8b79b6319798b3
+mode: restart
+max_exceeded: silent
+variables:
+  local_waittime_day: !input waittime_day
+  local_waittime_night: !input waittime_night
+  local_dim_time: !input dim_time
+  local_daytime_helper_night_start: !input daytime_helper_night_start
+  local_daytime_helper_night_end: !input daytime_helper_night_end
+trigger:
+- platform: state
+  entity_id: !input motion_entity
+  from: 'off'
+  to: 'on'
+  id: motion-detected
+- platform: event
+  event_type: timer.finished
+  event_data:
+    entity_id: !input input_helper_timer
+  id: timer-finished
+condition:
+  condition: numeric_state
+  entity_id: !input lux_entity
+  below: !input lux_level
+action:
+- choose:
+  - conditions:
+    - condition: trigger
+      id:
+      - motion-detected
+    sequence:
+    - if:
+      - condition: time
+        after: !input daytime_helper_night_end
+        before: !input daytime_helper_night_start
+      then:
+      - service: timer.start
+        data:
+          duration: !input waittime_day
+        target:
+          entity_id: !input input_helper_timer
+      - service: light.turn_on
+        data:
+          brightness_pct: !input light_brightness_day
+          transition: 1
+        target: !input light_target
+      else:
+      - service: timer.start
+        data:
+          duration: !input waittime_night
+        target:
+          entity_id: !input input_helper_timer
+      - service: light.turn_on
+        data:
+          brightness_pct: !input light_brightness_night
+          transition: 1
+        target: !input light_target
+  - conditions:
+    - condition: trigger
+      id:
+      - timer-finished
+    sequence:
+    - service: light.turn_off
+      data:
+        transition: !input dim_time
+      target: !input light_target

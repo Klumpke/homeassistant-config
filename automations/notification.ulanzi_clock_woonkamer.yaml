@@ -1,12 +1,39 @@
+- alias: "Ulanzi Clock Livingroom: Display off when away"
+  id: 834a6818-7553-42a5-bb2b-144566f275a2
+  trigger:
+    - platform: state
+      entity_id: group.device_status
+      from: 'home'
+      to: 'not_home'
+      id: ulanzi-livingroom-off
+    - platform: state
+      entity_id: group.device_status
+      from: 'not_home'
+      to: 'home'
+      id: ulanzi-livingroom-on
+  action:
+    - choose:
+      - conditions:
+        - condition: trigger
+          id: ulanzi-livingroom-off
+        sequence:
+          - service: light.turn_off
+            data: {}
+            target:
+              entity_id: light.matrix_2
+      - conditions:
+        - condition: trigger
+          id: ulanzi-livingroom-on
+        sequence:
+          - service: light.turn_on
+            data: {}
+            target:
+              entity_id: light.matrix_2
+
+
 - alias: "Ulanzi Clock Livingroom: Notifications"
   id: 0fd58034-4101-471b-a38e-012bb06c9214
   trigger:
-    # - platform: state
-    #   entity_id: sensor.envoy_122223030052_current_power_production
-    #   id: ulanzi-solarpanels
-    - platform: state
-      entity_id: sensor.klipper_progress
-      id: ulanzi-3dprinter
     - platform: state
       entity_id: binary_sensor.doorbell_voordeur
       id: ulanzi-doorbell
@@ -14,49 +41,9 @@
       entity_id: binary_sensor.lumi_lumi_sensor_magnet_aq2_opening_7
       to: 'on'
       id: ulanzi-garagedoor
-    - platform: state
-      entity_id: sensor.current_app
-      to: 'Time'
-      id: ulanzi-kantoor-customapps
   condition: []
   action:
     - choose:
-      ## MELDING: ZONNEPANELEN
-      # - conditions:
-      #   - condition: trigger
-      #     id: ulanzi-solarpanels
-      #   sequence:
-      #   - service: mqtt.publish
-      #     data:
-      #       topic: ulanzi_woonkamer/notify
-      #       payload_template: >-
-      #         {
-      #           "name": "Solarpanels",
-      #           "force": false,
-      #           "icon": "44625",
-      #           "moveIcon": false,
-      #           "duration": "30",
-      #           "text": '{{states.sensor.envoy_122223030052_current_power_production.state}} W',
-      #           "color": [ 255, 255, 255 ]
-      #         }
-      ## MELDING: 3D PRINTER
-      - conditions:
-        - condition: trigger
-          id: ulanzi-3dprinter
-        sequence:
-        - service: mqtt.publish
-          data:
-            topic: ulanzi_woonkamer/notify
-            payload_template: >-
-              {
-                "name": "3D printer",
-                "force": false,
-                "icon": "51843",
-                "moveIcon": false,
-                "duration": "30",
-                "text": '{{states.sensor.klipper_progress.state}} %',
-                "color": [ 255, 255, 255 ]
-              }
       ## MELDING: DEURBEL
       - conditions:
         - condition: trigger
@@ -94,50 +81,77 @@
                 "text": "Garagedeur open",
                 "color": [ 255, 255, 255 ]
               }
-      - conditions:
-        - condition: trigger
-          id: ulanzi-kantoor-customapps
-        sequence:
-        ## APP: SOLAR PANELS
-        - service: mqtt.publish
-          data:
-            topic: ulanzi_woonkamer/custom/Solarpanels
-            payload_template: |-
-              {
-                "text": '{{states.sensor.envoy_122223030052_current_power_production.state | round(0) }} W',
-                "icon": "44625",
-                "pushIcon":0,
-                "repeat":0,
-                "textCase":2,
-                "textOffset":33,
-                "color": [ 255, 255, 255 ]
-              }
-        # ## APP: INTERNET DOWNLOAD
-        # - service: mqtt.publish
-        #   data:
-        #     topic: ulanzi_woonkamer/custom/DownloadSpeed
-        #     payload_template: |-
-        #       {
-        #         "text":"Download {{ states.sensor.speedtest_download.state}} Mbp/s",
-        #         "icon":"download",
-        #         "pushIcon":0,
-        #         "repeat":0,
-        #         "textCase":2,
-        #         "textOffset":33,
-        #         "color": [ 255, 255, 255 ]
-        #       }
-        # ## APP: INTERNET UPLOAD
-        # - service: mqtt.publish
-        #   data:
-        #     topic: ulanzi_woonkamer/custom/UploadSpeed
-        #     payload_template: |-
-        #       {
-        #         "text":"Upload {{ states.sensor.speedtest_upload.state}} Mbp/s",
-        #         "icon":"upload",
-        #         "pushIcon":0,
-        #         "repeat":0,
-        #         "textCase":2,
-        #         "textOffset":33,
-        #         "color": [ 255, 255, 255 ]
-        #       }
   mode: single
+
+
+- alias: "Ulanzi Clock Livingroom: Enphase solarpanels"
+  id: afe130cf-2c4a-48ed-8e68-f63720d80eea
+  use_blueprint:
+    path: klumpke/awtrix_enphase_solarpanels.yaml
+    input:
+      awtrix: 37cfe14ac1655af3ab082feb6a569a92
+      awtrix_app_name: enphase
+      production_sensor: sensor.envoy_122223030052_current_power_production
+      icon: 44625
+      push_icon: "0"
+      duration: 10
+      repeat: 4
+
+
+- alias: "Ulanzi Clock Livingroom: 3D Print Status"
+  id: dd820500-e22c-461a-8084-4ec5b6bcf146
+  use_blueprint:
+    path: klumpke/awtrix_3dprint_status.yaml
+    input:
+      awtrix: 37cfe14ac1655af3ab082feb6a569a92
+      awtrix_app_name: 3d_print
+      3dprint_progress_sensor: sensor.klipper_progress
+      3dprint_current_state_sensor: sensor.klipper_current_print_state
+      icon: 51843
+      push_icon: "0"
+      stack_notification: false
+      duration: 10
+      repeat: 4
+
+
+- alias: "Ulanzi Clock Livingroom: Spotify Now Playing"
+  id: 06293da3-5bcd-4955-8b52-04ba5327b439
+  use_blueprint:
+    path: klumpke/awtrix_spotify_nowplaying.yaml
+    input:
+      awtrix: 37cfe14ac1655af3ab082feb6a569a92
+      awtrix_app_name: spotify
+      media_player: media_player.spotify_jeroen
+      icon: 50252
+      push_icon: "0"
+      duration: 10
+      repeat: 4
+
+
+- alias: "Ulanzi Clock Livingroom: DSMR Reader"
+  id: 0e246c20-9944-4046-9ae8-548bd074c412
+  use_blueprint:
+    path: klumpke/awtrix_dsmrreader.yaml
+    input:
+      awtrix:
+        - 37cfe14ac1655af3ab082feb6a569a92
+      dsmr_sensor: sensor.power_consumption_watt
+      icon: 54077
+      push_icon: "0"
+      duration: 10
+      repeat: 4
+      lifetime: 70
+
+
+- alias: "Ulanzi Clock Office: EV Charger"
+  id: 0a294206-b4ec-4c8e-a6ae-0f8563ce1dd4
+  use_blueprint:
+    path: klumpke/awtrix_ev_charger.yaml
+    input:
+      awtrix: 37cfe14ac1655af3ab082feb6a569a92
+      awtrix_app_name: ev_charger
+      ev_sensor: sensor.alfen_active_power_total_socket_1
+      icon: 44231
+      push_icon: "0"
+      duration: 10
+      repeat: 4

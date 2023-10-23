@@ -1,0 +1,240 @@
+blueprint:
+  name: "AWTRIX - 3D Print Status (Moonraker)"
+  description: "This blueprint will show the status of your 3d print, with help of the Moonraker HA intergration"
+  source_url: https://github.com/klumpke/Homeassistant_Blueprints/blob/main/awtrix_3dprint_status.yaml
+  domain: automation
+  author: "Jeroen Klompen"
+  input:
+    awtrix:
+      name: Awtrix Display
+      description: Select the Awtrix display
+      selector:
+        device:
+          integration: mqtt
+          manufacturer: Blueforcer
+          model: AWTRIX Light
+          multiple: false
+    awtrix_app_name:
+      name: AWTRIX Application name
+      description: This is the custom app name that will be added to AWTRIX, should be unique
+      selector:
+        text: {}
+      default: 3d_print
+    3dprint_progress_sensor:
+      name: 3D Print Progress Sensor
+      description: 3D Print progress sensor
+      selector:
+        entity:
+          multiple: false
+          filter:
+            - integration: moonraker
+    3dprint_current_state_sensor:
+      name: 3D Print Current State Sensor
+      description: 3D Print Current State sensor
+      selector:
+        entity:
+          multiple: false
+          filter:
+            - integration: moonraker
+    icon:
+      name: Icon
+      description: Enter the Icon Name or ID of the icon that you like to show
+      selector:
+        text:
+      default: "51841"
+    push_icon:
+      name: Icon Mode
+      description:
+        "Please select the pushIcon setting for the icon\n\n  - `0`  Icon
+        doesn't move\n\n  - `1`  Icon moves with text and will not appear again\n\n
+        \ - `2` Icon moves with text but appears again when the text starts to scroll
+        again\n"
+      selector:
+        select:
+          options:
+            - label: "Icon doesn't move (default)"
+              value: "0"
+            - label: "Icon moves with text and will not appear again"
+              value: "1"
+            - label: "Icon moves with text but appears again when the text starts to scroll again"
+              value: "2"
+          multiple: false
+          custom_value: false
+      default: "0"
+    txt_color_printing:
+      name: Text Color Printing State
+      description: Select the Text color
+      selector:
+        color_rgb:
+      default: [255, 255, 255]
+    txt_color_error:
+      name: Text Color Error State
+      description: Select the Text color
+      selector:
+        color_rgb:
+      default: [255, 0, 0]
+    txt_color_paused:
+      name: Text Color Paused State
+      description: Select the Text color
+      selector:
+        color_rgb:
+      default: [255, 255, 0]
+    txt_color_canceled:
+      name: Text Color Canceled State
+      description: Select the Text color
+      selector:
+        color_rgb:
+      default: [255, 165, 0]
+    txt_color_complete:
+      name: Text Color Complete State
+      description: Select the Text color
+      selector:
+        color_rgb:
+      default: [66, 245, 75]
+    stack_notification:
+      name: Stack notification
+      description: Should the notifications be stacked?
+      selector:
+        boolean:
+      default: false
+    duration:
+      name: Duration (in seconds)
+      description: Sets how long the app or notification should be displayed
+      default: "10"
+    repeat:
+      name: Repeat
+      description: Sets how many times the text should be scrolled through the matrix before the app/notifcation ends
+      default: "4"
+
+variables:
+  device_id: !input awtrix
+  awtrix: "{{ iif( device_attr(device_id, 'name_by_user') != none, device_attr(device_id,'name_by_user'), device_attr(device_id, 'name') ) }}"
+  app: !input awtrix_app_name
+  message_topic: "{{awtrix ~ '/custom/' ~ app }}"
+  icon: !input icon
+  notify_topic: "{{awtrix ~ '/notify'}}"
+  sensor_progress: !input 3dprint_progress_sensor
+  sensor_current_state: !input 3dprint_current_state_sensor
+  txt_color_printing: !input txt_color_printing
+  txt_color_error: !input txt_color_error
+  txt_color_paused: !input txt_color_paused
+  txt_color_canceled: !input txt_color_canceled
+  txt_color_complete: !input txt_color_complete
+  stack_notification: !input stack_notification
+  push_icon: !input push_icon
+  duration: !input duration
+  repeat: !input repeat
+
+trigger:
+  - platform: state
+    entity_id:
+      - !input 3dprint_progress_sensor
+  - platform: state
+    entity_id:
+      - !input 3dprint_current_state_sensor
+condition:
+  - condition: not
+    conditions:
+      - condition: state
+        entity_id: !input 3dprint_current_state_sensor
+        state: unavailable
+      - condition: state
+        entity_id: !input 3dprint_current_state_sensor
+        state: unknown
+action:
+  - if:
+      - condition: state
+        entity_id: !input 3dprint_current_state_sensor
+        state: printing
+    then:
+      - service: mqtt.publish
+        data:
+          topic: "{{ message_topic }}"
+          payload: |-
+            {
+              "text": "{{ states(sensor_progress) }}%",
+              "icon": "{{ icon }}",
+              "progress": "{{ states(sensor_progress) }}",
+              "pushIcon": {{ push_icon }},
+              "color": {{ txt_color_printing }},
+              "duration": {{ duration }},
+              "repeat": {{ repeat }}
+            }
+    else:
+      - service: mqtt.publish
+        data:
+          topic: "{{ message_topic }}"
+  - if:
+      - condition: state
+        entity_id: !input 3dprint_current_state_sensor
+        state: error
+    then:
+      - service: mqtt.publish
+        data:
+          topic: "{{ notify_topic }}"
+          payload: |-
+            {
+              "text": "{{ states(sensor_current_state) }}",
+              "icon": "{{ icon }}",
+              "color": {{ txt_color_error }},
+              "stack": {{ iif(stack_notification, "true", "false") }},
+              "pushIcon": {{ push_icon }},
+              "duration": {{ duration }},
+              "repeat": {{ repeat }}
+            }
+  - if:
+      - condition: state
+        entity_id: !input 3dprint_current_state_sensor
+        state: cancelled
+    then:
+      - service: mqtt.publish
+        data:
+          topic: "{{ notify_topic }}"
+          payload: |-
+            {
+              "text": "{{ states(sensor_current_state) }}",
+              "icon": "{{ icon }}",
+              "stack": {{ iif(stack_notification, "true", "false") }},
+              "color": {{ txt_color_canceled }},
+              "pushIcon": {{ push_icon }},
+              "duration": {{ duration }},
+              "repeat": {{ repeat }}
+            }
+  - if:
+      - condition: state
+        entity_id: !input 3dprint_current_state_sensor
+        state: paused
+    then:
+      - service: mqtt.publish
+        data:
+          topic: "{{ notify_topic }}"
+          payload: |-
+            {
+              "text": "{{ states(sensor_current_state) }}",
+              "icon": "{{ icon }}",
+              "stack": {{ iif(stack_notification, "true", "false") }},
+              "color": {{ txt_color_paused }},
+              "pushIcon": {{ push_icon }},
+              "duration": {{ duration }},
+              "repeat": {{ repeat }}
+            }
+
+  - if:
+      - condition: state
+        entity_id: !input 3dprint_current_state_sensor
+        state: complete
+    then:
+      - service: mqtt.publish
+        data:
+          topic: "{{ notify_topic }}"
+          payload: |-
+            {
+              "text": "{{ states(sensor_current_state) }}",
+              "icon": "{{ icon }}",
+              "stack": {{ iif(stack_notification, "true", "false") }},
+              "color": {{ txt_color_complete }},
+              "pushIcon": {{ push_icon }},
+              "duration": {{ duration }},
+              "repeat": {{ repeat }}
+            }
+mode: restart

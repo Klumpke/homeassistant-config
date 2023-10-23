@@ -1,0 +1,119 @@
+blueprint:
+  name: "AWTRIX - Enphase solarpanels"
+  description: "This blueprint will show the current production of the solarpanels, with help of the Enhpase HA integration"
+  source_url: https://github.com/klumpke/Homeassistant_Blueprints/blob/main/awtrix_enphase_solarpanels.yaml
+  domain: automation
+  author: "Jeroen Klompen"
+  input:
+    awtrix:
+      name: Awtrix Display
+      description: Select the Awtrix display
+      selector:
+        device:
+          integration: mqtt
+          manufacturer: Blueforcer
+          model: AWTRIX Light
+          multiple: false
+    awtrix_app_name:
+      name: AWTRIX Application name
+      description: This is the custom app name that will be added to AWTRIX, should be unique
+      selector:
+        text: {}
+      default: enphase
+    production_sensor:
+      name: Enphase Production Sensor
+      description: Enphase Production Sensor
+      selector:
+        entity:
+          multiple: false
+          filter:
+            - integration: enphase_envoy
+    icon:
+      name: Icon
+      description: Enter the Icon Name or ID of the icon that you like to show
+      selector:
+        text:
+      default: "44625"
+    push_icon:
+      name: Push Icon
+      description:
+        "Please select the pushIcon setting for the icon\n\n  - `0`  Icon
+        doesn't move\n\n  - `1`  Icon moves with text and will not appear again\n\n
+        \ - `2` Icon moves with text but appears again when the text starts to scroll
+        again\n"
+      selector:
+        select:
+          options:
+            - label: "Icon doesn't move (default)"
+              value: "0"
+            - label: "Icon moves with text and will not appear again"
+              value: "1"
+            - label: "Icon moves with text but appears again when the text starts to scroll again"
+              value: "2"
+          multiple: false
+          custom_value: false
+      default: "0"
+    text_color:
+      name: Text Color
+      description: Select the Text color
+      selector:
+        color_rgb:
+      default: [255, 255, 255]
+    duration:
+      name: Duration (in seconds)
+      description: Sets how long the app or notification should be displayed
+      default: "10"
+    repeat:
+      name: Repeat
+      description: Sets how many times the text should be scrolled through the matrix before the app/notifcation ends
+      default: "4"
+
+variables:
+  device_id: !input awtrix
+  awtrix: "{{ iif( device_attr(device_id, 'name_by_user') != none, device_attr(device_id,'name_by_user'), device_attr(device_id, 'name') ) }}"
+  app: !input awtrix_app_name
+  message_topic: "{{awtrix ~ '/custom/' ~ app }}"
+  icon: !input icon
+  production_sensor: !input production_sensor
+  text_color: !input text_color
+  push_icon: !input push_icon
+  duration: !input duration
+  repeat: !input repeat
+
+trigger:
+  - platform: state
+    entity_id: !input production_sensor
+condition:
+  - condition: not
+    conditions:
+      - condition: state
+        entity_id: !input production_sensor
+        state: unavailable
+      - condition: state
+        entity_id: !input production_sensor
+        state: unknown
+action:
+  if:
+    - condition: numeric_state
+      entity_id: !input production_sensor
+      above: 0
+  then:
+    - service: mqtt.publish
+      data:
+        qos: 0
+        retain: false
+        topic: "{{ message_topic }}"
+        payload: |-
+          {
+            "text": "{{ states(production_sensor) | round(0) }} W",
+            "icon": "{{ icon }}",
+            "pushIcon": {{ push_icon }},
+            "color": {{ text_color }},
+            "duration": {{ duration }},
+            "repeat": {{ repeat }}
+          }
+  else:
+    - service: mqtt.publish
+      data:
+        topic: "{{ message_topic }}"
+mode: restart
